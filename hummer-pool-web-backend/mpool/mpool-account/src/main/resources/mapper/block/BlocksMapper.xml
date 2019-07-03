@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.account.mapper.block.BlocksMapper">
+    <insert id="insertBlocks">
+        INSERT INTO `blocks`
+        (
+        height,
+        time,
+        difficulty,
+        nonce
+        )
+        VALUES
+        <foreach collection="list" separator="," item="item">
+            (
+            ${item.height},
+            ${item.time},
+            #{item.difficulty},
+            ${item.nonce}
+            )
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        height = VALUES(height),
+        time = VALUES(time),
+        difficulty = VALUES(difficulty),
+        nonce = VALUES(nonce)
+    </insert>
+
+    <select id="getCount" resultType="int">
+		SELECT COUNT(*) FROM `blocks`
+	</select>
+</mapper>

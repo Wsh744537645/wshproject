@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.admin.module.bill.mapper.UserMapper">
+
+	<select id="findByUsername"
+		resultType="com.mpool.share.admin.model.User">
+		SELECT * FROM `account_user` where username = #{username}
+	</select>
+
+	<select id="findById" resultType="com.mpool.share.admin.model.User">
+		SELECT * FROM `account_user` where user_id = #{userId}
+	</select>
+
+	<select id="getUsersInfoList" resultType="map">
+		SELECT
+			au.user_id AS userId,
+			au.username AS username,
+			UNIX_TIMESTAMP(au.create_time) AS registTime,
+			UNIX_TIMESTAMP(au.last_time) AS lastTime,
+			au.user_phone AS phone,
+			au.user_email AS email,
+			up.wallet_address AS walletAddress
+		FROM
+			account_user au LEFT JOIN user_pay up ON au.user_id = up.puid
+		WHERE
+			1=1
+			<if test="username != null">
+				au.username = #{username}
+			</if>
+	</select>
+</mapper>

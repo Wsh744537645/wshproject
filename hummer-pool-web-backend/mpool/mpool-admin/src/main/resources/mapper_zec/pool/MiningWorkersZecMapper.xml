@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module_zec.pool.mapper.MiningWorkersZecMapper">
+	<select id="getUserMiningWorkers" resultType="com.mpool.common.model.pool.MiningWorkers">
+		select 
+			*
+		from zec_mining_workers
+		where puid=#{userId}  and  worker_id = 0
+	</select>
+	<select id="getUserMiningWorkersList" resultType="com.mpool.common.model.pool.MiningWorkers">
+		select 
+			*
+		from zec_mining_workers
+		where  worker_id = 0 and puid in <foreach collection="list" open="(" close=")" item="puid" separator=",">
+			#{puid}
+		</foreach>
+	</select>
+	
+	<select id="getMiningWorkersByPool" resultType="com.mpool.common.model.pool.MiningWorkers">
+		SELECT * FROM zec_mining_workers WHERE puid= '0' AND worker_id = '0'
+	</select>
+	
+	<select id="getPoolWorkerActiveCount" resultType="java.lang.Integer">
+		SELECT
+			COUNT(1)
+		FROM
+			zec_mining_workers
+		WHERE
+			worker_id != 0
+		AND accept_15m > 0
+	</select>
+</mapper>

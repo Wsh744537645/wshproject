@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.accountmultiple.mapper.pool.PoolMapper">
+	<select id="getShare30Day" resultType="map">
+		SELECT * FROM
+		`stats_pool_day`
+		WHERE
+		`day` >= #{start}
+		AND `day` &lt;= #{end}
+	</select>
+
+	<select id="getShareInDay" resultType="map">
+		SELECT * FROM
+			`stats_pool_day`
+			WHERE
+			`day` in <foreach collection="list" open="(" close=")" item="day" separator=",">
+				#{day}
+			</foreach>
+	</select>
+
+<select id="getStatsUsersHourInHour" resultType="com.mpool.common.model.pool.StatsUsersHour">
+		SELECT
+			*
+		FROM
+			`stats_users_hour`
+		WHERE
+			puid = #{userId}
+		and
+			hour in <foreach collection="list" open="(" close=")" separator="," item="hour">
+			#{hour}
+			</foreach>
+</select>
+
+	<select id="getStatsUsersDayInDay" resultType="com.mpool.common.model.pool.StatsUsersDay">
+		SELECT * FROM
+				`stats_users_day`
+				WHERE
+				puid = #{userId}
+				and
+				`day` in <foreach collection="list" open="(" close=")" item="day" separator=",">
+					#{day}
+				</foreach>
+	</select>
+
+	<select id="getUser24H" resultType="map">
+		SELECT
+		*
+		FROM
+		`stats_users_hour`
+		WHERE
+		`hour` >= #{start}
+		AND `hour` &lt;= #{end}
+		AND
+		puid = #{userId}
+	</select>
+
+	<select id="getUser30DayShare" resultType="map">
+		SELECT
+		*
+		FROM
+		`stats_users_day`
+		WHERE
+		`day` >= #{start}
+		AND `day` &lt;= #{end}
+		AND puid
+		= #{userId}
+	</select>
+
+	<select id="getWorker24Online" resultType="map">
+		SELECT
+		`hour`,
+		COUNT(worker_id) AS on_line
+		FROM
+		stats_workers_hour
+		WHERE
+		 puid = #{userId} and hour in <foreach collection="list" open="(" close=")" separator="," item="hour">
+		 	#{hour}
+		 </foreach>
+		 and share_accept > 0
+		GROUP BY
+		`hour`
+	</select>
+
+	<select id="getWorkerOffline" resultType="java.lang.Integer">
+		SELECT
+			count(worker_id) AS sum
+		FROM
+			mining_workers
+		WHERE
+			puid = #{userId}
+		AND accept_15m = 0
+		AND worker_id != 0
+	</select>
+	
+	<select id="getAllWorkerByPuid" resultType="java.lang.Integer">
+		SELECT
+			count( puid ) AS sum 
+		FROM
+			mining_workers 
+		WHERE
+			puid = #{userId} 
+			AND worker_id != 0
+		GROUP BY
+			puid
+	</select>
+	
+	<select id="getFoundBlocks" resultType="map">
+		SELECT 
+			`id`,
+			`height`,
+			`hash`,
+			`rewards`,
+			`size`,
+			`prev_hash`,
+			`created_at`, 
+			`confirmed_num`
+		FROM
+			`found_blocks`
+		order by `height` desc
+	</select>
+	
+	
+	<select id="getStatsUserHour" resultType="com.mpool.common.model.pool.StatsUsersHour">
+		SELECT
+			puid,
+			hour,
+			share_accept,
+			share_reject,
+			reject_rate,
+			score,
+			earn,
+			created_at,
+			updated_at
+		FROM
+			stats_users_hour
+		WHERE
+			puid = #{userId} AND hour > #{start} and hour &lt;= #{end} 
+	</select>
+	
+	<select id="getMiningWorkersByPuid" resultType="com.mpool.common.model.pool.MiningWorkers">
+		SELECT accept_5m,accept_15m FROM `mining_workers` WHERE `puid` = #{userId} and worker_id = 0
+	</select>
+	
+	<select id="getAllWorkerByPuidList" resultType="map">
+		SELECT
+			puid,
+			count( 1 ) AS sum 
+		FROM
+			mining_workers 
+		WHERE
+			puid in <foreach collection="list" close=")" open="(" item="item" separator=",">
+				#{item} 
+			</foreach> 
+			AND worker_id != 0
+		GROUP BY
+			puid
+	</select>
+	<select id="getActiveWorkerByPuidList" resultType="map">
+		SELECT
+			puid,
+			count( 1 ) AS sum 
+		FROM
+			mining_workers 
+		WHERE
+			puid in <foreach collection="list" close=")" open="(" item="item" separator=",">
+				#{item} 
+			</foreach> 
+			AND worker_id != 0
+			AND accept_15m > 0
+		GROUP BY
+			puid
+	</select>
+	
+	<select id="getMiningWorkersByPuidList" resultType="com.mpool.common.model.pool.MiningWorkers">
+		SELECT
+			*
+		FROM
+			mining_workers
+		WHERE
+			worker_id = 0
+		AND puid IN <foreach collection="list" close=")" open="(" separator="," item="item">
+			#{item}
+		</foreach>
+	</select>
+	<!--<select id="getBtcComBlock"resultType="map">-->
+		<!--SELECT * FROM -->
+	<!--</select>-->
+</mapper>

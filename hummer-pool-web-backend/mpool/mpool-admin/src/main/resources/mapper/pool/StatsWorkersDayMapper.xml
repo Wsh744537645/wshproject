@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module.pool.mapper.StatsWorkersDayMapper">
+	<select id="getPoolPast30DayWorker" resultType="map">
+		SELECT
+			`day`,
+			COUNT(worker_id) AS count
+		FROM
+			stats_workers_day
+		WHERE
+		 `day` in <foreach collection="days" open="(" close=")" separator="," item="item">
+		 	#{item}
+		 </foreach>
+		AND share_accept > 0
+		AND worker_id != 0
+		GROUP BY
+			`day`
+	</select>
+
+	<select id="getStatsUsersDayInDay" resultType="map">
+		SELECT `day`, COUNT(worker_id) as count FROM stats_workers_day WHERE
+		`day` in <foreach collection="days" open="(" close=")" separator="," item="item">
+		#{item}
+	</foreach>
+		AND puid = #{userId}
+		AND share_accept > 0
+		AND worker_id != 0
+		group by `day`
+	</select>
+</mapper>

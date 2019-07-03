@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.account.mapper.MenuMapper">
+
+	<select id="findByUserId"
+		resultType="com.mpool.common.model.account.Menu">
+		SELECT
+			sm.*
+		FROM
+			account_user as su
+		LEFT JOIN account_user_role as sur ON sur.user_id = su.user_id
+		LEFT JOIN account_role_menu as srm ON srm.role_id = sur.role_id
+		LEFT JOIN account_menu as sm ON sm.menu_id = srm.menu_id
+		WHERE
+			su.user_id = #{userId}
+	</select>
+	
+</mapper>

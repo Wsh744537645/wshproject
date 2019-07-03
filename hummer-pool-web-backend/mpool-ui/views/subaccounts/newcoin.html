@@ -1,0 +1,68 @@
+<!--新增币种-->
+<span data-ng-bind="::pageTitle()" style="display: none;"></span>
+<link rel="stylesheet" href="app/css/subaccounts/subaccounts.css">
+<h3>
+   	<small>
+   		<span ng-click="homepage()" style="color:#3c78c2;">{{ 'nav.homepage' | translate }}</span> 
+   		<span style="color: #ccc;">/</span> 
+   		{{ 'dashboard.newcoin' | translate}}
+   	</small>
+</h3>
+
+<div class="table-grid table-grid-desktop">
+   	<div class="panel col-lg-12">
+   		<p class="table-top" style="padding: 0;margin: 10px 0px;padding-bottom: 10px;font-size: 16px;">
+			<a href="#" class="icon-action-undo" ng-click="back()" title="返回"></a>&nbsp;
+   			{{ 'dashboard.newcoin' | translate}} </small>
+	    </p>
+      	<div class="panel-body crekuang" ng-show="newcoinsc">
+			<form class="form-horizontal" role="form">
+				<!--验证提示信息-->
+				<div class="form-group" style="height: 53px;">
+					<label class="col-md-3 col-sm-3 col-xs-12 control-label"></label>
+					<div class="col-sm-5 col-md-5 col-xs-12 accountsStyle title1">
+			       		<span class="fa fa-exclamation-circle Icon"></span>
+			       		<span class="text-danger2">{{registerTitle}}</span>
+			    	</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-3 col-sm-3 col-xs-12 control-label">{{'subActsMng.sub-accountname' |translate}}</label>
+					<div class="col-md-5 col-sm-5 col-xs-12">
+						<p class="form-control-static">{{subacname}}</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="selSwitchMode" class="col-md-3 col-sm-3 col-xs-12 control-label">{{'subActsMng.mining coin' |translate}}</label>
+					<div class="col-sm-5 col-md-5 col-xs-12">
+						<select ng-model="walletType.money" ng-change="getMoney()" class="form-control">
+							<option value="{{type.key}}" ng-repeat="type in wallet_Type">{{type.key}}</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="btcAddress" class="col-md-3 col-sm-3 col-xs-12 control-label">{{'worker.ReceivingAds' |translate}}<span id="sign_3"></span></label>
+					<div class="col-sm-5 col-md-5 col-xs-12">
+						<input type="text" ng-model="walletAddr" ng-change="checkAddr(walletAddr)" onkeyup="value=value.replace(/[\u4E00-\u9FA5]/g,'')" class="form-control"/>
+					</div>
+					<label class="col-md-3 col-sm-3 col-xs-12 control-label regtitle11">
+						{{walletCheck}}
+					</label>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-3 col-md-offset-3 col-xs-offset-6 col-sm-7">
+						<button type="submit" ng-click="getRegister()" style="border-radius: 4px;" 
+						ng-disabled="!walletCheck == ''" class="btn btn-block btn-primary mt-lg subcreSubAcc">{{'common.add' |translate}}</button>
+					</div>
+				</div>
+			</form>
+      	</div>
+      	
+      	<div class="panel-body title" ng-show="!newcoinsc">
+      		<p class="text-center pv title2">
+         		<span class="succ">{{'notice.crSubok' | translate}}</span><br />
+				<span class="succ2">{{'notice.3srouter' |translate}}...</span>
+				<!--<a ng-click="stop()" class="btn btn-block btn-default registerSub denglu">停留到创建界面</a>-->
+         	</p>
+      	</div>
+   </div>
+</div>

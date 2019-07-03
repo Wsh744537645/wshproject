@@ -1,0 +1,53 @@
+[
+  {
+    "text": "我的首页",
+    "sref": "api.dashboard",
+    "icon": "icon-speedometer",
+    "translate": "sidebar.nav.DOCUMENTATION1"
+  },
+  {
+    "text": "我的矿机",
+    "sref": "api.worker",
+    "icon": "fa fa-bitcoin",
+    "translate": "sidebar.nav.DOCUMENTATION2"
+  },
+  {
+    "text": "支付记录",
+    "sref": "api.payrecord",
+    "icon": "icon-note",
+    "translate": "sidebar.nav.DOCUMENTATION3"
+  },
+  {
+    "text": "账户管理",
+    "sref": "api.account",
+    "icon": "icon-credit-card",
+    "translate": "sidebar.nav.DOCUMENTATION4"
+  },
+  {
+    "text": "子账户管理",
+    "sref": "api.subaccount",
+    "icon": "icon-users",
+    "translate": "sidebar.nav.DOCUMENTATION5"
+  },
+  {
+    "text": "告警设置",
+    "sref": "api.setting",
+    "icon": "icon-bell",
+    "translate": "sidebar.nav.DOCUMENTATION6"
+  },
+  {
+    "text": "常见问题",
+    "sref": "api.dashboard_v4",
+    "icon": "fa fa-question",
+    "translate": "sidebar.nav.DOCUMENTATION7"
+  },
+  {
+    "text": "二级菜单",
+    "sref": "#",
+    "icon": "icon-doc",
+    "submenu": [
+      { "text": "登录","sref": "page.login", "translate": "sidebar.nav.user.LOGIN" }
+    ],
+    "translate": "sidebar.nav.user.PAGES"
+  }
+]

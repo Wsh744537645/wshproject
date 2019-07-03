@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module.pool.mapper.StatsPoolDayMapper">
+	<select id="getPoolPast30DayShare" resultType="com.mpool.common.model.pool.StatsPoolDay">
+		SELECT
+			*
+		FROM
+			stats_pool_day
+		WHERE
+			`day` IN <foreach collection="days" open="(" close=")" separator="," item="item">
+					#{item}
+				</foreach>
+		AND share_accept > 0
+	</select>
+
+	<select id="getPoolPast20DayShare" resultType="com.mpool.admin.InModel.InBlockchain">
+		SELECT
+		*
+		FROM
+		stats_pool_day
+		WHERE
+		`day` IN <foreach collection="days" open="(" close=")" separator="," item="item">
+		#{item}
+	</foreach>
+		AND share_accept > 0
+	</select>
+
+	<!--<select id="getPoolPast2DayShare" resultType="com.mpool.common.model.pool.StatsPoolDay">-->
+		<!--SELECT-->
+		<!--*-->
+		<!--FROM-->
+		<!--stats_pool_day-->
+		<!--WHERE 1=1-->
+		<!--<if test="startTime != null">-->
+			<!--and `day` &lt;= #{startTime}-->
+		<!--</if>-->
+		<!--<if test="endTime != null">-->
+			<!--and `day` >= #{endTime}-->
+		<!--</if> order by `day`-->
+	<!--</select>-->
+	
+	<select id="getPoolDayShare" resultType="com.mpool.admin.InModel.InBlockchain">
+		SELECT
+			*
+		FROM
+			stats_pool_day
+		WHERE 
+		1=1
+		<if test="date != null">
+			<if test="date.strTime != null">
+				AND STR_TO_DATE(`day`, '%Y%m%d') >= DATE_FORMAT(#{date.strTime},'%Y-%m-%d')
+			</if>
+			<if test="date.endTime != null">
+				AND STR_TO_DATE(`day`, '%Y%m%d') &lt;= DATE_FORMAT(#{date.endTime},'%Y-%m-%d')
+			</if>
+		</if>
+		ORDER BY
+			STR_TO_DATE(`day`, '%Y%m%d') DESC
+	</select>
+</mapper>

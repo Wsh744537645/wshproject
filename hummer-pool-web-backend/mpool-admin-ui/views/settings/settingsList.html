@@ -1,0 +1,132 @@
+<!--权限设置-->
+<h3>
+   <small>{{ 'dashboard.SETTINGSLIST' | translate:{ appName: app.name } }} </small>
+</h3>
+<div class="table-grid table-grid-desktop">
+   	<div class="col col-md" style="width:300px !important">
+      	<div class="pr">
+         	<div class="mb-boxes">
+            	<div class="panel">
+               		<div class="panel-body">
+                  		<ul class="nav nav-pills nav-stacked">
+                     		<li class="p p-title">
+                        		<small>预警面板</small>
+                        		<a class="problem" title="添加" ng-click="getAddSettingedit()">
+                        			<em class="fa fa-plus"></em>
+                        		</a>
+                     		</li>
+                     		<div class="gundong gundongtiao">
+	                     		<li ng-repeat="items in itemsData2" class="tree">
+	                     			
+	                        		<a href="#" ng-click="parameterQuery(items.id, $index, items.templateName)" ng-class='{ons:$index==selected}' title="预警面板查询">
+		                           		<span>{{items.templateName}}</span>
+	                        		</a>
+	                        		<em ng-click="getSettingedit(items.id)" class="icon-note edit" title="编辑"></em>
+	                        		<em ng-click="deleteSysRole(items.id, items.templateName)" class="fa fa-trash-o delete" title="删除"></em>
+	                     			
+	                     		</li>
+                     		</div>
+                  		</ul>
+               		</div>
+            	</div>
+         	</div>
+      	</div>
+    </div>
+
+    <div class="panel col-lg-12">
+		<div class="panel-body tableBot">
+			<p class="table-top">
+				预警用户列表 / <span class="tishi">{{minerName}}</span>
+				<button ng-click="updatePerms()" class="btn btn-primary seleteBut">添加用户</button>
+			</p>
+			<table class="table table-hover tableSize">
+          		<thead class="tableBC">
+             		<tr>
+						<th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)"
+	            			ng-class="{sortable: column.sortable !== false}">
+			                {{column.label}}
+			                <i ng-show="vm.sort.direction === 1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-down"></i>
+			                <i ng-show="vm.sort.direction === -1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-up"></i>
+						</th>
+             		</tr>
+          		</thead>
+          		<tbody>
+             		<tr ng-show="show_items" ng-repeat="items in itemsData|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1">
+                        <td>{{items.username}}</td>
+                        <td>
+                        	<div>
+								<span class="deleteBtn" ng-click="deleteWorkerGroup(items.username,items.userId)">删除</span>
+							</div>
+                        </td>
+             		</tr>
+          		</tbody>
+       		</table>
+       		<div class="wait" ng-show="!show_items">
+		    	<div class="loader1">
+	            	<div class="ball-clip-rotate hint">
+	               		<div></div>
+	               		<span class="hint2">加载中...</span>
+	            	</div>
+			    </div>
+		    </div>
+          	<div ng-show="items_num==0 && show_items" class="wait text-center">
+		    	<span>列表为空</span>
+		    </div>
+
+	   	</div>
+	</div>
+
+</div>
+
+<!--添加权限      模态框-->
+<script type="text/ng-template" id="modalGroup2">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">警告设置</h5>
+		<div class="content">
+			<div class="form-group has-feedback">
+				<label class="text-muted">选择用户</label>
+	       		<select ng-model="groupName.value" class="form-control ng-pristine ng-valid ng-touched">
+	       			<option value="{{items.userId}}" ng-repeat="items in itemsModal">{{items.username}}</option>
+	       		</select>
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm(groupName.value)" class="btn btn-primary mr">确定</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">取消</button>
+		</div>
+	</div>
+</script>
+
+<!--删除列表数据      模态框-->
+<script type="text/ng-template" id="deleteGroup">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">删除警告设置</h5>
+		<div class="content">
+			<div class="form-group has-feedback deleteModal">
+				<label>
+					确定要删除<span class="deleteStyle">{{objName}}</span>警告？
+				</label>
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm()" class="btn btn-primary mr">确定</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">取消</button>
+		</div>
+	</div>
+</script>
+
+<!--删除预警模板      模态框-->
+<script type="text/ng-template" id="modalDeletes">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">删除预警模板</h5>
+		<div class="content">
+			<div class="form-group has-feedback" style="text-align: center;">
+				确定要删除&nbsp;<label class="text-muted" style="color: #f39800;">{{name}}</label>&nbsp;预警模板？
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm()" class="btn btn-primary mr">确定</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">取消</button>
+		</div>
+	</div>
+</script>

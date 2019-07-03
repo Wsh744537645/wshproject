@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module.dashboard.mapper.HpoolMapper">
+
+	<select id="getStatsUsersHourInHour" resultType="com.mpool.common.model.pool.StatsUsersHour">
+		SELECT
+		*
+		FROM
+		`stats_users_hour`
+		WHERE
+		puid = #{userId}
+		and
+		hour in <foreach collection="list" open="(" close=")" separator="," item="hour">
+		#{hour}
+	</foreach>
+	</select>
+
+	<select id="getStatsWorkerHourByWorkerId" resultType="com.mpool.common.model.pool.StatsWorkersHour">
+		SELECT
+		*
+		FROM
+		`stats_workers_hour`
+		WHERE
+		worker_id = #{workerId}
+		and
+		hour in <foreach collection="list" open="(" close=")" separator="," item="hour">
+		#{hour}
+		</foreach>
+	</select>
+</mapper>

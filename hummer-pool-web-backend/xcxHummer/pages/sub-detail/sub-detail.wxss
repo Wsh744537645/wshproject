@@ -1,0 +1,157 @@
+.usertop{
+  width: 100%;
+  height: 99px;
+  position: absolute;
+  z-index: -1;
+  top: -1px;
+}
+.header text{
+  display: block;
+  text-align: center;
+  font-family: "Source Sans Pro",sans-serif;
+  color: #fff;
+  font-size: 16px;
+  padding: 0 10rpx;
+}
+.box{
+  margin-bottom: 6px;
+}
+.Computing{
+  margin-top: 45rpx;
+  display:flex;
+  /* background-color: #fff; */
+  flex-direction:row;
+}
+label{
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: "Source Sans Pro",sans-serif;
+  color: #73879c;
+  font-size: 14px;
+  margin: 20px 0
+}
+.flex-item1{
+  width:173px;
+  height:93px;
+  font-size: 26rpx;
+  background:linear-gradient(0deg,rgba(27,72,168,1),rgba(24,101,182,1));
+  margin: 0 5px;
+  border-radius:3px;
+}
+.line{
+  display: inline-block;
+  width: 9px;
+  height: 1px;
+  background:rgba(255,255,255,1);
+  opacity:0.3;
+}
+.line1{
+  margin-right:4px;
+}
+.Computing text{
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size:19px;
+  font-family:MicrosoftYaHeiUI-Bold;
+  font-weight:bold;
+  color:rgba(255,255,255,1);
+}
+.profit{
+  display:flex;
+  background:linear-gradient(0deg,rgba(27,72,168,1),rgba(24,101,182,1));
+  flex-direction:row;
+  margin-bottom: 10rpx;
+  border-radius:3px;
+}
+.profit label{
+  margin: 25rpx 0 15rpx 0;
+}
+.profit text{
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size:19px;
+  font-family:MicrosoftYaHeiUI-Bold;
+  font-weight:bold;
+  color:rgba(255,255,255,1);
+}
+.flex-item2{
+  width: 177px;
+  height: 93px;
+  font-size: 26rpx;
+}
+.machines{
+  display: flex;
+  flex-direction:row;
+  background:linear-gradient(0deg,rgba(27,72,168,1),rgba(24,101,182,1));
+  border-radius:3px;
+}
+.machinelabel{
+  display: block;
+  margin: 0;
+  width: 100%;
+  height: 29px;
+  font-size:13px;
+  font-family:MicrosoftYaHeiUI-Bold;
+  font-weight:bold;
+  color:rgba(27,72,168,1);
+  line-height:28px;
+}
+.flex-item4{
+  width: 117px;
+  margin: 18px 0 22px 0;
+  font-size: 26rpx;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.2)
+}
+.flex-item4 text{
+  display: block;
+  font-size:19px;
+  height: 15px;
+  font-family:MicrosoftYaHeiUI-Bold;
+  font-weight:bold;
+  color:#fff;
+}
+.averange{
+  width: 300rpx;
+  height: 300rpx;
+  font-size: 26rpx;
+  background: #fff;
+  border-left: #f4f4f4 1px solid;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top:20px;
+}
+.averange text{
+  display: block;
+  width: 300rpx;
+  text-align: center;
+  font-family: "Source Sans Pro",sans-serif;
+  color: #13227a;
+  font-size: 25px;
+}
+
+.flex-item3 text{
+  display: block;
+  width: 100%;
+  height: 20px;
+  text-align: center;
+  font-family: "Source Sans Pro",sans-serif;
+  color: #13227a;
+  font-size: 16px;
+}
+
+/* .chart-box{
+  width: 100%;
+  height: 400px;
+}
+#mychart-one {
+  width: 100%;
+  height: 50%;
+}
+#mychart-two {
+  width: 100%;
+  height: 50%;
+} */

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.mapper.recommend.UserInviteMapper">
+	<select id="getRecommendUserByInviteIds" resultType="com.mpool.common.model.share.UserInvite">
+		SELECT
+			invite_uid, recommend_uid, rate
+		FROM
+			user_invite
+		WHERE
+			invite_uid IN <foreach collection="rIds" close=")" open="(" item="item" separator=",">#{item}</foreach>
+	</select>
+
+	<select id="getInviteCountByUid" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM
+			user_invite
+		WHERE
+	  		recommend_uid = #{userId}
+	</select>
+
+	<select id="getInviteUserInfoByUid" resultType="map">
+		SELECT
+			ui.invite_uid AS uid,
+			au.username AS username,
+			unix_timestamp(ui.create_time) AS createTime
+		FROM
+			user_invite ui LEFT JOIN account_user au ON ui.invite_uid = au.user_id
+		WHERE
+	  		ui.recommend_uid = #{userId}
+	</select>
+
+	<select id="getInviteShareByUid" resultType="map">
+		SELECT
+			ui.invite_uid AS uid,
+			SUM(ub.earn) AS earn
+		FROM
+			user_invite ui LEFT JOIN recommend_bill_item rbi ON ui.invite_uid = rbi.invite_uid
+			JOIN user_bill ub ON ub.id = rbi.bill_id
+		WHERE
+	  		ui.recommend_uid = #{userId}
+	  	GROUP BY
+	  		ui.invite_uid
+	</select>
+
+	<select id="getWorkingInviteCountByUid" resultType="int">
+		SELECT
+			COUNT(ui.invite_uid)
+		FROM
+			user_invite ui LEFT JOIN product_order po ON po.puid = ui.invite_uid
+		WHERE
+			ui.recommend_uid = #{userId}
+		AND
+			po.state = 0
+	</select>
+
+</mapper>

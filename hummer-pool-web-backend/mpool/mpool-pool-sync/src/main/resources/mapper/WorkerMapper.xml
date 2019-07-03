@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.pool.mapper.WorkerMapper">
+
+	<insert id="insert" parameterType="map">
+		INSERT INTO `account_worker`
+		(`worker_id`, `user_id`, `group_id`, `region_id`, `worker_name`,
+		`create_time`) VALUES (#{worker_id},
+		#{puid}, '0', #{region_id},
+		#{worker_name}, #{create_time})
+	</insert>
+
+	<insert id="inserts">
+		INSERT INTO `account_worker`
+		(`worker_id`, `user_id`, `group_id`,
+		`region_id`, `worker_name`,
+		`create_time`) VALUES
+		<foreach collection="param" separator="," item="tiem">
+			(#{tiem.worker_id},
+			#{tiem.puid}, '0', #{tiem.region_id},
+			#{tiem.worker_name}, #{tiem.create_time})
+		</foreach>
+	</insert>
+
+	<select id="checkRow" parameterType="map" resultType="Integer">
+		SELECT
+		COUNT(1) FROM `account_worker` WHERE worker_id = #{worker_id}
+		AND
+		user_id = #{puid}
+	</select>
+
+	<insert id="replace">
+		REPLACE INTO `account_worker`
+		(`worker_id`, `user_id`,
+		`region_id`,
+		`worker_name`,worker_status) VALUES
+		<foreach collection="param" separator="," item="tiem">
+			(#{tiem.worker_id},
+			#{tiem.puid}, #{regionId},
+			#{tiem.worker_name},#{tiem.worker_status})
+		</foreach>
+	</insert>
+
+	<update id="updateWorkerStatus">
+		UPDATE `account_worker` SET `worker_status`=#{workerStatus} 
+		WHERE user_id in <foreach collection="puids" open="(" close=")" item="item" separator=",">#{item}</foreach>
+		AND worker_id in <foreach collection="workerIds" open="(" close=")" item="item" separator=",">#{item}</foreach>
+		AND region_id = #{regionId}
+	</update>
+
+	<insert id="replaceByWorker">
+			REPLACE INTO `account_worker`
+			(	
+				worker_id,
+				user_id,
+				region_id,
+				worker_name,
+				last_share_time,
+				worker_status,
+				hash_accept_5m_t,
+				hash_accept_15m_t,
+				hash_reject_15m_t,
+				hash_accept_1h_t,
+				hash_reject_1h_t,
+				rate_reject_1h,
+				rate_reject_15m
+			)
+			VALUES
+			<foreach collection="list" separator="," item="tiem">
+				(
+					#{tiem.workerId},
+					#{tiem.userId},
+					#{regionId},
+					#{tiem.workerName},
+					#{date},
+					#{tiem.workerStatus},
+					#{tiem.hashAccept5mT},
+					#{tiem.hashAccept15mT},
+					#{tiem.hashReject15mT},
+					#{tiem.hashAccept1hT},
+					#{tiem.hashReject1hT},
+					#{tiem.rateReject1h},
+					#{tiem.rateReject15m}
+				)
+			</foreach>
+	</insert>	
+	<insert id="replaceAll">
+		INSERT INTO `account_worker`
+		(	
+			worker_id,
+			user_id,
+			region_id,
+			worker_name,
+			last_share_time,
+			worker_status,
+			hash_accept_5m_t,
+			hash_accept_15m_t,
+			hash_reject_15m_t,
+			hash_accept_1h_t,
+			hash_reject_1h_t,
+			rate_reject_1h,
+			rate_reject_15m
+		)
+		VALUES
+		<foreach collection="workerList" separator="," item="tiem">
+			(
+				${tiem.workerId},
+				${tiem.userId},
+				${regionId},
+				#{tiem.workerName},
+				#{date},
+				${tiem.workerStatus},
+				${tiem.hashAccept5mT},
+				${tiem.hashAccept15mT},
+				${tiem.hashReject15mT},
+				${tiem.hashAccept1hT},
+				${tiem.hashReject1hT},
+				${tiem.rateReject1h},
+				${tiem.rateReject15m}
+			)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+			last_share_time = VALUES(last_share_time),
+			worker_status = VALUES(worker_status),
+			hash_accept_5m_t = VALUES(hash_accept_5m_t),
+			hash_accept_15m_t = VALUES(hash_accept_15m_t),
+			hash_reject_15m_t = VALUES(hash_reject_15m_t),
+			hash_accept_1h_t = VALUES(hash_accept_1h_t),
+			hash_reject_1h_t = VALUES(hash_reject_1h_t),
+			rate_reject_1h = VALUES(rate_reject_1h),
+			rate_reject_15m  = VALUES(rate_reject_15m)
+	</insert>
+</mapper>

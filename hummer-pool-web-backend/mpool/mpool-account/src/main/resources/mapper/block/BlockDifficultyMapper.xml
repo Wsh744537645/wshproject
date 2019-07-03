@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.account.mapper.block.BlockDifficultyMapper">
+    <insert id="insertList">
+        INSERT INTO `block_difficulty`
+        (
+           `height` ,
+            `time`,
+            `difficulty`,
+            `cur_height`
+        )
+        VALUES
+        <foreach collection="list" separator="," item="item">
+            (
+                #{item.height},
+                #{item.time},
+                #{item.difficulty},
+                #{item.cur_height}
+            )
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+          cur_height = VALUES (cur_height)
+    </insert>
+
+    <select id="getNewBlock" resultType="map">
+		SELECT cur_height, difficulty FROM `block_difficulty` order by height desc limit 1
+	</select>
+
+    <update id="updateOneByDiff">
+        UPDATE `block_difficulty` SET `cur_height`=#{one.cur_height}
+        WHERE height = #{one.height}
+    </update>
+</mapper>

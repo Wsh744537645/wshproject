@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module.bill.mapper.UserPayBillMapper">
+	<select id="getBillInfo" resultType="map">
+		SELECT
+			b.bill_number,
+			b.txid,
+			b.pay_all_btc,
+			b.pay_at,
+			b.cteate_at,
+			b.create_by,
+			b.`status`,
+			b.pay_by
+		FROM
+			`user_pay_bill` b
+		WHERE 1=1
+			<if test="param != null">
+				<if test="param.orderId != null">
+					<bind name="orderIdLike" value="'%'+param.orderId+'%'"/>
+					AND b.bill_number LIKE #{orderIdLike}
+				</if>
+				<if test="param.txid != null">
+					<bind name="txidLike" value="'%'+param.txid+'%'"/>
+					AND b.txid LIKE #{txidLike}
+				</if>
+				<if test="param.startTime != null">
+					AND b.cteate_at >= #{param.startTime}
+				</if>
+				<if test="param.endTime != null">
+					AND b.cteate_at &lt;= #{param.endTime}
+				</if>
+				<if test="param.status != null">
+					AND b.status = #{param.status}
+				</if>
+			</if>
+			order by cteate_at desc
+	</select>
+	
+	<select id="getBillInfoSum" resultType="java.lang.Long">
+		SELECT
+			sum(b.pay_all_btc)
+		FROM
+			`user_pay_bill` b
+		WHERE 1=1
+			<if test="param != null">
+				<if test="param.orderId != null">
+					<bind name="orderIdLike" value="'%'+param.orderId+'%'"/>
+					AND b.bill_number LIKE #{orderIdLike}
+				</if>
+				<if test="param.txid != null">
+					<bind name="txidLike" value="'%'+param.txid+'%'"/>
+					AND b.txid LIKE #{txidLike}
+				</if>
+				<if test="param.startTime != null">
+					AND b.cteate_at >= #{param.startTime}
+				</if>
+				<if test="param.endTime != null">
+					AND b.cteate_at &lt;= #{param.endTime}
+				</if>
+				<if test="param.status != null">
+					AND b.status = #{param.status}
+				</if>
+			</if>
+	</select>
+	
+	<select id="getBillInfoBtcSum" resultType="com.mpool.common.model.account.bill.UserPayBill">
+		SELECT
+		b.bill_number,
+		b.txid,
+		b.pay_all_btc,
+		b.pay_at,
+		b.cteate_at,
+		b.create_by,
+		b.`status`,
+		b.pay_by
+		FROM
+		`user_pay_bill` b
+		WHERE 1=1
+		<if test="param != null">
+			<if test="param.orderId != null">
+				<bind name="orderIdLike" value="'%'+param.orderId+'%'"/>
+				AND b.bill_number LIKE #{orderIdLike}
+			</if>
+			<if test="param.txid != null">
+				<bind name="txidLike" value="'%'+param.txid+'%'"/>
+				AND b.txid LIKE #{txidLike}
+			</if>
+			<if test="param.startTime != null">
+				AND b.cteate_at >= #{param.startTime}
+			</if>
+			<if test="param.endTime != null">
+				AND b.cteate_at &lt;= #{param.endTime}
+			</if>
+		</if>
+	</select>
+
+	<select id="getBillInfoByNumOrTxid" resultType="com.mpool.common.model.account.bill.UserPayBill">
+		SELECT
+		upb.*, su.username AS payUser,
+		su1.username AS create_userName
+		FROM
+		user_pay_bill upb
+		LEFT JOIN admin_user su ON su.user_id = upb.pay_by
+		LEFT JOIN admin_user su1 ON su1.user_id = upb.create_by
+		WHERE
+		1=1
+		<if test="billNum != null and billNum !=''">
+			AND bill_number = #{billNum}
+		</if>
+		<if test="txid != null and txid !=''">
+			AND txid = #{txid}
+		</if>
+		LIMIT 1
+	</select>
+
+	<select id="getBillInfoByDate" resultType="map">
+		SELECT
+		upb.*, su.username AS payUser,
+		su1.username AS create_userName
+		FROM
+		user_pay_bill upb
+		LEFT JOIN admin_user su ON su.user_id = upb.pay_by
+		LEFT JOIN admin_user su1 ON su1.user_id = upb.create_by
+		WHERE
+		1=1
+		<if test="strTime != null">
+			AND STR_TO_DATE(`cteate_at`,'%Y-%m-%d') >= DATE_FORMAT(#{strTime},'%Y-%m-%d')
+		</if>
+		<if test="endTime != null">
+			AND STR_TO_DATE(`cteate_at`, '%Y-%m-%d') &lt;= DATE_FORMAT(#{endTime},'%Y-%m-%d')
+		</if>
+		ORDER BY `cteate_at` DESC
+	</select>
+
+	<select id="exportBillList" resultType="com.mpool.common.model.account.bill.UserPayBill">
+		SELECT
+		upb.*, su.username AS payUser,
+		su1.username AS create_userName
+		FROM
+		user_pay_bill upb
+		LEFT JOIN admin_user su ON su.user_id = upb.pay_by
+		LEFT JOIN admin_user su1 ON su1.user_id = upb.create_by
+		WHERE
+		1=1
+		<if test="strTime != null">
+			AND STR_TO_DATE(`cteate_at`,'%Y-%m-%d') >= DATE_FORMAT(#{strTime},'%Y-%m-%d')
+		</if>
+		<if test="endTime != null">
+			AND STR_TO_DATE(`cteate_at`, '%Y-%m-%d') &lt;= DATE_FORMAT(#{endTime},'%Y-%m-%d')
+		</if>
+		ORDER BY `cteate_at` DESC
+	</select>
+
+
+</mapper>

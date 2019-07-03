@@ -1,0 +1,183 @@
+<link rel="stylesheet" href="app/css/accounts/accounts.css">
+
+<link rel="stylesheet" href="/app/homepage/css/footstyle.css" />
+<span data-ng-bind="::pageTitle()" style="display: none;"></span>
+<h3>
+	<small>
+		<span ng-click="homepage()" style="color:#3c78c2;">{{ 'nav.homepage' | translate }}</span>
+		<span style="color: #ccc;">/</span>
+		{{ 'dashboard.usercenter' | translate:{ appName: app.name } }}
+	</small>
+</h3>
+
+<div class="panel">
+	<div class="panel-body">
+		<form method="get" action="/" class="form-horizontal">
+			<fieldset>
+				<legend style="font-size:18px;">{{'personal.PersonalInf' |translate}}</legend>
+				<div class="form-group">
+					<div class="col-xs-3 col-sm-2">
+						<div class="control-label">{{'foot.email' |translate }}</div>
+					</div>
+					<div class="col-xs-6 col-sm-7">
+						<div class="control-label" style="text-align: left;">{{itemsData.userEmail ? itemsData.userEmail : 'N / A'}}</div>
+					</div>
+					<div class="col-xs-3 col-sm-3" style="text-align:-webkit-auto;color: #23b7e5;">
+						<label class="control-label" ng-click="modifyEmail(itemsData.userEmail)" style="cursor: pointer;" ng-show="itemsData.userEmail">{{'personal.change' |translate}}</label>
+						<label class="control-label" ng-click="bindingEmail(itemsData.userPhone)" style="cursor: pointer;" ng-show="!itemsData.userEmail">{{'personal.bind' |translate}}</label>
+					</div>
+				</div>
+
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<div class="col-xs-3 col-sm-2">
+						<div class="control-label">{{'subActsMng.phoneNum' |translate}}</div>
+					</div>
+					<div class="col-xs-6 col-sm-7">
+						<div class="control-label" style="text-align: left;">{{itemsData.userPhone ? itemsData.userPhone : 'N / A'}}</div>
+					</div>
+					<div class="col-xs-3 col-sm-3" style="text-align:-webkit-auto;color: #23b7e5;">
+						<label class="control-label" ng-click="modifyPhone(itemsData.userPhone)" style="cursor: pointer;" ng-show="itemsData.userPhone">{{'personal.change' |translate}}</label>
+						<label class="control-label" ng-click="bindingPhone(itemsData.userEmail)" style="cursor: pointer;" ng-show="!itemsData.userPhone">{{'personal.bind' |translate}}</label>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<div class="col-xs-3 col-sm-2">
+						<div class="control-label">{{'nav.regis' |translate}}</div>
+					</div>
+					<div class="col-xs-9 col-sm-10">
+						<div class="control-label" style="text-align:left;">{{itemsData.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+
+<div class="panel">
+	<div class="panel-body">
+		<form method="get" action="/" class="form-horizontal">
+			<fieldset>
+				<legend style="font-size:18px;">{{'personal.security' |translate}}</legend>
+				<div class="form-group">
+						<div class="col-xs-3 col-sm-2">
+								<div class="control-label">{{'worker.psw' |translate}}</div>
+							</div>
+						<div class="col-xs-6 col-sm-7">
+						<div class="control-label" style="padding:0;">
+							<input type="password" disabled="disabled" value="*********" class="form-control" style="background-color:#fff;border:1px solid #fff;" />							
+						</div>
+					</div>
+					<div class="col-xs-3 col-sm-3" style="text-align:-webkit-auto;color: #23b7e5;">
+						<label ng-click="getChangePassword()" class="control-label" style="cursor: pointer;">{{'personal.change' |translate}}</label>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>
+
+
+<!--修改密码-->
+<script type="text/ng-template" id="modalChangePassword123" style="margin-bottom:350px;">
+	<div class="ngdialog-message" ng-show="nextStep">
+		<h5 class="h5Title">{{'subActsMng.psw set' |translate}}</h5>
+		<div style="width:85%;margin:30px 0 0 31px;">
+			<div class="form-group has-feedback">
+				<label style="font-weight:100;margin-bottom: 10px;">{{'subActsMng.RVPV' |translate}}</label><br />
+	       		<div class="radio c-radio c-radio-nofont" ng-show="modephone">
+                    <label ng-click="getRadio1(0)">
+                       	<input type="radio" name="a" ng-checked="checked1"/>
+                    	<span></span>{{modephone}}
+                    </label>
+                </div>
+                <div class="radio c-radio c-radio-nofont" ng-show="modeEmail">
+                 	<label ng-click="getRadio2(1)">
+                    	<input type="radio" name="a" ng-checked="checked2"/>
+                    	<span></span>{{modeEmail}}
+                 	</label>
+                </div>
+			</div>
+			<div class="form-group has-feedback" style="height: 88px;">
+				<label style="font-weight:100;">{{'subActsMng.Verification password' |translate}}</label>
+		       	<div class="input-group" style="width: 330px;">
+	             	<input type="text" ng-model="workerName" ng-change="checkCode(workerName)" class="form-control" placeholder="{{title}}"/>
+	             	<span class="input-group-btn">
+	                	<button type="button" ng-click="getWalletCode()" ng-disabled="wallSub" class="btn btn-default" style="height: 35px;background: #f3faff;">{{time}}</button>
+	             	</span>
+	          	</div>
+	    		<span class="text-danger title1">{{nameCheck}}</span>
+			</div>
+		</div>
+		<div class="btnStyle" style="margin-top: 5px;">
+			<button ng-click="getNextStep()" ng-disabled="sub" class="btn btn-primary mr">{{'subActsMng.next' |translate}}</button>
+		</div> 
+	</div>
+	
+	<div class="ngdialog-message" ng-show="!nextStep">
+		<h5 class="h5Title">{{'subActsMng.psw set' |translate}}</h5>
+		<div style="width:85%;margin:30px 0 0 31px;">
+			
+			<div class="form-group has-feedback">
+				<label style="font-weight:100;">{{'personal.current' |translate}}</label>
+		       	<input type="password" ng-model="oldPassword" ng-change="passwordCheck()" ng-pattern="/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/" class="form-control"/>
+	    		<span class="text-danger">{{pass_Check}}</span>
+			</div>
+			<div class="form-group has-feedback" style="margin-bottom: 0px;">
+				<label style="font-weight:100;">{{'subActsMng.newPsw' |translate}}</label>
+		       	<input type="password" ng-model="newPassword" ng-change="passwordCheck()" ng-pattern="/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/" class="form-control"/>
+	    		<span class="text-danger">{{pass_Check2}}</span>
+			</div>
+			<div class="form-group has-feedback">
+				<label style="font-weight:100;"></label>
+		       	<input type="password" ng-model="confirm123" ng-change="passwordCheck()" placeholder="{{'personal.psw agn' |translate}}" class="form-control"/>
+	    		<span class="text-danger">{{pasConCheck1}}</span>
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm(this)" ng-disabled="sub2" class="btn btn-primary mr">{{'common.ok' | translate}}</button>
+		</div> 
+	</div>
+</script>
+
+<div class="col-lg-12" style="position: absolute;bottom: 0;left: 0;right: 0">
+		<div class="background-parallax" data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
+		<div class="container padding-bottom-big">
+			<div class="row justify-content-between">
+			<div class="col-lg-5 col-md-12 foot-logo hidden-xs" style="margin-top: 20px">
+				<img src="app/homepage/img/qrImg.jpg" class="qrImg">
+				<div style="display: inline-block; align-items: center; vertical-align: middle; margin-left:30px;padding-right: 60px;border-right:1px solid #FFFFFF" >
+					<img src="/app/homepage/img/logo/Logo.png" class="logoImg" alt="logo">
+					<text class="email">{{'foot.email'|translate}}：support@hummerpool.com</text>
+				</div>
+			</div>
+			<div class="col-lg-7 col-md-12" style="margin-top: 20px;color:#fff;opacity: 1; text-align: center">
+				<ul class="footer-list footlist">
+					<li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Product'|translate}}</label>
+						<a href="http://www.cynosure-chain.com">{{'foot.Hummerpool'|translate}}</a>
+						<a href="https://www.hummerminer.com">{{'foot.Hummerminer'|translate}}</a>
+					</li>
+					<li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Service'|translate}}</label>
+						<a href="/announcement">{{'foot.Announcements'|translate}}</a>
+						<a href="" style="visibility:hidden">{{'foot.Mining Tutorial'|translate}}</a>
+					</li>
+					<!-- <li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Helps'|translate}}</label>
+						<a href="">{{'foot.Help Center'|translate}}</a>
+						<a href="">{{'foot.Contact Us'|translate}}</a>
+					</li> -->
+					<li class="ft-item" style="width: 160px !important">
+						<label style="margin-bottom:20px">{{'foot.After-sale'|translate}}</label>
+						<a href="">{{'foot.QQ Group'|translate}}1:783079293</a>
+						<a href="">{{'foot.QQ Group'|translate}}2:791421817</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

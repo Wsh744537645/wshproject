@@ -1,0 +1,363 @@
+<h3>
+    <small>{{ 'dashboard.DASHBOARD' | translate:{ appName: app.name } }}</small>
+</h3>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-xs-12">
+        <div style="position: relative;
+            display: block;
+            margin-bottom: 12px;
+            border: 1px solid #e4e4e4;
+            -webkit-border-radius: 5px;
+            overflow: hidden;
+            padding-bottom: 5px;
+            -webkit-background-clip: padding-box;
+            -moz-border-radius: 5px;
+            -moz-background-clip: padding;
+            border-radius: 5px;
+            background: #fff;
+            transition: all .3s ease-in-out;">
+            <div>
+                <h3 margin="20px" style="color: #73879c" align="center">矿池信息</h3>
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div style="margin-top: 15px;margin-bottom: 15px" align="center">当前活跃矿机</div>
+                        <div style="margin-top: 15px;margin-bottom: 15px;color:#ff7f0e" align="center">
+                            {{dataItems.activeCount}}<span> 台</span>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div style="margin-top: 15px;margin-bottom: 15px" align="center">算力</div>
+                        <div style="margin-top: 15px;margin-bottom: 15px;color:#2fa02c" align="center">
+                            <div><span>5分钟:</span>{{dataItems.accept5m | number:3}}<span> {{unit}}</span></div>
+                            <div><span>15分钟:</span>{{dataItems.currentShare | number:3}}<span> {{unit}}</span></div>
+                            <div><span>1小时:</span>{{dataItems.accept1h | number:3}}<span> {{unit}}</span></div>
+                            <div><a href="javascript:void(0);" ng-click="get24HoursData()">24小时:</a>{{dataItems.accept24h | number:3}}<span> {{unit}}</span></div>
+                        	
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div style="margin-top: 15px;margin-bottom: 15px" align="center">爆块数</div>
+                        <div style="margin-top: 15px;margin-bottom: 15px;color:#2fa02c" align="center">
+                            <div><a href="javascript:void(0);" ng-click="showHistoryBlock()">历史总爆块:</a>{{dataItems.block}}<span>个</span></div>
+                            <div><span>今天总爆块:</span>{{dataItems.nowBlock}}<span> 个</span></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div style="margin-top: 15px;margin-bottom: 15px" align="center">收益</div>
+                        <div style="margin-top: 15px;margin-bottom: 15px;color:#2fa02c" align="center">
+                            <div><span>历史总爆块收益:</span>{{dataItems.revenue/100000000 | number:8}}<span> {{currencyName}}</span></div>
+                            <div><span>今天总爆块收益:</span>{{dataItems.nowRevenue/100000000 | number:8}}<span> {{currencyName}}</span></div>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div style="margin-top: 15px;margin-bottom: 15px" align="center">分币支出</div>
+                        <div style="margin-top: 15px;margin-bottom: 15px;color:#ff7f0e" align="center">
+                            <div><a href="javascript:void(0);" ng-click="getHistoryApartCoin()">历史总分币数:{{feeSum /100000000 | number:8}}</a></div>
+                        	<div>今日总分币数:{{coin /100000000 | number:8}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel">
+            <div class="panel-body panlbody">
+            	<p class="table-top">
+            		过去24小时算力变化
+				</p>
+                <div id="chart_power_24h" style="width: 100%; height: 200px;-webkit-tap-highlight-color: transparent; user-select: none; cursor: default;"></div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-body panlbody">
+                <p style="font-size: 18px;border-bottom: 2px solid #e6e9ed;padding-bottom: 5px;color: #73879c;">过去30天池算力变化</p>
+                <div id="chart_power_30d" style="width: 100%; height: 200px;-webkit-tap-highlight-color: transparent; user-select: none; cursor: default;"></div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-body panlbody">
+                <p style="font-size: 18px;border-bottom: 2px solid #e6e9ed;padding-bottom: 5px;color: #73879c;">过去30天池矿机活跃数</p>
+                <div id="past30DayWorker" style="width: 100%; height: 200px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--历史爆块记录      模态框-->
+<script type="text/ng-template" id="showHistoryBlock">
+    <style>
+        .ngdialog.ngdialog-theme-default .ngdialog-content{
+            width: 70%
+        }
+    </style>
+    <div class="ngdialog-message">
+            <h5 class="h5Title">历史爆块记录</h5>
+            <div class="table-grid table-grid-desktop">
+            	
+            	<!--时间日历-->
+				<span>
+					<wui-date 
+						format="yyyy-mm-dd" 
+						placeholder="请选择日期" 
+						id="date1"
+						ng-model="date1">
+					</wui-date>
+					<span> - </span>
+					<wui-date 
+						format="yyyy-mm-dd" 
+						placeholder="请选择日期" 
+						id="date5"
+						ng-model="date5">
+					</wui-date>
+				</span>
+				<button ng-click="init()" class="btn btn-primary">搜索</button>
+				<a href='{{url2}}' target="_blank" style="float:right;line-height:34px;">导出</a>
+	            <span style="float:right;line-height:34px;margin-right: 30px;">奖励合计：{{dataValue.rewardsSum}}</span>
+	            
+                <div class="panel col-lg-12" style="margin-top: 10px;">
+                    <div class="panel-body tableBot">
+                        <table class="table table-hover tableSize">
+                            <thead class="tableBC">
+                                <th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)"
+                                    ng-class="{sortable: column.sortable !== false}">
+                                    {{column.label}}
+                                    <i ng-show="vm.sort.direction === 1" ng-if="column.name === vm.sort.column && vm.sort.direction"
+                                        class="fa fa-long-arrow-down"></i>
+                                    <i ng-show="vm.sort.direction === -1" ng-if="column.name === vm.sort.column && vm.sort.direction"
+                                        class="fa fa-long-arrow-up"></i>
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr ng-show="show_items" ng-repeat="items in itemsData|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1">
+                                    <td>{{items.height}}</td>
+                                    <td>{{items.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                    <td>{{items.hash}}</td>
+                                    <td>{{items.confirmedNum}}</td>
+                                    <td>{{items.rewards / 100000000 | number:8}}</td>
+                                    <td>{{items.size}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+        
+                        <div class="wait" ng-show="!show_items">
+					    	<div class="loader1">
+				            	<div class="ball-clip-rotate hint">
+				               		<div></div>
+				               		<span class="hint2">加载中...</span>
+				            	</div>
+						    </div>
+					    </div>
+			          	<div ng-show="items_num==0 && show_items" class="wait text-center">
+					    	<span>列表为空</span>
+					    </div>
+			         	<select ng-model="currentSelect.value" ng-change="getHistoryBlockList(1,currentSelect.value)" class="displayValue">
+			            	<option value="10">10</option>
+			            	<option value="20">20</option>
+			            	<option value="30">50</option>
+			            	<option value="100">100</option>
+			         	</select>
+			         	<span class="display-value">条每页，共：{{count}} 条，{{totalPage}}页</span>
+			         	<ul class="pagination btnPag">
+			            	<li ng-class="{true:'disabled'}[p_current==1]">
+			            		<a href="javascript:void(0);" ng-click="p_index()" class="pIndex">首页</a>
+			            	</li>
+			            	<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+			            		<a href="javascript:void(0);" ng-click="load_page(page,currentSelect.value)" class="pIndex">{{ page }}</a>
+			            	</li>
+			            	<li ng-class="{true:'disabled'}[p_current==p_all_page]">
+			            		<a href="javascript:void(0);" ng-click="p_last()" class="pIndex">尾页</a>
+			            	</li>
+			         	</ul>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+</script>
+
+
+
+<!--历史分币记录      模态框-->
+<script type="text/ng-template" id="HistoryApartCoin">
+    <style>
+        .ngdialog.ngdialog-theme-default .ngdialog-content{
+            width: 70%
+        }
+    </style>
+    <div class="ngdialog-message">
+            <h5 class="h5Title">历史分币记录</h5>
+            <div class="table-grid table-grid-desktop">
+            	
+            	<!--时间日历-->
+				<span>
+					<wui-date 
+						format="yyyy-mm-dd" 
+						placeholder="请选择日期" 
+						id="date1"
+						ng-model="date1">
+					</wui-date>
+					<span> - </span>
+					<wui-date 
+						format="yyyy-mm-dd" 
+						placeholder="请选择日期" 
+						id="date5"
+						ng-model="date5">
+					</wui-date>
+				</span>
+				<button ng-click="getHistoryApartCoinList(1,currentSelect.value)" class="btn btn-primary">搜索</button>
+				<a href="{{url2}}" target="_blank" style="float:right;line-height:34px;">导出</a>
+	            <span style="margin-left: 30px;">总分币合计：{{feeSum / 100000000 | number:8}}</span>
+	            <span style="margin-left: 30px;">推荐奖励合计：{{recommendFeeSum / 100000000 | number:8}}</span>
+                <div class="panel col-lg-12" style="margin-top: 10px;">
+                    <div class="panel-body tableBot">
+                        <table class="table table-hover tableSize">
+                            <thead class="tableBC">
+                                <th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)"
+                                    ng-class="{sortable: column.sortable !== false}">
+                                    {{column.label}}
+                                    <i ng-show="vm.sort.direction === 1" ng-if="column.name === vm.sort.column && vm.sort.direction"
+                                        class="fa fa-long-arrow-down"></i>
+                                    <i ng-show="vm.sort.direction === -1" ng-if="column.name === vm.sort.column && vm.sort.direction"
+                                        class="fa fa-long-arrow-up"></i>
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr ng-show="show_items" ng-repeat="items in itemsData|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1">
+                                    <td>{{items.day}}</td>
+                                    <td>{{items.feeSum/100000000 | number:8}}</td>
+                                    <td>{{items.recommendFeeSum/100000000 | number:8}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+        
+                        <div class="wait" ng-show="!show_items">
+					    	<div class="loader1">
+				            	<div class="ball-clip-rotate hint">
+				               		<div></div>
+				               		<span class="hint2">加载中...</span>
+				            	</div>
+						    </div>
+					    </div>
+			          	<div ng-show="items_num==0 && show_items" class="wait text-center">
+					    	<span>列表为空</span>
+					    </div>
+			         	<select ng-model="currentSelect.value" ng-change="getHistoryApartCoinList(1,currentSelect.value)" class="displayValue">
+			            	<option value="10">10</option>
+			            	<option value="20">20</option>
+			            	<option value="30">50</option>
+			            	<option value="100">100</option>
+			         	</select>
+			         	<span class="display-value">条每页，共：{{count}} 条，{{totalPage}}页</span>
+			         	<ul class="pagination btnPag">
+			            	<li ng-class="{true:'disabled'}[p_current==1]">
+			            		<a href="javascript:void(0);" ng-click="p_index()" class="pIndex">首页</a>
+			            	</li>
+			            	<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+			            		<a href="javascript:void(0);" ng-click="load_page(page,currentSelect.value)" class="pIndex">{{ page }}</a>
+			            	</li>
+			            	<li ng-class="{true:'disabled'}[p_current==p_all_page]">
+			            		<a href="javascript:void(0);" ng-click="p_last()" class="pIndex">尾页</a>
+			            	</li>
+			         	</ul>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+</script>
+
+
+
+<!--24小数算力      模态框-->
+<script type="text/ng-template" id="24HoursID">
+    <style>
+        .ngdialog.ngdialog-theme-default .ngdialog-content{
+            width: 70%
+        }
+    </style>
+    <div class="ngdialog-message">
+        <h5 class="h5Title">24小时算力记录</h5>
+        <div class="table-grid table-grid-desktop">
+        	<!--时间日历-->
+			<span>
+				<wui-date 
+					format="yyyy-mm-dd" 
+					placeholder="请选择日期" 
+					id="date1"
+					ng-model="date1">
+				</wui-date>
+				<span> - </span>
+				<wui-date 
+					format="yyyy-mm-dd" 
+					placeholder="请选择日期" 
+					id="date5"
+					ng-model="date5">
+				</wui-date>
+			</span>
+			<button ng-click="getBlockchainInfoList(1,currentSelect.value)" class="btn btn-primary">搜索</button>
+			<a href="{{url2}}" target="_blank" style="float:right;line-height:34px;">导出</a>
+            
+            <div class="panel col-lg-12" style="margin-top: 10px;">
+                <div class="panel-body tableBot">
+                    <table class="table table-hover tableSize">
+                        <thead class="tableBC">
+                            <th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)"
+                                ng-class="{sortable: column.sortable !== false}">
+                                {{column.label}}
+                                <!--<i ng-show="vm.sort.direction === 1" ng-if="column.name === vm.sort.column && vm.sort.direction"
+                                    class="fa fa-long-arrow-down"></i>
+                                <i ng-show="vm.sort.direction === -1" ng-if="column.name === vm.sort.column && vm.sort.direction"
+                                    class="fa fa-long-arrow-up"></i>-->
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr ng-show="show_items" ng-repeat="items in itemsData|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1">
+				               	<td>{{items.createdDay}}</td>
+				               	<td>{{items.currentHashRate}}</td>
+				               	<td>{{items.hashRate}}</td>
+				               	<td>{{items.blocks}}</td>
+				               	<td>{{items.rate*100}}%</td>
+				            </tr>
+                        </tbody>
+                    </table>
+    
+                    <div class="wait" ng-show="!show_items">
+				    	<div class="loader1">
+			            	<div class="ball-clip-rotate hint">
+			               		<div></div>
+			               		<span class="hint2">加载中...</span>
+			            	</div>
+					    </div>
+				    </div>
+		          	<div ng-show="items_num==0 && show_items" class="wait text-center">
+				    	<span>列表为空</span>
+				    </div>
+		         	<select ng-model="currentSelect.value" ng-change="getBlockchainInfoList(1,currentSelect.value)" class="displayValue">
+		            	<option value="10">10</option>
+		            	<option value="20">20</option>
+		            	<option value="30">50</option>
+		            	<option value="100">100</option>
+		         	</select>
+		         	<span class="display-value">条每页，共：{{count}} 条，{{totalPage}}页</span>
+		         	<ul class="pagination btnPag">
+		            	<li ng-class="{true:'disabled'}[p_current==1]">
+		            		<a href="javascript:void(0);" ng-click="p_index()" class="pIndex">首页</a>
+		            	</li>
+		            	<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+		            		<a href="javascript:void(0);" ng-click="load_page(page,currentSelect.value)" class="pIndex">{{ page }}</a>
+		            	</li>
+		            	<li ng-class="{true:'disabled'}[p_current==p_all_page]">
+		            		<a href="javascript:void(0);" ng-click="p_last()" class="pIndex">尾页</a>
+		            	</li>
+		         	</ul>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

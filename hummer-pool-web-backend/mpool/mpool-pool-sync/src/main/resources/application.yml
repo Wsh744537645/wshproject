@@ -1,0 +1,39 @@
+server:
+  port: 8082
+spring:
+  profiles:
+    active:
+    - '@profileActive@'
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: mpool-pool-sync
+mybatis-plus:
+  mapper-locations:
+  - classpath:/mapper/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not-empty
+      table-underline: true
+sharding:
+  jdbc:
+    datasource:
+      names: btcaccountdb,ztcaccountdb
+    config:
+      sharding:
+        tables:
+          account_worker:
+            actual-data-nodes: ds1.account_worker
+          zec_account_worker:
+            actual-data-nodes: ds2.account_worker
+        master-slave-rules:
+          ds1:
+            master-data-source-name: btcaccountdb
+            slave-data-source-names: btcaccountdb, btcaccountdb
+          ds2:
+            master-data-source-name: ztcaccountdb
+            slave-data-source-names: ztcaccountdb, ztcaccountdb
+        props:
+          sql:
+            show: true

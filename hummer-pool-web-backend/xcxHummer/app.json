@@ -1,0 +1,46 @@
+{
+  "pages":[
+    "pages/login/login", 
+    "pages/dashboard/dashboard", 
+    "pages/sub-account/sub-account",
+    "pages/sub-detail/sub-detail",
+    "pages/setting/setting", 
+    "pages/questions/questions", 
+    "pages/service/service", 
+    "pages/cancellation/cancellation",
+    "pages/echart/echart"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "backgroundColor": "#1b48a8",
+    "navigationBarBackgroundColor": "#1b48a8",
+    "navigationBarTitleText": "Hummer",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#1B48A8",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/dashboard/dashboard",
+        "iconPath": "image/account0.png",
+        "selectedIconPath": "image/account.png",
+        "text": "当前账户"
+      },
+      {
+        "pagePath": "pages/sub-account/sub-account",
+        "iconPath": "image/sub-account0.png",
+        "selectedIconPath": "image/sub-account.png",
+        "text": "子账户"
+      },
+      {
+        "pagePath": "pages/setting/setting",
+        "iconPath": "image/set0.png",
+        "selectedIconPath": "image/set.png",
+        "text": "账户设置"
+      }
+    ]
+  }
+}

@@ -1,0 +1,443 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]>
+<!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs
+	================================================== -->
+	<meta charset="utf-8">
+	<title>Hummer Pool</title>
+	<meta name="description" content="Hummer Pool Connects Infinitely" />
+	<meta name="author" content="IG Design">
+	<meta name="keywords" content="ig design, website, design, html5, css3, jquery, creative, clean, animated, portfolio, blog, one-page, multi-page, corporate, business," />
+	<meta property="og:title" content="HummerPool" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="" />
+	<meta property="og:image" content="" />
+	<meta property="og:image:width" content="470" />
+	<meta property="og:image:height" content="246" />
+	<meta property="og:site_name" content="" />
+	<meta property="og:description" content="Hummer Pool Connects Infinitely" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="https://twitter.com/IvanGrozdic" />
+	<meta name="twitter:domain" content="http://ivang-design.com/" />
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:description" content="Hummer Pool Connects Infinitely" />
+	<meta name="twitter:image" content="http://ivang-design.com/" />
+
+	<!-- Mobile Specific Metas
+	================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="theme-color" content="#212121" />
+	<meta name="msapplication-navbutton-color" content="#212121" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="#212121" />
+
+	<!-- Web Fonts 
+	================================================== -->
+	<!-- <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i" rel="stylesheet" /> -->
+	<!-- <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script> -->
+	<!-- CSS
+	================================================== -->
+	<link rel="stylesheet" href="/app/homepage/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/app/homepage/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="/app/homepage/css/owl.carousel.css" />
+	<link rel="stylesheet" href="/app/homepage/css/owl.transitions.css" />
+	<link rel="stylesheet" href="/app/homepage/css/style.css" />
+	<link rel="stylesheet" href="/app/homepage/css/colors/color.css" />
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="icon" type="image/png" href="favicon.png">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+
+
+</head>
+
+<body ng-app="homePage">
+
+	<div class="loader">
+		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+		 y="0px" width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+			<rect x="0" y="0" width="4" height="10" fill="#333">
+				<animateTransform attributeType="xml" attributeName="transform" type="translate" values="0 0; 0 20; 0 0" begin="0"
+				 dur="0.6s" repeatCount="indefinite" />
+			</rect>
+			<rect x="10" y="0" width="4" height="10" fill="#333">
+				<animateTransform attributeType="xml" attributeName="transform" type="translate" values="0 0; 0 20; 0 0" begin="0.2s"
+				 dur="0.6s" repeatCount="indefinite" />
+			</rect>
+			<rect x="20" y="0" width="4" height="10" fill="#333">
+				<animateTransform attributeType="xml" attributeName="transform" type="translate" values="0 0; 0 20; 0 0" begin="0.4s"
+				 dur="0.6s" repeatCount="indefinite" />
+			</rect>
+		</svg>
+	</div>
+
+
+
+	<!-- Nav and Logo
+	================================================== -->
+
+	<div id="menu-wrap" class="menu-back cbp-af-header dark cbp-af-header-shrink">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<nav class="navbar navbar-expand-lg navbar-light bg-light mx-lg-0">
+						<a class="navbar-brand" href="home.html"><img src="/img/banner/logo_1.png" width="200" alt="logo"></a>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+						 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
+							<span class="navbar-toggler-icon">
+								<span class="menu-icon__line menu-icon__line-left"></span>
+								<span class="menu-icon__line"></span>
+								<span class="menu-icon__line menu-icon__line-right"></span>
+							</span>
+						</button>
+
+						<div class="collapse navbar-collapse" id="navbarSupportedContent" ng-controller="myCtrl">
+							<ul class="navbar-nav ml-auto" style="width:100%;height: 100%;">
+								<li class="nav-item">
+									<a ng-href="/home.html" style="color:#fff">{{'nav.homepage' |translate}}</a>
+								</li>
+								<li class="nav-item">
+									<a ng-href="/statistics" style="color:#fff">{{ 'nav.Statistics' | translate}}</a>
+								</li>
+								<li class="nav-item" ng-show="username">
+									<a href="{{dashboardUrl}}" style="color:#fff">{{ 'nav.dashboard' | translate}}</a>
+								</li>
+								<!-- <li class="nav-item" ng-show="username">
+									<a>{{username}}</a>
+								</li> -->
+								<!-- ml-auto removeattr -->
+							</ul>
+							<ul class="nav navbar-nav navbar-right itemright">
+								<li class="nav-item" ng-show="!username" >
+									<a ng-href="/login"><span>{{'nav.login'| translate}}</span></a>
+								</li>
+								<li class="nav-item" ng-show="!username">
+									<a ng-href="/register"href="#app"><span>{{'nav.regis'| translate}}</span>
+									</a>
+								</li>
+							</ul>
+							<div class="dropdown" style="color: #4A4A4A;">
+								<button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" 
+								style="width: 30px;background: #FFFFFF;border-radius: 18px;border: none"> 
+									{{cur}}<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="min-width: 80px;padding: 10px">
+								  <li ng-click="changeLanguage('es_AR', '中')" style="cursor: pointer;">中 文</li>
+								  <li ng-click="changeLanguage('en', 'EN')" style="cursor: pointer;">ENGLISH</li>
+								</ul>
+							</div>
+						</div>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Primary Page Layout
+	================================================== -->
+	<div class="section full-height height-auto-lg hide-over background-light-blue-2 background-image-cover bigBG">
+		<div class="hero-center-wrap relative-on-lg">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 text-center text-lg-left align-self-center z-bigger" style="margin-bottom:20px">
+						<h1 class="banner-title" style="color: skyblue;color: #fff;font-weight: bold; ">{{'home.lage' |translate}}</h1><small style="color: #fff;font-size: 24px">
+							{{'home.small' |translate}}
+						</small>
+						<br style="color: skyblue;color: #fff; font-size: 30px;font-weight: bold;"><br><br><br>
+						<h1 class="banner-sec-title" style="color: #fff; font-size: 48px">{{'home.tip1' |translate}}</h1>
+						<p class="mt-3 mb-4 pb-3 font-weight-normal" style="color: #fff; font-size: 20px">
+								{{'home.tip11' |translate}}
+						</p>
+					</div>
+					<!-- <div class="col-lg-7 mt-5 mt-lg-0">
+						<div class="img-wrap">
+							<img src="/app/homepage/img/cripto.svg" alt="">
+						</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+		<!-- <div class="ocean blue">
+			<div class="wave" id="statistics"></div>
+			<div class="wave"></div>
+		</div> -->
+		<!-- <div id="particles-js" class="min-height-snd"> -->
+			<!-- <canvas class="particles-js-canvas-el" width="1397" height="775" style="width: 100%; height: 100%;"></canvas> -->
+		<!-- </div> -->
+	</div>
+	
+		
+	<div class="section padding-top-bottom-big background-white" id="concept">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="concept-box">
+						<img class="mb-4" src="/app/homepage/img/con-1.svg" alt="">
+						<h5>	{{'home.tip2' |translate}}</h5>
+						<p>	{{'home.tip22' |translate}}
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4 mt-4 mt-md-0">
+					<div class="concept-box">
+						<img class="mb-4" src="/app/homepage/img/con-2.svg" alt="">
+						<h5>	{{'home.tip3' |translate}}</h5>
+						<p>	{{'home.tip33' |translate}}
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4 mt-4 mt-md-0">
+					<div class="concept-box">
+						<img class="mb-4" src="/app/homepage/img/con-3.svg" alt="">
+						<h5>	{{'home.tip4' |translate}}</h5>
+						<p>	{{'home.tip44' |translate}}
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div class="section padding-top-bottom-big background-grey" id="faq">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="title-wrap text-center">
+						<h3>{{'home.qa' |translate }}</h3>
+						<p>Common problems</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div id="accordion" class="accordion-style">
+						<div class="card">
+							<div class="card-header" id="headingOne">
+								<a class="background-white" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+								 aria-controls="collapseOne">
+								 {{'home.q1' |translate }}
+								</a>
+							</div>
+
+							<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+								<div class="card-body">
+									<h6>{{'home.q1' |translate }}</h6>
+									<p>{{'home.a1' |translate }}</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header" id="headingTwo">
+								<a class="collapsed background-white" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+								 aria-controls="collapseTwo">
+								 {{'home.q2' |translate }}
+								</a>
+							</div>
+							<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+								<div class="card-body">
+									<h6>{{'home.q2' |translate }}</h6>
+									<p>{{'home.a2' |translate }}</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header" id="headingThree">
+								<a class="collapsed background-white" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+								 aria-controls="collapseThree">
+								 {{'home.q3' |translate }}
+								</a>
+							</div>
+							<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+								<div class="card-body">
+									<h6>{{'home.q3' |translate }}</h6>
+									<p>{{'home.a3' |translate }}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 mt-4 mt-md-0">
+					<div id="accordion-snd" class="accordion-style">
+						<div class="card">
+							<div class="card-header" id="headingFour">
+								<a class="background-white" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true"
+								 aria-controls="collapseFour">
+								 {{'home.q4' |translate }}
+								</a>
+							</div>
+
+							<div id="collapseFour" class="collapse show" aria-labelledby="headingFour" data-parent="#accordion-snd">
+								<div class="card-body">
+									<h6>{{'home.q4' |translate }}</h6>
+									<p>{{'home.a4' |translate }} </p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header" id="headingFive">
+								<a class="collapsed background-white" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false"
+								 aria-controls="collapseFive">
+								 {{'home.q5' |translate }}
+								</a>
+							</div>
+							<div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion-snd">
+								<div class="card-body">
+										<h6>{{'home.q5' |translate }}</h6>
+										<p>{{'home.a5' |translate }} </p>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-header" id="headingSix">
+								<a class="collapsed background-white" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false"
+								 aria-controls="collapseSix">
+								 {{'home.q6' |translate }}
+								</a>
+							</div>
+							<div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion-snd">
+								<div class="card-body">
+									<h6>{{'home.q6' |translate }}</h6>
+									<p>{{'home.a6' |translate }}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- <div class="section padding-top-bottom-big" id="contact">
+		<div class="background-parallax" style="background-image: url('/app/homepage/img/parallax-4.jpg')"
+		 data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="title-wrap text-center">
+						<div class="back-title">contact</div>
+						<h3>联系我们</h3>
+						<p>About us</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-3">
+					<div class="contact-det text-center">
+						<img src="/app/homepage/img/contact-2.svg" alt="">
+						<h6>客服邮箱</h6>
+						<p>support@hummerpool.com</p>
+					</div>
+				</div>
+				<div class="col-md-3 mt-4 mt-md-0">
+					<div class="contact-det text-center">
+						<img src="/app/homepage/img/logo/qq.jpg" alt="QQ群">
+						<h6>QQ群</h6>
+						<p>783079293</p>
+					</div>
+				</div>
+				<div class="col-md-3 mt-4 mt-md-0">
+					<div class="contact-det text-center">
+						<img src="/app/homepage/img/logo/ewm.jpg" style="width: 110px;height: 110px" alt="蜂鸟矿池微信你公众号">
+						<h6>蜂鸟矿池微信公众号</h6>
+
+					</div>
+				</div>
+			</div>
+			<form id="contact-form" class="mt-5" method="post" action="contact.php" role="form">
+				<div class="row justify-content-center">
+					<div class="col-md-8">
+						<div class="messages text-center"></div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div> -->
+
+
+	<div class="section">
+		<div class="background-parallax" style="background: #293038"
+		 data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
+		<div class="container padding-bottom-big" style="padding: 50px 0 30px 0;">
+			<div class="row justify-content-between">
+				<div class="col-lg-5 col-md-12 foot-logo hidden-xs">
+					<img src="app/homepage/img/qrImg.jpg" class="qrImg">
+					<div style="display: inline-block; align-items: center; vertical-align: middle; margin-left:30px;padding-right: 60px;border-right:1px solid #FFFFFF" >
+						<img src="/app/homepage/img/logo/Logo.png" class="logoImg" alt="logo">
+						<text class="email">{{'foot.email'|translate}}：support@hummerpool.com</text>
+					</div>
+
+				</div>
+				<div class="col-lg-7 col-md-12 mt-4" style="margin-top:0 !important;color: #fff;opacity: 1 ;">
+					<ul class="footer-list footlist">
+						<li class="ft-item">
+							<label style="margin-bottom:20px">{{'foot.Product'|translate}}</label>
+							<a href="http://www.cynosure-chain.com">{{'foot.Hummerpool'|translate}}</a>
+							<a href="https://www.hummerminer.com">{{'foot.Hummerminer'|translate}}</a>
+						</li>
+						<li class="ft-item">
+							<label style="margin-bottom:20px">{{'foot.Service'|translate}}</label>
+							<a href="/announcement">{{'foot.Announcements'|translate}}</a>
+							<a href="" style="visibility:hidden">{{'foot.Mining Tutorial'|translate}}</a>
+						</li>
+						<!-- <li class="ft-item">
+							<label style="margin-bottom:20px">帮助</label>
+							<a href="">帮助中心</a>
+							<a href="">联系我们</a>
+						</li> -->
+						<li class="ft-item" style="width: 180px !important">
+							<label style="margin-bottom:20px">{{'foot.After-sale'|translate}}</label>
+							<a href="">{{'foot.QQ Group'|translate}}1：783079293</a>
+							<a href="">{{'foot.QQ Group'|translate}}2：791421817</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="scroll-to-top">{{'home.tohead' |translate}}</div>
+
+
+
+
+	<!-- JAVASCRIPT
+	================================================== -->
+	<script src="/js/base.js"></script>
+	<script src="js/configURL.js"></script>
+	<script src="/app/homepage/js/jquery-3.2.1.min.js"></script>
+	<script src="/app/homepage/js/popper.min.js"></script>
+	<script src="/app/homepage/js/bootstrap.min.js"></script>
+	<script src="/app/homepage/js/plugins.js"></script>
+	<!-- <script src="/app/homepage/js/particles.js"></script> -->
+	<script src="/app/homepage/js/custom-azure.js"></script>
+	<!-- <script src="app/homepage/angularjs/angular.min.js"></script>
+	<script src="app/homepage/angularjs/angular-cookies.min.js"></script> -->
+	
+	<script src="/views/home/js/ng-js.js"></script>
+	<!-- End Document
+    ================================================== -->
+</body>
+
+</html>

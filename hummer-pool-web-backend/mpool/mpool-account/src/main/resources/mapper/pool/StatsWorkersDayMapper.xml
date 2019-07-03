@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.account.mapper.pool.StatsWorkersDayMapper">
+	<select id="getUserWorkerActive" resultType="map">
+		SELECT
+			puid,
+			`day`,
+			COUNT(1) AS activeNumber
+		FROM
+			stats_workers_day
+		WHERE
+			`day` IN <foreach collection="days" close=")" open="(" separator="," item="item">#{item}</foreach>
+		AND puid IN <foreach collection="userIds" close=")" open="(" separator="," item="item">#{item}</foreach>
+		AND share_accept > 0
+		GROUP BY
+			puid,
+			`day`
+	</select>
+</mapper>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.accountmultiple.mapper.UserMapper">
+
+	<select id="findByUsername"
+		resultType="com.mpool.common.model.account.User">
+		SELECT * FROM `account_user` where username = #{username}
+	</select>
+	<select id="findBymail"
+		resultType="com.mpool.common.model.account.User">
+		SELECT * FROM `account_user` where
+		user_email = #{mail} LIMIT 1
+	</select>
+	<select id="findSubAccount" resultType="com.mpool.common.model.account.User">
+		SELECT * FROM `account_user` where
+		master_user_id = #{userId} 
+	</select>
+
+	<select id="findSubAccountByCurrencyId" resultType="com.mpool.common.model.account.User">
+		SELECT
+			au.user_id AS user_id,
+			au.username AS username
+		FROM
+			account_user au
+		JOIN
+			user_pay up
+		ON
+			au.user_id = up.puid
+		AND au.master_user_id=#{userId}
+		AND up.currency_id=#{currencyId}
+
+	</select>
+	
+	<select id="findSubAccountByMap" resultType="map">
+		SELECT
+			u.user_id,
+			u.username,
+			r.region_name,
+			u.user_phone,
+			u.user_email
+		FROM
+			account_user as u
+		LEFT JOIN account_user_region as ur ON ur.user_id = u.user_id
+		LEFT JOIN account_region as r ON r.region_id = ur.region_id
+		LEFT JOIN account_user_wallet as uw ON uw.user_id = u.user_id
+		${ew.sqlSegment}
+	</select>
+	
+	<select id="findByPhone" resultType="com.mpool.common.model.account.User">
+		SELECT * FROM `account_user` where
+		user_phone = #{phone} LIMIT 1
+	</select>
+	<select id="findUserByMaster" resultType="com.mpool.mpoolaccountmultiplecommon.model.subaccount.SubAccountList">
+		SELECT
+			u.user_id AS userId,
+			u.username,
+			ac.type AS walletType,
+			b.wallet_address AS walletAddr,
+			b.min_pay AS miniPay,
+			pt.type AS payType
+		FROM
+			account_user u
+		LEFT JOIN user_pay b ON b.puid = u.user_id
+		LEFT JOIN account_currency ac ON ac.id = b.currency_id
+		LEFT JOIN account_user_wallet_pay_type pt ON pt.id = b.pay_model
+		WHERE 1=1 
+		<if test="user.masterUserId != null">
+			AND u.master_user_id = #{user.masterUserId}
+		</if>
+		<if test="user.userId != null">
+			AND u.user_id = #{user.userId}
+		</if>
+			
+	</select>
+
+	<select id="findById" resultType="com.mpool.common.model.account.User">
+		SELECT * FROM `account_user` where user_id = #{userId}
+	</select>
+	<!--<update id="subtractionTotalDue">-->
+		<!--UPDATE `user_pay` SET `total_due`=total_due - #{totalDue} WHERE `id`=#{id}-->
+	<!--</update>-->
+
+	<select id="selectUserPageByPayCurrencyId" resultType="com.mpool.common.model.account.User">
+		SELECT
+			au.user_id AS userId, au.username, up.currency_id
+		FROM
+			account_user au
+		JOIN
+			user_pay up
+		ON
+			au.user_id = up.puid
+		AND au.master_user_id=#{masterId}
+		AND up.currency_id=#{currencyId}
+
+	</select>
+</mapper>

@@ -1,0 +1,15 @@
+<text class='text'>选择操作项</text>
+<view class='section' style="flex-direction:column;">
+  <!-- <view class="flex-item" bindtap='toQuestion'>
+    <text>常见问题</text>
+    <span>></span>
+  </view> -->
+  <!-- <view class="flex-item" bindtap='toService'>
+    <text>联系客服</text>
+    <span>></span>
+  </view> -->
+  <view class="flex-item" bindtap='toDelete' style='border-bottom: none'>
+    <text>解除绑定</text>
+    <span>></span>
+  </view>
+</view>

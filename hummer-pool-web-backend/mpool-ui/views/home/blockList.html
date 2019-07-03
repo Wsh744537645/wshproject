@@ -1,0 +1,64 @@
+<div class="section z-bigger" style="background: #4d82ff !important;" ng->
+    <div class="background-parallax" style="background-image: url('/app/homepage/img/parallax.jpg')" data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <div class="countdown  translateY-70 big-shadow-down">
+                    <style>
+                        .table th{
+                            border-color:transparent !important;
+                            color: #fff;
+                        }
+                    </style>
+                    <table class="table table-hover" style="margin-top: 11px;">
+                        <thead>
+                            <tr>
+                                <th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)" ng-class="{sortable: column.sortable !== false}" class="ng-binding ng-scope sortable" style="color: #fff;">
+                                    {{column.label}}
+                                    <i ng-show="vm.sort.direction === 1" ng-if="column.name === vm.sort.column &amp;&amp; vm.sort.direction" class="fa fa-long-arrow-down ng-scope ng-hide"></i>
+                                    <i ng-show="vm.sort.direction === -1" ng-if="column.name === vm.sort.column &amp;&amp; vm.sort.direction" class="fa fa-long-arrow-up ng-scope"></i>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-show="show_items" ng-repeat="items in itemsData|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1" class="ng-scope" style="height: 48px;">
+                                   <td class="ng-binding">{{items.height}}</td>
+                                   <td class="ng-binding">{{items.created_at | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                   <td class="ng-binding">{{items.hash}}</td>
+                                   <td class="ng-binding">{{items.rewards/100000000| number:8}}</td>
+                                   <td class="ng-binding">{{items.size}}</td>
+                                   <td class="ng-binding">{{items.confirmed_num}}</td>
+                              </tr>
+                        </tbody>
+                    </table>
+                    <div class="wait" ng-show="!show_items" style="margin-bottom: 10px;">
+                        <div class="loader1">
+                            <div class="ball-clip-rotate hint">
+                                   <div></div>
+                                   <span class="hint2">{{'common.loding' |translate}}...</span>
+                            </div>
+                        </div>
+                    </div>
+                      <div ng-show="items_num==0 && show_items" class="wait text-center" style="margin-bottom: 10px;">
+                        <span>{{'common.empty' |translate}}</span>
+                    </div>
+                    <ul class="pagination">
+                        <li ng-class="{true:'disabled'}[p_current==1]">
+                            <a href="javascript:void(0);" ng-click="p_index()" class="pIndex" style="border: 1px solid #ccc;border-radius: 0;height: 38px !important;width: 38px;padding: 0;line-height: 38px;margin-right: 10px;">首页</a>
+                        </li>
+                        <li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+                            <a href="javascript:void(0);" ng-click="load_page(page,currentSelect.value)" class="pIndex" style="border: 1px solid #ccc;border-radius: 0;height: 38px !important;width: 38px;padding: 0;line-height: 38px;margin-right: 10px;">{{ page }}</a>
+                        </li>
+                        <li ng-class="{true:'disabled'}[p_current==p_all_page]">
+                            <a href="javascript:void(0);" ng-click="p_last()" class="pIndex" style="border: 1px solid #ccc;border-radius: 0;height: 38px !important;width: 38px;padding: 0;line-height: 38px;">尾页</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section padding-bottom-big" id="buy">
+
+    </div>
+
+</div>

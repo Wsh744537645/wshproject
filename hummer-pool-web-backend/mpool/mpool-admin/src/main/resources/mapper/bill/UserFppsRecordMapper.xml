@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module.bill.mapper.UserFppsRecordMapper">
+	<select id="masterUserFppsRecord" resultType="com.mpool.common.model.account.fpps.UserFppsRecord">
+		SELECT sum(uf.fpps_after_fee) as fpps_after_fee,au.master_user_id as puid
+		from user_fpps_record uf LEFT JOIN account_user au ON au.user_id=uf.puid
+		where uf.`day`=#{day}
+		AND au.master_user_id in <foreach collection="userList" close=")" item="item" separator="," open="(">#{item}</foreach>
+		GROUP BY au.master_user_id
+	</select>
+</mapper>

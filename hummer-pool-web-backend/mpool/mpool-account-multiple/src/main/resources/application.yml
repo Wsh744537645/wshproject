@@ -1,0 +1,186 @@
+spring:
+  profiles:
+    active: '@profileActive@'
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: mpool-account-multiple
+  boot:
+    admin:
+      client:
+        password: Admin@123
+        username: admin
+currency: #配置币种信息，下列值需与account_currency表对应
+  id: 2
+  name: zcash
+mybatis-plus:
+  mapper-locations:
+  - classpath:/mapper/**/*.xml
+  - classpath:/mapper/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not-empty
+      table-underline: true
+sharding:
+  jdbc:
+    datasource:
+      names: accountdb,statsdb,workersdb,zcashdb,blocksdb
+    config:
+      sharding:
+        tables:
+          mining_workers:
+            actual-data-nodes: ds2.mining_workers
+            database-strategy:
+              standard:
+                precise-algorithm-class-name: com.mpool.common.model.pool.sharding.MiningWorkersAlgorithm
+                sharding-column: puid
+          stats_pool_day:
+            actual-data-nodes: ds0.stats_pool_day
+            database-strategy:
+              standard:
+                precise-algorithm-class-name: com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm
+                sharding-column: puid
+          stats_pool_hour:
+            actual-data-nodes: ds0.stats_pool_hour
+            database-strategy:
+              standard:
+                precise-algorithm-class-name: com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm
+                sharding-column: puider_fpps_record
+          stats_users_day:
+            actual-data-nodes: ds0.stats_users_day
+            database-strategy:
+              standard:
+                precise-algorithm-class-name: com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm
+                sharding-column: puid
+          stats_users_hour:
+            actual-data-nodes: ds0.stats_users_hour
+            database-strategy:
+              standard:
+                precise-algorithm-class-name: com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm
+                sharding-column: puid
+          stats_workers_day:
+            actual-data-nodes: ds0.stats_workers_day
+            database-strategy:
+              standard:
+                precise-algorithm-class-name: com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm
+                sharding-column: puid
+          stats_workers_hour:
+            actual-data-nodes: ds0.stats_workers_hour
+            database-strategy:
+              standard:
+                precise-algorithm-class-name: com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm
+                sharding-column: puid
+          account_currency_mini_pay:
+            actual-data-nodes: ds1.account_currency_mini_pay
+          account_menu:
+            actual-data-nodes: ds1.account_menu
+          account_region:
+            actual-data-nodes: ds1.account_region
+          account_resource:
+            actual-data-nodes: ds1.account_resource
+          account_role:
+            actual-data-nodes: ds1.account_role
+          account_role_menu:
+            actual-data-nodes: ds1.account_role_menu
+          account_user:
+            actual-data-nodes: ds1.account_user
+          account_user_region:
+            actual-data-nodes: ds1.account_user_region
+          account_user_wallet:
+            actual-data-nodes: ds1.account_user_wallet
+          account_user_wallet_pay_type:
+            actual-data-nodes: ds1.account_user_wallet_pay_type
+          account_wallet:
+            actual-data-nodes: ds1.account_wallet
+          account_pay_history:
+            actual-data-nodes: ds1.account_pay_history
+          account_user_open_resource:
+            actual-data-nodes: ds1.account_user_open_resource
+          account_language:
+            actual-data-nodes: ds1.account_language
+          account_currency:
+            actual-data-nodes: ds1.account_currency
+          account_user_role:
+            actual-data-nodes: ds1.account_user_role
+          account_alarm_setting:
+            actual-data-nodes: ds1.account_alarm_setting
+          account_alarm_notify_user:
+            actual-data-nodes: ds1.account_alarm_notify_user
+          account_user_login_log:
+            actual-data-nodes: ds1.account_user_login_log
+          account_message:
+            actual-data-nodes: ds1.account_message
+          user_pay:
+            actual-data-nodes: ds1.user_pay
+          pool_ppsplus_record:
+            actual-data-nodes: ds1.pool_ppsplus_record
+          user_ppsplus_record:
+            actual-data-nodes: ds1.user_ppsplus_record
+          found_blocks:
+            actual-data-nodes: ds4.found_blocks
+          log_user_login:
+            actual-data-nodes: ds1.log_user_login
+          log_wallet:
+            actual-data-nodes: ds1.log_wallet
+          log_email:
+            actual-data-nodes: ds1.log_email
+          log_user_reg:
+            actual-data-nodes: ds1.log_user_reg
+          log_fpps_rate:
+            actual-data-nodes: ds1.log_fpps_rate
+          log_sms:
+            actual-data-nodes: ds1.log_sms
+          account_openid:
+            actual-data-nodes: ds1.account_openid
+          account_recommend:
+            actual-data-nodes: ds1.account_recommend
+          account_ip_region:
+            actual-data-nodes: ds1.account_ip_region
+          log_user_operation:
+            actual-data-nodes: ds1.log_user_operation
+          account_blockchain:
+            actual-data-nodes: ds3.account_blockchain
+          block_reward:
+            actual-data-nodes: ds3.block_reward
+          fpps_ratio_day:
+            actual-data-nodes: ds3.fpps_ratio_day
+          user_rate_day:
+            actual-data-nodes: ds3.user_rate_day
+          user_fpps_record:
+            actual-data-nodes: ds3.user_fpps_record
+          user_fee_record:
+            actual-data-nodes: ds3.user_fee_record
+          user_pay_bill_item:
+            actual-data-nodes: ds3.user_pay_bill_item
+          user_pay_bill:
+            actual-data-nodes: ds3.user_pay_bill
+          account_blockchain_all:
+            actual-data-nodes: ds3.account_blockchain_all
+          account_worker_group:
+            actual-data-nodes: ds3.account_worker_group
+          account_worker_worker_group:
+            actual-data-nodes: ds3.account_worker_worker_group
+          pool_fpps_record:
+            actual-data-nodes: ds3.pool_fpps_record
+          pool_node:
+            actual-data-nodes: ds3.pool_node
+        master-slave-rules:
+          ds0:
+            master-data-source-name: statsdb
+            slave-data-source-names: statsdb, statsdb
+          ds1:
+            master-data-source-name: accountdb
+            slave-data-source-names: accountdb, accountdb
+          ds2:
+            master-data-source-name: workersdb
+            slave-data-source-names: workersdb, workersdb
+          ds3:
+            master-data-source-name: zcashdb
+            slave-data-source-names: zcashdb, zcashdb
+          ds4:
+            master-data-source-name: blocksdb
+            slave-data-source-names: blocksdb, blocksdb
+        props:
+          sql:
+            show: true

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module.alarm.mapper.SysAlarmSettingMapper">
+	<select id="getAlarmSettingNotify" resultType="com.mpool.common.model.admin.SysAlarmSetting">
+		SELECT
+			aas.id,
+			aas.share_rate,
+			aas.worker_number,
+			aas.phone,
+			aas.email,
+			aas.pay,
+			aas.create_time,
+			aas.update_time,
+			aas.cycle,
+			aas.block,
+			aas.template_name,
+			aua.user_id
+		FROM
+			admin_alarm_setting aas
+		LEFT JOIN admin_user_alarm aua ON aua.alarm_id = aas.id
+		where aas.currency_id=#{currencyId}
+	</select>
+	<select id="getAlarmUser" resultType="map">
+		SELECT
+			b.alarm_id AS alarmId,
+			b.user_id AS userId,
+			c.username AS username
+		FROM
+			admin_user_alarm b
+		LEFT JOIN admin_sys_user c ON c.user_id = b.user_id
+		WHERE
+			b.alarm_id = #{id}
+	</select>
+	
+	<select id="getAlarmUserSelect" resultType="map">
+		SELECT
+			user_id AS userId,
+			username AS username
+		FROM
+			admin_sys_user
+	</select>
+	
+	<select id="getModifyPasswordNotifyUser" resultType="com.mpool.common.model.admin.SysAlarmSetting">
+		SELECT
+			aas.id,
+			aas.share_rate,
+			aas.worker_number,
+			aas.phone,
+			aas.email,
+			aas.pay,
+			aas.create_time,
+			aas.update_time,
+			aas.cycle,
+			aas.block,
+			aas.template_name,
+			aua.user_id,
+			aas.modify_passd
+		FROM
+			admin_alarm_setting aas
+		LEFT JOIN admin_user_alarm aua ON aua.alarm_id = aas.id
+		WHERE
+			modify_passd IS NOT NULL
+		AND modify_passd = 1
+		AND aas.currency_id=#{currencyId}
+	</select>
+	
+	
+	<select id="getCreateBillNotifyUser" resultType="com.mpool.common.model.admin.SysAlarmSetting">
+		SELECT
+			aas.id,
+			aas.share_rate,
+			aas.worker_number,
+			aas.phone,
+			aas.email,
+			aas.pay,
+			aas.create_time,
+			aas.update_time,
+			aas.cycle,
+			aas.block,
+			aas.template_name,
+			aua.user_id,
+			aas.create_bill
+		FROM
+			admin_alarm_setting aas
+		LEFT JOIN admin_user_alarm aua ON aua.alarm_id = aas.id
+		WHERE
+			create_bill IS NOT NULL
+		AND create_bill = 1
+		AND aas.currency_id=#{currencyId}
+	</select>
+</mapper>

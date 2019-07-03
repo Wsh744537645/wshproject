@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module_zec.account.mapper.FoundBlocksZecMapper">
+    <select id="getBlock" resultType="java.lang.Integer">
+		SELECT COUNT(1) FROM zec_found_blocks WHERE is_orphaned=0
+	</select>
+    <select id="getRevenue" resultType="java.lang.Long">
+		SELECT sum(rewards) FROM zec_found_blocks WHERE is_orphaned=0
+	</select>
+	<!--UCT时区+8小时-->
+    <select id="getNowBlock" resultType="java.lang.Integer">
+		SELECT COUNT(1) FROM zec_found_blocks WHERE is_orphaned=0 and to_days(DATE_ADD(created_at,INTERVAL 8 HOUR)) = to_days(DATE_ADD(#{now},INTERVAL 8 HOUR))
+	</select>
+	<!--UCT时区+8小时-->
+    <select id="getNowRevenue" resultType="java.lang.Long">
+		SELECT IFNULL(sum(rewards),0) FROM zec_found_blocks WHERE is_orphaned=0 and to_days(DATE_ADD(created_at,INTERVAL 8 HOUR)) = to_days(DATE_ADD(#{now},INTERVAL 8 HOUR))
+	</select>
+    <select id="getHistoryBlock" resultType="com.mpool.common.model.account.FoundBlocks">
+		SELECT * FROM zec_found_blocks WHERE is_orphaned=0 ORDER BY created_at DESC
+	</select>
+	<select id="getHistoryBlocks" resultType="com.mpool.common.model.account.FoundBlocks">
+		SELECT * FROM zec_found_blocks WHERE is_orphaned=0 ORDER BY created_at DESC
+	</select>
+
+	<select id="getHistoryBlockList" resultType="com.mpool.common.model.account.FoundBlocks">
+		SELECT * FROM zec_found_blocks
+		WHERE is_orphaned=0
+		<if test="strTime != null">
+			AND `created_at` >= #{strTime}
+		</if>
+		<if test="endTime != null">
+			AND `created_at` &lt;= #{endTime}
+		</if>
+		ORDER BY created_at DESC
+	</select>
+
+	<!--导出爆块记录-->
+	<select id="exportHistoryBlockList" resultType="com.mpool.common.model.account.FoundBlocks">
+		SELECT * FROM zec_found_blocks
+		WHERE is_orphaned=0
+		<if test="strTime != null">
+			AND STR_TO_DATE(`created_at`, '%Y-%m-%d') >= DATE_FORMAT(#{strTime},'%Y-%m-%d')
+		</if>
+		<if test="endTime != null">
+			AND STR_TO_DATE(`created_at`, '%Y-%m-%d') &lt;= DATE_FORMAT(#{endTime},'%Y-%m-%d')
+		</if>
+	</select>
+
+	<!--<update id="updateBy">-->
+		<!--UPDATE found_blocks SET interval_time = #{intervalTime} WHERE id=#{id}-->
+	<!--</update>-->
+</mapper>

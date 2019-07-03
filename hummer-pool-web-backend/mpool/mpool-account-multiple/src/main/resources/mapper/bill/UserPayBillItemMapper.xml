@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.accountmultiple.mapper.bill.UserPayBillItemMapper">
+	<select id="getPayRecord" resultType="map">
+		SELECT
+			bi.`day`,
+			bi.pay_btc,
+			pb.pay_at,
+			pb.txid,
+			bi.wallet_address
+		FROM
+			user_pay_bill pb
+		LEFT JOIN user_pay_bill_item bi ON pb.bill_number = bi.bill_number
+		WHERE
+			pb.`status` = 0
+		AND bi.puid = #{payItem.puid}
+	</select>
+	
+	<select id="getPayRecordExport" resultType="com.mpool.mpoolaccountmultiplecommon.model.export.PayRecord">
+		SELECT
+			pb.txid,
+			pb.pay_at,
+			bi.pay_btc
+		FROM
+			user_pay_bill pb
+		LEFT JOIN user_pay_bill_item bi ON pb.bill_number = bi.bill_number
+		WHERE
+			pb.`status` = 0
+		AND bi.puid = #{puid}
+	</select>
+	
+	<insert id="inserts">
+		INSERT INTO 
+			`user_pay_bill_item` (`day`, `bill_number`, `puid`, `wallet_address`, `pay_btc`, `cteate_at`) 
+		VALUES 
+			<foreach collection="list" item="item" separator=",">
+				(#{item.day}, #{item.billNumber}, #{item.puid}, #{item.walletAddress}, #{item.payBtc}, #{item.cteateAt})
+			</foreach>
+	</insert>
+	
+	<select id="getUserPayBtc" resultType="java.lang.String">
+		SELECT
+			SUM(bi.pay_btc)
+		FROM
+			user_pay_bill_item bi
+			LEFT JOIN user_pay_bill pb ON pb.bill_number = bi.bill_number
+		WHERE
+			(pb.`status` = 1 or pb.`status` is null)
+		AND bi.puid = #{puid}
+	</select>
+	<select id="getUserPayInPayment" resultType="com.mpool.common.model.account.bill.UserPayBillItem">
+		SELECT
+			bi.puid,
+			SUM(bi.pay_btc) AS pay_btc
+		FROM
+			user_pay_bill_item bi
+			LEFT JOIN user_pay_bill pb ON pb.bill_number = bi.bill_number
+		WHERE
+			(pb.`status` = 1 or pb.`status` is null)
+		AND bi.puid IN <foreach collection="list" close=")" open="(" separator="," item="item">
+			#{item}
+		</foreach>
+		GROUP BY
+			bi.puid
+	</select>
+	
+	<select id="getUserPayYesterday" resultType="com.mpool.common.model.account.bill.UserPayBillItem">
+		SELECT
+			bi.*
+		FROM
+			user_pay_bill_item bi
+		LEFT JOIN user_pay_bill pb ON pb.bill_number = bi.bill_number
+		WHERE
+			bi.puid = #{userId}
+		AND TO_DAYS(pb.pay_at) = TO_DAYS(#{yesterday})
+	</select>
+	
+	<select id="getUsersPayYesterday" resultType="com.mpool.common.model.account.bill.UserPayBillItem">
+		SELECT
+			bi.puid,
+			SUM(bi.pay_btc) AS pay_btc
+		FROM
+			user_pay_bill_item bi
+		LEFT JOIN user_pay_bill pb ON pb.bill_number = bi.bill_number
+		WHERE
+			bi.puid in <foreach collection="userIds" open="(" close=")" item="item" separator=",">#{item}</foreach>
+		AND TO_DAYS(pb.pay_at) = TO_DAYS(#{yesterday})
+		GROUP BY
+			puid
+	</select>
+</mapper>

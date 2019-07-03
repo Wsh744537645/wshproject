@@ -1,0 +1,10 @@
+<view class="section" style='margin-top: 20px'>
+  <text class="usr">用户名</text>
+  <input value="{{username}}" bindinput='inputUsr' placeholder-class="input" disabled/>
+</view>
+<view class="section">
+  <text class="usr">密　码</text>
+  <input value="{{password}}" bindinput='inputPswd' placeholder-class="input" password='ture'/>
+</view>
+<view class="submit" bindtap="submit">解除绑定</view>
+

@@ -1,0 +1,98 @@
+
+/**********table表格公共样式************/
+.tableBot{
+	padding-bottom: 20px;
+}
+.table-top{
+	font-size: 18px;
+	border-bottom: 2px solid #e6e9ed;
+	padding-bottom: 15px;
+	color: #73879c;
+}
+.tableSize{
+	font-size: 12px;
+}
+.tableBC{
+	background-color: #edf1f2;
+}
+.displayValue{
+	position: relative;
+	top: -11px;
+	font-size: 13px;
+	padding-left: 13px;
+	height: 28px; 
+	line-height: 28px;
+}
+.display-value{
+	vertical-align: 12px;
+	font-size: 12px;
+	line-height: 4;
+}
+.btnPag{
+	margin-top: 10px;
+	float: right;
+}
+.pIndex{
+	height: 32px !important;
+	font-size: 12px !important;
+}
+.wait{
+	border-bottom: 1px solid #ddd;
+    height: 35px;
+    line-height: 34px;
+}
+.hint{
+	text-align: center;
+	padding-top: 5px;
+}
+.hint2{
+	font-size: 12px;
+	position: relative;
+    top: -7px;
+}
+
+.tishi{
+	color: #4b91ea;
+}
+.seleteBut {
+    float: right;
+    margin-right: 10px;
+}
+
+/*******tab切换********/
+.fwmc{ 
+	overflow: hidden;
+	margin-left: 20px; 
+	float: left;
+}
+.fwmc li { 
+	float: left;
+	min-width: 130px;
+	max-width: 200px;
+	padding: 0 15px 7px 15px;
+	font-size: 14px;
+	color: #666;
+	margin-right: 30px;
+	text-align: center;
+	overflow: hidden;
+	cursor: pointer;
+	height: 42px;
+	line-height: 37px;
+}
+.fwmc li:hover {
+	font-weight: 600;
+}
+.on {
+	color: #4b91ea; 
+	border-bottom: 2px solid #4b91ea;
+	font-weight: 600;
+}
+
+
+
+
+
+
+
+
+

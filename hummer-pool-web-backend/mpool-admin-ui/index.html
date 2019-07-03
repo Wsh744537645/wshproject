@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="angle">
+
+<head>
+   <base href="/">
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="{{app.description}}">
+   <meta name="keywords" content="app, responsive, angular, bootstrap, dashboard, admin">
+   <title data-ng-bind="::pageTitle()">蜂鸟矿池运营系统</title>
+
+   <link rel="stylesheet" href="app/css/bootstrap.css" data-ng-if="!app.layout.isRTL">
+   <link rel="stylesheet" href="app/css/bootstrap-rtl.css" data-ng-if="app.layout.isRTL">
+
+   <link rel="stylesheet" href="app/css/app.css" data-ng-if="!app.layout.isRTL">
+   <link rel="stylesheet" href="app/css/app-rtl.css" data-ng-if="app.layout.isRTL">
+   
+   <link rel="stylesheet" ng-href="{{app.layout.theme}}" data-ng-if="app.layout.theme">
+   <!--日历-->
+   <link rel="stylesheet" href="js/calendar/css/wui.min.css">
+   
+   <link rel="stylesheet" href="app/css/user/login_ChangePassword.css">
+ 	<!--  公共零散样式-->
+   <link rel="stylesheet" href="app/css/common/common.css">
+   <!--   弹出层公共样式-->
+   <link rel="stylesheet" href="app/css/modal/modal.css" />
+   <!--table公共样式-->
+   <link rel="stylesheet" href="app/css/table/tables.css">
+   
+</head>
+
+<body data-ng-class="{ 'layout-fixed' : app.layout.isFixed, 'aside-collapsed' : app.layout.isCollapsed, 'layout-boxed' : app.layout.isBoxed, 'layout-fs': app.useFullLayout, 'hidden-footer': app.hiddenFooter, 'layout-h': app.layout.horizontal, 'aside-float': app.layout.isFloat}">
+   <div data-ui-view="" data-autoscroll="false" href="/" class="wrapper"></div>
+   <script src="js/jquery.min.js"></script>
+   
+   <script src="js/base.js"></script>
+   <script src="js/app.js"></script>
+   <script src="js/config.js"></script>
+   <script src="js/configURL.js"></script>
+   <!--加密-->
+   <script src="js/base64/base64.js"></script>
+   <!-- 时间js文件-->
+   <script src="js/moment.js"></script>
+   <!-- 通知公告文本編譯器js文件-->
+   <script src="js/wangEditor.min.js"></script>
+   
+   <!--  首页曲线图和饼图有用到-->
+   <script src="js/echarts/echarts.min.js"></script>
+   <!--登录界面-->
+   <script src="views/user/js/userControllers.js"></script>
+   <!--用户面板-->
+   <script src="views/dashboard/js/dashboardControllers.js"></script>
+   <!--用户管理-->
+   <script src="views/userManagement/js/userManagementControllers.js"></script>
+   <!--用户资料-->
+   <script src="views/account_info/js/account_infoControllers.js"></script>
+   <!--创建支付单-->
+   <script src="views/billcreate/js/billcreateControllers.js"></script>
+   <!--手动收益结算-->
+   <script src="views/incomeSettlement/js/incomeSettlementControllers.js"></script>
+   <!--支付账单-->
+   <script src="views/paybill/js/paybillControllers.js"></script>
+   <!--预警-->
+   <script src="views/settings/js/settingsControllers.js"></script>
+   <!--通知公告-->
+   <script src="views/notice/js/noticeControllers.js"></script>
+   <!--挖矿费率设置-子账号管理列表-->
+   <script src="views/ratio/js/ratioControllers.js"></script>
+   <!--挖矿费率设置 -->
+   <script src="views/pool_fpps/js/pool_fppsControllers.js"></script>
+   <!--矿池日志-->
+   <script src="views/poolLog/js/poolLogControllers.js"></script>
+   <!--用户列表-->
+   <script src="views/accountuserlist/js/accountUserListControllers.js"></script>
+   <!--角色管理-->
+   <script src="views/sysrole/js/sysroleControllers.js"></script>
+   <!--菜单管理-->
+   <script src="views/sysmenu/js/sysmenuControllers.js"></script>
+   <!--系统用户管理-->
+   <script src="views/sysuser/js/sysuserControllers.js"></script>
+   <!--权限设置-->
+   <script src="views/sysperms/js/syspermsControllers.js"></script>
+   
+   <!--日历-->
+   <script src="js/calendar/wui-date.js"></script>
+
+</body>
+
+</html>

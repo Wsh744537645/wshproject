@@ -1,0 +1,185 @@
+<!--支付记录-->
+<link rel="stylesheet" href="/app/homepage/css/footstyle.css" />
+<span data-ng-bind="::pageTitle()" style="display: none;"></span>
+<!-- <h3>
+	<small>
+		<span ng-click="homepage()" style="color:#3c78c2;">{{ 'nav.homepage' | translate }}</span>
+		<span style="color: #ccc;">/</span>
+		{{ 'dashboard.PAYRECORDS' | translate:{ appName: app.name } }}
+	</small>
+</h3> -->
+
+<div class="row" style="background: linear-gradient(167.3deg, #250F8A 0.61%, #02ECF1 113.21%);width: 100%;margin-bottom:350px;
+ height:300px;color: #fff;padding-top: 86px;left: 0; margin: 0; top: 90px; position: absolute;">
+	<div style="width:1200px; margin:0 auto">	
+		<div class="col-sm-6 col-md-6 col-xs-12">
+			<!-- <div style="position:relative;display:block;margin-bottom:12px;border:1px solid #e4e4e4;overflow:hidden;padding-bottom:5px;border-radius:5px;background:#fff;transition:all .3s ease-in-out;"> -->
+				
+				<div class="row">
+					<div class="col-xs-6">
+						<div align="center" style="opacity: 0.86;">
+							<em  class="icon-clock"></em>
+							<br>
+							{{'payrecord.TotalAmoutPaid' |translate}}
+						</div>
+						<div style="margin-top: 12px;font-size: 24px;" align="center">
+							<span>{{items_Data.totalPaid/100000000| number:8}}</span>&nbsp;<span>{{currencyName}}</span>
+						</div>
+					</div>
+					<div class="col-xs-6">
+						<div align="center" style="opacity: 0.86;">
+							<em class="fa fa-cny"></em>
+							<br>
+							{{'payrecord.Balance' |translate}}					
+						</div>
+						<div style="margin-top: 12px;font-size: 24px;" align="center">
+							<span>{{items_Data.totalDue/100000000| number:8}}</span>&nbsp;<span>{{currencyName}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- </div> -->
+		<div class="col-sm-6 col-md-6 col-xs-12">
+			<!-- <div style="position:relative;display:block;margin-bottom:12px;border:1px solid #e4e4e4;overflow:hidden;padding-bottom:5px;border-radius:5px;background:#fff;transition:all .3s ease-in-out;"> -->
+		
+			<div class="row">
+				<div class="col-xs-6">
+					<div align="center" style="opacity: 0.86;">
+						<em class="fa fa-dollar"></em>
+						<br>
+						{{'dashboard.TodayEstimate' |translate}}
+					</div>
+					<div style="margin-top: 13px;font-size: 24px;" align="center">
+						{{items_Data.today/100000000| number:8}}&nbsp;<span>{{currencyName}}</span>
+					</div>
+				</div>
+				<div class="col-xs-6">
+					<div align="center" style="opacity: 0.86;">
+						<em class="fa fa-money"></em>
+						<br>
+						{{'dashboard.YesterdayArrival' |translate}}
+					</div>
+					<div style="margin-top: 13px;font-size: 24px;" align="center">
+						{{items_Data.yesterday/100000000| number:8}}&nbsp;<span>{{currencyName}}</span>
+					</div>
+				</div>
+			</div>
+		<!-- </div> -->
+		</div>
+	</div>
+</div>
+
+
+<div class="table-grid table-grid-desktop" style="margin: 368px 0 350px 0;">
+	<div class="panel col-lg-12" style="padding: 20px 40px;">
+		<div class="display-value hidden-xs" style="width:100%; height:70px;">
+			<a href="/apis/wallet/pay/record/export"  style="float:right;font-size: 18px;color: #1466BF; text-decoration: none" target="_blank">
+				<img src="/app/homepage/img/fetch.svg"  style="margin: -5px 5px 0 0;">
+				{{'payrecord.ExportPayRcd' | translate}}
+			</a>
+		</div>
+		<div class="panel-body tableBot" style="border:1px solid #E6E6E6; padding: 0;">
+			<table class="table table-hover tableSize" width="100%;">
+				<thead class="tableBC">
+					<tr style="background: #FAFBFF;">
+						<th ng-repeat="column in vm.columns" style="text-align: center; color: #121212;	opacity: 0.24;"
+						 ng-if="!column.hidden" ng-click="vm.sort.toggle(column)" ng-class="{sortable: column.sortable !== false}" class="{{column.className}}">
+							{{column.label}}
+							<i ng-show="vm.sort.direction === 1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-down"></i>
+							<i ng-show="vm.sort.direction === -1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-up"></i>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-show="show_items" ng-repeat="items in itemsData|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1" style="text-align: center;color: #121212;	opacity: 0.86;">
+						<td class="hidden-sm hidden-md hidden-lg" title="{{items.txid}}">{{items.txid | cut:true:10:'...'}}</td>
+						<td>{{items.pay_at | date:'yyyy-MM-dd'}}</td>
+						<td>{{items.pay_btc /100000000 | number:8}}</td>
+						<td class="hidden-xs" title="{{items.txid}}">{{items.txid}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="wait" ng-show="!show_items">
+				<div class="loader1">
+					<div class="ball-clip-rotate hint">
+						<div></div>
+						<span class="hint2">{{'common.loding' |translate}}...</span>
+					</div>
+				</div>
+			</div>
+			<div ng-show="items_num==0 && show_items" class="wait text-center">
+				<span>{{'common.empty' |translate}}</span>
+			</div>
+		</div>
+		<ul class="pagination">
+			<li ng-class="{true:'disabled'}[p_current==1]">
+				<a href="javascript:void(0);" ng-click="p_index()" class="pIndex">{{'dashboard.homepage' | translate}}</a>
+			</li>
+			<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+				<a href="javascript:void(0);" ng-click="load_page(page,currentSelect.value)" class="pIndex">{{ page }}</a>
+			</li>
+			<li ng-class="{true:'disabled'}[p_current==p_all_page]">
+				<a href="javascript:void(0);" ng-click="p_last()" class="pIndex">{{'dashboard.lastpage' | translate}}</a>
+			</li>
+		</ul>
+		<div style="display:float; float:right;"  class="hidden-xs btnPag">
+			<select ng-model="currentSelect.value" ng-change="getWorkerList(1, currentSelect.value)" class="displayValue"
+				style="padding-left: 2px;height: 32px;border: 1px solid #E6E6E6;border-radius: 4px; color: #121212;opacity: 0.56; background: #fff;">
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="30">50</option>
+				<option value="100">100</option>
+			</select>
+			<span class="display-value">{{'dashboard.perpage'| translate}}{{'dashboard.totalp'| translate}}{{count}}
+						{{'dashboard.tiao'| translate}}{{totalPage}}
+						{{'dashboard.ye'| translate}}{{'dashboard.goto' | translate}}&nbsp;</span>
+			<input ng-model="page" type="number" class="display-value" style="width: 40px; text-align: center; height: 32px;border: 1px solid #E6E6E6;border-radius: 4px; color: #121212;opacity: 0.56;">
+			<span class="display-value">&nbsp;{{'dashboard.ye1'| translate}}&nbsp;
+			<div class="btn btn-primary" ng-click="load_page(page,currentSelect.value)" style="margin-top:-3px;height:32px; line-height: 16px; background: #1466BF;border-radius: 4px; box-shadow: none">
+					{{'common.ok' |translate}}</div>
+		</div>
+	</div>
+
+</div>
+
+<!-- <footer ng-include="'views/partials/footer.html'" class="loginFooter"></footer> -->
+
+
+<div class="col-lg-12" style="position: absolute;bottom: 0;left: 0;right: 0">
+	<div class="background-parallax" data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
+	<div class="container padding-bottom-big">
+			<div class="row justify-content-between">
+			<div class="col-lg-5 col-md-12 foot-logo hidden-xs" style="margin-top: 20px">
+				<img src="app/homepage/img/qrImg.jpg" class="qrImg">
+				<div style="display: inline-block; align-items: center; vertical-align: middle; margin-left:30px;padding-right: 60px;border-right:1px solid #FFFFFF" >
+					<img src="/app/homepage/img/logo/Logo.png" class="logoImg" alt="logo">
+					<text class="email">{{'foot.email'|translate}}：support@hummerpool.com</text>
+				</div>
+			</div>
+			<div class="col-lg-7 col-md-12" style="margin-top: 20px;color:#fff;opacity: 1; text-align: center">
+				<ul class="footer-list footlist">
+					<li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Product'|translate}}</label>
+						<a href="http://www.cynosure-chain.com">{{'foot.Hummerpool'|translate}}</a>
+						<a href="https://www.hummerminer.com">{{'foot.Hummerminer'|translate}}</a>
+					</li>
+					<li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Service'|translate}}</label>
+						<a href="/announcement">{{'foot.Announcements'|translate}}</a>
+						<a href="" style="visibility:hidden">{{'foot.Mining Tutorial'|translate}}</a>
+					</li>
+					<!-- <li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Helps'|translate}}</label>
+						<a href="">{{'foot.Help Center'|translate}}</a>
+						<a href="">{{'foot.Contact Us'|translate}}</a>
+					</li> -->
+					<li class="ft-item" style="width: 160px !important">
+						<label style="margin-bottom:20px">{{'foot.After-sale'|translate}}</label>
+						<a href="">{{'foot.QQ Group'|translate}}1:783079293</a>
+						<a href="">{{'foot.QQ Group'|translate}}2:791421817</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

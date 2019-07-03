@@ -1,0 +1,38 @@
+/*********模态框样式*********/
+.h5Title{
+	height:30px;
+	margin-top: 1px;
+	font-size: 16px;
+	border-bottom: 2px solid #e6e9ed;
+}
+.content{
+	width: 70%;
+	margin-left: 57px;
+	margin-top: 30px;
+}
+.btnStyle{
+	text-align: center;
+	margin-top: 25px;
+	margin-bottom: 15px;
+}
+.gundong{
+	max-height: 392px;
+}
+.gundongtiao{
+    overflow: auto;
+    margin-top: 10px;
+}
+.gundongtiao::-webkit-scrollbar {
+    width: 5px;     
+    height: 1px;
+}
+.gundongtiao::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+     -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: rgba(0, 0, 0, 0.35);
+}
+.gundongtiao::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 0px;
+    background: #fff;
+}

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module.account.mapper.UserMapper">
+
+	<!--<select id="findByUsername"-->
+		<!--resultType="com.mpool.common.model.account.User">-->
+		<!--SELECT * FROM `account_user` where (username = #{username} or-->
+		<!--user_email = #{username} or user_phone = #{username})-->
+	<!--</select>-->
+	<!--<select id="findBymail"-->
+		<!--resultType="com.mpool.common.model.account.User">-->
+		<!--SELECT * FROM `account_user` where-->
+		<!--user_email = #{mail}-->
+	<!--</select>-->
+	<!--<select id="findSubAccount" resultType="com.mpool.common.model.account.User">-->
+		<!--SELECT * FROM `account_user` where-->
+		<!--master_user_id = #{userId}-->
+	<!--</select>-->
+	<select id="masterListPage" resultType="com.mpool.admin.module.account.model.UserPayBillOut">
+		SELECT
+			au.user_id AS userId,
+			au.username AS username,
+			au.create_time AS createTime,
+			au.last_ip AS lastIp,
+			au.last_time AS lastTime,
+			up.fpps_rate AS fppsRate
+		FROM
+			account_user au
+			LEFT JOIN user_pay up ON up.puid = au.user_id 
+		WHERE
+			user_type = 'master'
+			<if test="user != null">
+				<if test="user.username != null">
+				<bind name="usernameLike" value="'%'+user.username+'%'"/>
+					AND username like #{usernameLike}
+				</if>
+			</if>
+		AND up.currency_id = #{currencyId}
+	</select>
+
+	<select id="masterListObjectPage" resultType="com.mpool.admin.module.account.model.UserPayBillOut">
+		SELECT SUM(up.`total_due`) as total_due,
+			   sum(up.`total_paid`) as total_paid,
+			   au.`master_user_id` AS userId
+		  from `user_pay` up
+		  LEFT JOIN `account_user` au on au.`user_id`= up.`puid`
+		WHERE au.master_user_id is not null
+		and au.master_user_id in <foreach collection="userList" close=")" item="item" open="(" separator=",">#{item}</foreach>
+		AND up.currency_id = #{currencyId}
+		GROUP BY au.master_user_id;
+
+	</select>
+
+	<select id="memberListPage" resultType="map">
+		SELECT
+			au.user_id AS userId,
+			au.username AS username,
+			au.create_time AS createTime,
+			au.last_ip AS lastIp,
+			au.last_time AS lastTime,
+			up.total_due AS totalDue,
+			up.total_paid AS totalPaid,
+			up.fpps_rate AS fppsRate
+		FROM
+			account_user au
+			LEFT JOIN user_pay up ON up.puid = au.user_id 
+		WHERE
+			user_type = 'member'
+			AND master_user_id = #{user.masterUserId}
+			AND up.currency_id = #{currencyId}
+	</select>
+
+	<select id="memberListByObjectPage" resultType="com.mpool.admin.module.account.model.UserPayBillOut">
+		SELECT
+			au.user_id AS userId,
+			au.username AS username,
+			au.create_time AS createTime,
+			au.last_ip AS lastIp,
+			au.last_time AS lastTime,
+			up.total_due AS totalDue,
+			up.total_paid AS totalPaid,
+			up.fpps_rate AS fppsRate
+		FROM
+			account_user au
+			LEFT JOIN user_pay up ON up.puid = au.user_id
+		WHERE
+			user_type = 'member'
+			AND master_user_id = #{user.masterUserId}
+			AND up.currency_id = #{currencyId}
+	</select>
+
+	<select id="getUserIdByMasterUserId" resultType="java.lang.Long">
+		SELECT
+			user_id
+		FROM
+			`account_user`
+		WHERE
+			`master_user_id` = #{userId}
+	</select>
+
+	<select id="getUserListByUsername" resultType="com.mpool.admin.module.account.model.UserPayBillOut">
+		SELECT
+		au.user_id AS userId,
+		au.username AS username,
+		au.create_time AS createTime,
+		au.last_ip AS lastIp,
+		au.last_time AS lastTime,
+		up.fpps_rate AS fppsRate
+		FROM
+		account_user au
+		LEFT JOIN user_pay up ON up.puid = au.user_id
+		WHERE
+		user_type = 'master'
+		<if test="username != null and username !=''">
+			AND au.username = #{username}
+		</if>
+		AND up.currency_id = #{currencyId}
+	</select>
+
+	<select id="masterAllList" resultType="com.mpool.admin.module.account.model.UserPayBillOut">
+		SELECT
+		au.user_id AS userId,
+		au.username AS username,
+		au.create_time AS createTime,
+		au.last_ip AS lastIp,
+		au.last_time AS lastTime,
+		up.fpps_rate AS fppsRate
+		FROM
+		account_user au
+		LEFT JOIN user_pay up ON up.puid = au.user_id
+		WHERE
+		user_type = 'master'
+		AND up.currency_id = #{currencyId}
+	</select>
+
+	<select id="getUserByname" resultType="com.mpool.common.model.account.User">
+		SELECT *
+		FROM
+		account_user
+		WHERE username =#{username}
+	</select>
+	<select id="getMasterUserByname" resultType="com.mpool.common.model.account.User">
+		SELECT *
+		FROM
+		account_user
+		WHERE username =#{username}
+		AND user_type = 'master'
+	</select>
+
+	<update id="updateUserGroupById">
+		UPDATE `account_user` SET `user_group`=1 WHERE `user_id`=#{userId}
+	</update>
+	<update id="updateUserGroupByIdMember">
+		UPDATE `account_user` SET `user_group`=0 WHERE `user_id`=#{userId}
+	</update>
+
+	<select id="getUserInfo" resultType="com.mpool.common.model.account.User">
+		SELECT *
+		FROM account_user
+		WHERE username=#{username}
+	</select>
+
+	<select id="getMasterUserInfo" resultType="com.mpool.common.model.account.User">
+		SELECT u.username,u.create_time,u.last_time,u.user_phone,u.user_email
+		FROM account_user u
+		WHERE u.user_type ='master'
+	</select>
+	<select id="getMasterUserInfos" resultType="com.mpool.common.model.account.User">
+		SELECT u.username,u.create_time,u.last_time,u.user_phone,u.user_email
+		FROM account_user u
+		WHERE u.user_id = #{id}
+	</select>
+	<select id="getMasterUserInfoList" resultType="com.mpool.common.model.account.User">
+		SELECT u.username,u.create_time,u.last_time,u.user_phone,u.user_email,r.recommend_name
+		FROM account_user u
+		LEFT JOIN account_recommend r ON u.master_user_id = r.recommend_user_id
+		WHERE
+		1=1
+		<if test="username != null">
+			AND `username`= #{username}
+		</if>
+		<if test="recommendName != null">
+			AND `recommend_name`=#{recommendName}
+		</if>
+	</select>
+
+	<update id="updatePasswordByUsername">
+		UPDATE `account_user` SET `password`=#{psw} WHERE username = #{username}
+	</update>
+
+	<select id="getMasterUsername" resultType="com.mpool.common.model.account.User">
+		SELECT *
+		FROM account_user u
+		WHERE u.user_id = #{masterId}
+	</select>
+
+	<select id="getUserInfos" resultType="com.mpool.common.model.account.User">
+		SELECT *
+		FROM account_user u
+		WHERE
+		1=1
+		<if test="username != null">
+			AND `username`= #{username}
+		</if>
+	</select>
+	<select id="getUserBy" resultType="com.mpool.common.model.account.User">
+		SELECT *
+		FROM account_user u
+		WHERE
+		1=1
+		<if test="username != null">
+			AND `username`= #{username}
+		</if>
+	</select>
+
+	<select id="getUserInfoByUserId" resultType="com.mpool.common.model.account.User">
+		SELECT *
+		FROM account_user u
+		WHERE u.user_id = #{userId}
+	</select>
+</mapper>

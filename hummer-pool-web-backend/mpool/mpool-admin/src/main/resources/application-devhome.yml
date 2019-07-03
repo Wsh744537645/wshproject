@@ -1,0 +1,78 @@
+logging:
+  level:
+    com:
+      mpool: debug
+spring:
+  redis:
+    host: redis-server
+    port: 6379
+    database: 0
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations:
+    - file:mpool-admin-ui/
+    - file:../../mpool-admin-ui/
+    - classpath:/META-INF/resources/
+    - classpath:/resources/
+    - classpath:/static/
+    - classpath:/public/
+  mail:
+    host: smtp.exmail.qq.com
+    port: 465
+    username: noreply@hummerpool.com
+    password: Hummer123
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+        debug: true
+  boot:
+    admin:
+      client:
+        url:
+        - http://db-server:8888
+        instance:
+          service-base-url: http://admin-server:8001
+        password: Admin@123
+        username: admin
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - '*'
+aliyun:
+  sms:
+    access-key-id: LTAITHtOEev5EtC0
+    access-key-secret: CcFTGjbDyIft0HgcaHbyAT7Lj9KIiN
+    sign-name: 蜂鸟
+sharding:
+  jdbc:
+    datasource:
+      accountdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://rm-j6cyw99pjuui9l2663o.mysql.rds.aliyuncs.com:3306/h_pool_account?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+        username: pool
+        password: 3eZTsHL3KCK+lw==
+      admindb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://rm-j6cyw99pjuui9l2663o.mysql.rds.aliyuncs.com:3306/h_pool_admin?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+        username: pool
+        password: 3eZTsHL3KCK+lw==
+      statsdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://rm-2ze22g9751h8u5k888o.mysql.rds.aliyuncs.com:3306/bpool_local_db?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+        username: zhangshu
+        password: zhangshu123!@#
+      workersdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://rm-2ze9nysk96o3o99m4lo.mysql.rds.aliyuncs.com:3306/bpool_local_db?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+        username: zhangshu
+        password: zhangshu123!@#

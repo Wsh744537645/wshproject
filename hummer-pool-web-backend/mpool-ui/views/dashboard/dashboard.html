@@ -1,0 +1,356 @@
+
+<link rel="stylesheet" href="/app/homepage/css/footstyle.css" />
+<span data-ng-bind="::pageTitle()" style="display: none;"></span>
+<h3>
+   <small>
+   	<span ng-click="homepage()" style="color:#3c78c2;">{{ 'nav.homepage' | translate }}</span> 
+   	<span style="color: #ccc;">/</span> 
+   	{{ 'dashboard.dashboard' | translate:{ appName: app.name } }}
+   </small>
+</h3>
+<div class="hidden-xs" style="position:absolute;top:90px;left: 0;right:0; width:100%;height:60px;background: #FFEEB1;z-index: 1" ng-if="shownotice">
+	<p style="max-width:1200px; width:80%;margin:0 auto;padding:19px 2px">
+		<img src="/img/banner/vector.png" alt="notice" style="margin:-2px 19px 0 2px">
+		<a class="notice" style="color: #DA8F21;" ng-click="goNdetail(newNotice.id)">{{newNotice.title}}</a>
+		<img src="/img/banner/clos.png" ng-click="closeNotice()" alt="close" style="display: float;float:right;margin: 6px -70px 0 0">
+		<text style="display: float;float:right;color: #000000;opacity: 0.56; font-size: 14px;">{{newNotice.time}}</text>
+	</p>
+</div>
+<div style="height: 50px;" ng-if="shownotice">
+</div>
+
+					
+<div class="row">
+	<div class="col-lg-12" style="padding-left: 0px;padding-right: 0px;">
+      <div class="panel" style="padding: 40px;border: 1px solid #D9DCE0; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);border-radius: 4px;">
+         <div class="panel-body">
+			 
+			<li dropdown="" class="dropdown dropdown-list" style="list-style: none">
+				<div dropdown-toggle="" style="cursor: pointer;">
+					<div class="coinbtn">
+						<img src="{{currencyCoin}}" alt="" style="margin: -2px 4px 0 8px">
+						<span>{{currencyName}}</span>
+						<span class="fa fa-angle-down" style="margin-left: 15px"></span>
+					</div>
+				</div>
+				<ul class="dropdown-menu animated flipInX" style="left:0;min-width: 102px">
+					<li ng-repeat="item in currencyData">
+						<div class="list-group">
+							<a class="list-group-item" style="padding:0px;">
+								<div class="media-box">
+									<div class="media-box-body clearfix" style="height:30px;text-align: left" ng-click="changeCoin(item.type)">	
+										<img src="{{item.coinIcon}}" alt="" style="margin: -2px 4px 0 8px">										
+										<text>{{item.type}}</text>
+									</div>
+								</div>
+							</a>
+						</div>
+					</li>
+				</ul>	
+			</li>
+            <div class="table-responsive">
+               <table class="table table-bordered table-hover" style="border: 1px solid #E6E6E6;margin-bottom: 70px">
+                  <thead>
+                     <tr style="background-color: #f8fafb;">
+                        <th style="text-align: center;">
+                        	<div style="height: 40px;line-height: 42px;color: #121212;
+							opacity: 0.56;font-size: 16px;">{{'dashboard.miningaccounts' |translate}}</div>
+                        </th>
+                        <th style="text-align: center;">
+                        	<div style="height: 40px;line-height: 42px;color: #121212;
+							opacity: 0.56;font-size: 16px;">{{'dashboard.Hashrate'|translate}}({{unit}})</div>
+                        </th>
+                        <th style="text-align: center;"  class="hidden-xs">
+                        	<div style="height: 40px;line-height: 42px;color: #121212;
+							opacity: 0.56;font-size: 16px;">{{'dashboard.Minerstatus'|translate}}</div>
+                        </th>
+                        <th style="text-align: center;"  class="hidden-xs">
+                        	<div style="height: 40px;line-height: 42px;color: #121212;
+							opacity: 0.56;font-size: 16px;">{{'dashboard.Revenue'|translate}}</div>
+                        </th>
+                     </tr>
+                     <tr style="background-color: #fff;">
+                        <th style="text-align: center;border-bottom:1px solid #fff;">
+                        	<div></div>
+                        </th>
+                        <th style="text-align: center;border-bottom:1px solid #fff;">
+                            <div style="color:#121212;
+							opacity: 0.86;font-size:14px;width:50%;float:left;">15{{'dashboard.min'|translate}}</div>
+                        	<div style="color:#121212;
+							opacity: 0.86;font-size:14px;width:50%;float:left;">24{{'dashboard.hour'|translate}}</div>
+                        </th>
+                        <th style="text-align: center;border-bottom:1px solid #fff;"  class="hidden-xs">
+                        	<span style="color:#121212;
+							opacity: 0.86;font-size:14px;width:33%;float:left;">{{'dashboard.active'|translate}}</span>                        	
+                        	<span style="color:#121212;
+							opacity: 0.86;font-size:14px;width:33%;float:left;">{{'dashboard.Inactive'|translate}}</span>
+							<span style="color:#121212;
+							opacity: 0.86;font-size:14px;width:33%;float:left;">{{'dashboard.Offline'|translate}}</span>
+                        </th>
+                        <th style="text-align: center;border-bottom:1px solid #fff;"  class="hidden-xs">
+                        	<span style="color:#121212;
+							opacity: 0.86;font-size:14px;width:23%;float:left;">{{'dashboard.TodayEstimate'|translate}}</span>
+                        	<span style="color:#121212;
+							opacity: 0.86;font-size:14px;width:22%;float:left;">{{'dashboard.YesterdayArrival'|translate}}</span>
+                        	<span style="color:#121212;
+							opacity: 0.86;font-size:14px;width:22%;float:left;">{{'dashboard.Paid'|translate}}</span>
+                        	<span style="color:#121212;
+							opacity: 0.86;font-size:14px;width:22%;float:left;">{{'dashboard.Balance'|translate}}</span>
+                        </th>
+                     </tr>
+                     <tr style="background-color: #fff;">
+						<th>
+                        	<div style="color: #1466BF;  opacity: 0.86; font-size:16px;">
+								<!-- <em class="icon-users"></em>&nbsp; -->
+								<img src="/img/banner/mask2.png" alt=" " width="16px" style="margin: -4px 5px 0 0">
+								{{'dashboard.total'|translate}}
+                        	</div>
+                        </th>
+                        <th style="text-align: center;">
+                            <div style="color: #1466BF;  opacity: 0.86;font-size:14px;width:50%;float:left;">{{items_Data.share15m | number:3}}</div>
+                            <div style="color: #1466BF;  opacity: 0.86;font-size:14px;width:50%;float:left;">{{items_Data.share24h | number:3}}</div>                           
+                        </th>
+                        <th style="text-align: center;"  class="hidden-xs">
+                        	<span style="color: #1466BF;  opacity: 0.86;font-size:14px;width:33%;float:left;">{{items_Data.workerActive}}</span>                        	
+                        	<span style="color: #1466BF;  opacity: 0.86;font-size:14px;width:33%;float:left;">{{items_Data.workerInactive}}</span>
+							<span style="color: #1466BF;  opacity: 0.86;font-size:14px;width:33%;float:left;">{{items_Data.offLine}}</span>
+                        </th>
+                        <th style="text-align: center;"  class="hidden-xs">
+                        	<span style="color: #1466BF;  opacity: 0.86;font-size:14px;width:23%;float:left;">{{items_Data.today/100000000| number:8}}</span>
+                        	<span style="color: #1466BF;  opacity: 0.86;font-size:14px;width:22%;float:left;">{{items_Data.yesterday/100000000| number:8}}</span>
+                        	<span style="color: #1466BF;  opacity: 0.86;font-size:14px;width:22%;float:left;">{{items_Data.totalPaid/100000000| number:8}}</span>
+                        	<span style="color: #1466BF;  opacity: 0.86;font-size:14px;width:22%;float:left;">{{items_Data.totalDue/100000000| number:8}}</span>
+                        </th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr ng-show="show_items" ng-repeat="items in itemsData">
+						<td>
+							<!-- <em class="icon-user"></em>&nbsp; -->
+							<img src="/img/banner/mask_3.png" alt=" " style="margin: -3px 3px 0 0">
+							<a style="color: #303640;text-decoration: none">{{items.username}}</a>
+							<!-- ng-click="getsWitchSubAccount(items.userId,items.username)" -->
+						</td>
+                        <td style="text-align:center;">
+                            <span style="font-size:14px;width:50%;float:left;">{{items.share15m | number:3}}</span>
+                            <span style="font-size:14px;width:50%;float:left;">{{items.share24h | number:3}}</span>
+                            
+                        </td>
+                        <td style="text-align:center;"  class="hidden-xs">
+                        	<span style="font-size:14px;width:33%;float:left;">{{items.workerActive}}</span>                        	
+							<span style="font-size:14px;width:33%;float:left;">{{items.workerInactive}}</span>
+							<span style="font-size:14px;width:33%;float:left;">{{items.offLine}}</span>
+                        </td>
+                        <td style="text-align:center;"  class="hidden-xs">
+                        	<span style="font-size:14px;width:23%;float:left;" >{{items.today/100000000 | number:8}}</span>
+                        	<span style="font-size:14px;width:22%;float:left;">{{items.yesterday/100000000 | number:8}}</span>
+                        	<span style="font-size:14px;width:22%;float:left;">{{items.totalPaid/100000000 | number:8}}</span>
+                          	<span style="font-size:14px;width:22%;float:left;">{{items.totalDue/100000000 | number:8}}</span>
+                        	<a ng-click="getsWitchSubAccount(items.userId,items.username)">{{'dashboard.enter'|translate}}</a>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+               
+               <div class="wait" ng-show="!show_items" style="margin-bottom:10px">
+					<div class="loader1">
+						<div class="ball-clip-rotate hint">
+							<div></div>
+							<span class="hint2">{{'common.loding' |translate}}...</span>
+						</div>
+					</div>
+				</div>
+				<div ng-show="items_num==0 && show_items" class="wait text-center"  style="margin-bottom:10px">
+					<span>{{'common.empty' |translate}}</span>
+				</div>
+				<ul class="pagination" style="margin:0">
+					<li ng-class="{true:'disabled'}[p_current==1]">
+						<a href="javascript:void(0);" ng-click="p_index()" class="pIndex">{{'dashboard.homepage' | translate}}</a>
+					</li>
+					<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+						<a href="javascript:void(0);" ng-click="load_page(page,currentSelect.value)" class="pIndex">{{ page }}</a>
+					</li>
+					<li ng-class="{true:'disabled'}[p_current==p_all_page]">
+						<a href="javascript:void(0);" ng-click="p_last()" class="pIndex">{{'dashboard.lastpage' | translate}}</a>
+					</li>
+				</ul>
+				<div style="display:float; float:right;"  class="hidden-xs">
+					<select ng-model="currentSelect.value" ng-change="getUserPanelList(1, currentSelect.value)"
+					 style="padding-left: 2px;height: 32px;border: 1px solid #E6E6E6;border-radius: 4px; color: #121212;opacity: 0.56;">
+						<option value="10">10</option>
+						<option value="20">20</option>
+						<option value="30">50</option>
+						<option value="100">100</option>
+					</select>
+					<span>{{'dashboard.perpage'| translate}}{{'dashboard.totalp'| translate}}{{count}}
+						{{'dashboard.tiao'| translate}}{{totalPage}}
+						{{'dashboard.ye'| translate}}{{'dashboard.goto' | translate}}&nbsp;</span>
+					<input ng-model="page" type="number" style="width: 40px; text-align: center; height: 32px;border: 1px solid #E6E6E6;border-radius: 4px; color: #121212;opacity: 0.56;">
+					<span>&nbsp;{{'dashboard.ye1'| translate}}&nbsp;</span>
+					<div class="btn btn-primary" ng-click="load_page(page,currentSelect.value)" 
+					style="margin-top:-3px;height:32px; line-height: 16px; background: #1466BF;border-radius: 4px; box-shadow: none">
+						{{'common.ok' |translate}}
+					</div>
+				</div>
+            </label>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel"  style="padding: 40px;border: 1px solid #D9DCE0; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);border-radius: 4px;">
+            <div class="panel-body" style="padding: 0">
+                <p style="font-size: 18px ;padding-bottom: 5px;color: #73879c;">24{{'dashboard.hour'|translate}}{{'common.space'|translate}}{{'dashboard.Hashrate'|translate}}</p>
+                <div id="chart_power_24h" style="width: 100%; height: 400px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel"  style="padding: 40px;border: 1px solid #D9DCE0; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);border-radius: 4px;">
+            <div class="panel-body" style="padding: 0">
+                <p style="font-size: 18px;padding-bottom: 5px;color: #73879c;">24{{'dashboard.hour'|translate}}{{'common.space'|translate}}{{'dashboard.onlineminers'|translate}}</p>
+                <div id="chart_worker_24h" style="width: 100%; height: 400px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12" >
+        <div class="panel" style="padding: 40px;border: 1px solid #D9DCE0; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);border-radius: 4px;">
+            <div class="panel-body" style="padding: 0">
+                <p style="font-size: 18px;padding-bottom: 5px;color: #73879c;">30{{'dashboard.day'|translate}}{{'common.space'|translate}}{{'dashboard.Hashrate'|translate}}</p>
+                <div id="chart_power_30d" style="width: 100%; height: 400px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-bottom:310px;">
+		<div class="col-lg-12 col-md-12 col-sx-12">
+			<div class="panel" style="border: 1px solid #D9DCE0; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);border-radius: 4px;">
+				<div class="panel-heading" style="text-align: center;background: #FAFBFF;font-size:18px;font-weight:bold;color: #121212;opacity: 0.86;height: 50px; padding-top: 15px ">
+						<div class="col-md-6">
+							{{'notice.bj'|translate}}
+						</div>
+						<div class="col-md-6">
+							{{'notice.gz'|translate}}
+						</div>
+				</div>
+				<div class="panel-body" style="padding: 0 80px;text-align: center">
+					<div class="row">
+							<div class="col-md-6">
+								<form class="form-horizontal" style="text-align: center" >
+									<div class="form-group" style="margin-top: 10px" ng-repeat="north in northNode">
+										<div class="col-lg-12 col-md-12" style="color: #000;opacity: 0.86;">{{'foot.poolorder'|translate}}{{north.order}}{{'foot.poolorder1'|translate}}: {{north.adr}}</div>
+									</div>
+								</form>
+							</div>
+							<div class="col-md-6">
+								<form class="form-horizontal" style="text-align: center">
+									<div class="form-group" style="margin-top: 10px" ng-repeat="south in northNode">
+										<div class="col-lg-12 col-md-12" style="color: #000;opacity: 0.86;">{{'foot.poolorder'|translate}}{{south.order}}{{'foot.poolorder1'|translate}}: {{south.adr}}</div>
+									</div>
+								</form>
+							</div>
+						<div class="form-group col-md-12" style="border-top:1px solid #DEE2ED;padding: 40px 0;margin: 0">
+							<div class="col-lg-12" style="color: #000000;opacity: 0.56;">{{'foot.MinerParameter Setting'|translate}}: {{discr}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="col-lg-6 col-md-6 col-sx-12">
+			<div class="panel" style="padding: 40px;border: 1px solid #D9DCE0; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);border-radius: 4px;">
+				<div class="panel-heading" style="padding: 0px 15px;">
+					<p class="bb" style="font-size: 16px;padding: 10px;">售后服务</p>
+				</div>
+				<div class="panel-body" style="padding-top: 0px;">
+					<div class="row">
+						<div class="col-lg-7 col-md-7" style="padding-left: 10%;">
+							<form class="form-horizontal p-20">
+								<div class="form-group" style="height:30px;">
+									<div class="col-sm-12" style="color: #000;">客服邮箱 : support@hummerpool.com</div>
+								</div>
+								<div class="form-group" style="height:30px;">
+									<div class="col-sm-12" style="color: #000;">QQ群① : 783079293</div>
+								</div>
+								<div class="form-group" style="height:30px;margin-bottom: 25px;">
+									<div class="col-sm-12" style="color: #000;">QQ群② : 791421817</div>
+								</div>
+							</form>
+						</div>
+						<div class="col-lg-5 col-md-5">
+							<form class="form-horizontal p-20">
+								<div class="form-group" style="text-align: center;">
+									<img src="../../img/hummerpool.jpg" style="width: 86px;height: 86px;"/>
+									<p style="color: #000;font-size: 12px;    padding-top: 5px;">蜂鸟矿池微信公众号</p>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	 -->
+	</div>		
+<!-- <footer ng-include="'views/partials/footer.html'" class="loginFooter"></footer> -->
+
+
+
+
+<div class="col-lg-12" style="position: absolute;bottom: 0;left: 0;right: 0">
+	<div class="background-parallax" data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
+	<div class="container padding-bottom-big">
+		<div class="row justify-content-between">
+		<div class="col-lg-5 col-md-12 foot-logo hidden-xs" style="margin-top: 20px">
+			<img src="app/homepage/img/qrImg.jpg" class="qrImg">
+			<div style="display: inline-block; align-items: center; vertical-align: middle; margin-left:30px;padding-right: 60px;border-right:1px solid #FFFFFF" >
+				<img src="/app/homepage/img/logo/Logo.png" class="logoImg" alt="logo">
+				<text class="email">{{'foot.email'|translate}}：support@hummerpool.com</text>
+			</div>
+		</div>
+		<div class="col-lg-7 col-md-12" style="margin-top: 20px;color:#fff;opacity: 1; text-align: center">
+			<ul class="footer-list footlist">
+				<li class="ft-item">
+					<label style="margin-bottom:20px">{{'foot.Product'|translate}}</label>
+					<a href="http://www.cynosure-chain.com">{{'foot.Hummerpool'|translate}}</a>
+					<a href="https://www.hummerminer.com">{{'foot.Hummerminer'|translate}}</a>
+				</li>
+				<li class="ft-item">
+					<label style="margin-bottom:20px">{{'foot.Service'|translate}}</label>
+					<a href="/announcement">{{'foot.Announcements'|translate}}</a>
+					<a href="" style="visibility:hidden">{{'foot.Mining Tutorial'|translate}}</a>
+				</li>
+				<!-- <li class="ft-item">
+					<label style="margin-bottom:20px">{{'foot.Helps'|translate}}</label>
+					<a href="">{{'foot.Help Center'|translate}}</a>
+					<a href="">{{'foot.Contact Us'|translate}}</a>
+				</li> -->
+				<li class="ft-item" style="width: 160px !important">
+					<label style="margin-bottom:20px">{{'foot.After-sale'|translate}}</label>
+					<a href="">{{'foot.QQ Group'|translate}}1:783079293</a>
+					<a href="">{{'foot.QQ Group'|translate}}2:791421817</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	</div>
+</div>
+<!--切换子账号     模态框-->
+<script type="text/ng-template" id="modelGroup123">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">{{'modal.SwitchSub'|translate}}</h5>
+		<div class="content">
+			<div class="form-group has-feedback qiehuanModal">	
+				<label>
+					{{'modal.Switchto' |translate}}<span class="deleteStyle"> {{name}}</span>{{'modal.sub-account' |translate}}？
+				</label>
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm()" class="btn btn-primary mr" style="border-radius:0">{{"common.ok" |translate }}</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default" style="border-radius:0;border:1px solid #eaeaea">{{"common.cancel" |translate }}</button>
+		</div> 
+	</div>
+</script>
+
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.accountmultiple.mapper.recommend.UserFeeRecordMapper">
+	<insert id="insets">
+		INSERT INTO `user_fee_record` (`user_id`, `day`, `fee`, `fee_type`,`fee_desc`, `create_time`)
+		VALUES
+		<foreach collection="list" separator="," item="item">
+			(#{item.userId}, #{item.day}, #{item.fee}, #{item.feeType},#{item.feeDesc}, NOW())</foreach>
+	</insert>
+</mapper>

@@ -1,0 +1,88 @@
+<!--用户管理-->
+<h3>
+   <small>{{ 'dashboard.SUBACCOUNTS' | translate:{ appName: app.name } }} </small>
+</h3>
+
+<div class="table-grid table-grid-desktop">
+   	<div class="panel col-lg-12" style="padding-top: 10px;">
+   		<div style="margin-left: 14px;margin-right: 15px;">
+	   		<a href="{{url2}}" target="_blank" style="float:right;line-height:34px;">导出</a>
+			<em class="fa fa-search" style="float:right;color:rgba(0, 0, 0, 0.45);position:relative;left:-22px;top:9px;"></em>
+			<input ng-model="search" ng-change="getUserManagementList(1,currentSelect.value)" placeholder="账户名搜索" style="width:20%;float:right;" class="form-control ng-pristine ng-valid ng-touched"/>
+         </div>   
+      	<div class="panel-body tableBot">
+         	<p></p>
+         	<table class="table table-hover tableSize" style="margin-top: 30px;">
+            	<thead class="tableBC">
+            		<th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)"
+            			ng-class="{sortable: column.sortable !== false}">
+		                {{column.label}}
+		                <!--<i ng-show="vm.sort.direction === 1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-down"></i>
+		                <i ng-show="vm.sort.direction === -1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-up"></i>-->
+		            </th>
+            	</thead>
+           		<tbody>
+		            <tr ng-show="show_items" ng-repeat="items in itemsData|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1">
+		               	<td>{{items.username}}</td>
+		               	<td>{{items.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+		               	<td>{{items.lastTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+		               	<td>{{items.userPhone}}</td>
+		               	<td>{{items.userEmail}}</td>
+						<td>
+							<span ng-if="items.userType == 'member'">子账户</span>
+							<span ng-if="items.userType == 'master'">主账户</span>
+						</td>
+		            </tr>
+            	</tbody>
+         	</table>
+
+			<div class="wait" ng-show="!show_items">
+		    	<div class="loader1">
+	            	<div class="ball-clip-rotate hint">
+	               		<div></div>
+	               		<span class="hint2">加载中...</span>
+	            	</div>
+			    </div>
+		    </div>
+          	<div ng-show="items_num==0 && show_items" class="wait text-center">
+		    	<span>列表为空</span>
+		    </div>
+         	<select ng-model="currentSelect.value" ng-change="getUserManagementList(1,currentSelect.value)" class="displayValue">
+            	<option value="10">10</option>
+            	<option value="20">20</option>
+            	<option value="30">50</option>
+            	<option value="100">100</option>
+         	</select>
+         	<span class="display-value">条每页，共：{{count}} 条，{{totalPage}}页</span>
+         	<ul class="pagination btnPag">
+            	<li ng-class="{true:'disabled'}[p_current==1]">
+            		<a href="javascript:void(0);" ng-click="p_index()" class="pIndex">首页</a>
+            	</li>
+            	<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+            		<a href="javascript:void(0);" ng-click="load_page(page,currentSelect.value)" class="pIndex">{{ page }}</a>
+            	</li>
+            	<li ng-class="{true:'disabled'}[p_current==p_all_page]">
+            		<a href="javascript:void(0);" ng-click="p_last()" class="pIndex">尾页</a>
+            	</li>
+         	</ul>
+
+      	</div>
+   </div>
+   
+</div>
+
+<!--重置密码      模态框-->
+<script type="text/ng-template" id="passwordModal">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">重置密码</h5>
+		<div class="content">
+			<div class="form-group has-feedback" style="text-align: center;">
+				<label class="text-muted">用户名称：{{name}}</label>
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm(password)" class="btn btn-primary mr">确定</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">取消</button>
+		</div>
+	</div>
+</script>

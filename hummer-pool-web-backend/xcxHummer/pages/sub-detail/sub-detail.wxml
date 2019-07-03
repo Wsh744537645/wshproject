@@ -1,0 +1,96 @@
+<image src="../../image/userbackgr.png" class="usertop"></image>
+<image src="../../image/subusername.png" style='width:57px;height:56px;margin:10px 0 6px 0'></image>
+<view class='header'>
+  <text>{{userName}}</text>
+</view>
+
+<view class='Computing box'>
+  <view class="flex-item1">
+    <label style='color:#fff;margin-bottom:0'>15分钟云计算数据</label>
+    <view style='text-align: center;margin-bottom: 4px'>
+      <div class="line line1"></div>
+      <div class="line line2"></div>
+    </view>
+    <text>{{share15m}}</text>
+  </view>
+  <view class="flex-item1">
+    <label style='color:#fff;margin-bottom:0'>24小时云计算数据</label>
+    <view style='text-align: center;;margin-bottom: 4px'>
+      <div class="line line1"></div>
+      <div class="line line2"></div>
+    </view>
+    <text>{{share24h}}</text>
+  </view>
+</view>
+<view class='profit box'>
+  <view class="flex-item2">
+    <label style='color:#fff;margin-bottom:0'>今日预收</label>
+    <view style='text-align: center;;margin-bottom: 4px'>
+      <div class="line line1"></div>
+      <div class="line line2"></div>
+    </view>
+    <text>{{today}} </text>
+  </view>
+   <view class="flex-item2">
+    <label style='color:#fff;margin-bottom:0'>昨日实收</label>
+    <view style='text-align: center;;margin-bottom: 4px'>
+      <div class="line line1"></div>
+      <div class="line line2"></div>
+    </view>
+    <text>{{yesterday}} </text>
+  </view>
+</view>
+<view class='profit box'>
+   <view class="flex-item2">
+    <label style='color:#fff;margin-bottom:0'>待发放</label>
+    <view style='text-align: center;;margin-bottom: 4px'>
+      <div class="line line1"></div>
+      <div class="line line2"></div>
+    </view>
+    <text>{{totalDue}} </text>
+  </view>
+  <view class="flex-item2">
+    <label style='color:#fff;margin-bottom:0'>已发放</label>
+    <view style='text-align: center;;margin-bottom: 4px'>
+      <div class="line line1"></div>
+      <div class="line line2"></div>
+    </view>
+    <text>{{totalPaid}} </text>
+  </view>
+</view>
+
+
+<view class='box'>
+  <label class='machinelabel'>服务器</label>
+  <view class='machines'>
+    <view class="flex-item4">
+      <label style='margin:6px 0 0 0;color:#fff;'>全部数量</label>
+      <view style='text-align: center;;margin-bottom: 10px'>
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+      </view>
+      <text>{{workerTotal}}</text>
+    </view>
+    <view class="flex-item4">
+      <label style='margin:6px 0 0 0;color:#fff;'>活跃数量</label>
+      <view style='text-align: center;;margin-bottom: 10px'>
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+      </view>
+      <text>{{workerActive}}</text>
+    </view>
+    <view class="flex-item4">
+      <label style='margin:6px 0 0 0;color:#fff;'>当前在线率</label>
+      <view style='text-align: center;;margin-bottom: 10px'>
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+      </view>
+      <text>{{onlineRate}} %</text>
+    </view>
+  </view>
+</view>
+
+<view class='chart-box'>
+  <ec-canvas id="chart-one" canvas-id="chart24h" ec="{{ecOne}}"></ec-canvas>
+  <ec-canvas id="chart-two" canvas-id="chart30d" ec="{{ecBar}}"></ec-canvas>
+</view>

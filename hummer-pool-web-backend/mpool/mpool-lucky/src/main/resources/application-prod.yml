@@ -1,0 +1,27 @@
+spring:
+  redis:
+    host: redis-server
+    database: 0
+    port: 6379
+  boot:
+    admin:
+      client:
+        url:
+        - http://checkup-server:8080
+      instance:
+        service-base-url: http://loaclhost:8082
+      password: Admin@123
+      username: admin
+logging:
+  level:
+    com:
+      mpool: debug
+sharding:
+  jdbc:
+    datasource:
+      blockdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://rm-j6cyw99pjuui9l266.mysql.rds.aliyuncs.com:3306/h_pool_blocks?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+        username: pool
+        password: 3eZTsHL3KCK+lw==

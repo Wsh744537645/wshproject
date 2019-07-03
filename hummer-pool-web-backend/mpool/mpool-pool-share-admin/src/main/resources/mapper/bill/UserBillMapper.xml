@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.admin.module.bill.mapper.UserBillMapper">
+
+    <insert id="insert">
+        INSERT INTO user_bill(id, puid, day, earn, balance, bill_type, enabled, discrible, create_time)
+        VALUES (#{bill.id}, #{bill.puid}, #{bill.day}, #{bill.earn}, #{bill.balance}, #{bill.billType}, #{bill.enabled}, #{bill.discrible}, #{bill.createTime})
+    </insert>
+
+    <insert id="insertBills">
+        INSERT INTO `user_bill`(
+        `id`,
+        `puid`,
+        `day`,
+        `order_id`,
+        `earn`,
+        `balance`,
+        `accept_day`,
+        `power_day`,
+        `bill_type`,
+        `enabled`,
+        `discrible`,
+        `create_time`
+        ) VALUES
+        <foreach collection="userBills" separator="," item="tiem">
+            (#{tiem.id},
+            #{tiem.puid},
+            #{tiem.day},
+            #{tiem.orderId},
+            #{tiem.earn},
+            #{tiem.balance},
+            #{tiem.acceptDay},
+            #{tiem.powerDay},
+            #{tiem.billType},
+            #{tiem.enabled},
+            #{tiem.discrible},
+            #{tiem.createTime})
+        </foreach>
+    </insert>
+
+    <select id="getSettlementBillList" resultType="map">
+        SELECT
+          au.username AS username,
+          ub.id AS billId,
+          up.wallet_address AS walletAddress,
+          ub.earn AS earn,
+          ub.discrible AS discrible,
+          ub.day AS day,
+          UNIX_TIMESTAMP(ub.create_time) AS createTime
+        FROM
+          user_bill ub LEFT JOIN account_user au ON ub.puid = au.user_id
+          JOIN user_pay up ON up.puid = ub.puid
+        WHERE
+          ub.enabled = 1
+          <if test="userId != null">
+              AND ub.puid = #{userId}
+          </if>
+        ORDER BY ub.day DESC
+    </select>
+
+    <select id="getHadPaidBillList" resultType="map">
+        SELECT
+          au.username AS username,
+          up.wallet_address AS walletAddress,
+          ub.earn AS earn,
+          ub.id AS billId,
+          ub.order_id AS orderId,
+          ubtp.admin_name AS adminName,
+          UNIX_TIMESTAMP(ubtp.pay_at) AS payAt,
+          UNIX_TIMESTAMP(ub.create_time) AS createTime
+        FROM
+          user_bill ub LEFT JOIN user_bill_tobe_pay ubtp ON ubtp.paid_id = ub.paid_id
+          JOIN user_pay up ON up.puid = ub.puid JOIN account_user au ON ub.puid = au.user_id
+        WHERE
+          ub.enabled = 3
+    </select>
+
+    <update id="updateBillPaidId">
+        UPDATE
+          user_bill
+        SET
+          enabled = 2,
+          paid_id = #{paidId}
+        WHERE
+          id IN <foreach collection="billIds" close=")" open="(" item="item" separator=",">#{item}</foreach>
+        AND
+          enabled = 1
+        AND
+          paid_id IS NULL
+    </update>
+
+    <select id="getBillListByPaidId" resultType="com.mpool.common.model.share.UserBill">
+        SELECT
+          id,
+          puid,
+          earn
+        FROM
+            user_bill
+        WHERE
+            paid_id = #{paidId}
+        AND
+            enabled = 2
+    </select>
+
+    <select id="getBillDetailsListByPaidId" resultType="map">
+        SELECT
+          ub.id AS billId,
+          up.wallet_address AS walletAddress,
+          au.username AS username,
+          ub.earn AS earn,
+          ub.order_id AS acceptOrderId,
+          ub.create_time AS createTime
+        FROM
+            user_bill ub LEFT JOIN account_user au ON ub.puid = au.user_id
+            JOIN user_pay up ON up.puid = ub.puid
+        WHERE
+            ub.paid_id = #{paidId}
+    </select>
+
+    <update id="updateBillState">
+        UPDATE
+          user_bill
+        SET
+          enabled = #{enabled}
+        WHERE
+          id IN <foreach collection="bills" close=")" open="(" item="item" separator=",">#{item.id}</foreach>
+    </update>
+
+    <select id="getBillEarnTotal" resultType="double">
+        SELECT
+          SUM(earn)
+        FROM
+          user_bill
+        WHERE
+          id IN <foreach collection="billIds" close=")" open="(" item="item" separator=",">#{item}</foreach>
+    </select>
+
+    <select id="getPaidIdByBillId" resultType="com.mpool.common.model.share.UserBill">
+        SELECT
+          id,
+          earn,
+          enabled,
+          paid_id
+        FROM
+          user_bill
+        WHERE
+          id = #{billId}
+    </select>
+
+    <update id="canalBillPaidId">
+        UPDATE
+          user_bill
+        SET
+          enabled = 1,
+          paid_id = NULL
+        WHERE
+          id = #{billId}
+        AND
+          enabled = 2
+    </update>
+
+    <select id="getRecommendShareTotal" resultType="double">
+        SELECT
+            SUM(earn)
+        FROM
+            user_bill
+        WHERE
+            bill_type = 5
+        AND
+            enabled != 4
+    </select>
+
+    <select id="getAcceptOrderAdminPay" resultType="map">
+        SELECT
+            SUM(earn) AS total_adminPay,
+            SUM(accept) AS total_effectAccept
+        FROM
+            user_bill
+        WHERE
+            bill_type = 1
+        AND
+            enabled = 3
+        AND
+            order_id IS NOT NULL
+    </select>
+
+    <select id="getRecommendList" resultType="map">
+        SELECT
+            UNIX_TIMESTAMP(rbi.create_time) AS pTime,
+            au1.username AS r_username,
+            au2.username AS i_username,
+            ub.earn AS earn
+        FROM
+            recommend_bill_item rbi LEFT JOIN user_bill ub ON ub.id = rbi.bill_id
+            JOIN account_user au1 ON au1.user_id = rbi.recommend_uid
+            JOIN account_user au2 ON au2.user_id = rbi.invite_uid
+        WHERE
+            1=1
+            <if test="username != null">
+                AND
+                au1.username=#{username}
+            </if>
+            <if test="begTime != null and endTime != null">
+                AND
+                <![CDATA[ DATE_FORMAT(#{begTime},'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(rbi.create_time,'%Y-%m-%d %H:%i:%s')]]>
+                AND
+                <![CDATA[ AND DATE_FORMAT(#{endTime},'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(rbi.create_time,'%Y-%m-%d %H:%i:%s')]]>
+            </if>
+    </select>
+
+    <select id="getAcceptOrderAdminPayList" resultType="map">
+        SELECT
+            ub.earn AS adminPay,
+            ub.accept AS effectAccept,
+            pt.product_name AS productName,
+            UNIX_TIMESTAMP(ubtp.pay_at) AS payAt,
+            ubtp.admin_name AS adminName,
+            ubtp.txid AS txid
+        FROM
+            user_bill ub LEFT JOIN user_bill_tobe_pay ubtp ON ubtp.paid_id = ub.paid_id
+            JOIN product_order_accept poa ON poa.order_id = ub.order_id
+            JOIN product pt ON pt.product_id = poa.product_id
+        WHERE
+            ub.bill_type = 1
+        AND
+            ub.enabled = 3
+        AND
+            ub.order_id IS NOT NULL
+        <if test="productName != null">
+            AND
+            pt.product_name=#{productName}
+        </if>
+        <if test="begTime != null and endTime != null">
+            AND
+            <![CDATA[ DATE_FORMAT(#{begTime},'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(ubtp.pay_at,'%Y-%m-%d %H:%i:%s')]]>
+            AND
+            <![CDATA[ AND DATE_FORMAT(#{endTime},'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(ubtp.pay_at,'%Y-%m-%d %H:%i:%s')]]>
+        </if>
+    </select>
+</mapper>

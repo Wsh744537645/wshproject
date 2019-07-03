@@ -1,0 +1,293 @@
+<span data-ng-bind="::pageTitle()" style="display: none;"></span>
+<nav role="navigation" class="navbar topnavbar" style="position: relative; transition: background .3s cubic-bezier(0,0,.2,1) .15s;
+font-size: 15px; z-index:99999;width:100%;border-bottom: 1px solid hsla(0,0%,100%,.15) !important; ">
+	<div class="navbar-header" style="height: 90px;">
+		<a href="#" class="navbar-brand">
+			<div class="brand-logo">
+				<img src="/app/homepage/img/logo/Logo.png" alt="蜂鸟矿池" class="img-responsive" width="200px" height="58px" style="margin: 8px 30px"/>
+			</div>
+		</a>
+	</div>
+	<span ng-controller="TranslateController" class="dropdown" style="display: inline-block;color: #4A4A4A; position: absolute;top:20px; right: 50px;">
+		<button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" 
+		style="width: 50px;background: #FFFFFF;border-radius: 18px;border: none;margin-top: 16px"> 
+			{{langKeyCur}}<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="min-width: 80px;padding: 10px;left: 0;">
+			<li ng-click="changeLanguage('es_AR')" style="cursor: pointer;">中 文</li>
+			<li ng-click="changeLanguage('en')" style="cursor: pointer;">ENGLISH</li>
+		</ul>
+	</span>
+</nav>
+<section class="doc doc--bg2" style="background-color:rgb(245, 245, 245); width: 100%;  margin: 0 auto;position: absolute;overflow: hidden;padding-top:100px; z-index:-1">
+<canvas id="canvas" style="width: 100%; height: 100%; top:0px; left:0px;display: none"></canvas>
+</section>
+<div style="width:100%; display: flex; flex-direction: column; align-items: center;">
+	<div style="width:100%; background: linear-gradient(163.27deg, #250F8A 0.61%, #02ECF1 113.21%); color: #fff; opacity: 0.86; padding: 30px 0">
+			<div class="row" style="margin: 20px 0">		
+				<div class="col-sm-12 col-md-12 col-xs-12">
+						<div class="row">
+							<div class="col-sm-6 col-md-6 col-xs-12" style="padding-top:20px;">
+								<div class="col-md-12" style="text-align: center;">
+									<span>{{'worker.15mHs' | translate}}</span>
+									<br/>
+									<span style=" color: #FFFFFF;  opacity: 0.56;font-size: 12px;">(TH/s)</span>
+									<br/>
+									<span style="font-size: 18px;">{{userStatus.share15m | number:3}}</span>
+								</div>
+							</div>
+							<div class="col-sm-6 col-md-6 col-xs-12" style="padding-top:20px;">
+								<div class="col-md-12" style="text-align: center;">
+									<span>24h {{'subActsMng.Hashrate' | translate}}</span>
+									<br/>
+									<span style=" color: #FFFFFF;  opacity: 0.56;font-size: 12px;">(TH/s)</span>
+									<br/>
+									<span style="font-size: 18px;">{{userStatus.share24h | number:3}}</span>
+								</div>
+							</div>	
+						</div>
+				</div>						
+			</div> 
+			<div class="row">				
+				<div class="col-sm-12 col-md-12 col-xs-12">
+						<div class="row" style="padding:20px;">
+							<div class="col-sm-3 col-md-3 col-xs-6" style="padding-top:20px;">
+								<div class="col-md-12" style="text-align: center;">
+									<em class="icon-clock"></em>
+									<br/>
+									<span>{{'dashboard.YesterdayArrival' |translate}}</span>
+									<br/>
+									<span style=" color: #FFFFFF;  opacity: 0.56;font-size: 12px;">(BTC)</span>
+									<br/>
+									<span style="font-size: 18px;">{{userStatus.yesterday/ 100000000 | number:8}}</span>
+								</div>
+							</div>
+							<div class="col-sm-3 col-md-3 col-xs-6" style="padding-top:20px;">
+								<div class="col-md-12" style="text-align: center;">
+									<em class="fa fa-dollar"></em>
+									<br/>
+									<span>{{'sharepage.total' |translate}}</span>
+									<br/>
+									<span style=" color: #FFFFFF;  opacity: 0.56;font-size: 12px;">(BTC)</span>
+									<br/>													 
+									<span style="font-size: 18px;">{{userStatus.totalRevenue*1/100000000 | number:8}}</span>
+									</div>
+							</div>
+							<div class="col-sm-3 col-md-3 col-xs-6" style="padding-top:20px;">
+								<div class="col-md-12" style="text-align: center;">
+									<em class="fa fa-money"></em>
+									<br/>
+									<span>{{'dashboard.Paid' |translate}}</span>
+									<br/>
+									<span style=" color: #FFFFFF;  opacity: 0.56;font-size: 12px;">(BTC)</span>
+									<br/>
+									<span style="font-size: 18px;">{{userStatus.totalPaid*1/100000000 | number:8}}</span>
+								</div>
+							</div>
+							<div class="col-sm-3 col-md-3 col-xs-6" style="padding-top:20px;">
+								<div class="col-md-12" style="text-align: center;">
+									<em class="fa fa-cny"></em>
+									<br/>
+									<span>{{'dashboard.Balance' | translate}}</span>
+									<br/>
+									<span style=" color: #FFFFFF;  opacity: 0.56;font-size: 12px;">(BTC)</span>
+									<br/>
+									<span style="font-size: 18px;">{{userStatus.totalDue*1/100000000 | number:8}}</span>
+								</div>
+							</div>	
+						</div>
+						<div class="row">
+								<p class="clearfix" style="text-align: center;">
+									<span>
+										<small class="mr-sm">{{'sharepage.acM' |translate}} <span style="color:#10EFAC;">{{userStatus.workerActive}}</span></small> 
+										<small class="mr-sm">{{'sharepage.iacM' |translate}} <span style="color:#EFD910;">{{userStatus.workerInactive}}</span></small> 
+										<small class="mr-sm">{{'sharepage.offM' |translate}} <span style="color:#10EFAC;">{{userStatus.offLine}}</span></small> 
+										<small class="mr-sm">{{'sharepage.totalM' |translate}} <span style="color:#EFD910;">{{userStatus.workerTotal}}</span></small> 
+										<small class="mr-sm"><a href="" style="color:#fff">{{userStatus.username}}</a></small>
+									</span>
+								</p>
+						</div>
+				</div>						
+			</div>
+	</div>
+	<div class="col-lg-12 collectiveStyle" style="width: 90%;">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel" style="padding: 40px 0; margin-top: 30px; border-radius: 10px; opacity: 0.9">
+					<div id="linChart" style="height: 420px;width: 100%;"></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel" style="padding: 40px 0; margin-top: 30px; border-radius: 10px; opacity: 0.9">
+					<!-- <div id="30dChart" style="height: 420px;width: 100%;"></div> -->
+					<div id="chart_power_30d" style="width: 100%; height: 420px;"></div>
+
+				</div>
+			</div>
+		</div>
+		<!-- 矿工 -->
+		<div class="col-sm-12 col-md-12 col-xs-12"  style="padding:0">
+			<div class="panel shareBox">
+				<div class="panel-body tableBot">
+						<ul class="fwmc_xxk" style="padding-top: 10px;">
+							<li ng-click="getState(items.id, items.value)" ng-repeat="items in statusData" ng-class='{on:$index==selectedState}'>
+								{{items.name}}
+							</li>
+						</ul>
+						<!--搜索-->
+						<!-- <div class="input-group  hidden-xs" style="width: 240px;float: right;padding-top: 10px;">
+							<input type="text" ng-model="workerName" class="form-control" placeholder="请输入矿机名" style="height:30px;" />
+							<span class="input-group-btn">
+								<button type="button" ng-click="getWorkerList(1, 10)" class="btn btn-default" style="height:30px;line-height:10px;">搜索</button>
+							</span>
+						</div> -->
+						<table class="table table-hover tableSize">
+							<thead class="tableBC">
+								<tr>
+									<!-- <th class="{{column.class}}">
+										<label for="all"></label><input id="all" type="checkbox" ng-model="allchecked" ng-checked="allchecked" ng-click="selectAll(allchecked)"
+											title="全选" />
+									</th> -->
+									<th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)" ng-class="{sortable: column.sortable !== false}"
+										class="{{column.class}}">
+										{{column.label}}
+										<i ng-show="vm.sort.direction === 1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-down"></i>
+										<i ng-show="vm.sort.direction === -1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-up"></i>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-show="show_items" ng-repeat="items in itemsData|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1">
+									<!-- <td>
+										<input type="checkbox" ng-checked="items.$checked" ng-click="checkedPlat(items,itemsData)" title="选择未分组和分组才能操作" />
+									</td> -->
+									<td>{{items.workerName}}</td>
+									<!-- <td>{{items.hashAccept5mT}}T</td> -->
+									<td>{{items.hashAccept15mT}}T</td>
+									<td>{{items.accept15mRe | number:3}}</td>
+									<td class="hidden-xs">{{items.hashAccept1hT}}T</td>
+									<td class="hidden-xs">{{items.accept1hRe | number:3}}</td>
+									<td class="hidden-xs">
+										<div ng-if="items.lastShareTime == null" style="float:left;">
+											{{items.lastShareTime}}
+										</div>
+										<div ng-if="items.lastShareTime != null" style="float:left;">
+											{{items.lastShareTime | date:'yyyy-MM-dd HH:mm:ss'}}
+										</div>
+										<!-- <span ng-if="items.offline == 'offline'" style="float:right;">
+											<span class="deleteBtn" ng-click="deleteWorkerGroup(2,this)">移除</span>
+										</span> -->
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="wait" ng-show="!show_items">
+							<div class="loader1">
+								<div class="ball-clip-rotate hint">
+									<div></div>
+									<span class="hint2">{{'common.loding' |translate}}...</span>
+								</div>
+							</div>
+						</div>
+						<div ng-show="items_num==0 && show_items" class="wait text-center">
+							<span>{{'common.empty' |translate}}</span>
+						</div>
+						<select ng-model="currentSelect.value" ng-change="getWorkerList(1, currentSelect.value)" class="displayValue hidden-xs" style="margin-top:20px">
+							<option value="10">10</option>
+							<option value="20">20</option>
+							<option value="30">50</option>
+							<option value="100">100</option>
+						</select>
+						<span style="margin-top: -20px !important">{{'dashboard.perpage'| translate}}{{'dashboard.totalp'| translate}}{{count}}
+								{{'dashboard.tiao'| translate}}{{totalPage}}
+								{{'dashboard.ye'| translate}}</span>
+						<ul class="pagination btnPag">
+							<li ng-class="{true:'disabled'}[p_current==1]">
+								<a href="javascript:void(0);" ng-click="p_index()" class="pIndex">{{'dashboard.homepage' | translate}}</a>
+							</li>
+							<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+								<a href="javascript:void(0);" ng-click="load_page(page,currentSelect.value)" class="pIndex">{{ page }}</a>
+							</li>
+							<li ng-class="{true:'disabled'}[p_current==p_all_page]">
+								<a href="javascript:void(0);" ng-click="p_last()" class="pIndex">{{'dashboard.lastpage' | translate}}</a>
+							</li>
+						</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 支付 -->
+		<div class="col-sm-12 col-md-12 col-xs-12"  style="padding:0">
+			<div class="panel shareBox">
+				<div class="panel-body tableBot">
+					<table class="table table-hover tableSize" width="100%">
+						<thead class="tableBC">
+							<tr>
+								<th ng-repeat="column in paidvm.columns" ng-if="!column.hidden" ng-click="paidvm.sort.toggle(column)" ng-class="{sortable: column.sortable !== false}" class="{{column.className}}">
+									{{column.label}}
+									<i ng-show="paidvm.sort.direction === 1" ng-if="column.name === paidvm.sort.column && paidvm.sort.direction" class="fa fa-long-arrow-down"></i>
+									<i ng-show="paidvm.sort.direction === -1" ng-if="column.name === paidvm.sort.column && paidvm.sort.direction" class="fa fa-long-arrow-up"></i>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-show="show_items2" ng-repeat="items in itemsData2|filter:paidvm.filter|orderBy:paidvm.sort.column:paidvm.sort.direction===-1">
+								<td class="hidden-sm hidden-md hidden-lg" title="{{items.txid}}">{{items.txid | cut:true:10:'...'}}</td>
+								<td class="hidden-xs" title="{{items.txid}}">{{items.txid}}</td>
+								<td>{{items.pay_at | date:'yyyy-MM-dd'}}</td>
+								<td>{{items.pay_btc /100000000 | number:8}}</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="wait" ng-show="!show_items2">
+						<div class="loader1">
+							<div class="ball-clip-rotate hint">
+								<div></div>
+								<span class="hint2">{{'common.loding' |translate}}...</span>
+							</div>
+						</div>
+					</div>
+					<div ng-show="items_num2==0 && show_items2" class="wait text-center">
+						<span>{{'common.empty' |translate}}</span>
+					</div>
+					<select ng-model="currentSelect2.value" ng-change="getPayList(1, currentSelect2.value)" class="displayValue hidden-xs" style="margin-top:20px">
+						<option value="10">10</option>
+						<option value="20">20</option>
+						<option value="30">50</option>
+						<option value="100">100</option>
+					</select>
+					<span>{{'dashboard.perpage'| translate}}{{'dashboard.totalp'| translate}}{{count}}
+							{{'dashboard.tiao'| translate}}{{totalPage}}
+							{{'dashboard.ye'| translate}}</span>
+					<!-- <span class="display-value hidden-xs">
+						<a href="/apis/wallet/pay/record/export" target="_blank">导出所有支付记录</a>
+					</span> -->
+					<ul class="pagination btnPag">
+						<li ng-class="{true:'disabled'}[p_current2==1]">
+							<a href="javascript:void(0);" ng-click="p_index2()" class="pIndex">{{'dashboard.homepage' | translate}}</a>
+						</li>
+						<li ng-repeat="page in pages2" ng-class="{true:'active'}[p_current2==page]">
+							<a href="javascript:void(0);" ng-click="load_page2(page,currentSelect2.value)" class="pIndex">{{ page }}</a>
+						</li>
+						<li ng-class="{true:'disabled'}[p_current2==p_all_page2]">
+							<a href="javascript:void(0);" ng-click="p_last2()" class="pIndex">{{'dashboard.lastpage' | translate}}</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+
+
+
+
+
+
+
+
+
+
+

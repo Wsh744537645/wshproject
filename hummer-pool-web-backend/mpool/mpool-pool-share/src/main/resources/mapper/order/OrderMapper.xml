@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.mapper.order.OrderMapper">
+
+	<select id="getExpiredOrderAccept" resultType="map">
+		SELECT
+			pdo.order_id AS order_id,
+			pdo.puid AS puid,
+			pdo.collection_address AS collection_address,
+			pdo.state AS state,
+			pdo.had_pay AS had_pay,
+			poa.product_id AS product_id,
+			poa.accept AS accept,
+			poa.accept_id AS acceptId,
+			pdo.expire_time AS expireTime
+		FROM
+			product_order pdo
+		LEFT JOIN
+			product_order_accept poa
+		on
+			poa.order_id= pdo.order_id
+		WHERE
+		<![CDATA[ DATE_FORMAT(#{date},'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(pdo.expire_time,'%Y-%m-%d %H:%i:%s') AND ]]>
+		pdo.state = 1 OR pdo.state = 2
+	</select>
+
+	<delete id="deleteAllExpiredOrder">
+		DELETE FROM `product_order`
+		WHERE
+		order_id IN <foreach collection="orderIdList" close=")" open="(" item="item" separator=",">#{item}</foreach>
+	</delete>
+
+	<delete id="deleteAllExpiredOrderAccept">
+		DELETE FROM product_order_accept
+		WHERE
+			order_id IN <foreach collection="orderIdList" close=")" open="(" item="item" separator=",">#{item}</foreach>
+	</delete>
+
+	<delete id="deleteAllExpiredOrderPower">
+		DELETE FROM product_order_power
+		WHERE
+			order_id IN <foreach collection="orderIdList" close=")" open="(" item="item" separator=",">#{item}</foreach>
+	</delete>
+
+	<select id="getWillPayOrderList" resultType="com.mpool.share.model.OrderIdsModel">
+		SELECT
+			po.puid AS puid,
+			po.order_id AS orderId,
+			po.collection_address AS collectionAddress,
+			poa.product_id AS productId,
+			poa.accept_id AS acceptId,
+			po.pay_coin AS payCoin,
+			po.had_pay AS hadPay,
+			po.expire_time AS expire_time
+		FROM
+			product_order po LEFT JOIN product_order_accept poa ON po.order_id = poa.order_id
+		WHERE
+			po.state = 1 or po.state = 2
+	</select>
+
+	<select id="getHadPayOrderList" resultType="com.mpool.share.model.OrderIdsModel">
+		SELECT
+			po.puid AS puid,
+			po.exchange_rate AS exchangeRate,
+			poa.order_id AS orderId,
+			poa.accept AS accept,
+			poa.product_id AS productId,
+			poa.accept_id AS acceptId,
+			poa.expire_time AS expireTime,
+			poa.work_time AS work_time,
+			product.period AS period
+		FROM
+			product_order_accept poa LEFT JOIN product_order po ON po.order_id = poa.order_id
+			JOIN product ON poa.product_id = product.product_id
+		WHERE
+			<![CDATA[ DATE_FORMAT(#{date},'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(poa.work_time,'%Y-%m-%d %H:%i:%s') AND ]]>
+			po.state = 0
+	</select>
+
+	<update id="updateOrderStateBatch">
+		UPDATE
+			product_order
+		SET
+			state = #{state}
+		WHERE
+			order_id IN <foreach collection="orderIds" close=")" open="(" item="item" separator=",">#{item}</foreach>
+	</update>
+
+	<insert id="updateOrderAcceptExpiredTime">
+		INSERT INTO `product_order_accept`
+		(
+		accept_id,
+		order_id,
+		product_id,
+		work_time,
+		expire_time
+		)
+		VALUES
+		<foreach collection="orderAcceptModels" separator="," item="tiem">
+			(
+			#{tiem.acceptId},
+			#{tiem.orderId},
+			#{tiem.productId},
+			#{tiem.workTime},
+			#{tiem.expireTime}
+			)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		work_time = VALUES(work_time),
+		expire_time = VALUES(expire_time)
+	</insert>
+
+	<update id="updateOrderHadExpiredState">
+		UPDATE
+		product_order
+		SET
+		state = 3
+		WHERE
+		order_id IN <foreach collection="orderIds" close=")" open="(" item="item" separator=",">#{item}</foreach>
+	</update>
+
+	<insert id="updateOrderWillPayState">
+		INSERT INTO `product_order`
+		(
+		order_id,
+		state,
+		had_pay,
+		expire_time
+		)
+		VALUES
+		<foreach collection="orderModels" separator="," item="tiem">
+			(
+			#{tiem.orderId},
+			#{state},
+			#{tiem.hadPay},
+			#{tiem.expireTime}
+			)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		state = VALUES(state),
+		had_pay = VALUES(had_pay),
+		expire_time = VALUES(expire_time)
+	</insert>
+</mapper>

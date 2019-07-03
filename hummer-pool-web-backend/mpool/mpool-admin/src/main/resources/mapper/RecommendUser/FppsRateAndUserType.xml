@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module.recommend.mapper.UserFppsRateMapper">
+	<!--userId传主账号Id搜索-->
+	<select id="getFppsRateAndUserTypeListMaster" resultType="com.mpool.admin.InModel.OutUserFppsRatio">
+	SELECT u.username as username,u.user_group as usreGroup,u.create_by as master_user_name,
+		p.fpps_rate as fppsRate,p.pay_model as payMode
+		FROM account_user u
+		LEFT JOIN user_pay p ON p.puid = u.user_id
+		WHERE u.user_type = "member"
+		AND u.create_by = #{userId}
+		AND p.pay_model=#{currencyId}
+
+	</select>
+	<!--WHERE u.user_type = 'member'-->
+	<!--AND u.create_by = #{userId}-->
+
+	<!--不传userId搜索全部子账号-->
+	<select id="getAllMemberUserList" resultType="com.mpool.admin.InModel.OutUserFppsRatio">
+		SELECT u.username as username,u.user_group as usreGroup,u.create_by as master_user_name,
+		p.fpps_rate as fppsRate,p.pay_model as payMode
+		FROM account_user u
+		LEFT JOIN user_pay p ON p.puid = u.user_id
+		WHERE u.user_type = 'member'
+		AND p.pay_model=#{currencyId}
+	</select>
+
+	<select id="getAllMemberUserListGroup" resultType="com.mpool.admin.InModel.OutUserFppsRatio">
+		SELECT u.username as username,u.user_group as usreGroup,u.create_by as master_user_name,
+		p.fpps_rate as fppsRate,p.pay_model as payMode
+		FROM account_user u
+		LEFT JOIN user_pay p ON p.puid = u.user_id
+		WHERE u.user_type = 'member'
+		AND u.user_group =#{userGroup}
+		AND p.pay_model=#{currencyId}
+	</select>
+	<select id="getAllMemberUserLists" resultType="com.mpool.admin.InModel.OutUserFppsRatio">
+		SELECT u.username as username,u.user_group as usreGroup,u.create_by as master_user_name,
+		p.fpps_rate as fppsRate,p.pay_model as payMode
+		FROM account_user u
+		LEFT JOIN user_pay p ON p.puid = u.user_id
+		WHERE u.user_type = 'member'
+		AND u.create_by =#{userId}
+		AND u.user_group =#{userGroup}
+		AND p.pay_model=#{currencyId}
+	</select>
+
+</mapper>

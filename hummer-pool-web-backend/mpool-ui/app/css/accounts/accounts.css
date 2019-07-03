@@ -1,0 +1,107 @@
+
+.accountsStyle{
+	border: 1px solid #ff934c;
+    background: #fefcee;
+    padding: 5px 8px;
+    width: 522px;
+    margin-top: 20px;
+    margin-left: 13px;
+}
+.accountsStyle span{
+	color: #ff934c;
+}
+.codeWidth{
+	width: 134px !important;
+}
+.title1{
+	display: none;
+}
+.title2{
+	display: none;
+}
+.title3{
+	display: none;
+}
+
+.regtitle11 {
+    position: absolute;
+    margin-left: 540px;
+    margin-top: -33px;
+    font-size: 12px;
+    color: #f15533;
+    width: 300px;
+    height: 33px;
+    line-height: 30px;
+}
+.regtitle12 {
+    position: absolute;
+    margin-left: -105px;
+    margin-top: 1px;
+    font-size: 12px;
+    color: #f15533;
+    width: 300px;
+    height: 33px;
+    line-height: 30px;
+}
+.regtitle {
+    position: absolute !important;
+    margin-left: -8px !important;
+    margin-top: 1px !important;
+    font-size: 12px !important;
+    color: #f15533 !important;
+    width: 300px !important;
+    height: 33px !important;
+    line-height: 30px !important;
+}
+
+.tabStyle{
+	background-color: transparent;
+	margin-bottom: 5px;
+	height: 49px;
+}
+
+.h3mar{
+	margin-bottom: 5px !important;
+}
+.modularStyle{
+	padding-bottom: 50px;
+	/*height: 518px;*/
+}
+.company{
+	position: absolute;
+	top: 8px;
+	margin-left: 120px;
+}
+
+
+/*******新tab切换********/
+
+
+/*******tab切换********/
+.fwmc{ 
+	overflow: hidden;
+	margin-left: 20px; 
+	float: left;
+}
+.fwmc li { 
+	float: left;
+	min-width: 130px;
+	max-width: 200px;
+	padding: 0 15px 7px 15px;
+	font-size: 14px;
+	color: #666;
+	margin-right: 30px;
+	text-align: center;
+	overflow: hidden;
+	cursor: pointer;
+	height: 42px;
+	line-height: 37px;
+}
+.fwmc li:hover {
+	font-weight: 600;
+}
+.on {
+	color: #4b91ea; 
+	border-bottom: 2px solid #4b91ea;
+	font-weight: 600;
+}

@@ -1,0 +1,64 @@
+<h3>
+   <small>
+   	<a href="#" class="icon-action-undo" ng-click="back()" title="返回"></a>&nbsp;
+   	{{ 'dashboard.SYSUSEREDIT' | translate:{ appName: app.name } }} 
+   </small>
+</h3>
+<div class="table-grid table-grid-desktop">
+   	<div class="panel col-lg-12 modularStyle">
+      	<form class="form-horizontal" role="form">
+      		
+      		<div class="form-group" style="height: 53px;">
+      			<label class="col-md-3 col-sm-3 col-xs-12 control-label"></label>
+		   		<div class="col-sm-5 col-md-5 col-xs-12 accountsStyle title2"></div>
+	    	</div>
+      		
+          	<div class="form-group">
+             	<label class="col-md-3 col-sm-3 col-xs-12 control-label">用户名</label>
+             	<div class="col-sm-5 col-md-5 col-xs-12">
+             		<label class="control-label">{{itemsData.username}}</label>
+             	</div>
+          	</div>
+          	
+          	<div class="form-group">
+             	<label class="col-md-3 col-sm-3 col-xs-12 control-label">真实姓名</label>
+             	<div class="col-sm-5 col-md-5 col-xs-12">
+             		<label class="control-label">{{itemsData.fullName}}</label>
+             	</div>
+          	</div>
+          	
+          	<div class="form-group">
+             	<label class="col-md-3 col-sm-3 col-xs-12 control-label">邮箱</label>
+             	<div class="col-sm-5 col-md-5 col-xs-12">
+                	<input type="text" ng-model="itemsData.email" ng-change="changemail(itemsData.email)" placeholder="请输入邮箱" class="form-control">
+             	</div>
+             	<span class="col-md-4 col-sm-4 col-xs-12 regtitle12">{{emilCheck}}</span>
+          	</div>
+          	
+          	<div class="form-group">
+				<label class="col-md-3 col-sm-3 col-xs-12 control-label">手机号码</label>
+				<div class="col-sm-5 col-md-5 col-xs-12">
+				   <input type="text" ng-model="itemsData.telphone" ng-change="changphone(itemsData.telphone)" placeholder="请输入手机号" onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')" class="form-control">
+				</div>
+				<span class="col-md-4 col-sm-4 col-xs-12 regtitle12">{{phoneCheck}}</span>
+			 </div>
+
+			 <div class="form-group">
+				<label class="col-md-3 col-sm-3 col-xs-12 control-label">密码重置(选填)</label>
+				<div class="col-sm-5 col-md-5 col-xs-12">
+				   <input type="password" ng-model="itemsData.password" placeholder="请输入新密码" class="form-control">
+				</div>
+			 </div>
+          	
+
+          	<div class="form-group">
+             	<div class="col-sm-offset-3 col-md-offset-3 col-xs-offset-6 col-sm-7 col-md-7 col-xs-7">
+                	<button type="button" class="btn btn-primary mt-lg subcreSubAcc" ng-disabled="!sub" ng-click="updateSub()" style="width: 100px;">确 认</button>
+             	</div>
+          	</div>
+       	</form>
+   </div>
+</div>
+
+
+

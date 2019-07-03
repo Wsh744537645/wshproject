@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.account.mapper.miner.MinerMapper">
+
+    <select id="findMinerByCurrencyId" resultType="map">
+        SELECT
+	      mc.currency_id AS currency_id,
+	      mc.currency_name AS currency_name,
+	      miner.chip AS chip,
+          miner.miner_type AS miner_type,
+          miner.share AS share,
+          miner.power_waste AS power_waste
+        from
+          miner_currency mc LEFT JOIN miner ON mc.miner_type = miner.miner_type
+        WHERE mc.currency_id = #{id};
+    </select>
+
+</mapper>

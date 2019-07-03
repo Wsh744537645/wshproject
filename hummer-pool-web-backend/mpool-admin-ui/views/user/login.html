@@ -1,0 +1,69 @@
+
+<!--头部导航栏-->
+<span data-ng-bind="::pageTitle()" style="display: none;"></span>
+<nav role="navigation" class="navbar topnavbar">
+    <div class="navbar-header">
+      	<a href="#/homePage" class="navbar-brand">
+      		<div class="brand-logo">
+            	<img src="../../img/banner/logo.png" alt="蜂鸟矿池" class="img-responsive" />
+         	</div>
+         	<!--<div class="brand-logo-collapsed">
+            	<img src="img/flogo-w-1.png" alt="App Logo" class="img-responsive" />
+         	</div>-->
+      	</a>
+    </div>
+	<div class="nav-wrapper">
+	    <ul class="nav navbar-nav navbar-right">
+	    	<li><a></a></li>
+         	<li><a></a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="block-center mt-xl wd-xl loginHeight">
+   	<div class="panel panel-dark panel-flat">
+      	<div class="panel-body">
+         	<p class="text-center pv title-head">用户登录</p>
+         	<form name="login_Form" novalidate class="form-validate mb-lg">
+         		<div class="loader">
+	         		<div class="ball-pulse">
+		            	<div></div>
+		               	<div></div>
+		               	<div></div>
+		            </div>
+	            	<span>登录中...</span>
+            	</div>
+         		<!--验证提示信息-->
+            	<div class="clearfix form-validation loginTitle">
+               		<span class="fa fa-exclamation-circle Icon"></span>
+               		<span class="text-danger2">{{nameCheck}}</span>
+               		<span class="text-danger2">{{passwordCheck}}</span>
+               		<span class="text-danger2">{{capCodeCheck}}</span>
+               		<span class="text-danger2">{{loginMsg}}</span>
+            	</div>
+            	<!--登录用户名-->
+            	<div class="form-group has-feedback">
+               		<input type="text" ng-model="loginUser" placeholder="用户名" class="form-control"/>
+               		<span class="fa fa-user form-control-feedback text-muted"></span>
+            	</div>
+            	<!--登录密码-->
+            	<div class="form-group has-feedback">
+                	<input type="password" ng-model="loginPassword" placeholder="请输入登录密码" class="form-control"/>
+            		<span class="fa fa-lock form-control-feedback text-muted"></span>
+            	</div>
+            	
+            	<button type="submit" ng-click="postLogin()" class="btn btn-block btn-primary mt-lg">登录</button>
+         	</form>
+         	<p class="pt-lg text-center">版本号 Hummer20181211</p>
+      	</div>
+   	</div>
+</div>
+<!--ng-include="'views/partials/footer.html'"-->
+<footer class="loginFooter">
+	<div class="col-lg-12">
+		<div class="p-lg text-center" style="color: #fff;">
+			<span>Copyright &copy;2018 深圳致宸信息科技有限公司 All Rights Reserved 粤ICP备09098080号</span>
+		</div>
+	</div>
+	
+</footer>

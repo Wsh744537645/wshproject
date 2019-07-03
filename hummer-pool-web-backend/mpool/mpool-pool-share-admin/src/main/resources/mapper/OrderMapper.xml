@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.admin.module.dashboard.mapper.OrderMapper">
+
+	<select id="getTotalPay" resultType="double">
+		SELECT
+			SUM(pay_coin/exchange_rate)
+		FROM
+			product_order
+		WHERE
+			state=0 OR state=3
+	</select>
+
+	<select id="getTotalPowerPay" resultType="double">
+		SELECT
+			SUM(pop.duration * pt.power_fee * poa.accept)
+		FROM
+			product_order_power pop LEFT JOIN product_order po ON pop.order_id=po.order_id
+			JOIN product_order_accept poa ON poa.accept_id=pop.accept_id
+			JOIN product pt ON pt.product_id = poa.product_id
+		WHERE
+			po.state=0 OR po.state=3
+	</select>
+
+	<select id="getHadPayOrderList" resultType="map">
+		SELECT
+			po.order_id AS orderId,
+			UNIX_TIMESTAMP(po.create_time) AS createTime,
+			po.pay_coin AS payCoin,
+			po.exchange_rate AS exchangeRate,
+			pt.product_name AS productName,
+			poa.accept AS accept,
+			au.username AS username
+		FROM
+			product_order_accept poa LEFT JOIN product_order po ON poa.order_id = po.order_id
+			JOIN product pt ON pt.product_id=poa.product_id
+			JOIN account_user au ON au.user_id = po.puid
+		WHERE
+			po.state=0 OR po.state=3
+			<if test="productName != null">
+				AND
+				pt.product_name=#{productName}
+			</if>
+			<if test="orderId != null">
+				AND
+				po.order_id=#{orderId}
+			</if>
+			<if test="userName != null">
+				AND
+				au.username=#{userName}
+			</if>
+	</select>
+
+	<select id="getHadPayPowerOrderList" resultType="map">
+		SELECT
+		pop.power_id AS powerOrderId,
+		pop.duration AS duration,
+		po.order_id AS orderId,
+        UNIX_TIMESTAMP(po.create_time) AS createTime,
+		po.exchange_rate AS exchangeRate,
+		pt.product_name AS productName,
+		poa.accept AS accept,
+		au.username AS username
+		FROM
+		product_order_power pop LEFT JOIN product_order po ON pop.order_id=po.order_id
+		JOIN product_order_accept poa ON poa.accept_id=pop.accept_id
+		JOIN product pt ON pt.product_id = poa.product_id
+		JOIN account_user au ON au.user_id = po.puid
+		WHERE
+		po.state=0 OR po.state=3
+		<if test="productName != null">
+			AND
+			pt.product_name=#{productName}
+		</if>
+		<if test="orderId != null">
+			AND
+			po.order_id=#{orderId}
+		</if>
+		<if test="userName != null">
+			AND
+			au.username=#{userName}
+		</if>
+	</select>
+
+	<select id="getOrderIdsListByProductId" resultType="map">
+		SELECT
+			poa.order_id AS orderId,
+			poa.product_id AS productId,
+			UNIX_TIMESTAMP(po.expire_time) AS expireTime
+		FROM
+			product_order_accept poa LEFT JOIN product_order po ON po.order_id = poa.order_id
+		WHERE
+			poa.product_id IN <foreach collection="productIds" close=")" open="(" item="item" separator=",">#{item}</foreach>
+	  	AND
+			po.state = 0
+	  	FOR UPDATE
+	</select>
+
+	<update id="addOrderExpireTime">
+		UPDATE
+			product_order
+		SET
+			expire_time = expire_time + #{second}
+		WHERE
+			order_id IN <foreach collection="orderIds" close=")" open="(" item="item" separator=",">#{item}</foreach>
+	</update>
+
+	<insert id="updateOrderExpiredTime">
+		INSERT INTO `product_order`
+		(
+		order_id,
+		expire_time
+		)
+		VALUES
+		<foreach collection="orderModels" separator="," item="tiem">
+			(
+			#{tiem.orderId},
+			#{tiem.expireTime}
+			)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		expire_time = VALUES(expire_time)
+	</insert>
+</mapper>

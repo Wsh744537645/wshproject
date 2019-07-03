@@ -1,0 +1,150 @@
+<!--头部导航栏-->
+<nav role="navigation" class="navbar topnavbar" ng-controller="homeController">
+		<div class="container" style=" padding: 0;">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">					
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				
+				<a class="navbar-brand" style="height:90px; padding: 0;margin-top: -10px;line-height: 90px;">
+					<div class="brand-logo">
+						<img src="/img/banner/logo_1.png" ng-click="homepage()" class="img-responsives" style="width:200px;"/>
+					</div>
+				</a>
+			</div>
+						
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="height:90px !important;font-weight: bold;
+			font-family: Microsoft YaHei;">				
+				<ul class="nav navbar-nav" style="margin-top:17px">
+					<li ng-show="userType == 0">
+						<a ng-href="/api/dashboard">{{ 'nav.dashboard' | translate}}</a>
+					</li>
+					<li ng-show="userType == 1">
+						<a ng-href="/api/sondashboard">{{ 'nav.dashboard' | translate}}</a>
+					</li>
+					<li ng-show="userType == 1">
+						<a ng-href="/api/workers">{{ 'nav.miner' | translate}}</a>
+					</li>
+					<li ng-show="userType == 1">
+						<a ng-href="/api/payrecords">{{ 'nav.PAYRECORDS' | translate}}</a>
+					</li>
+					<li>
+						<a ng-href="/api/LoginAfter_Statistics">{{ 'nav.Statistics' | translate}}</a>
+					</li>
+					<li>
+						<a ng-href="/api/commonProblem">{{ 'nav.COMMONPROBLEM' | translate}}</a>
+					</li>
+				</ul>
+				
+				<ul class="nav navbar-nav navbar-right" style="margin-top:17px" >					     
+					<!--
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{username}}<span class="caret"></span></a>
+						<ul class="dropdown-menu" ng-show="userType == 0">
+							<li><a ng-href="javascript:getSubaccounts();">子账户管理</a></li>
+							<li><a href="#">用户中心</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">注销</a></li>
+						</ul>
+						<ul class="dropdown-menu" ng-show="userType == 1">
+								<li><a href="#">{{master.username}}</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a ng-href="javascript:getSubaccounts();">账户管理</a></li>
+								<li><a href="#">用户中心</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#">注销</a></li>
+						</ul>
+					</li>
+				    -->
+					<li dropdown="" class="dropdown dropdown-list">
+						<a dropdown-toggle="" style="cursor: pointer;">
+							<!-- <em class="icon-user"></em>&nbsp;&nbsp; -->
+							<img src="/img/banner/mask.png" style="margin: -4px 5px 0 0">
+							<span>{{username}}</span>
+							<text ng-show="userType == 1">
+								- {{currencyName}}
+							</text>
+							<span class="fa fa-angle-down"></span>
+						</a>
+						<ul class="dropdown-menu animated flipInX" ng-show="userType == 0">
+							<li>
+								<div class="list-group">
+									<a class="list-group-item" style="padding:0px;">
+										<div class="media-box">
+											<div class="media-box-body clearfix">											
+												<p ng-click="getSubaccounts()">{{'nav.SUBACCOUNTS' |translate}}</p>
+											</div>
+										</div>
+									</a>
+									<a class="list-group-item" style="padding:0px;">
+										<div class="media-box">
+											<div class="media-box-body clearfix">			
+												<p ng-click="getAccounts()">{{'dashboard.usercenter' |translate}}</p>
+											</div>
+										</div>
+									</a>
+									<a class="list-group-item" style="padding:0px;">
+										<div class="media-box">
+											<div class="media-box-body clearfix">		
+												<p ng-click="logout()">{{'nav.signOut' |translate}}</p>
+											</div>
+										</div>
+									</a>
+								</div>
+							</li>
+						</ul>
+	
+						<ul class="dropdown-menu animated flipInX" ng-show="userType == 1">
+							<li>
+								<div class="list-group">
+									<a class="list-group-item" style="padding:0px;" ng-show="master">
+										<div class="media-box">
+											<div class="media-box-body clearfix" >
+												<p ng-click="getsWitchSubAccount(master.userId, master.username)">{{master.username}}</p>
+											</div>
+										</div>
+									</a>
+									<a ng-href="/api/sonSubaccount" class="list-group-item" style="padding:0px;">
+										<div class="media-box">
+											<div class="media-box-body clearfix">
+												<p>{{'nav.SUBACCOUNTS' |translate}}</p>
+											</div>
+										</div>
+									</a>
+									<a class="list-group-item" style="padding:0px;">
+										<div class="media-box">
+											<div class="media-box-body clearfix">
+												<p ng-click="getAccounts()">{{'dashboard.usercenter' |translate}}</p>
+											</div>
+										</div>
+									</a>
+									<a class="list-group-item" style="padding:0px;">
+										<div class="media-box">
+											<div class="media-box-body clearfix">
+												<p ng-click="logout()">{{'nav.signOut' |translate}}</p>
+											</div>
+										</div>
+									</a>
+								</div>
+							</li>
+						</ul>	
+					</li>
+					<span ng-controller="TranslateController" class="dropdown" style="color: #4A4A4A;">
+						<button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" 
+						style="width: 50px;background: #FFFFFF;border-radius: 18px;border: none;margin-top: 16px"> 
+							{{langKeyCur}}<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="min-width: 80px;padding: 10px">
+							<li ng-click="changeLanguage('es_AR')" style="cursor: pointer;">中 文</li>
+							<li ng-click="changeLanguage('en')" style="cursor: pointer;">ENGLISH</li>
+						</ul>
+					</span>
+				</ul>			
+			</div>
+		</div>
+	</nav>
+	
+	
+	<script src="/js/app.js"></script>

@@ -1,0 +1,44 @@
+spring:
+  mail:
+    port: 465
+    host: smtp.qq.com
+    username: 862775170@qq.com
+    password: skonjydgvgqpbcec
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+        debug: true
+  redis:
+    host: redis-server
+    database: 0
+    port: 6379
+  boot:
+    admin:
+      client:
+        url:
+        - http://checkup-server:2000
+        instance:
+          service-base-url: http://loaclhost:8082
+      password: Admin@123
+      username: admin
+logging:
+  level:
+    com.btc: debug
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - '*'
+sharding:
+  jdbc:
+    datasource:
+      blockdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://db-server:3306/h_pool_blocks?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: wg666666

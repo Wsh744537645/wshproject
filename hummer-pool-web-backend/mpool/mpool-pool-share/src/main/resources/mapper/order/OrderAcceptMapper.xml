@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.mapper.order.OrderAcceptMapper">
+
+	<select id="getAcceptOrderListByState" resultType="com.mpool.share.resultVo.OrderListVO">
+		SELECT
+			poa.accept_id AS orderId,
+			poa.create_time AS createTime,
+			po.pay_coin AS payCoin,
+			po.had_pay AS hadPay,
+			product.period AS period,
+			product.currency_name AS currencyName,
+			po.state AS state
+		FROM
+			product_order_accept poa LEFT JOIN product_order po on poa.order_id = po.order_id
+			JOIN product ON poa.product_id = product.product_id
+		WHERE
+			po.puid = #{userId}
+		<if test="state != null">
+			AND
+			<if test="state == 1 || state == 2">
+				po.state = 1 OR po.state = 2
+			</if>
+			<if test="state == 0 || state == 3 || state == 4">
+				po.state = #{state}
+			</if>
+		</if>
+	</select>
+
+	<select id="getOrderPayInfo" resultType="map">
+		SELECT
+			poa.accept_id AS orderId,
+			po.state AS state,
+			po.pay_coin AS payCoin,
+			po.had_pay AS hadPay,
+			product.currency_name AS currencyName
+		FROM
+			product_order_accept poa LEFT JOIN product_order po on poa.order_id = po.order_id
+			JOIN product ON poa.product_id = product.product_id
+		WHERE
+			po.puid = #{userId}
+		AND
+			poa.accept_id = #{acceptId}
+	</select>
+
+	<select id="getNormalInfo" resultType="map">
+		SELECT
+			poa.order_id AS id,
+			poa.accept_id AS orderId,
+			poa.create_time AS createTime,
+			poa.work_time AS workTime,
+			poa.expire_time AS expireTime,
+			poa.accept AS accept,
+			po.state AS state,
+			product.period AS period,
+			product.product_id AS productId,
+			product.currency_name AS currencyName
+		FROM
+			product_order_accept poa LEFT JOIN product_order po on poa.order_id = po.order_id
+			JOIN product ON poa.product_id = product.product_id
+		WHERE
+			po.puid = #{userId}
+		AND
+			poa.accept_id = #{acceptId}
+	</select>
+
+	<select id="getCurAcceptTotal" resultType="map">
+		SELECT
+			COUNT(poa.accept_id) AS size,
+			SUM(poa.accept) AS accept
+		FROM
+			product_order_accept poa LEFT JOIN product_order po ON poa.order_id = po.order_id
+		WHERE
+			po.puid = #{userId}
+		AND
+			po.state = 0
+		GROUP BY
+			po.puid
+	</select>
+</mapper>

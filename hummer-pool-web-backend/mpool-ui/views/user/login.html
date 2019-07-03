@@ -1,0 +1,120 @@
+<!--头部导航栏-->
+<!-- <span data-ng-bind="::pageTitle()" style="display: none;"></span>	 -->
+
+<!-- <nav class="navbar topnavbar navbar-inveres"  role="navigation" >
+	<div class="container">
+    	<div class="navbar-header"> -->
+			<!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="top-navbar-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		    -->	
+			<!-- <div class="navbar-brand">
+      			<div class="brand-logo">
+            		<img src="../../img/banner/logo.png" ng-click="homepage()" alt="蜂鸟矿池" class="img-responsive" />
+         		</div>
+      		</div> -->
+    	<!-- </div> -->
+		<!--<div class="navbar-collapse collapse" id="top-navbar-1">
+	    	<ul class="nav navbar-nav navbar-right">
+	    		<li><a ng-href="/register">注册</a></li>         		
+        	</ul>
+		</div>-->
+	<!-- </div>	
+</nav> -->
+
+<div class="block-center mt-xl wd-xl loginHeight" style="margin-top: 255px !important">
+   	<div class="panel panel-dark panel-flat">
+      	<div class="panel-body" style="padding: 30px;border: 1px solid #D9DCE0;box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2); border-radius: 4px;">
+			 <!-- <p class="text-center pv title-head">用户登录</p> -->
+			<img src="../../app/homepage/img/logo/logo_1.png" width="100%" style="margin-top:-30px">
+         	<form name="login_Form" novalidate class="form-validate mb-lg">
+         		<div class="loader">
+	         		<div class="sk-spinner sk-spinner-fading-circle">
+	               		<div class="sk-circle1 sk-circle"></div>
+	               		<div class="sk-circle2 sk-circle"></div>
+	               		<div class="sk-circle3 sk-circle"></div>
+	               		<div class="sk-circle4 sk-circle"></div>
+	               		<div class="sk-circle5 sk-circle"></div>
+	               		<div class="sk-circle6 sk-circle"></div>
+		               	<div class="sk-circle7 sk-circle"></div>
+		               	<div class="sk-circle8 sk-circle"></div>
+		               	<div class="sk-circle9 sk-circle"></div>
+		               	<div class="sk-circle10 sk-circle"></div>
+		               	<div class="sk-circle11 sk-circle"></div>
+		               	<div class="sk-circle12 sk-circle"></div>
+	            	</div>
+	            	<span>{{'login.loging' | translate}}...</span>
+            	</div>
+				 <!--验证提示信息-->
+				 
+
+
+
+            	<div class="clearfix form-validation loginTitle">
+					   <!-- <span class="fa fa-exclamation-circle Icon"></span> -->
+					<img src="/img/banner/erricon.png" alt=""> &nbsp;					   
+               		<span class="text-danger2">{{nameCheck}}</span>
+               		<span class="text-danger2">{{passwordCheck}}</span>
+               		<span class="text-danger2">{{capCodeCheck}}</span>
+               		<span class="text-danger2">{{loginMsg}}</span>
+				</div>
+				
+
+
+            	<!--登录用户名-->
+            	<div class="form-group has-feedback">
+               		<input type="text" ng-model="loginUser" placeholder="{{'login.username' | translate}}" class="form-control"/>
+               		<!-- <span class="fa fa-user form-control-feedback text-muted"></span> -->
+            	</div>
+            	<!--登录密码-->
+            	<div class="form-group has-feedback">
+                	<input type="password" ng-model="loginPassword" placeholder="{{'login.enterLP' | translate}}" class="form-control" id="enterLogin"/>
+            		<!-- <span class="fa fa-lock form-control-feedback text-muted"></span> -->
+				</div>
+				<div ng-show="loginModel">
+            	<!--登录验证码-->
+            	<div class="form-group has-feedback is-it-verified" ng-show="loginStatus">
+                	<input type="text" ng-model="loginCode" placeholder="{{'login.vc' | translate}}" class="form-control"/>
+            		<div class="code">
+            			<span ng-click="loginEmailCode()">
+							<img src="{{imgUrl}}" class="imgStyle"/>
+						</span>
+					</div>
+					
+				</div>
+			</div>
+				<!-- <div>
+					<button ng-click="showCode()">获取验证码</button>
+				</div> -->
+            	<div class="clearfix">
+	               <div class="checkbox c-checkbox pull-left mt0">
+	                  <label>
+						 <input type="checkbox" ng-model="remember" ng-click="checkedPlat(remember)"/>
+						 <!-- style="background: #1466BF !important" -->
+	                     <span class="fa fa-check"></span>{{'login.rempsw' | translate}}</label>
+	               </div>
+				</div>
+				<div ng-show="loginModel">
+					
+				<button type="submit" ng-click="postLogin()" ng-disabled="loginBtnDisabled" ng-show="loginStatus" class="btn btn-block btn-primary mt-lg" style="background-color:#1466BF">{{'login.login' | translate}}</button>
+				<button type="submit" ng-click="showCode()" ng-disabled="loginBtnDisabled" ng-show="!loginStatus" class="btn btn-block btn-primary mt-lg" style="background-color:#1466BF">{{'login.login' | translate}}</button>
+			</div>
+         		<div class="clearfix">
+	               	<div class="checkbox c-checkbox pull-left mt0">
+	                  	<a ng-href="/resetPassword" class="text-muted">{{'login.forget' | translate}}</a>
+	               </div>
+	               	<div class="pull-right">
+	               		<!--<a ng-href="#/phoneRegister" class="text-muted">手机注册</a>&nbsp;&nbsp;-->
+	               		<a ng-href="/register" class="text-muted">{{'login.regis' | translate}}</a>
+	               	</div>
+	            </div>
+         	</form>
+         	<p class="pt-lg text-center" style="margin-top: 50px; margin-bottom:-10px; color: #1E2863; opacity: 0.56;">{{'login.vision' | translate}} Hummer20181211</p>
+      	</div>
+   	</div>
+</div>
+
+<!--<footer ng-include="'views/partials/footer.html'" class="loginFooter"></footer>-->

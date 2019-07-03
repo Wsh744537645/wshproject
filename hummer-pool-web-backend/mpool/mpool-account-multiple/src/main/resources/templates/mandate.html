@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>授权</title>
+<link href="/css/common.css" rel="stylesheet" type="text/css" />
+<link href="/css/inside.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/js/echarts.min.js"></script>
+<script type="text/javascript" src="/js/mandate.js"></script>
+</head>
+<body>
+	<div class="empty-placeholder hidden"></div>
+
+	<div id="subNav">
+		<span
+			style="color: #fff; width: 100px; font-size: 25px; float: left; padding: 11px 0 0 82px;">LOGO</span>
+		<ul class="wrap">
+			<li class="adv_active"><a href="#" class="adv_door adv_active"><ins></ins>首页<span></span></a></li>
+			<li><a href="#" class="adv_source"><ins></ins>统计<span></span></a></li>
+			<li><a href="#" class="adv_price"><ins></ins>工具下载<span></span></a></li>
+			<li><a href="#" class="adv_transfer"><ins></ins>公告<span></span></a></li>
+		</ul>
+	</div>
+
+	<div id="checkCar" class="wrap">
+		<div class="checkCar_show clearfix">
+			<ul>
+				<li><i>图标</i>
+					<p style="font-size: 14px; line-height: 20px;">过去24小时</p> <label
+					style="color: #888;">(BTC)</label><br /> <span style="font-size: 20px; line-height: 50px;"> 0.00000000
+						 </span></li>
+				<li><i>图标</i>
+					<p style="font-size: 14px; line-height: 20px;">总收益</p> <label
+					style="color: #888;">(BTC)</label><br /> <span style="font-size: 20px; line-height: 50px;"> 0.00000000
+						 </span></li>
+				<li><i>图标</i>
+					<p style="font-size: 14px; line-height: 20px;">已支付</p> <label
+					style="color: #888;">(BTC)</label><br /> <span style="font-size: 20px; line-height: 50px;"> 0.00000000
+						 </span></li>
+				<li><i>图标</i>
+					<p style="font-size: 14px; line-height: 20px;">账户余额</p> <label
+					style="color: #888;">(BTC)</label> <br /> <span style="font-size: 20px; line-height: 50px;"> 0.00000000
+						 </span></li>
+			</ul>
+		</div>
+		<p class="check_decorate">
+			<ins th:text="${worker}"></ins>
+			<!-- <span
+				style="border: 1px solid #888; padding: 5px; border-radius: 4px;" ></span>
+			<span
+				style="border: 1px solid #888; padding: 5px; border-radius: 4px;"></span> -->
+			<span>在线矿工 <ins th:text="${workerOnline}"></ins></span> <span>离线矿工<ins th:text="${workerOffline}">0</ins></span><span>用户名 <ins th:text="${user.username}"></ins></span>
+		</p>
+	</div>
+
+	<div id="alpha_price" class="wrap">
+		<div class="show_title">
+			<div id="linChart"
+				style="width: 100%; height: 422px; padding: 40px 0 0 0;"></div>
+		</div>
+		<p class="price_decorate"></p>
+	</div>
+
+	<input type="hidden" id="jsonData" th:value="${json}" />
+
+<!-- 	<div id="footer">
+		<div class="footer-content">
+			<div class="wrapper">
+				<div class="performance clearfix">
+					<div class="per-1 per">
+						<div class="t">XXXXXXXXXX</div>
+						<div class="st">XXXXXXXXXXXX</div>
+						</a>
+					</div>
+					<div class="per-2 per">
+						<div class="t">XXXXXXXXXXX</div>
+						<div class="st">XXXXXXXXX</div>
+						</a>
+					</div>
+					<div class="per-3 per">
+						<div class="t">XXXXXXXXXX</div>
+						<div class="st">XXXXXXXXXXX</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+</body>
+<script>
+	$(function() {
+		//优势页面点击子导航
+		var subNav_active = $(".adv_active");
+		var subNav_scroll = function(target) {
+			subNav_active.removeClass("adv_active");
+			target.parent().addClass("adv_active");
+			subNav_active = target.parent();
+		};
+		$("#subNav a").click(function() {
+			subNav_scroll($(this));
+			var target = $(this).attr("href");
+			var targetScroll = $(target).offset().top - 80;
+			$("html,body").animate({
+				scrollTop : targetScroll
+			}, 300);
+			return false;
+		});
+		//页面跳转时定位
+		if (window.location.hash) {
+			var targetScroll = $(window.location.hash).offset().top - 80;
+			$("html,body").animate({
+				scrollTop : targetScroll
+			}, 300);
+		}
+		$(window).scroll(function() {
+			var $this = $(this);
+			var targetTop = $(this).scrollTop();
+			var footerTop = $("#footer").offset().top;
+			var height = $(window).height();
+
+			if (targetTop >= 520) {
+				$("#subNav").addClass("fixedSubNav");
+				$(".empty-placeholder").removeClass("hidden");
+			} else {
+				$("#subNav").removeClass("fixedSubNav");
+				$(".empty-placeholder").addClass("hidden");
+			}
+			if (targetTop < 750) {
+				subNav_scroll($(".adv_door"));
+			} else if (targetTop > 1200 && targetTop < 1640) {
+				subNav_scroll($(".adv_source"));
+			} else if (targetTop > 2314 && targetTop < 2734) {
+				subNav_scroll($(".adv_price"));
+			} else if (targetTop > 2968 && targetTop < 3268) {
+				subNav_scroll($(".adv_transfer"));
+			} else if (targetTop > 3327 && targetTop < 3627) {
+				subNav_scroll($(".adv_payment"));
+			} else if (targetTop > 3651 && targetTop < 4071) {
+				subNav_scroll($(".adv_promise"));
+			} else if (targetTop > 4163 && targetTop < 4473) {
+				subNav_scroll($(".adv_ride"));
+			} else if (targetTop > 4580) {
+				subNav_scroll($(".adv_finance"));
+			}
+		})
+	}());
+</script>
+
+</body>
+</html>

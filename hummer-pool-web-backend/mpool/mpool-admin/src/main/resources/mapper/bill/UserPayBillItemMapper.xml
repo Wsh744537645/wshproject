@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module.bill.mapper.UserPayBillItemMapper">
+	<!--待生成账单-->
+	<select id="getDuePayItems" resultType="map">
+		SELECT
+			b.id,
+			u.username,
+			b.wallet_address,
+			b.cteate_at,
+			b.pay_btc,
+			b.day,
+		  	b.desc,
+			m.username AS mUsername
+		FROM
+			user_pay_bill_item b
+		LEFT JOIN account_user u ON u.user_id = b.puid
+		LEFT JOIN account_user m ON u.master_user_id = m.user_id
+		WHERE
+			bill_number = 0
+		<if test="mapper.username != null">
+			<bind name="usernamelike" value="'%' +mapper.username+ '%'"/>
+			AND u.username like #{usernamelike}
+		</if>
+		<if test="day != null">
+			AND b.day = #{day}
+		</if>
+		ORDER BY b.cteate_at DESC
+	</select>
+	<!--待生成账单页面的余额合计-->
+	<select id="getDuePayBtcSum" resultType="com.mpool.common.model.account.bill.UserPayBillItem">
+		SELECT
+		b.id,
+		u.username,
+		b.wallet_address,
+		b.cteate_at,
+		b.pay_btc,
+		b.day,
+		b.desc,
+		m.username AS mUsername
+		FROM
+		user_pay_bill_item b
+		LEFT JOIN account_user u ON u.user_id = b.puid
+		LEFT JOIN account_user m ON u.master_user_id = m.user_id
+		WHERE
+		bill_number = 0
+		<if test="username != null">
+			<bind name="usernamelike" value="'%' +username+ '%'"/>
+			AND u.username like #{usernamelike}
+		</if>
+		ORDER BY b.cteate_at DESC
+	</select>
+	
+	<update id="updateBillNumber">
+		UPDATE `user_pay_bill_item`
+		SET `bill_number` = #{billNumber}
+		WHERE
+		`id` in
+		<foreach collection="itemIds" close=")" open="(" item="item" separator=",">
+			#{item}
+		</foreach>
+		AND bill_number = 0
+	</update>
+
+	<update id="updateListRollBack">
+		UPDATE `user_pay_bill_item`
+		SET `bill_number` = 0
+		WHERE
+		`id` in
+		<foreach collection="itemIds" close=")" open="(" item="item" separator=",">
+			#{item}
+		</foreach>
+		AND bill_number = #{billNumber}
+	</update>
+
+	<update id="updateAllRollBack">
+		UPDATE `user_pay_bill_item`
+		SET `bill_number` = 0
+		WHERE
+		bill_number = #{billNumber}
+	</update>
+	
+	<select id="getBillItemsByBillNumber" resultType="java.util.LinkedHashMap">
+		SELECT
+			b.id,
+			u.username,
+			b.bill_number,
+			b.`day`,
+			b.wallet_address,
+			b.cteate_at,
+			b.pay_btc,
+			m.username AS mUsername
+		FROM
+			user_pay_bill_item b
+		LEFT JOIN account_user u ON u.user_id = b.puid
+		LEFT JOIN account_user m ON u.master_user_id = m.user_id
+		WHERE
+			b.bill_number = #{billNumber}
+	</select>
+	
+	<select id="getBillItemCSVByBillNumber" resultType="com.mpool.admin.module.bill.model.BillItemCSVModel">
+		SELECT
+			b.id,
+			u.username,
+			b.bill_number,
+			b.`day`,
+			b.wallet_address,
+			b.cteate_at,
+			b.pay_btc,
+			m.username AS mUsername
+		FROM
+			user_pay_bill_item b
+		LEFT JOIN account_user u ON u.user_id = b.puid
+		LEFT JOIN account_user m ON u.master_user_id = m.user_id
+		WHERE
+			b.bill_number = #{billNumber}
+	</select>
+	
+	<select id="getAllBtcByBillNumber" resultType="java.lang.Long">
+		SELECT
+			SUM(pay_btc)
+		FROM
+			user_pay_bill_item
+		WHERE
+			bill_number = #{billNumber}
+	</select>
+	
+	<select id="getPayBillItemList" resultType="map">
+		SELECT
+			b.id,
+			u.username,
+			b.bill_number AS billNumber,
+			b.`day`,
+			b.wallet_address AS walletAddress,
+			b.cteate_at AS cteateAt,
+			pb.pay_at AS payAt,
+			b.pay_btc AS payBtc,
+			m.username AS mUsername,
+			pb.pay_by AS payBy
+		FROM
+			user_pay_bill_item b
+		LEFT JOIN user_pay_bill pb ON pb.bill_number = b.bill_number
+		LEFT JOIN account_user u ON u.user_id = b.puid
+		LEFT JOIN account_user m ON u.master_user_id = m.user_id
+		WHERE
+			pb.`status` = 0
+	</select>
+
+	<select id="getUserPayInPayment" resultType="com.mpool.common.model.account.bill.UserPayBillItem">
+		SELECT
+		b.puid,
+		SUM(b.pay_btc) AS pay_btc
+		FROM
+		user_pay_bill_item b
+		LEFT JOIN user_pay_bill pb ON pb.bill_number = b.bill_number
+		WHERE
+		(pb.`status` = 1 or pb.`status` is null)
+		AND b.puid IN <foreach collection="list" close=")" open="(" separator="," item="item">
+		#{item}
+	</foreach>
+		GROUP BY
+		b.puid
+	</select>
+	<select id="getUserPayInPaymentByMasterId" resultType="com.mpool.common.model.account.bill.UserPayBillItem">
+
+		SELECT SUM(up.pay_btc)as pay_btc,au.master_user_id as puid  from
+		`user_pay_bill_item` up 
+		LEFT JOIN account_user au on au.user_id=up.puid
+		LEFT JOIN user_pay_bill pb ON pb.bill_number = up.bill_number
+		WHERE (pb.`status` = 1 or pb.`status` is null) AND au.master_user_id in <foreach collection="userList" open="(" separator="," item="item" close=")">#{item}</foreach>
+		 GROUP BY au.master_user_id
+
+	</select>
+
+	<select id="getDuePayItemList" resultType="com.mpool.common.model.account.bill.UserPayBillItem">
+		SELECT
+		b.id,
+		u.username,
+		b.wallet_address,
+		b.cteate_at,
+		b.pay_btc,
+		b.day,
+		m.username AS mUsername
+		FROM
+		user_pay_bill_item b
+		LEFT JOIN account_user u ON u.user_id = b.puid
+		LEFT JOIN account_user m ON u.master_user_id = m.user_id
+		WHERE
+		bill_number = 0
+		<if test="username != null">
+			AND m.username =#{username}
+		</if>
+	</select>
+
+	<select id="exportDuePayItems" resultType="com.mpool.common.model.account.bill.UserPayBillItem">
+		SELECT
+		b.id,
+		u.username,
+		b.wallet_address,
+		b.cteate_at,
+		b.pay_btc,
+		b.day,
+		m.username AS mUsername
+		FROM
+		user_pay_bill_item b
+		LEFT JOIN account_user u ON u.user_id = b.puid
+		LEFT JOIN account_user m ON u.master_user_id = m.user_id
+		WHERE
+		bill_number = 0
+		<if test="username != null">
+			<bind name="usernamelike" value="'%' +mapper.username+ '%'"/>
+			AND u.username like #{usernamelike}
+			<!--AND m.username =#{username}  -->
+		</if>
+	</select>
+
+	<insert id="addPayBillInfo">
+		INSERT INTO `user_pay_bill_item`
+		(`day`,bill_number, `puid`, `wallet_address`,`pay_btc`, `cteate_at`,`desc`)
+		 VALUES(#{day},'0', #{puid},#{walletAddress},#{payBtc},#{cteateAt},#{desc})
+	</insert>
+
+	<!--<insert id="addPayBillInfo">-->
+		<!--INSERT INTO-->
+		<!--`user_pay_bill_item` (`day`, `bill_number`, `puid`, `wallet_address`, `pay_btc`, `cteate_at`,`desc`)-->
+		<!--VALUES-->
+		<!--<foreach collection="list" item="item" separator=",">-->
+			<!--(#{item.day}, '0', #{item.puid}, #{item.walletAddress}, #{item.payBtc}, #{item.cteateAt}, #{item.desc})-->
+		<!--</foreach>-->
+	<!--</insert>-->
+
+	<update id="updateListPayBct">
+		UPDATE `user_pay_bill_item`
+		SET `pay_btc`=#{payBtc}
+		WHERE `id`= #{id}
+	</update>
+
+	<select id="getUserPayBillItemList" resultType="com.mpool.common.model.account.bill.UserPayBillItem">
+		SELECT *
+		FROM user_pay_bill_item
+	</select>
+</mapper>

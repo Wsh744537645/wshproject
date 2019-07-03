@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="angle">
+
+<head>
+   <base href="/">
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <meta name="description" content="{{app.description}}">
+   <meta name="keywords" content="app, responsive, angular, bootstrap, dashboard, admin">
+   <title data-ng-bind="::pageTitle()">Hummer Pool</title>
+
+   <link rel="stylesheet" href="app/css/bootstrap.css" data-ng-if="!app.layout.isRTL">
+   <link rel="stylesheet" href="app/css/bootstrap-rtl.css" data-ng-if="app.layout.isRTL">
+
+   <link rel="stylesheet" href="app/css/app.css" data-ng-if="!app.layout.isRTL">
+   <link rel="stylesheet" href="app/css/app-rtl.css" data-ng-if="app.layout.isRTL">
+
+   <link rel="stylesheet" ng-href="{{app.layout.theme}}" data-ng-if="app.layout.theme">
+
+   <link rel="stylesheet" href="app/css/user/login_ChangePassword.css">
+   <!--table公共样式-->
+   <link rel="stylesheet" href="app/css/table/tables.css">
+   <!--   弹出层公共样式-->
+   <link rel="stylesheet" href="app/css/modal/modal.css" />
+   <!--支付记录-->
+   <link rel="stylesheet" href="app/css/payrecords/payrecords.css" />
+   <!-- 验证码 -->
+   <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+   <!-- 百度统计 -->
+   <script>
+         var _hmt = _hmt || [];
+         (function() {
+           var hm = document.createElement("script");
+           hm.src = "https://hm.baidu.com/hm.js?46f7db5b213afedfccd934e94cb858e3";
+           var s = document.getElementsByTagName("script")[0]; 
+           s.parentNode.insertBefore(hm, s);
+         })();
+   </script> 
+         
+</head>
+
+<body data-ng-class="{ 'layout-fixed' : app.layout.isFixed, 'aside-collapsed' : app.layout.isCollapsed, 'layout-boxed' : app.layout.isBoxed, 'layout-fs': app.useFullLayout, 'hidden-footer': app.hiddenFooter, 'layout-h': app.layout.horizontal, 'aside-float': app.layout.isFloat}">
+   <div data-ui-view="" data-autoscroll="false" class="wrapper"></div>
+
+   <script src="js/jquery.min.js"></script>
+   <script src="js/bootstrap.min.js"></script>
+   <script src="js/base.js"></script>
+   <script src="js/app.js"></script>
+   <script src="js/config.js"></script>
+   <script src="js/configURL.js"></script>
+
+   <!--密码加密-->
+   <script src="js/base64/base64.js"></script>
+   <!-- 时间js文件-->
+   <script src="js/moment.js"></script>
+   <!--  首页曲线图和饼图有用到-->
+   <script src="js/echarts/echarts.min.js"></script>
+   <!--登录界面-->
+   <script src="views/user/js/userControllers.js"></script>
+   <!--邮箱注册-->
+   <script src="views/user/js/emailRegisterControllers.js"></script>
+   <!--手机注册-->
+   <script src="views/user/js/phoneRegisterControllers.js"></script>
+   <!--邮箱忘记密码-->
+   <script src="views/user/js/emailResetPasswordControllers.js"></script>
+   <!--手机忘记密码-->
+   <script src="views/user/js/phoneResetPasswordControllers.js"></script>
+   <!--首页-->
+   <!-- <script src="views/homePage/js/homePageControllers.js"></script> -->
+   <!--统计-->
+   <script src="views/statistics/js/statisticsControllers.js"></script>
+   <!--公告-->   
+   <script src="views/announcement/js/announcement.js"></script>
+   <!--公告详情-->   
+   <script src="views/announcementdetail/js/announcementdetail.js"></script>
+   <!--下载工具-->
+   <script src="views/downloadTool/js/downloadToolControllers.js"></script>
+   <!--公告-->
+   <script src="views/billboard/js/billboardControllers.js"></script>
+
+   <!--我的首页-->
+   <script src="views/dashboard/js/dashboardControllers.js"></script>
+   <!--我的子首页-->
+   <script src="views/dashboard/js/sondashboardControllers.js"></script>
+   <!--我的矿机-->
+   <script src="views/workers/js/workersControllers.js"></script>
+   <!--付款记录-->
+   <script src="views/payrecords/js/payrecordsControllers.js"></script>
+   <!--子账户管理（主账号的）-->
+   <script src="views/subaccounts/js/subaccountsControllers.js"></script>
+   <!--创建子账户（主账号的）-->
+   <script src="views/subaccounts/js/addSubaccountsControllers.js"></script>
+   <!--新增币种（主账号的）-->
+   <script src="views/subaccounts/js/newcoinControllers.js"></script>
+   <!--子账户管理（子账号的）-->
+   <script src="views/subaccounts/js/sonSubaccountsControllers.js"></script>
+   <!--用户中心-->
+   <script src="views/accounts/js/newAccountsControllers.js"></script>
+   <!--用户中心    绑定邮箱-->
+   <script src="views/accounts/js/bindingEmailControllers.js"></script>
+   <!--用户中心    修改邮箱-->
+   <script src="views/accounts/js/modifyEmailControllers.js"></script>
+   <!--用户中心    绑定手机-->
+   <script src="views/accounts/js/bindingPhoneControllers.js"></script>
+   <!--用户中心    修改手机-->
+   <script src="views/accounts/js/modifyPhoneControllers.js"></script>
+   <script src="views/accounts/js/step.js"></script>
+   <!--常见问题-->
+   <script src="views/commonProblem/js/commonProblemControllers.js"></script>
+
+   <!--分享-->
+   <script src="views/share/js/shareControllers.js"></script>
+   <!--分享数据-->
+   <script src="views/share/js/shareAccountDataControllers.js"></script>
+   <!--分享矿机数据-->
+   <script src="views/share/js/shareWorkerControllers.js"></script>
+   <!--分享支付数据-->
+   <script src="views/share/js/sharePayControllers.js"></script>
+   <!--分享统计数据-->
+   <script src="views/share/js/shareStasticControllers.js"></script>
+   <!--分享常见问题-->
+   <script src="views/share/js/shareCommonproblemControllers.js"></script>
+   
+</body>
+</html>

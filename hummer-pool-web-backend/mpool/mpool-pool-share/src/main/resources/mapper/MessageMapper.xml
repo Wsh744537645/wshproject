@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.mapper.MessageMapper">
+
+	<select id="getList"
+		resultType="com.mpool.common.model.account.Message">
+		SELECT
+			am.id,
+			am.title,
+			am.update_time,
+			am.keyword,
+			am.update_by,
+			am.release_time
+		FROM
+			account_message am
+		where
+			enabled = 0
+		ORDER BY am.release_time DESC
+ 	</select>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.accountmultiple.mapper.fpps.UserRateDayMapper">
+	<insert id="inserts">
+		INSERT INTO 
+			`user_rate_day` (`puid`, `day`, `fpps_rate`)
+		VALUES 
+			<foreach collection="list" item="item" separator=",">
+				(#{item.puid}, #{item.day}, #{item.fppsRate})
+			</foreach>
+	</insert>
+	<select id="findByPuidAndDay" resultType="com.mpool.common.model.account.fpps.UserRateDay">
+		select * from user_rate_day where puid = #{puid} and day = #{day}
+	</select>
+	<select id="findByDay" resultType="com.mpool.common.model.account.fpps.UserRateDay">
+		select * from user_rate_day where day = #{day}
+	</select>
+</mapper>

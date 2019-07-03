@@ -1,0 +1,177 @@
+
+
+<link rel="stylesheet" href="/app/homepage/css/footstyle.css" />
+<span data-ng-bind="::pageTitle()" style="display: none;"></span>
+	<!--头部导航栏-->
+<nav role="navigation" class="navbar topnavbar">
+		<div class="container" style="margin: 0 auto; padding:0">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">					
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+			<a class="navbar-brand" style="height:90px; padding: 0;margin: 0;line-height: 90px;">
+				<div class="brand-logo">
+					<img src="/img/banner/logo_1.png" ng-click="homepage()" alt="蜂鸟矿池" class="img-responsives" style="width:200px;"/>
+				</div>
+			</a>
+			
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="height:90px !important;font-weight: bold;font-family: Microsoft YaHei;">		
+				<ul class="nav navbar-nav" style="margin-top:17px">
+						<li>
+							<a ng-click="homepage()" >{{'nav.homepage' |translate}}</a>
+						</li>
+						<li>
+							<a href="/statistics">{{'nav.Statistics'| translate}}</a>
+						</li>
+						<li ng-show="control">
+							<a ng-click="userpanel()">{{'nav.dashboard' |translate}}</a>
+						</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right" ng-show="!control" style="margin-top: 17px">
+					<li>
+						<a ng-href="/login">{{'nav.login'| translate}}</a>
+					</li>
+					<li>
+						<a ng-href="/register">{{'nav.regis'| translate}}</a>
+					</li>
+					<span ng-controller="TranslateController" class="dropdown" style="color: #4A4A4A;">
+						<button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" 
+						style="width: 50px;background: #FFFFFF;border-radius: 18px;border: none;margin-top: 16px"> 
+							{{langKeyCur}}<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="min-width: 80px;padding: 10px">
+							<li ng-click="changeLanguage('es_AR')" style="cursor: pointer;">中 文</li>
+							<li ng-click="changeLanguage('en')" style="cursor: pointer;">ENGLISH</li>
+						</ul>
+					</span>
+				</ul>
+				<ul class="nav navbar-nav navbar-right" ng-show="control"  style="margin-top:17px">
+					<li dropdown="" class="dropdown dropdown-list">
+						<a dropdown-toggle="" style="cursor: pointer;">
+							<em class="icon-user"></em>&nbsp;
+							<span>{{username}}</span>
+							<span class="fa fa-angle-down"></span>
+						</a>
+						<ul class="dropdown-menu animated flipInX">
+							<li>
+								<div class="list-group">
+									<a class="list-group-item" style="padding:0px;">
+										<div class="media-box">
+											<div class="media-box-body clearfix">		
+												<p ng-click="logout()">{{'nav.signOut'| translate}}</p>
+											</div>
+										</div>
+									</a>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<span ng-controller="TranslateController" class="dropdown" style="color: #4A4A4A;">
+						<button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" 
+						style="width: 50px;background: #FFFFFF;border-radius: 18px;border: none;margin-top: 16px"> 
+							{{langKeyCur}}<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="min-width: 80px;padding: 10px">
+							<li ng-click="changeLanguage('es_AR')" style="cursor: pointer;">中 文</li>
+							<li ng-click="changeLanguage('en')" style="cursor: pointer;">ENGLISH</li>
+						</ul>
+					</span>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container" style="margin-bottom: 350px;">
+		<div class="panel" style="padding: 40px 40px 0 40px;border: 1px solid #D9DCE0; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);border-radius: 4px; margin-top: 20px;">
+			
+			<div class="table-responsive">
+				<p style="font-size: 24px;color: #000000;font-weight:blod;opacity: 0.86;margin-bottom: 50px">{{'foot.Announcements'| translate}}</p>
+				<ul style="width:100%;padding: 0;" ng-repeat="items in itemsData">
+					<li style="border-bottom: 1px solid #DEE2ED;padding: 16px 0">
+						<a class="notice" ng-click="getFindByDetails(items.id)">{{items.title}}</a>
+						<text style="display: float;float:right">{{items.time}}</text>
+					</li>
+				</ul>
+				
+				<div class="wait" ng-show="!show_items" style="margin-bottom:10px">
+					<div class="loader1">
+						<div class="ball-clip-rotate hint">
+							<div></div>
+							<span class="hint2">{{'common.loding' |translate}}...</span>
+						</div>
+					</div>
+				</div>
+				<div ng-show="items_num==0 && show_items" class="wait text-center">
+					<span>{{'common.empty' |translate}}</span>
+				</div>
+				<div style="margin:30px 0 20px 0">
+					<ul class="pagination" style="margin:0">
+						<li ng-class="{true:'disabled'}[p_current==1]">
+							<a href="javascript:void(0);" ng-click="p_index()" class="pIndex">{{'dashboard.homepage' | translate}}</a>
+						</li>
+						<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+							<a href="javascript:void(0);" ng-click="load_page(page,currentSelect.value)" class="pIndex">{{ page }}</a>
+						</li>
+						<li ng-class="{true:'disabled'}[p_current==p_all_page]">
+							<a href="javascript:void(0);" ng-click="p_last()" class="pIndex">{{'dashboard.lastpage' | translate}}</a>
+						</li>
+					</ul>
+					<div style="display:float; float:right;"  class="hidden-xs">
+						<span>{{'dashboard.perpage'| translate}}{{'dashboard.totalp'| translate}}{{count}}
+							{{'dashboard.tiao'| translate}}{{totalPage}}
+							{{'dashboard.ye'| translate}}{{'dashboard.goto' | translate}}&nbsp;</span>
+						<input ng-model="page" type="number" style="width: 40px; text-align: center; height: 32px;border: 1px solid #E6E6E6;border-radius: 4px; color: #121212;opacity: 0.56;">
+						<span>&nbsp;{{'dashboard.ye1'| translate}}&nbsp;
+						<div class="btn btn-primary" ng-click="load_page(page,currentSelect.value)" style="margin-top:-3px;height:32px; line-height: 16px; background: #1466BF;border-radius: 4px; box-shadow: none">
+						{{'common.ok' |translate}}</div>
+					</div>
+				</div>
+			</label>
+				 
+		</div>
+	</div>	
+
+
+<!-- <footer ng-include="'views/partials/footer.html'" class="loginFooter" style="width:100%"></footer> -->
+
+
+<div class="col-lg-12" style="position: absolute;bottom: 0;left: 0;right: 0">
+		<div class="background-parallax" data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
+		<div class="container padding-bottom-big">
+			<div class="row justify-content-between">
+			<div class="col-lg-5 col-md-12 foot-logo hidden-xs" style="margin-top: 20px">
+				<img src="app/homepage/img/qrImg.jpg" class="qrImg">
+				<div style="display: inline-block; align-items: center; vertical-align: middle; margin-left:30px;padding-right: 60px;border-right:1px solid #FFFFFF" >
+					<img src="/app/homepage/img/logo/Logo.png" class="logoImg" alt="logo">
+					<text class="email">{{'foot.email'|translate}}：support@hummerpool.com</text>
+				</div>
+			</div>
+			<div class="col-lg-7 col-md-12" style="margin-top: 20px;color:#fff;opacity: 1; text-align: center">
+				<ul class="footer-list footlist">
+					<li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Product'|translate}}</label>
+						<a href="http://www.cynosure-chain.com">{{'foot.Hummerpool'|translate}}</a>
+						<a href="https://www.hummerminer.com">{{'foot.Hummerminer'|translate}}</a>
+					</li>
+					<li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Service'|translate}}</label>
+						<a href="/announcement">{{'foot.Announcements'|translate}}</a>
+						<a href="" style="visibility:hidden">{{'foot.Mining Tutorial'|translate}}</a>
+					</li>
+					<!-- <li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Helps'|translate}}</label>
+						<a href="">{{'foot.Help Center'|translate}}</a>
+						<a href="">{{'foot.Contact Us'|translate}}</a>
+					</li> -->
+					<li class="ft-item" style="width: 160px !important">
+						<label style="margin-bottom:20px">{{'foot.After-sale'|translate}}</label>
+						<a href="">{{'foot.QQ Group'|translate}}1:783079293</a>
+						<a href="">{{'foot.QQ Group'|translate}}2:791421817</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

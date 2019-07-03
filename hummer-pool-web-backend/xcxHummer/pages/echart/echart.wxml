@@ -1,0 +1,5 @@
+
+<view class='chart-box'>
+  <ec-canvas id="chart-one" canvas-id="chart24h" ec="{{ecOne}}"></ec-canvas>
+  <ec-canvas id="chart-two" canvas-id="chart30d" ec="{{ecTwo}}"></ec-canvas>
+</view>

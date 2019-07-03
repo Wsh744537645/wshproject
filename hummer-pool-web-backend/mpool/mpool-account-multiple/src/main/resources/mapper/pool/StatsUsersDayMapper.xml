@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.accountmultiple.mapper.pool.StatsUsersDayMapper">
+	<select id="getStatsUsersDayInHourAndInPuid" resultType="com.mpool.common.model.pool.StatsUsersDay">
+		SELECT
+			*
+		FROM
+			stats_users_day
+		WHERE
+			puid IN <foreach collection="userIds" close=")" open="(" item="item" separator=",">#{item}</foreach>
+		AND `day` IN <foreach collection="days" close=")" open="(" item="item" separator=",">#{item}</foreach>
+	</select>
+	<select id="getStatsUsersDayInPuidAndDay" resultType="com.mpool.common.model.pool.StatsUsersDay">
+		SELECT
+			*
+		FROM
+			stats_users_day
+		WHERE
+			puid IN <foreach collection="userIds" close=")" open="(" item="item" separator=",">#{item}</foreach>
+		AND `day` = #{day}
+	</select>
+</mapper>

@@ -1,0 +1,151 @@
+<!--用户管理-->
+<h3>
+	<small>{{ 'dashboard.POOLFPPS' | translate:{ appName: app.name } }} </small>
+</h3>
+
+<div class="table-grid table-grid-desktop">
+	<div class="panel col-lg-12" style="padding-top: 10px;">
+		<div style="margin-left: 14px;margin-right: 15px;">
+			<label>账户名</label>
+			<input ng-model="username" placeholder="关联账户名搜索" style="width:15%;display: -webkit-inline-box;" class="form-control" />&nbsp;&nbsp;&nbsp;
+			<label>推荐人</label>
+			<input ng-model="recommendName" placeholder="推荐人搜索" style="width:15%;display: -webkit-inline-box;" class="form-control" />&nbsp;&nbsp;&nbsp;
+			<label>类型</label>
+			<select ng-model="group" class="form-control" style="width:10%;display: -webkit-inline-box;">
+				<option value="">请选择</option>
+				<option value="1">基石</option>
+				<option value="0">会员</option>
+			</select>
+			<button ng-click="getUserFppsList(1,currentSelect.value)" class="btn btn-primary">搜索</button>
+			<button ng-click="updatePoolRate()" class="btn btn-primary">修改矿池费率</button>
+			<a href="{{url2}}" target="_blank" style="float:right;line-height:34px;">导出</a>
+		</div>
+
+		<div class="panel-body tableBot">
+			<p></p>
+			<table class="table table-hover tableSize">
+				<thead class="tableBC">
+					<th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)" ng-class="{sortable: column.sortable !== false}">
+						{{column.label}}
+						<!--<i ng-show="vm.sort.direction === 1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-down"></i>
+		                <i ng-show="vm.sort.direction === -1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-up"></i>-->
+					</th>
+				</thead>
+				<tbody>
+					<tr ng-show="show_items" ng-repeat="items in itemsData|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1">
+						<td>{{items.username}}</td>
+						<td>{{items.mUsername}}</td>
+						<td>
+							{{items.fpps_rate}}
+							<a ng-if="items.mUsername" ng-click="updateFppsRate(items.fpps_rate,items.user_id)">修改</a>
+						</td>
+						<td>{{items.type}}</td>
+						<td ng-if="items.userGroup == 1">基石</td>
+						<td ng-if="!items.userGroup">会员</td>
+						<td>{{items.recommend_username}}</td>
+						<td>{{items.fee_rate}}</td>
+						<td>
+							<a href="" ng-if="items.mUsername" ng-click="getCreatRecommendUser(items.user_id)">设置推荐人</a>
+							<span ng-if="!items.mUsername">主账户无须设置</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="wait" ng-show="!show_items">
+				<div class="loader1">
+					<div class="ball-clip-rotate hint">
+						<div></div>
+						<span class="hint2">加载中...</span>
+					</div>
+				</div>
+			</div>
+			<div ng-show="items_num==0 && show_items" class="wait text-center">
+				<span>列表为空</span>
+			</div>
+			<select ng-model="currentSelect.value" ng-change="getUserFppsList(1,currentSelect.value)" class="displayValue">
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="30">50</option>
+				<option value="100">100</option>
+			</select>
+			<span class="display-value">条每页，共：{{count}} 条，{{totalPage}}页</span>
+			<ul class="pagination btnPag">
+				<li ng-class="{true:'disabled'}[p_current==1]">
+					<a href="javascript:void(0);" ng-click="p_index()" class="pIndex">首页</a>
+				</li>
+				<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+					<a href="javascript:void(0);" ng-click="load_page(page,currentSelect.value)" class="pIndex">{{ page }}</a>
+				</li>
+				<li ng-class="{true:'disabled'}[p_current==p_all_page]">
+					<a href="javascript:void(0);" ng-click="p_last()" class="pIndex">尾页</a>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+
+</div>
+
+<!--修改矿池费率  模态框-->
+<script type="text/ng-template" id="poolRateModal">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">修改矿池费率</h5>
+		<div class="content">
+			<div class="form-group has-feedback">
+				<label class="text-muted">费率</label>
+	       		<input ng-model="poolRate" class="form-control">
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm(poolRate)" class="btn btn-primary mr">确定</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">取消</button>
+		</div>
+	</div>
+</script>
+
+
+<!--修改用户费率  模态框-->
+<script type="text/ng-template" id="updateFppsRateModal">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">修改用户费率</h5>
+		<div class="content">
+			<div class="form-group has-feedback">
+				<label class="text-muted">原费率：{{name}}</label>
+			</div>
+		</div>
+		<div class="content">
+			<div class="form-group has-feedback">
+				<label class="text-muted">变更费率</label>
+	       		<input ng-model="fppsRate" class="form-control">
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm(fppsRate)" class="btn btn-primary mr">确定</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">取消</button>
+		</div>
+	</div>
+</script>
+
+<!--推荐人  模态框-->
+<script type="text/ng-template" id="creatRecommendUserModal">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">推荐人</h5>
+		<div class="content">
+			<div class="form-group has-feedback">
+				<label class="text-muted">名称</label>
+	       		<input ng-model="recommendName" class="form-control">
+			</div>
+		</div>
+		<div class="content">
+			<div class="form-group has-feedback">
+				<label class="text-muted">费率</label>
+	       		<input ng-model="feeRate" class="form-control">
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm(this)" class="btn btn-primary mr">确定</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">取消</button>
+		</div>
+	</div>
+</script>

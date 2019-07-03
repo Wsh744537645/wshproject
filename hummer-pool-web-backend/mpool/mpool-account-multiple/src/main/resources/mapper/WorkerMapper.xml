@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.accountmultiple.mapper.WorkerMapper">
+
+	<select id="selectWorkerIdAndWorkerName" resultType="map">
+		SELECT
+		aw.worker_id AS workerId,
+		aw.worker_name AS workerName,
+		aw.puid AS userId,
+		aw.accept_5m AS hashAccept5mT,
+		aw.accept_15m AS hashAccept15mT,
+		aw.reject_15m AS hashReject15mT,
+		aw.accept_1h AS hashAccept1hT,
+		aw.reject_1h AS hashReject1hT,
+		aw.last_share_time AS lastShareTime
+		FROM
+		mining_workers aw
+		WHERE
+		aw.worker_id != 0
+		AND
+		aw.puid = #{worker.userId}
+		<if test="worker.workerStatusStatic != null">
+			<if test="worker.workerStatusStatic == 0">
+				AND aw.accept_15m > 0
+			</if>
+			<if test="worker.workerStatusStatic == 1">
+				AND aw.accept_15m = 0
+				AND aw.last_share_time > #{date}
+			</if>
+			<if test="worker.workerStatusStatic == 2">
+				AND aw.accept_15m = 0
+				AND #{date} > aw.last_share_time
+			</if>
+		</if>
+		<if test="worker.workerName != null">
+			<bind name="workerName" value="'%' + worker.workerName + '%'" />
+			AND aw.worker_name LIKE #{workerName}
+		</if>
+	</select>
+
+	<select id="countUserWorkerStatusBatch" resultType="com.mpool.common.model.account.Worker">
+		SELECT
+		aw.worker_id AS workerId,
+		aw.worker_name AS workerName,
+		aw.puid AS userId,
+		aw.accept_5m AS hashAccept5mT,
+		aw.accept_15m AS hashAccept15mT,
+		aw.reject_15m AS hashReject15mT,
+		aw.accept_1h AS hashAccept1hT,
+		aw.reject_1h AS hashReject1hT,
+		aw.last_share_time AS lastShareTime
+		FROM
+		mining_workers aw
+		WHERE
+		aw.worker_id != 0
+		AND aw.puid in <foreach collection="userIds" open="(" close=")" item="item" separator=",">#{item}</foreach>
+	</select>
+	<select id="getAllUserWorkerActive" resultType="com.mpool.mpoolaccountmultiplecommon.model.CurrentWorkerStatus">
+		<!-- 0=活跃 1=不活跃 2=离线 -->
+		SELECT
+		puid AS user_id,
+		COUNT(puid)as count,
+		0 AS worker_status
+		FROM
+		mining_workers
+		WHERE
+		worker_id != 0
+		AND accept_15m > 0
+		GROUP BY
+		puid
+	</select>
+	<select id="exprotData" resultType="com.mpool.common.model.account.Worker">
+		SELECT
+			aw.worker_id AS workerId,
+			aw.worker_name AS workerName,
+			aw.puid AS userId,
+			aw.accept_5m AS hashAccept5mT,
+			aw.accept_15m AS hashAccept15mT,
+			aw.reject_15m AS hashReject15mT,
+			aw.accept_1h AS hashAccept1hT,
+			aw.reject_1h AS hashReject1hT,
+			aw.last_share_time AS lastShareTime
+		FROM mining_workers aw WHERE puid=#{userId} AND worker_id !=0
+	</select>
+	<select id="getWorkerInfo" resultType="com.mpool.common.model.account.Worker">
+		SELECT
+			aw.worker_id AS workerId,
+			aw.worker_name AS workerName,
+			aw.puid AS userId,
+			aw.accept_5m AS hashAccept5mT,
+			aw.accept_15m AS hashAccept15mT,
+			aw.reject_15m AS hashReject15mT,
+			aw.accept_1h AS hashAccept1hT,
+			aw.reject_1h AS hashReject1hT,
+			aw.last_share_time AS lastShareTime
+		FROM mining_workers aw WHERE worker_id=#{id}
+	</select>
+
+	<delete id="deleteByWorkerId">
+		DELETE FROM `mining_workers`
+		WHERE puid=#{userId} AND worker_id =#{id}
+	</delete>
+</mapper>

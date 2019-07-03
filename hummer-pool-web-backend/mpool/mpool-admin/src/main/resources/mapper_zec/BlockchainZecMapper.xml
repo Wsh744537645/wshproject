@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module_zec.account.mapper.BlockchainZecMapper">
+
+	<select id="gethashRate" resultType="com.mpool.common.model.account.Blockchain">
+		select `day`,sum(hash_rate)/count(hash_rate)as hashRates
+		from zec_account_blockchain
+		WHERE `day` IN <foreach collection="days" open="(" close=")" separator="," item="item">
+		#{item}
+	</foreach>
+		group by `day`
+ 	</select>
+</mapper>

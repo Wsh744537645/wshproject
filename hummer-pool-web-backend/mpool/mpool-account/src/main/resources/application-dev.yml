@@ -1,0 +1,87 @@
+server:
+  port: 8079
+logging:
+  level:
+    com:
+      mpool: debug
+spring:
+  redis:
+    host: redis-server
+    port: 6379
+    database: 0
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations:
+    - file:mpool-ui/
+    - file:../../mpool-ui/
+    - classpath:/META-INF/resources/
+    - classpath:/resources/
+    - classpath:/static/
+    - classpath:/public/
+  mail:
+    host: smtp.163.com
+    port: 465
+    username: wshstephen@163.com
+    password: wsh4499345
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+        debug: true
+  boot:
+    admin:
+      client:
+        url:
+        - http://checkup-server:2000
+        instance:
+          service-base-url: http://192.168.22.249:8080
+        password: Admin@123
+        username: admin
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - '*'
+aliyun:
+  sms:
+    access-key-id: LTAITHtOEev5EtC0
+    access-key-secret: CcFTGjbDyIft0HgcaHbyAT7Lj9KIiN
+    sign-name: 蜂鸟
+qq:
+  captcha:
+    aid: 2074816991
+    verify-url: https://ssl.captcha.qq.com/ticket/verify
+    app-secret-key: 0nPmvC_uzCkBEbRE3WERnwg**
+sharding:
+  jdbc:
+    datasource:
+      accountdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://39.104.152.238:3306/h_pool_account?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: wg666666
+      statsdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://39.104.152.238:3306/m_pool?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: wg666666
+      workersdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://39.104.152.238:3306/m_pool?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: wg666666
+wx:
+  miniapp:
+    configs:
+        - appid: wx94fa46b3614974b8
+          secret: 42f3b7b27968fed18a832651045780ec
+          token: #微信小程序消息服务器配置的token
+          aesKey: #微信小程序消息服务器配置的EncodingAESKey
+          msgDataFormat: JSON

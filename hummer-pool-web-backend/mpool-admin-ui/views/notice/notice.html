@@ -1,0 +1,135 @@
+<!--创建支付单-->
+<h3>
+   <small>{{ 'dashboard.NOTICE' | translate:{ appName: app.name } }} </small>
+</h3>
+<div class="table-grid table-grid-desktop">
+   	<!--<div class="col col-md">
+      	<div class="pr">
+         	<div class="mb-boxes">
+            	<div class="panel">
+               		<div class="panel-body">
+                  		<ul class="nav nav-pills nav-stacked">
+                     		<div class="gundong" style="margin-bottom: 10px;">
+	                     		<li ng-repeat="items in itemsData2" class="tree">
+	                     			<a href="#" ng-click="parameterQuery(items.id)" ng-class='{ons:$index==selected}'>
+		                           		<span style="font-size: 16px;">{{items.templateName}}</span>
+	                        		</a>
+	                     		</li>
+                     		</div>
+                     		<li class="p p-title1">
+                        		<small style="margin-left: 20px;font-size: 16px;" ng-class='{ons:$index==selected}'>修改</small>
+                     		</li>
+                  		</ul>
+               		</div>
+            	</div>
+         	</div>
+      	</div>
+    </div>-->
+    
+    <div class="panel col-lg-12" ng-show="selected==0">
+		<div class="panel-body tableBot">
+			<p class="table-top">
+				<span class="tishi">查看公告</span>
+				<button ng-click="parameterQuery(1)" class="btn btn-primary" style="float: right;">新增</button>
+			</p>
+         	<table class="table table-hover tableSize">
+            	<thead class="tableBC">
+            		<th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)"
+            			ng-class="{sortable: column.sortable !== false}">
+		                {{column.label}}
+		                <!--<i ng-show="vm.sort.direction === 1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-down"></i>
+		                <i ng-show="vm.sort.direction === -1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-up"></i>-->
+		            </th>
+            	</thead>
+           		<tbody>
+		            <tr ng-show="show_items" ng-repeat="items in itemsData|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1">
+		               	<td>{{items.title}}</td>
+		               	<td>{{items.releaseUser}}</td>
+		               	<td>{{items.releaseTime | date:'yyyy-MM-dd'}}</td>
+		               	<td style="width: 20%;">
+		               		<div>
+		               			<a ng-click="getFindByDetails(items.id)">查看</a>&nbsp;
+		               			<a ng-click="getFindByid(items.id)">修改</a>&nbsp;
+		               			<!--<a ng-click="getRelease(items.id, '')" ng-if="items.releaseTime">撤回&nbsp;</a>
+		               			<a ng-click="getRelease(items.id, '2019-02-21T09:03:11.256Z')" ng-if="!items.releaseTime">发布&nbsp;</a>-->
+		               			<a ng-click="getEnable(items.id, !items.enabled)" ng-if="items.enabled">显示&nbsp;</a>
+		               			<a ng-click="getEnable(items.id, !items.enabled)" ng-if="!items.enabled">隐藏&nbsp;</a>
+		               			<a ng-click="deleteNotice(items.id, items.title)" class="deleteBtn">删除</a>
+		               		</div>
+		               	</td>
+		            </tr>
+            	</tbody>
+         	</table>
+
+			<div class="wait" ng-show="!show_items">
+		    	<div class="loader1">
+	            	<div class="ball-clip-rotate hint">
+	               		<div></div>
+	               		<span class="hint2">加载中...</span>
+	            	</div>
+			    </div>
+		    </div>
+          	<div ng-show="items_num==0 && show_items" class="wait text-center">
+		    	<span>列表为空</span>
+		    </div>
+         	<select ng-model="currentSelect.value" ng-change="getIncomeSettlementList(1,currentSelect.value)" class="displayValue">
+            	<option value="10">10</option>
+            	<option value="20">20</option>
+            	<option value="30">50</option>
+            	<option value="100">100</option>
+         	</select>
+         	<span class="display-value">条每页，共：{{count}} 条，{{totalPage}}页</span>
+         	<ul class="pagination btnPag">
+            	<li ng-class="{true:'disabled'}[p_current==1]">
+            		<a href="javascript:void(0);" ng-click="p_index()" class="pIndex">首页</a>
+            	</li>
+            	<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+            		<a href="javascript:void(0);" ng-click="load_page(page,currentSelect.value)" class="pIndex">{{ page }}</a>
+            	</li>
+            	<li ng-class="{true:'disabled'}[p_current==p_all_page]">
+            		<a href="javascript:void(0);" ng-click="p_last()" class="pIndex">尾页</a>
+            	</li>
+         	</ul>
+
+	   	</div>
+	</div>
+
+    <div class="panel col-lg-12" ng-show="selected==1 || selected==2">
+		<div class="panel-body tableBot">
+			<p class="table-top">
+				<span class="tishi">
+					<a href="#" class="icon-action-undo" ng-click="parameterQuery(0)" title="返回"></a>&nbsp;
+					{{noticeTitle}}
+				</span>
+			</p>
+			<span><input ng-model="title" class="form-control" placeholder="请输入标题"></span>
+         	<div id="editor" style="margin-top: 10px;margin-bottom: 10px;" ng-disabled="disabled"></div>
+         	发布日期：<wui-date 
+					format="yyyy-mm-dd" 
+					placeholder="请选择发布日期" 
+					id="date1"
+					ng-model="date1">
+				</wui-date>
+         	<button ng-click="getAddUE(updataId)" class="btn btn-primary seleteBut">保存</button>
+	   	</div>
+	</div>
+
+</div>
+
+<!--删除公告      模态框-->
+<script type="text/ng-template" id="noticeDelete">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">删除公告</h5>
+		<div class="content">
+			<div class="form-group has-feedback deleteModal">
+				<label>
+					确定要删除<span class="deleteStyle">{{titleValue}}</span>这条公告？
+				</label>
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm()" class="btn btn-primary mr">确定</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">取消</button>
+		</div>
+	</div>
+</script>

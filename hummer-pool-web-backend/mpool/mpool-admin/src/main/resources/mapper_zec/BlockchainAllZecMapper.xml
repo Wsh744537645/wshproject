@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module_zec.account.mapper.BlockchainAllZecMapper">
+
+	<select id="getBlocks" resultType="com.mpool.common.model.account.BlockchainAllModel">
+		  SELECT *
+		FROM zec_account_blockchain_all
+		WHERE
+		1=1
+		<if test="date != null">
+			<if test="date.strTime != null">
+				AND STR_TO_DATE(`created_day`, '%Y%m%d') >= DATE_FORMAT(#{date.strTime},'%Y-%m-%d')
+			</if>
+			<if test="date.endTime != null">
+				AND STR_TO_DATE(`created_day`, '%Y%m%d') &lt;= DATE_FORMAT(#{date.endTime},'%Y-%m-%d')
+			</if>
+		</if>
+		ORDER BY
+			STR_TO_DATE(`created_day`, '%Y%m%d') DESC
+ 	</select>
+</mapper>

@@ -1,0 +1,99 @@
+<!--用户管理-->
+<h3>
+	<small>
+		<a href="#" class="icon-action-undo" ng-click="back()" title="返回"></a>&nbsp;
+		{{ 'dashboard.SUBACCOUNTSDETAILS' | translate:{ appName: app.name } }}
+	</small>
+</h3>
+
+<div class="table-grid table-grid-desktop">
+	<div class="panel col-lg-12">
+
+		<div class="panel">
+			<div class="panel-body panlbody">
+				<p style="font-size: 18px;border-bottom: 2px solid #e6e9ed;padding-bottom: 5px;color: #73879c">用户30天算力变化</p>
+				<div id="chart_power_30d" style="width: 100%; height: 200px;-webkit-tap-highlight-color: transparent; user-select: none; cursor: default; "></div>
+			</div>
+		</div>
+		<div style="margin-right: 15px;">
+			<a href="/apis/account/member/list/export?masterUserId=1" target="_blank" style="float:right;line-height:34px;">导出</a>
+		</div>
+		<div class="panel-body tableBot">
+			<p></p>
+			<table class="table table-hover tableSize">
+				<thead class="tableBC">
+					<th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)" ng-class="{sortable: column.sortable !== false}">
+						{{column.label}}
+						<i ng-show="vm.sort.direction === 1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-down"></i>
+						<i ng-show="vm.sort.direction === -1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-up"></i>
+					</th>
+				</thead>
+				<tbody>
+					<tr ng-show="show_items" ng-repeat="items in itemsData|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1">
+						<td><a ng-click="getUser24H(items.userId)">{{items.username}}</a></td>
+						<td>{{items.currentShare?items.currentShare:0}}</td>
+						<td>{{items.pastDayShare?items.pastDayShare:0}}</td>
+						<td>{{(items.yesterday?items.yesterday:0) / 100000000 | number:8}}</td>
+						<td>{{(items.totalDue?items.totalDue:0) / 100000000 | number:8}}</td>
+						<td>{{(items.totalRevenue?items.totalRevenue:0) / 100000000 | number:8}}</td>
+						<td>{{(items.totalPaid?items.totalPaid:0) / 100000000 | number:8}}</td>
+						<td>{{items.share24T}}</td>
+						<td>{{items.share30T}}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="wait" ng-show="!show_items">
+				<div class="loader1">
+					<div class="ball-clip-rotate hint">
+						<div></div>
+						<span class="hint2">加载中...</span>
+					</div>
+				</div>
+			</div>
+			<div ng-show="items_num==0 && show_items" class="wait text-center">
+				<span>列表为空</span>
+			</div>
+			<select ng-model="currentSelect.value" ng-change="getSubaccountList(1,currentSelect.value)" class="displayValue">
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="30">50</option>
+				<option value="100">100</option>
+			</select>
+			<span class="display-value">条每页，共：{{count}} 条，{{totalPage}}页</span>
+			<ul class="pagination btnPag">
+				<li ng-class="{true:'disabled'}[p_current==1]">
+					<a href="javascript:void(0);" ng-click="p_index()" class="pIndex">首页</a>
+				</li>
+				<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+					<a href="javascript:void(0);" ng-click="load_page(page,currentSelect.value)" class="pIndex">{{ page }}</a>
+				</li>
+				<li ng-class="{true:'disabled'}[p_current==p_all_page]">
+					<a href="javascript:void(0);" ng-click="p_last()" class="pIndex">尾页</a>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+
+</div>
+
+<!--详情      模态框-->
+<script type="text/ng-template" id="User24H">
+    <style>
+        .ngdialog.ngdialog-theme-default .ngdialog-content{
+            width: 70%
+        }
+    </style>
+    <div class="ngdialog-message">
+            <h5 class="h5Title">详情</h5>
+            <div class="table-grid table-grid-desktop">
+				<label for="">24小时算力</label>
+            	<div id="chart_power_24T" style="width: 100%; height: 200px;-webkit-tap-highlight-color: transparent; user-select: none; cursor: default; "></div>
+				<label for="">24小时在线矿工</label>
+            	<div id="chart_worker_24h" style="width: 100%; height: 200px;-webkit-tap-highlight-color: transparent; user-select: none; cursor: default; "></div>
+				<label for="">30天算力</label>
+            	<div id="chartsub_power_30d" style="width: 100%; height: 200px;-webkit-tap-highlight-color: transparent; user-select: none; cursor: default; "></div>
+            </div>
+        </div>
+</script>

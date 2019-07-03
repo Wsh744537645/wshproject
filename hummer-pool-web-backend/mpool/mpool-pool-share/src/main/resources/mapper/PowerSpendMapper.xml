@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.mapper.PowerSpendMapper">
+
+	<insert id="inserts">
+		INSERT INTO `user_power_spend`(
+			`puid`,
+			`bill_id`,
+			`power_spend`,
+			`create_time`
+		) VALUES
+		<foreach collection="list" separator="," item="tiem">
+			(#{tiem.puid},
+			#{tiem.billId},
+			#{tiem.powerSpend},
+			#{tiem.createTime})
+		</foreach>
+	</insert>
+
+</mapper>

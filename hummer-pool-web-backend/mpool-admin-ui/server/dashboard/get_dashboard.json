@@ -1,0 +1,302 @@
+{
+    "url": "get_dashboard?platform=web",
+    "msg": "ok",
+    "data": {
+        "notice": "[{\"content\":\"??S9 Asicboost???????????<br/><br/>\\nBTC.TOP?????????????????????????????????? <a target=\\\"_blank\\\" href=\\\"https://service.bitmain.com/support/download?product=Antminer%20S9\\\">https://service.bitmain.com/support/download?product=Antminer%20S9</a>?????ù???????????????￡??????12%????<br/><br/>\\n\\n?ab.btc.top????????????\",\"type\":\"2\"},{\"index\":2,\"content\":\"TOP???APP?????????????iOS??Android????<a href=\\\"/app_download.html\\\" target=\\\"_blank\\\">??????????</a>\",\"type\":\"1\"},{\"index\":3,\"content\":\"????????????????????<br/><br/>\\n1????????????????????С??????????????????CoinCola??????С??0.01?????????????????0.01?????????????0.01???<br/>\\n2??????????????????????????????????0.01??0.1??????????????????????????????????????????????????????<br/>\\n3????????????????????????????????????????????????????????????????θ????????????0.0001??????????????????????????\",\"type\":\"1\"}]",
+        "speed_in_5m": {
+            "valid_speed": 5,
+            "reject_speed": 0
+        },
+        "speed_in_10m": {
+            "valid_speed": 10,
+            "reject_speed": 0
+        },
+        "speed_in_30m": {
+            "valid_speed": 30,
+            "reject_speed": 0
+        },
+        "speed_in_24h": {
+            "valid_speed": 24,
+            "reject_speed": 0
+        },
+        "speed_hourly": [
+            {
+                "at": "2018-10-29 01:00",
+                "valid_speed": 380,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 02:00",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 03:00",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 04:00",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 05:00",
+                "valid_speed": 0,
+                "reject_speed": 10
+            },
+            {
+                "at": "2018-10-29 06:00",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 07:00",
+                "valid_speed": 440,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 08:00",
+                "valid_speed": 220,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 09:00",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 10:00",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 11:00",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 12:00",
+                "valid_speed": 120,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 13:00",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 14:00",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 15:00",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 16:00",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 17:00",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 18:00",
+                "valid_speed": 160,
+                "reject_speed": 10
+            },
+            {
+                "at": "2018-10-29 19:00",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 20:00",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 21:00",
+                "valid_speed": 0,
+                "reject_speed": 20
+            },
+            {
+                "at": "2018-10-29 22:00",
+                "valid_speed": 10,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-29 23:00",
+                "valid_speed": 220,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-30 00:00",
+                "valid_speed": 0,
+                "reject_speed": 0
+            }
+        ],
+        "speed_daily": [
+            {
+                "at": "2018-09-29",
+                "valid_speed": 10,
+                "reject_speed": 20
+            },
+            {
+                "at": "2018-09-30",
+                "valid_speed": 330,
+                "reject_speed": 10
+            },
+            {
+                "at": "2018-10-01",
+                "valid_speed": 220,
+                "reject_speed": 60
+            },
+            {
+                "at": "2018-10-02",
+                "valid_speed": 330,
+                "reject_speed": 40
+            },
+            {
+                "at": "2018-10-03",
+                "valid_speed": 1000,
+                "reject_speed": 40
+            },
+            {
+                "at": "2018-10-04",
+                "valid_speed": 100,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-05",
+                "valid_speed": 240,
+                "reject_speed": 20
+            },
+            {
+                "at": "2018-10-06",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-07",
+                "valid_speed": 20,
+                "reject_speed": 10
+            },
+            {
+                "at": "2018-10-08",
+                "valid_speed": 0,
+                "reject_speed": 1
+            },
+            {
+                "at": "2018-10-09",
+                "valid_speed": 220,
+                "reject_speed": 10
+            },
+            {
+                "at": "2018-10-10",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-11",
+                "valid_speed": 0,
+                "reject_speed": 40
+            },
+            {
+                "at": "2018-10-12",
+                "valid_speed": 220,
+                "reject_speed": 10
+            },
+            {
+                "at": "2018-10-13",
+                "valid_speed": 220,
+                "reject_speed": 40
+            },
+            {
+                "at": "2018-10-14",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-15",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-16",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-17",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-18",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-19",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-20",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-21",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-22",
+                "valid_speed": 210,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-23",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-24",
+                "valid_speed": 20,
+                "reject_speed": 10
+            },
+            {
+                "at": "2018-10-25",
+                "valid_speed": 0,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-26",
+                "valid_speed": 570,
+                "reject_speed": 0
+            },
+            {
+                "at": "2018-10-27",
+                "valid_speed": 0,
+                "reject_speed": 10
+            },
+            {
+                "at": "2018-10-28",
+                "valid_speed": 20,
+                "reject_speed": 0
+            }
+        ],
+        "today_btc_paid": 10,
+        "today_btc_pps_profit": 1,
+        "worker_cc": 10,
+        "active_worker_cc": 3,
+        "alarm_enabled": null
+    }
+}

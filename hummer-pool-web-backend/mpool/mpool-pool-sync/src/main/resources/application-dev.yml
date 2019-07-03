@@ -1,0 +1,65 @@
+spring:
+  mail:
+    host: smtp.exmail.qq.com
+    port: 465
+    username: noreply@hummerpool.com
+    password: Hummer123
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+        debug: true
+  redis:
+    host: redis-server
+    database: 0
+    port: 6379
+  boot:
+    admin:
+      client:
+        url:
+        - http://checkup-server:2000
+        instance:
+          service-base-url: http://loaclhost:8082
+      password: Admin@123
+      username: admin
+logging:
+  level:
+    com.btc: debug
+com:
+  mpool:
+    canal:
+      destination: example
+      region-id: 1
+      serveraddress: 39.104.152.238
+      subscribe: .*\\.mining_workers
+      batch-size: 256
+    zec-canal:
+      destination: zec_example
+      region-id: 2
+      #39.104.152.238
+      serveraddress: 39.104.152.238
+      subscribe: .*\\.mining_workers
+      batch-size: 256
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - '*'
+sharding:
+  jdbc:
+    datasource:
+      btcaccountdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://db-server:3306/h_pool_account?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: wg666666
+      ztcaccountdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://db-server:3306/h_pool_zcrash?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: wg666666

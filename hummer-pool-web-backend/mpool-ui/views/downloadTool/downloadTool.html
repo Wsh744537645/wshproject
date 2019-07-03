@@ -1,0 +1,367 @@
+<!--头部导航栏   工具下载-->
+<span data-ng-bind="::pageTitle()" style="display: none;"></span>
+<nav role="navigation" class="navbar topnavbar">
+    <div class="navbar-header">
+		<a href="#/homePage" class="navbar-brand">
+			<div class="brand-logo">
+				<img src="../../img/banner/logo.png" alt="蜂鸟矿池" class="img-responsive" />
+			</div>
+		</a>
+    </div>
+	<div class="nav-wrapper">
+		<ul class="nav navbar-nav navbar-left">
+			<li>
+				<a ng-href="#/homePage">首页</a>
+			</li>
+			<li ng-show="control">
+				<a ng-click="userpanel()">用户面板</a>
+			</li>
+			<li>
+				<a ng-href="#/statistics">统计</a>
+			</li>
+			<!--<li class="called">
+				<a>工具下载</a>
+			</li>
+			<li>
+				<a ng-href="#/billboard">公告</a>
+			</li>-->
+		</ul>
+	    <ul class="nav navbar-nav navbar-right" ng-show="!control">
+	    	<li>
+         		<a ng-href="#/login">登录</a>
+         	</li>
+	    	<li>
+	            <a ng-href="#/register">注册</a>
+         	</li>
+         	
+        </ul>
+        <ul class="nav navbar-nav navbar-right" ng-show="control">
+	    	<li>
+         		<a ng-click="logout()">注销</a>
+         	</li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" ng-show="control">
+			<li dropdown="" class="dropdown dropdown-list">
+				<a dropdown-toggle="" style="cursor: pointer;">
+					<em class="icon-user"></em>&nbsp;
+					<span>{{username}}</span>
+					<span class="fa fa-angle-down"></span>
+				</a>
+			</li>
+        </ul>
+    </div>
+</nav>
+<!--工具下载-->
+<div class="col-lg-12 collectiveStyle">
+	<div class="col-lg-1"></div>
+	<div class="col-lg-10">
+		<div class="row">
+		   <div class="col-lg-12">
+		      <div class="row">
+		      	
+		      	<div class="col-lg-12">
+		            <div class="panel">
+		               <a href="">
+		                  <img src="app/img/bg1.jpg" class="img-responsive" style="height: 420px;width: 100%;" />
+		               </a>
+		               <div class="panel-body">
+		                  <p class="clearfix">
+		                     <span class="pull-left">
+		                        <small class="mr-sm">By <a href="">Erica Castro</a>
+		                        </small>
+		                        <small class="mr-sm">May 03, 2015</small>
+		                     </span>
+		                     <span class="pull-right">
+		                        <small>
+		                           <strong>56</strong>
+		                           <span>Comments</span>
+		                        </small>
+		                     </span>
+		                  </p>
+		                  <h4> <a href="">Trip down the river</a>
+		                  </h4>
+		                  <p>Aenean in sollicitudin velit. Nam sem magna, tristique non facilisis a, porta ut elit. Aliquam luctus nulla in justo euismod blandit. Aliquam condimentum enim a risus cursus blandit.</p>
+		               </div>
+		            </div>
+		        </div>
+		         <!-- Posts column 1-->
+		         <div class="col-lg-4">
+		            <div class="panel">
+		               <a href="">
+		                  <img src="app/img/bg5.jpg" class="img-responsive" />
+		               </a>
+		               <div class="panel-body">
+		                  <p class="clearfix">
+		                     <span class="pull-left">
+		                        <small class="mr-sm">By <a href="">Danny Ford</a>
+		                        </small>
+		                        <small class="mr-sm">May 03, 2015</small>
+		                     </span>
+		                     <span class="pull-right">
+		                        <small>
+		                           <strong>1000</strong>
+		                           <span>Comments</span>
+		                        </small>
+		                     </span>
+		                  </p>
+		                  <h4> <a href="">Tech review</a>
+		                  </h4>
+		               </div>
+		            </div>
+		            <div class="panel">
+		               <a href="">
+		                  <img src="app/img/bg5.jpg" class="img-responsive" />
+		               </a>
+		               <div class="panel-body">
+		                  <p class="clearfix">
+		                     <span class="pull-left">
+		                        <small class="mr-sm">By <a href="">Danny Ford</a>
+		                        </small>
+		                        <small class="mr-sm">May 03, 2015</small>
+		                     </span>
+		                     <span class="pull-right">
+		                        <small>
+		                           <strong>1000</strong>
+		                           <span>Comments</span>
+		                        </small>
+		                     </span>
+		                  </p>
+		                  <h4> <a href="">Tech review</a>
+		                  </h4>
+		               </div>
+		            </div>
+		            <div class="panel">
+		               <a href="">
+		                  <img src="app/img/bg4.jpg" class="img-responsive" />
+		               </a>
+		               <div class="panel-body">
+		                  <p class="clearfix">
+		                     <span class="pull-left">
+		                        <small class="mr-sm">By <a href="">Danny Ford</a>
+		                        </small>
+		                        <small class="mr-sm">May 03, 2015</small>
+		                     </span>
+		                     <span class="pull-right">
+		                        <small>
+		                           <strong>1000</strong>
+		                           <span>Comments</span>
+		                        </small>
+		                     </span>
+		                  </p>
+		                  <h4> <a href="">Tech review</a>
+		                  </h4>
+		               </div>
+		            </div>
+		            <div class="panel">
+		               <a href="">
+		                  <img src="app/img/bg10.jpg" class="img-responsive" />
+		               </a>
+		               <div class="panel-body">
+		                  <p class="clearfix">
+		                     <span class="pull-left">
+		                        <small class="mr-sm">By <a href="">Danny Ford</a>
+		                        </small>
+		                        <small class="mr-sm">May 03, 2015</small>
+		                     </span>
+		                     <span class="pull-right">
+		                        <small>
+		                           <strong>1000</strong>
+		                           <span>Comments</span>
+		                        </small>
+		                     </span>
+		                  </p>
+		                  <h4> <a href="">Tech review</a>
+		                  </h4>
+		               </div>
+		            </div>
+		         </div>
+		         <!-- Posts column 2-->
+		         <div class="col-lg-4">
+		            <div class="panel">
+		               <a href="">
+		                  <img src="app/img/bg5.jpg" class="img-responsive" />
+		               </a>
+		               <div class="panel-body">
+		                  <p class="clearfix">
+		                     <span class="pull-left">
+		                        <small class="mr-sm">By <a href="">Danny Ford</a>
+		                        </small>
+		                        <small class="mr-sm">May 03, 2015</small>
+		                     </span>
+		                     <span class="pull-right">
+		                        <small>
+		                           <strong>1000</strong>
+		                           <span>Comments</span>
+		                        </small>
+		                     </span>
+		                  </p>
+		                  <h4> <a href="">Tech review</a>
+		                  </h4>
+		               </div>
+		            </div>
+		            <div class="panel">
+		               <a href="">
+		                  <img src="app/img/bg8.jpg" class="img-responsive" />
+		               </a>
+		               <div class="panel-body">
+		                  <p class="clearfix">
+		                     <span class="pull-left">
+		                        <small class="mr-sm">By <a href="">Danny Ford</a>
+		                        </small>
+		                        <small class="mr-sm">May 03, 2015</small>
+		                     </span>
+		                     <span class="pull-right">
+		                        <small>
+		                           <strong>1000</strong>
+		                           <span>Comments</span>
+		                        </small>
+		                     </span>
+		                  </p>
+		                  <h4> <a href="">Tech review</a>
+		                  </h4>
+		               </div>
+		            </div>
+		            <div class="panel">
+		               <a href="">
+		                  <img src="app/img/bg5.jpg" class="img-responsive" />
+		               </a>
+		               <div class="panel-body">
+		                  <p class="clearfix">
+		                     <span class="pull-left">
+		                        <small class="mr-sm">By <a href="">Danny Ford</a>
+		                        </small>
+		                        <small class="mr-sm">May 03, 2015</small>
+		                     </span>
+		                     <span class="pull-right">
+		                        <small>
+		                           <strong>1000</strong>
+		                           <span>Comments</span>
+		                        </small>
+		                     </span>
+		                  </p>
+		                  <h4> <a href="">Tech review</a>
+		                  </h4>
+		               </div>
+		            </div>
+		            <div class="panel">
+		               <a href="">
+		                  <img src="app/img/bg5.jpg" class="img-responsive" />
+		               </a>
+		               <div class="panel-body">
+		                  <p class="clearfix">
+		                     <span class="pull-left">
+		                        <small class="mr-sm">By <a href="">Danny Ford</a>
+		                        </small>
+		                        <small class="mr-sm">May 03, 2015</small>
+		                     </span>
+		                     <span class="pull-right">
+		                        <small>
+		                           <strong>1000</strong>
+		                           <span>Comments</span>
+		                        </small>
+		                     </span>
+		                  </p>
+		                  <h4> <a href="">Tech review</a>
+		                  </h4>
+		               </div>
+		            </div>
+		         </div>
+		         <!-- Posts column 3-->
+		         <div class="col-lg-4">
+		            <div class="panel">
+		               <a href="">
+		                  <img src="app/img/bg5.jpg" class="img-responsive" />
+		               </a>
+		               <div class="panel-body">
+		                  <p class="clearfix">
+		                     <span class="pull-left">
+		                        <small class="mr-sm">By <a href="">Danny Ford</a>
+		                        </small>
+		                        <small class="mr-sm">May 03, 2015</small>
+		                     </span>
+		                     <span class="pull-right">
+		                        <small>
+		                           <strong>1000</strong>
+		                           <span>Comments</span>
+		                        </small>
+		                     </span>
+		                  </p>
+		                  <h4> <a href="">Tech review</a>
+		                  </h4>
+		               </div>
+		            </div>
+		            <div class="panel">
+		               <a href="">
+		                  <img src="app/img/bg5.jpg" class="img-responsive" />
+		               </a>
+		               <div class="panel-body">
+		                  <p class="clearfix">
+		                     <span class="pull-left">
+		                        <small class="mr-sm">By <a href="">Danny Ford</a>
+		                        </small>
+		                        <small class="mr-sm">May 03, 2015</small>
+		                     </span>
+		                     <span class="pull-right">
+		                        <small>
+		                           <strong>1000</strong>
+		                           <span>Comments</span>
+		                        </small>
+		                     </span>
+		                  </p>
+		                  <h4> <a href="">Tech review</a>
+		                  </h4>
+		               </div>
+		            </div>
+		            <div class="panel">
+		               <a href="">
+		                  <img src="app/img/bg5.jpg" class="img-responsive" />
+		               </a>
+		               <div class="panel-body">
+		                  <p class="clearfix">
+		                     <span class="pull-left">
+		                        <small class="mr-sm">By <a href="">Danny Ford</a>
+		                        </small>
+		                        <small class="mr-sm">May 03, 2015</small>
+		                     </span>
+		                     <span class="pull-right">
+		                        <small>
+		                           <strong>1000</strong>
+		                           <span>Comments</span>
+		                        </small>
+		                     </span>
+		                  </p>
+		                  <h4> <a href="">Tech review</a>
+		                  </h4>
+		               </div>
+		            </div>
+		            <div class="panel">
+		               <a href="">
+		                  <img src="app/img/bg5.jpg" class="img-responsive" />
+		               </a>
+		               <div class="panel-body">
+		                  <p class="clearfix">
+		                     <span class="pull-left">
+		                        <small class="mr-sm">By <a href="">Danny Ford</a>
+		                        </small>
+		                        <small class="mr-sm">May 03, 2015</small>
+		                     </span>
+		                     <span class="pull-right">
+		                        <small>
+		                           <strong>1000</strong>
+		                           <span>Comments</span>
+		                        </small>
+		                     </span>
+		                  </p>
+		                  <h4> <a href="">Tech review</a>
+		                  </h4>
+		               </div>
+		            </div>
+		         </div>
+		      </div>
+		   </div>
+		   <!-- Blog Sidebar-->
+		   
+		</div>
+		<div class="col-lg-1"></div>
+	</div>
+	</div>

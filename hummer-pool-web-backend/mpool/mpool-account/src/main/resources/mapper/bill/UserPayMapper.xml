@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.account.mapper.bill.UserPayMapper">
+
+	<!--获取符合支付条件的用户钱包（钱包地址修改和新钱包需大于三天）-->
+	<select id="taskBill" resultType="com.mpool.common.model.account.bill.UserPay">
+		SELECT
+			id,
+			puid,
+			wallet_address,
+			total_due,
+			total_paid,
+			pay_model,
+			pplns_rate,
+			ppsplus_rate,
+			ppsplus_group,
+			fpps_rate,
+			fpps_group,
+			is_pay_enable,
+			last_pay_at,
+			min_pay,
+			currency_id,
+			update_time
+		FROM
+			user_pay up
+		WHERE
+			up.total_due >= min_pay
+		AND is_pay_enable = 1
+		AND currency_id = 1 
+		AND wallet_address IS NOT NULL
+		AND IFNULL(hour(TIMEDIFF(update_time,now())),73) > 72
+	</select>
+	
+	<update id="subtractionTotalDue">
+		UPDATE `user_pay` SET `total_due`=total_due - #{totalDue} WHERE `id`=#{id}  AND currency_id=#{currencyId}
+	</update>
+	
+	<update id="additionTotalPaid">
+		UPDATE `user_pay` SET `total_paid`=total_paid + #{totalPaid}  WHERE `id`=#{id} AND currency_id=#{currencyId}
+	</update>
+	
+	<update id="additionTotalDue">
+		UPDATE `user_pay` SET `total_due`=total_due + #{totalDue}  WHERE `puid`=#{puid} AND currency_id=#{currencyId}
+	</update>
+	
+	<select id="findByPuid" resultType="com.mpool.common.model.account.bill.UserPay">
+		SELECT * FROM `user_pay` where puid = #{puid}
+		AND
+			currency_id=#{currencyId}
+	</select>
+	
+	<select id="getUserPayByPuid" resultType="com.mpool.common.model.account.bill.UserPay">
+		SELECT
+			puid,
+			total_due,
+			total_paid
+		FROM
+			user_pay
+		WHERE
+			puid IN <foreach collection="list" open="(" close=")" separator="," item="item">
+				#{item}
+			</foreach>
+		AND
+			currency_id=#{currencyId}
+	</select>
+
+	<select id="getUserPayByIdWithoutCid" resultType="map">
+		SELECT
+			up.puid AS uid,
+			up.pay_model AS currencyId,
+			ac.type AS currencyName
+		FROM
+			user_pay AS up
+		LEFT JOIN
+			account_currency AS ac
+		on
+			up.pay_model=ac.id
+		WHERE
+			up.puid IN <foreach collection="ids" open="(" close=")" separator="," item="item">
+		#{item}
+	</foreach>
+		AND
+		up.currency_id!=#{currencyId}
+	</select>
+</mapper>

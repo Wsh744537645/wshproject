@@ -1,0 +1,46 @@
+{
+  "dashboard": {
+  	"DASHBOARD": "用户面板",
+    "SUBACCOUNTS": "用户管理",
+    "SUBACCOUNTSDETAILS": "账号管理详情",
+    "IncomeSettlement": "手动收益结算",
+    "PAYRECORDS": "支付账单",
+    "PAYRECORDSDETAILS": "支付账单详情",
+    "SYSROLE": "角色管理",
+    "SYSMENU": "菜单管理",
+    "SYSUSER": "系统用户管理",
+    "SYSUSEREDIT": "系统用户信息编辑",
+    "ADDSYSUSER": "添加系统用户",
+    "SYSPERMS": "权限设置",
+    "POOLLOG":"矿池日志",
+    "ACCOUNTUSERLIST": "用户列表",
+    "ACCOUNTUSERLISTDETAILS":"用户列表详情",
+    "SETTINGSLIST": "预警数据列表",
+    "NOTICE": "通知公告",
+    "SETTINGS": "修改预警",
+    "RATION": "子账号管理列表",
+    "POOLFPPS": "挖矿费率设置",
+    "ADDSETTINGS": "添加预警",
+    "NOTICEDETAILS": "通知详情"
+  },
+  "topNavigationBar": {
+  	"WRITTENOFF": "注销"
+  },
+  "sidebar": {
+    "nav": {
+    	"DOCUMENTATION5": "用户管理",
+      "DOCUMENTATION1": "我的首页",
+      "DOCUMENTATION2": "我的矿机",
+      "DOCUMENTATION3": "支付记录",
+      "DOCUMENTATION4": "账户管理",
+      "DOCUMENTATION6": "告警设置",
+      "DOCUMENTATION7": "常见问题",
+      "user": {
+        "PAGES": "用户管理",
+        "LOGIN": "登录"
+      }
+    }
+  }
+}
+
+

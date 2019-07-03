@@ -1,0 +1,92 @@
+<!--头部导航栏-->
+<nav role="navigation" class="navbar topnavbar">
+    <div class="navbar-header">
+      	<a class="navbar-brand">
+         	<div class="brand-logo">
+            	<img src="../../img/banner/logo.png" alt="蜂鸟矿池" class="img-responsives" />
+         	</div>
+         	<div class="brand-logo-collapsed">
+            	<img src="img/logo-single.png" alt="App Logo" class="img-responsive" />
+         	</div>
+      	</a>
+    </div>
+	<div class="nav-wrapper">
+	  	<ul class="nav navbar-nav">
+	     	<li>
+	            <a href="#" trigger-resize="" ng-click="app.layout.isCollapsed = !app.layout.isCollapsed" class="hidden-xs">
+	            	<em class="fa fa-navicon"></em>
+	            </a>
+	            <a href="#" toggle-state="aside-toggled" no-persist="no-persist" class="visible-xs sidebar-toggle">
+	                <em class="fa fa-navicon"></em>
+	            </a>
+	     	</li>
+		  </ul>
+		  
+	    <ul class="nav navbar-nav navbar-right" ng-controller="homeController" style="padding-right: 30px;">
+			<li>
+					<!-- dropdown="" class="dropdown dropdown-list" -->
+				<a dropdown-toggle="" style="cursor: pointer;">
+					<em class="icon-user"></em>&nbsp;
+					<span>{{userName}}</span>
+					<!-- <span class="fa fa-angle-down"></span> -->
+				</a>
+				<!--<ul class="dropdown-menu animated flipInX">
+					<li ng-repeat="items in itemsData">
+						<div class="list-group">
+							<a class="list-group-item" style="padding:0px;">
+								<div class="media-box">
+									<div class="media-box-body clearfix">
+										<p>&nbsp;{{items.username}}</p>
+									</div>
+								</div>
+							</a>
+						</div>
+					</li>
+				</ul>-->
+			</li>
+			<li dropdown="" class="dropdown dropdown-list">
+				<a dropdown-toggle="" style="cursor: pointer;">
+					<span>{{currencyName}}</span>
+					<span class="fa fa-angle-down"></span>
+				</a>
+				<ul class="dropdown-menu animated flipInX" style="min-width: 70px; left:0px">
+					<li ng-repeat="item in currencyDatas">
+						<div class="list-group">
+							<a class="list-group-item" style="padding:0px;">
+								<div class="media-box">
+									<div class="media-box-body clearfix" ng-click="changeCoin(item.type)" style="height:30px;text-align: left">	
+										<img src="{{item.coinIcon}}" alt="" style="margin: -2px 4px 0 8px">										
+										<text>{{item.type}}</text>
+									</div>
+								</div>
+							</a>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<!--
+	        <li dropdown="" class="dropdown dropdown-list">
+	            <a dropdown-toggle="" style="cursor: pointer;">
+	               <em class="icon-user"></em>&nbsp;&nbsp;
+	               <span>{{username}}</span>
+	            </a>
+	            <ul class="dropdown-menu animated flipInX">
+	               	<li>
+	                  	<div class="list-group">
+	                     	<a ng-click="logout()" class="list-group-item">
+	                        	<div class="media-box">
+		                           	<div class="media-box-body clearfix">
+		                              	<p class="m0">{{ 'topNavigationBar.WRITTENOFF' | translate:{ appName: app.name } }}</p>
+	                           		</div>
+	                    		</div>
+	                     	</a>
+	                  	</div>
+	               	</li>
+	            </ul>
+			</li>-->
+			<li class="visible-lg">
+				<a ng-click="logout()" >注销</a>
+			</li>
+        </ul>
+    </div>
+</nav>

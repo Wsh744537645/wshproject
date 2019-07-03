@@ -1,0 +1,10 @@
+<view class='box'>
+  <text class='qus' selectable>售后服务</text>
+  <text class='ans' selectable>
+    客服邮箱 : support@hummerpool.com\n
+    QQ群① : 783079293\n
+    QQ群② : 791421817\n
+  </text>
+  <!-- <image bindtap="previewImage" src="https://www.hummerpool.com/img/hummerpool.jpg" data-src="https://www.hummerpool.com/img/hummerpool.jpg" style='width: 85px; height:85px; margin-left: 15px;' mode="widthFix"></image>
+  <text style='display: block; font-size:12px; margin-left: 18px;'>蜂鸟矿池微信公众号</text> -->
+</view>

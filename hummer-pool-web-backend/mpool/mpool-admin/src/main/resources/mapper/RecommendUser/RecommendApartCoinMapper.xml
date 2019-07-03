@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module.recommend.mapper.RecommendApartCoinMapper">
+
+	<!--<select id="getHistoryApartCoin" resultType="com.mpool.common.model.account.UserFeeRecord">-->
+		<!--SELECT-->
+			<!--`day`,SUM(fee) as fee-->
+		<!--FROM-->
+		<!--user_fee_record-->
+		<!--WHERE-->
+		<!--1=1-->
+		<!--<if test="date != null">-->
+			<!--<if test="date.strTime != null">-->
+				<!--AND STR_TO_DATE(`day`, '%Y%m%d') >= DATE_FORMAT(#{date.strTime},'%Y-%m-%d')-->
+			<!--</if>-->
+			<!--<if test="date.endTime != null">-->
+				<!--AND STR_TO_DATE(`day`, '%Y%m%d') &lt;= DATE_FORMAT(#{date.endTime},'%Y-%m-%d')-->
+			<!--</if>-->
+		<!--</if>-->
+		<!--GROUP BY `day`-->
+		<!--ORDER BY-->
+		<!--STR_TO_DATE(`day`, '%Y%m%d') DESC-->
+	<!--</select>-->
+	<!--<if test="str != null">-->
+		<!--AND STR_TO_DATE(`create_time`, '%Y%m%d') >= #{str}-->
+	<!--</if>-->
+	<!--<if test="end != null">-->
+		<!--AND STR_TO_DATE(`create_time`, '%Y%m%d') &lt;= #{end}-->
+	<!--</if>-->
+	<select id="getHistoryApartCoin" resultType="com.mpool.common.model.account.UserFeeRecord">
+		SELECT
+		`create_time`,SUM(fee) as feeSum
+	  	FROM
+		user_fee_record
+		WHERE
+		1=1
+		<if test="str != null">
+		AND `create_time` >= #{str}
+		</if>
+		<if test="end != null">
+		AND `create_time` &lt;= #{end}
+		</if>
+		GROUP BY `create_time`
+		ORDER BY `create_time` DESC
+
+	</select>
+	<!--`day`>= #{str}-->
+	<!--AND `day` &lt;= #{end}-->
+	<!--<select id="getHistoryApartCoinType2Sum" resultType="com.mpool.common.model.account.UserFeeRecord">-->
+		<!--SELECT-->
+		<!--`day`,SUM(fee) as recommendFeeSum-->
+		<!--FROM-->
+		<!--user_fee_record-->
+		<!--WHERE-->
+		<!--fee_type = 2-->
+		<!--<if test="str != null">-->
+			<!--AND STR_TO_DATE(`day`, '%Y%m%d') >= DATE_FORMAT(#{str},'%Y-%m-%d')-->
+		<!--</if>-->
+		<!--<if test="end != null">-->
+			<!--AND STR_TO_DATE(`day`, '%Y%m%d') &lt;= DATE_FORMAT(#{end},'%Y-%m-%d')-->
+		<!--</if>-->
+		<!--GROUP BY `day`-->
+	<!--</select>-->
+
+	<select id="getHistoryRecommendApartCoin" resultType="com.mpool.common.model.account.UserFeeRecord">
+		SELECT
+		`day`,SUM(fee) as feeSum
+	  	FROM
+		user_fee_record
+		WHERE
+		fee_type=2
+		AND `day` in <foreach collection="days" close=")" open="(" separator="," item="day">#{day}</foreach>
+		GROUP BY `day`
+	</select>
+	
+	
+	<select id="sumApartCoin" resultType="java.lang.Long">
+		SELECT
+			SUM(fee)
+		FROM
+			user_fee_record
+		WHERE 1=1
+		<if test="feeType != null">
+			AND fee_type = #{feeType}
+		</if>
+		<if test="str != null">
+			AND STR_TO_DATE(`day`, '%Y%m%d') >= DATE_FORMAT(#{str},'%Y-%m-%d')
+		</if>
+		<if test="end != null">
+			AND STR_TO_DATE(`day`, '%Y%m%d') &lt;= DATE_FORMAT(#{end},'%Y-%m-%d')
+		</if>
+	</select>
+	<!--格式化Date类型的时间-->
+	<select id="getCurrentCoin" resultType="java.lang.Long">
+			SELECT
+				SUM(fee)
+			FROM
+				user_fee_record
+			WHERE STR_TO_DATE(`create_time`, '%Y-%m-%d') = DATE_FORMAT(#{day},'%Y-%m-%d')
+
+	</select>
+	<!--<select id="getHistoryApartCoin" resultType="com.mpool.common.model.account.UserFeeRecord">-->
+		<!--SELECT `day`,-->
+		<!--SUM(r.sum1),-->
+		<!--SUM(r.sum2)-->
+		<!--FROM(-->
+		<!--SELECT `day`,0 as sum2,SUM(fee) sum1 FROM user_fee_record tp1 WHERE tp1.fee_type ='1' GROUP BY `day`-->
+		<!--UNION ALL-->
+		<!--SELECT `day`,SUM(fee) sun2,0 FROM user_fee_record tp2 WHERE tp2.fee_type ='2' GROUP BY `day`)r-->
+		<!--WHERE-->
+		<!--`day`>= #{str}AND `day` &lt;= #{end}-->
+		<!--GROUP BY `day`-->
+		<!--ORDER BY `day` DESC-->
+	<!--</select>-->
+
+</mapper>

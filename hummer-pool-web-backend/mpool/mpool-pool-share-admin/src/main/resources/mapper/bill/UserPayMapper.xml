@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.admin.module.bill.mapper.UserPayMapper">
+	<select id="getBalanceByUserId" resultType="Double">
+		SELECT
+			balance
+		FROM
+			user_pay
+		WHERE
+			puid = #{puid}
+	</select>
+
+	<update id="updateUserBalance">
+		UPDATE
+			user_pay
+		SET
+			balance = #{balance}
+		WHERE
+			puid = #{userId}
+	</update>
+
+	<select id="getUsersPay" resultType="com.mpool.common.model.share.UserPayModel">
+		SELECT
+			pay_id,
+			puid,
+			balance
+		FROM
+			user_pay
+		WHERE
+			puid IN <foreach collection="userIds" close=")" open="(" item="item" separator=",">#{item}</foreach>
+	</select>
+
+	<insert id="updateUserBalanceBatch">
+		INSERT INTO `user_pay`(
+		`pay_id`,
+		`puid`,
+		`balance`
+		) VALUES
+		<foreach collection="users" separator="," item="tiem">
+			(#{tiem.payId},
+			#{tiem.puid},
+			#{tiem.balance})
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		balance = VALUES(balance)
+	</insert>
+</mapper>

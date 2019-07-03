@@ -1,0 +1,14 @@
+<view class='box'>
+  <text class='qus' selectable>1、矿池设置</text>
+  <text class='ans' selectable>第1矿池（Pool 1）: stratum+tcp://pool.hummerpool.com:3333\n
+    第2矿池（Pool 2）: stratum+tcp://pool.hummerpool.com:6666\n
+    第3矿池（Pool 3）: stratum+tcp://pool.hummerpool.com:8888\n
+    机器号（Worker）: 用户名.服务器编号，例如您的用户名是abc，则填写abc.001\n
+    密码（Password）: 随便填，矿池不检查，例如填12
+  </text>
+</view>
+<view class='box'>
+  <text class='qus' selectable>2、问题服务器（掉板/掉机器）的辨别方式</text>
+  <text class='ans' selectable>“我的服务器”里会把24小时底速服务器排在前面，再通过查看右边的“长期速度”，即可一目了然服务器之前日平均云计算数据多少，现在是不是掉速（S9掉板/A7掉机器），大部分问题服务器简单重启，即可恢复云计算数据。
+  </text>
+</view>

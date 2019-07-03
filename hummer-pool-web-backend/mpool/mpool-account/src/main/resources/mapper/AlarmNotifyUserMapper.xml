@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.account.mapper.AlarmNotifyUserMapper">
+
+    <select id="settingUserList" resultType="com.mpool.common.model.account.AlarmNotifyUser">
+		SELECT *
+		FROM account_alarm_notify_user
+		WHERE user_id =#{user_Id}
+	</select>
+
+	<delete id="deleteSettingUserIds">
+		DELETE FROM `account_alarm_notify_user`
+		WHERE `id` in <foreach collection="ids" close=")" open="(" item="item" separator=",">
+		#{item}</foreach>
+	</delete>
+	
+	<insert id="insets">
+		INSERT INTO `account_alarm_notify_user` (`user_id`, `nick_name`, `phone`, `email`, `create_time`) 
+		VALUES 
+		<foreach collection="list" separator="," item="item">(#{userId}, #{item.nickName}, #{item.phone}, #{item.email}, NOW())</foreach>
+	</insert>
+	<select id="getNotifyUsers" resultType="com.mpool.common.model.account.AlarmNotifyUser">
+		SELECT *
+		FROM account_alarm_notify_user
+		WHERE user_id =#{userId}
+	</select>
+</mapper>

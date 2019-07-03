@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.accountmultiple.mapper.WorkerGroupWorkerMapper">
+
+	<delete id="deleteWorkerGroup">
+		DELETE FROM `account_worker_worker_group`
+			WHERE `worker_id` in <foreach collection="workerIds" close=")" open="(" item="item" separator=",">#{item}</foreach>
+			AND `user_id`= #{userId}
+	</delete>
+
+</mapper>

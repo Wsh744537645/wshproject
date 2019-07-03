@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.mapper.UserNotifyMapper">
+
+	<select id="getNotifyByUserIds" resultType="com.mpool.share.model.NotifyResultModel">
+		SELECT
+			un.puid AS puid,
+			un.phone_state AS phoneState,
+			un.email_state AS emailState,
+			un.before7 AS before7,
+			un.before1 AS before1,
+			un.expired AS expired,
+			au.user_email AS email,
+			au.user_phone AS phone
+		FROM
+			`user_notify` un LEFT JOIN `account_user` au ON au.user_id = un.puid
+		where
+          un.puid IN <foreach collection="ids" close=")" open="(" item="item" separator=",">#{item}</foreach>
+		AND
+			un.phone_state = 1 OR un.email_state = 1
+	</select>
+
+</mapper>

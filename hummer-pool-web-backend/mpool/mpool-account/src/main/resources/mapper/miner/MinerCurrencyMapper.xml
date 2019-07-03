@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.account.mapper.miner.MinerCurrencyMapper">
+
+    <select id="findByCurrencyIds" resultType="com.mpool.account.model.miner.MinerCurrencyModel">
+        SELECT
+        *
+        FROM
+        miner_currency
+        WHERE
+        currency_id IN <foreach collection="ids" close=")" open="(" separator="," item="item">#{item}</foreach>
+    </select>
+
+</mapper>

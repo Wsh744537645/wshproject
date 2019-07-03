@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.mapper.product.ProductMapper">
+
+	<update id="addAcceptStock">
+		update product set stock = stock + #{accept} where product_id = #{productId};
+	</update>
+
+	<select id="getProductMiningByProductId" resultType="com.mpool.common.model.share.MiningModel">
+		SELECT
+			mining.*
+		FROM
+			product LEFT JOIN mining ON product.mining_id = mining.id
+		WHERE
+			product.product_id = #{productId}
+	</select>
+
+	<select id="getAllActivityProduct" resultType="com.mpool.share.resultVo.ProductVO">
+		SELECT
+			product.product_id AS productId,
+			product.product_name AS productName,
+			product.min_accept AS minAccept,
+			product.period AS period,
+			product.work_time AS workTime,
+			product.stock AS stock,
+			product.power_price AS powerPrice,
+			product.share_year AS shareYear,
+			product.accept_fee AS acceptFee,
+			product.power_fee AS powerFee
+		FROM
+			product LEFT JOIN mining ON product.mining_id = mining.id
+		WHERE
+			<![CDATA[ DATE_FORMAT(#{date},'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(product.shelf_time,'%Y-%m-%d %H:%i:%s') AND DATE_FORMAT(#{date},'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(product.Obtained_time,'%Y-%m-%d %H:%i:%s') ]]>
+	</select>
+
+</mapper>

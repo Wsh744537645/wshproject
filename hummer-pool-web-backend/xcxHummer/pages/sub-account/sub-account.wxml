@@ -1,0 +1,59 @@
+<view class='tableHead'>
+  <view class="header">
+    <view class="flex-item acc">账户</view>
+    <view class="flex-item title">
+      <view style='border-bottom:1px solid #e5e5e5;padding:20px 0 9px 0;'>云计算数据</view>
+      <view style='font-size:13px;height:13px;margin:6px 0'>
+        <text>15分钟</text>
+        <text>24小时</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="summary">
+  <view class="flex-item3" style='width:40%;display: inline-block;text-align: center;line-height:39px'>
+    <!-- <image src="../../image/sub-account1.png"></image> -->
+    合计
+  </view>
+  <view class="flex-item3" style="border-left:none;width:60%">
+    <text>{{mTotal}}</text>
+    <text>{{hTotal}}</text>
+  </view>
+</view>
+<view class="{{item.backcolor?'dataList':'nobackcolor'}}" wx:for="{{dataList}}">
+  <view class="flexItem user">
+    <!-- <image src="../../image/person.png"></image> -->
+    <text bindtap="goDetail" data-id="{{item.userId}}">{{item.userName}}</text>
+  </view>
+  <view class="flexItem time"  style="border-left:none">
+    <text>{{item.share15m}}</text>
+    <text>{{item.share24h}}</text>
+  </view>
+</view>
+<view class="pages">
+  <view class='size'>
+    <span>每页</span>
+    <picker bindchange="bindSizeChange" value="{{0}}" range="{{sizeArray}}">
+      <view class='num'>
+        {{sizeArray[sizeIndex]}}
+        <image src='../../image/page.png' style='width:10px;height:10px;display: inline-block;margin:0 -5px 0 3px'></image>
+      </view>
+    </picker>
+    <span>条，</span>
+  </view>
+  <view class='total'>
+    <span>共</span>
+    <span style="padding: 0 10rpx;">{{totalNum}}</span>
+    <span>条</span>
+  </view>
+  <view class="current">
+    <span>第</span>
+    <picker bindchange="bindCurrentChange" value="{{0}}" range="{{currentArray}}">
+      <view class='num'>
+        {{currentArray[currentIndex]}}
+        <image src='../../image/page.png' style='width:10px;height:10px;display: inline-block;margin:0 -5px 0 3px'></image>
+      </view>
+    </picker>
+    <span>页</span>
+  </view>
+</view>

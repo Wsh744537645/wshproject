@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.admin.module.message.mapper.MessageMapper">
+
+	<select id="getList"
+		resultType="com.mpool.common.model.account.Message">
+		SELECT
+			am.id,
+			am.title,
+			am.enabled,
+			am.create_time,
+			am.update_time,
+			am.keyword,
+			am.create_by,
+			am.update_by,
+			am.release_time,
+			am.release_by,
+			au.username as release_user
+		FROM
+			account_message am
+		LEFT JOIN admin_user au ON au.user_id = am.release_by
+ 	</select>
+ 	
+ 	<update id="updateByEnable" >
+ 		UPDATE `account_message` SET `enabled`=#{enable} WHERE `id`=#{id}
+ 	</update>
+ 	
+ 	<update id="updateByRelease" >
+ 		UPDATE `account_message` SET `release_time`=#{message.releaseTime}, `release_by`=#{message.releaseBy} WHERE `id`=#{message.id}
+ 	</update>
+</mapper>

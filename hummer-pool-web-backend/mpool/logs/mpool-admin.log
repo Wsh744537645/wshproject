@@ -1,0 +1,1499 @@
+2019-06-21 14:17:41:168 [INFO] [main] [com.mpool.admin.MpoolAdminApplication:logStarting][50]: Starting MpoolAdminApplication on DESKTOP-BRVEI1D with PID 23412 (D:\gitHead\hummer-pool-web-backend\mpool\mpool-admin\target\classes started by user in D:\gitHead\hummer-pool-web-backend\mpool) 
+2019-06-21 14:17:41:173 [DEBUG] [main] [com.mpool.admin.MpoolAdminApplication:logStarting][53]: Running with Spring Boot v2.1.0.RELEASE, Spring v5.1.2.RELEASE 
+2019-06-21 14:17:41:174 [INFO] [main] [com.mpool.admin.MpoolAdminApplication:logStartupProfileInfo][679]: The following profiles are active: dev 
+2019-06-21 14:17:43:287 [INFO] [main] [org.springframework.data.repository.config.RepositoryConfigurationDelegate:multipleStoresDetected][244]: Multiple Spring Data modules found, entering strict repository configuration mode! 
+2019-06-21 14:17:43:290 [INFO] [main] [org.springframework.data.repository.config.RepositoryConfigurationDelegate:registerRepositoriesIn][126]: Bootstrapping Spring Data repositories in DEFAULT mode. 
+2019-06-21 14:17:43:353 [INFO] [main] [org.springframework.data.repository.config.RepositoryConfigurationDelegate:registerRepositoriesIn][182]: Finished Spring Data repository scanning in 47ms. Found 0 repository interfaces. 
+2019-06-21 14:17:43:708 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'shiroConfig' of type [com.mpool.admin.config.ShiroConfig$$EnhancerBySpringCGLIB$$acc6ded3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:43:827 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:43:834 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration$$EnhancerBySpringCGLIB$$d60427a0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:44:053 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'lettuceClientResources' of type [io.lettuce.core.resource.DefaultClientResources] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:44:132 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:44:133 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'redisConfig' of type [com.mpool.common.cache.config.RedisConfig$$EnhancerBySpringCGLIB$$89a49e49] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:44:149 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:44:149 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'passwordRetryCache' of type [com.mpool.admin.config.shiro.cache.PasswordRetryCache$$EnhancerBySpringCGLIB$$3abe0634] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:44:150 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'passwordCredentialsMatcher' of type [com.mpool.admin.config.shiro.PasswordCredentialsMatcher$$EnhancerBySpringCGLIB$$e7b18a24] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:44:189 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:44:194 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'mybatisPlusConfig' of type [com.mpool.admin.config.MybatisPlusConfig$$EnhancerBySpringCGLIB$$ff8489af] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:44:202 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'paginationInterceptor' of type [com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:44:204 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'performanceInterceptor' of type [com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:44:211 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration$$EnhancerBySpringCGLIB$$feb2d5f0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:44:393 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'sharding.jdbc.config.sharding-io.shardingsphere.shardingjdbc.spring.boot.sharding.SpringBootShardingRuleConfigurationProperties' of type [io.shardingsphere.shardingjdbc.spring.boot.sharding.SpringBootShardingRuleConfigurationProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:44:396 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'sharding.jdbc.config.masterslave-io.shardingsphere.shardingjdbc.spring.boot.masterslave.SpringBootMasterSlaveRuleConfigurationProperties' of type [io.shardingsphere.shardingjdbc.spring.boot.masterslave.SpringBootMasterSlaveRuleConfigurationProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:44:432 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'io.shardingsphere.shardingjdbc.spring.boot.SpringBootConfiguration' of type [io.shardingsphere.shardingjdbc.spring.boot.SpringBootConfiguration$$EnhancerBySpringCGLIB$$b9165fd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:17:44:437 [DEBUG] [main] [com.mpool.common.model.pool.sharding.MiningWorkersAlgorithm:<init>][17]: MiningWorkersAlgorithm init --------------------------->>>>>>>>>>>>>> 
+2019-06-21 14:17:44:438 [DEBUG] [main] [com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm:<init>][18]: PuidPreciseShardingAlgorithm init --------------------------->>>>>>>>>>>>>> 
+2019-06-21 14:17:44:439 [DEBUG] [main] [com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm:<init>][18]: PuidPreciseShardingAlgorithm init --------------------------->>>>>>>>>>>>>> 
+2019-06-21 14:17:44:439 [DEBUG] [main] [com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm:<init>][18]: PuidPreciseShardingAlgorithm init --------------------------->>>>>>>>>>>>>> 
+2019-06-21 14:17:44:440 [DEBUG] [main] [com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm:<init>][18]: PuidPreciseShardingAlgorithm init --------------------------->>>>>>>>>>>>>> 
+2019-06-21 14:17:44:441 [DEBUG] [main] [com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm:<init>][18]: PuidPreciseShardingAlgorithm init --------------------------->>>>>>>>>>>>>> 
+2019-06-21 14:17:44:441 [DEBUG] [main] [com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm:<init>][18]: PuidPreciseShardingAlgorithm init --------------------------->>>>>>>>>>>>>> 
+2019-06-21 14:17:45:110 [INFO] [main] [com.zaxxer.hikari.HikariDataSource:getConnection][110]: HikariPool-1 - Starting... 
+2019-06-21 14:17:45:115 [WARN] [main] [com.zaxxer.hikari.util.DriverDataSource:<init>][68]: Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation. 
+2019-06-21 14:17:45:872 [INFO] [main] [com.zaxxer.hikari.HikariDataSource:getConnection][123]: HikariPool-1 - Start completed. 
+2019-06-21 14:17:45:899 [INFO] [main] [com.zaxxer.hikari.HikariDataSource:getConnection][110]: HikariPool-2 - Starting... 
+2019-06-21 14:17:45:900 [WARN] [main] [com.zaxxer.hikari.util.DriverDataSource:<init>][68]: Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation. 
+2019-06-21 14:17:46:450 [INFO] [main] [com.zaxxer.hikari.HikariDataSource:getConnection][123]: HikariPool-2 - Start completed. 
+2019-06-21 14:17:46:451 [INFO] [main] [com.zaxxer.hikari.HikariDataSource:getConnection][110]: HikariPool-3 - Starting... 
+2019-06-21 14:17:46:451 [WARN] [main] [com.zaxxer.hikari.util.DriverDataSource:<init>][68]: Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation. 
+2019-06-21 14:17:47:028 [INFO] [main] [com.zaxxer.hikari.HikariDataSource:getConnection][123]: HikariPool-3 - Start completed. 
+2019-06-21 14:17:47:029 [INFO] [main] [com.zaxxer.hikari.HikariDataSource:getConnection][110]: HikariPool-4 - Starting... 
+2019-06-21 14:17:47:029 [WARN] [main] [com.zaxxer.hikari.util.DriverDataSource:<init>][68]: Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation. 
+2019-06-21 14:17:47:555 [INFO] [main] [com.zaxxer.hikari.HikariDataSource:getConnection][123]: HikariPool-4 - Start completed. 
+2019-06-21 14:17:47:556 [INFO] [main] [com.zaxxer.hikari.HikariDataSource:getConnection][110]: HikariPool-5 - Starting... 
+2019-06-21 14:17:47:557 [WARN] [main] [com.zaxxer.hikari.util.DriverDataSource:<init>][68]: Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation. 
+2019-06-21 14:17:48:137 [INFO] [main] [com.zaxxer.hikari.HikariDataSource:getConnection][123]: HikariPool-5 - Start completed. 
+2019-06-21 14:17:48:137 [INFO] [main] [com.zaxxer.hikari.HikariDataSource:getConnection][110]: HikariPool-6 - Starting... 
+2019-06-21 14:17:48:137 [WARN] [main] [com.zaxxer.hikari.util.DriverDataSource:<init>][68]: Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation. 
+2019-06-21 14:17:48:692 [INFO] [main] [com.zaxxer.hikari.HikariDataSource:getConnection][123]: HikariPool-6 - Start completed. 
+2019-06-21 14:17:48:693 [INFO] [main] [com.zaxxer.hikari.HikariDataSource:getConnection][110]: HikariPool-7 - Starting... 
+2019-06-21 14:17:48:693 [WARN] [main] [com.zaxxer.hikari.util.DriverDataSource:<init>][68]: Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation. 
+2019-06-21 14:17:49:375 [INFO] [main] [com.zaxxer.hikari.HikariDataSource:getConnection][123]: HikariPool-7 - Start completed. 
+2019-06-21 14:18:06:120 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'dataSource' of type [io.shardingsphere.shardingjdbc.jdbc.core.datasource.ShardingDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:06:430 [WARN] [main] [com.baomidou.mybatisplus.core.toolkit.TableInfoHelper:initTableFields][250]: Warn: Could not find @TableId in Class: com.mpool.common.model.account.BlockchainAllModel. 
+2019-06-21 14:18:06:684 [ERROR] [main] [com.baomidou.mybatisplus.core.MybatisConfiguration:addMappedStatement][99]: mapper[com.mpool.admin.module.recommend.mapper.RecommendUserMapper.deleteRecommendUser] is ignored, because it exists, maybe from xml file 
+2019-06-21 14:18:06:857 [WARN] [main] [com.baomidou.mybatisplus.core.toolkit.TableInfoHelper:initTableFields][250]: Warn: Could not find @TableId in Class: com.mpool.common.model.account.fpps.UserFppsRecord. 
+2019-06-21 14:18:07:103 [WARN] [main] [com.baomidou.mybatisplus.core.toolkit.TableInfoHelper:initTableFields][250]: Warn: Could not find @TableId in Class: com.mpool.common.model.pool.MiningWorkers. 
+2019-06-21 14:18:07:253 [WARN] [main] [com.baomidou.mybatisplus.core.toolkit.TableInfoHelper:initTableFields][250]: Warn: Could not find @TableId in Class: com.mpool.admin.module_zec.account.model.BlockchainAllZecModel. 
+2019-06-21 14:18:07:339 [WARN] [main] [com.baomidou.mybatisplus.core.toolkit.TableInfoHelper:initTableFields][250]: Warn: Could not find @TableId in Class: com.mpool.admin.module_zec.bill.model.UserFppsRecordZec. 
+2019-06-21 14:18:07:437 [WARN] [main] [com.baomidou.mybatisplus.core.toolkit.TableInfoHelper:initTableFields][250]: Warn: Could not find @TableId in Class: com.mpool.admin.module_zec.pool.model.MiningWorkersZec. 
+2019-06-21 14:18:07:475 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:481 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:482 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'sysUserMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:484 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'sysUserMapper' of type [com.sun.proxy.$Proxy96] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:506 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'sysUserSysRoleMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:507 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'sysUserSysRoleMapper' of type [com.sun.proxy.$Proxy97] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:508 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'sysUserSysRoleServiceImpl' of type [com.mpool.admin.module.system.service.impl.SysUserSysRoleServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:508 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'sysUserServiceImpl' of type [com.mpool.admin.module.system.service.impl.SysUserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:514 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'sysMenuMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:515 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'sysMenuMapper' of type [com.sun.proxy.$Proxy101] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:516 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'sysMenuServiceImpl' of type [com.mpool.admin.module.system.service.impl.SysMenuServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:516 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'usernamePasswordRealm' of type [com.mpool.admin.config.shiro.realm.UsernamePasswordRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:521 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'telphoneCodeCredentialsMatcher' of type [com.mpool.admin.config.shiro.TelphoneCodeCredentialsMatcher] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:527 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'phoneCodeCahceServiceImpl' of type [com.mpool.common.cache.service.impl.PhoneCodeCahceServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:528 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'telphoneRealm' of type [com.mpool.admin.config.shiro.realm.TelphoneRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:534 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'redisShiroSessionDAO' of type [com.mpool.admin.config.shiro.cache.RedisShiroSessionDAO$$EnhancerBySpringCGLIB$$a780e811] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:548 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'sessionManager' of type [org.apache.shiro.web.session.mgt.DefaultWebSessionManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:553 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'modularRealmAuthenticator' of type [org.apache.shiro.authc.pam.ModularRealmAuthenticator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:773 [DEBUG] [main] [com.mpool.admin.config.ShiroConfig:securityManager][114]: realms -> [com.mpool.admin.config.shiro.realm.UsernamePasswordRealm@102aa5fc, com.mpool.admin.config.shiro.realm.TelphoneRealm@36885319] 
+2019-06-21 14:18:07:775 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:825 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:07:900 [INFO] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker:postProcessAfterInitialization][330]: Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c0ea6956] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2019-06-21 14:18:08:433 [INFO] [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer:initialize][90]: Tomcat initialized with port(s): 8000 (http) 
+2019-06-21 14:18:08:447 [INFO] [main] [org.apache.coyote.http11.Http11NioProtocol:log][173]: Initializing ProtocolHandler ["http-nio-8000"] 
+2019-06-21 14:18:08:451 [INFO] [main] [org.apache.catalina.core.StandardService:log][173]: Starting service [Tomcat] 
+2019-06-21 14:18:08:452 [INFO] [main] [org.apache.catalina.core.StandardEngine:log][173]: Starting Servlet Engine: Apache Tomcat/9.0.12 
+2019-06-21 14:18:08:460 [INFO] [main] [org.apache.catalina.core.AprLifecycleListener:log][173]: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [D:\Program\Java\jdk1.8.0_201\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\NetSarang\Xshell 6\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\Program\Java\jdk1.8.0_201\bin;D:\Program\Java\jdk1.8.0_201\jre\bin;C:\Program Files\Git\cmd;D:\Program\apache-maven-3.3.9\bin;C:\Users\user\AppData\Local\Microsoft\WindowsApps;;C:\Users\user\AppData\Local\Programs\Microsoft VS Code\bin;.] 
+2019-06-21 14:18:08:607 [INFO] [main] [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:log][173]: Initializing Spring embedded WebApplicationContext 
+2019-06-21 14:18:08:608 [INFO] [main] [org.springframework.web.context.ContextLoader:prepareWebApplicationContext][285]: Root WebApplicationContext: initialization completed in 27158 ms 
+2019-06-21 14:18:09:338 [INFO] [main] [org.springframework.boot.web.servlet.FilterRegistrationBean:configure][248]: Mapping filter: 'characterEncodingFilter' to: [/*] 
+2019-06-21 14:18:09:339 [INFO] [main] [org.springframework.boot.web.servlet.FilterRegistrationBean:configure][248]: Mapping filter: 'webMvcMetricsFilter' to: [/*] 
+2019-06-21 14:18:09:339 [INFO] [main] [org.springframework.boot.web.servlet.FilterRegistrationBean:configure][248]: Mapping filter: 'hiddenHttpMethodFilter' to: [/*] 
+2019-06-21 14:18:09:339 [INFO] [main] [org.springframework.boot.web.servlet.FilterRegistrationBean:configure][248]: Mapping filter: 'formContentFilter' to: [/*] 
+2019-06-21 14:18:09:339 [INFO] [main] [org.springframework.boot.web.servlet.FilterRegistrationBean:configure][248]: Mapping filter: 'requestContextFilter' to: [/*] 
+2019-06-21 14:18:09:339 [INFO] [main] [org.springframework.boot.web.servlet.FilterRegistrationBean:configure][248]: Mapping filter: 'httpTraceFilter' to: [/*] 
+2019-06-21 14:18:09:340 [INFO] [main] [org.springframework.boot.web.servlet.FilterRegistrationBean:configure][248]: Mapping filter: 'corsFilter' to: [/*] 
+2019-06-21 14:18:09:340 [INFO] [main] [org.springframework.boot.web.servlet.FilterRegistrationBean:configure][248]: Mapping filter: 'shiroFilter' to: [/*] 
+2019-06-21 14:18:09:340 [INFO] [main] [org.springframework.boot.web.servlet.ServletRegistrationBean:addRegistration][186]: Servlet dispatcherServlet mapped to [/] 
+2019-06-21 14:18:09:342 [INFO] [main] [org.springframework.boot.actuate.endpoint.web.ServletEndpointRegistrar:register][78]: Registered '/actuator/jolokia' to jolokia-actuator-endpoint 
+2019-06-21 14:18:10:091 [WARN] [main] [com.baomidou.mybatisplus.core.toolkit.TableInfoHelper:initTableFields][250]: Warn: Could not find @TableId in Class: com.mpool.common.model.log.LogUserOperation. 
+2019-06-21 14:18:10:435 [INFO] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor:lambda$buildAutowiringMetadata$1][447]: Autowired annotation is not supported on static fields: private static org.springframework.context.ApplicationContext com.mpool.common.util.SpringUtil.applicationContext 
+2019-06-21 14:18:10:436 [DEBUG] [main] [com.mpool.common.model.aspect.UpdateAspect:<init>][23]: ----------------->init UpdateAspect 
+2019-06-21 14:18:11:272 [INFO] [main] [org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver:<init>][59]: Exposing 16 endpoint(s) beneath base path '/actuator' 
+2019-06-21 14:18:11:427 [INFO] [main] [springfox.documentation.spring.web.PropertySourcedRequestMappingHandlerMapping:initHandlerMethods][69]: Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)] 
+2019-06-21 14:18:12:107 [INFO] [main] [org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler:initialize][171]: Initializing ExecutorService 
+2019-06-21 14:18:12:447 [INFO] [main] [org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler:initialize][171]: Initializing ExecutorService 'taskScheduler' 
+2019-06-21 14:18:12:548 [INFO] [main] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper:start][147]: Context refreshed 
+2019-06-21 14:18:12:568 [INFO] [main] [springfox.documentation.spring.web.plugins.DocumentationPluginsBootstrapper:start][150]: Found 1 custom documentation plugin(s) 
+2019-06-21 14:18:12:620 [INFO] [main] [springfox.documentation.spring.web.scanners.ApiListingReferenceScanner:scan][41]: Scanning for api listing references 
+2019-06-21 14:18:12:755 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: checkUsernameUsingGET_1 
+2019-06-21 14:18:12:773 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: exportMasterBillItemsUsingGET_1 
+2019-06-21 14:18:12:786 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: exportMasterUserInfoListUsingGET_1 
+2019-06-21 14:18:12:800 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getMasterUserInfoListUsingPOST_1 
+2019-06-21 14:18:12:804 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getUser30DayUsingGET_1 
+2019-06-21 14:18:12:812 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getUserFppsListUsingGET_1 
+2019-06-21 14:18:12:819 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getUserFppsListExportUsingGET_1 
+2019-06-21 14:18:12:822 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: ipAddressUsingGET_1 
+2019-06-21 14:18:12:829 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: listAccountUsingGET_1 
+2019-06-21 14:18:12:835 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: masterListAccountUsingGET_1 
+2019-06-21 14:18:12:840 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: masterListAccountListUsingGET_1 
+2019-06-21 14:18:12:847 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: memberListAccountUsingGET_1 
+2019-06-21 14:18:12:851 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: memberListAccountExportUsingGET_1 
+2019-06-21 14:18:12:855 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: updateFppsRateUsingPUT_1 
+2019-06-21 14:18:12:859 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: updatePasswordByUsernameUsingPUT_1 
+2019-06-21 14:18:12:881 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: addTemplateUsingPOST_1 
+2019-06-21 14:18:12:884 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: deleteTemplateUsingPOST_1 
+2019-06-21 14:18:12:888 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: deleteUserAlarmUsingGET_1 
+2019-06-21 14:18:12:892 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getAlarmUserUsingGET_1 
+2019-06-21 14:18:12:896 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getAlarmUserSelectUsingGET_1 
+2019-06-21 14:18:12:900 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getInfoUsingGET_1 
+2019-06-21 14:18:12:903 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getListUsingGET_1 
+2019-06-21 14:18:12:907 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: setUserAlarmUsingGET_1 
+2019-06-21 14:18:12:911 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getCurCurrencyNameUsingGET_1 
+2019-06-21 14:18:12:914 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getCurrencyListUsingGET_1 
+2019-06-21 14:18:12:926 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: loginUsingPOST_1 
+2019-06-21 14:18:12:928 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: logoutUsingGET_1 
+2019-06-21 14:18:12:945 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: switchCurrencyUsingGET_1 
+2019-06-21 14:18:12:947 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: switchCurrencyUsingHEAD_1 
+2019-06-21 14:18:12:949 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: switchCurrencyUsingPOST_1 
+2019-06-21 14:18:12:951 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: switchCurrencyUsingPUT_1 
+2019-06-21 14:18:12:952 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: switchCurrencyUsingPATCH_1 
+2019-06-21 14:18:12:955 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: switchCurrencyUsingDELETE_1 
+2019-06-21 14:18:12:958 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: switchCurrencyUsingOPTIONS_1 
+2019-06-21 14:18:12:960 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: switchCurrencyUsingTRACE_1 
+2019-06-21 14:18:12:976 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: addPayBillInfoUsingPOST_1 
+2019-06-21 14:18:12:993 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: createBillNumberUsingPOST_1 
+2019-06-21 14:18:13:004 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: exportBillItemsUsingGET_1 
+2019-06-21 14:18:13:015 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: exportBillPayInfoListUsingGET_1 
+2019-06-21 14:18:13:026 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: exportDuePayItemsUsingGET_1 
+2019-06-21 14:18:13:039 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getBillInfoUsingGET_1 
+2019-06-21 14:18:13:049 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getBillInfoByDateUsingPOST_1 
+2019-06-21 14:18:13:061 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getBillInfoByNumOrTxidUsingPOST_1 
+2019-06-21 14:18:13:074 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getBillInfoExprotUsingGET_1 
+2019-06-21 14:18:13:084 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getBillItemInfoUsingGET_1 
+2019-06-21 14:18:13:093 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getDuePayBtcSumUsingGET_1 
+2019-06-21 14:18:13:129 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getDuePayItemsUsingGET_1 
+2019-06-21 14:18:13:138 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getDuePayitemByUsernameUsingGET_1 
+2019-06-21 14:18:13:146 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getPayBillItemListUsingGET_1 
+2019-06-21 14:18:13:153 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getPayBillItemListExportUsingGET_1 
+2019-06-21 14:18:13:164 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: payUsingGET_1 
+2019-06-21 14:18:13:175 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: rollBackBillItemUsingPOST_1 
+2019-06-21 14:18:13:182 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: updateListPayBctUsingPUT_1 
+2019-06-21 14:18:13:187 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: currentPoolInfoUsingGET_1 
+2019-06-21 14:18:13:190 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: exportBillItemsUsingGET_2 
+2019-06-21 14:18:13:193 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: exportBillItemsUsingGET_3 
+2019-06-21 14:18:13:198 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getBlockchainInfoUsingGET_1 
+2019-06-21 14:18:13:201 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getHistoryBlockUsingGET_1 
+2019-06-21 14:18:13:206 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getHistoryBlockListUsingPOST_1 
+2019-06-21 14:18:13:213 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getHistoryBlockListExportUsingGET_1 
+2019-06-21 14:18:13:219 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getHistoryBlockRewardsSumUsingPOST_1 
+2019-06-21 14:18:13:221 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getPoolPast24HShareUsingGET_1 
+2019-06-21 14:18:13:225 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getPoolPast30DayShareUsingGET_1 
+2019-06-21 14:18:13:228 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getPoolPast30DayWorkerUsingGET_1 
+2019-06-21 14:18:13:233 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getUser24HUsingGET_1 
+2019-06-21 14:18:13:239 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getUser24HWorkersInfoUsingGET_1 
+2019-06-21 14:18:13:245 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getUser30ShareInfoUsingGET_1 
+2019-06-21 14:18:13:252 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getWorker24HInfoUsingGET_1 
+2019-06-21 14:18:13:257 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getAccountRegisterLogUsingGET_1 
+2019-06-21 14:18:13:259 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getBillPayLogUsingGET_1 
+2019-06-21 14:18:13:263 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getFppsRateChangeLogUsingGET_1 
+2019-06-21 14:18:13:268 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getUserLogUsingGET_1 
+2019-06-21 14:18:13:275 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: addUsingPOST_1 
+2019-06-21 14:18:13:280 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: editUsingPOST_1 
+2019-06-21 14:18:13:285 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: findByidUsingGET_1 
+2019-06-21 14:18:13:292 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: listUsingGET_1 
+2019-06-21 14:18:13:305 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: releaseUsingDELETE_1 
+2019-06-21 14:18:13:310 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: releaseUsingGET_1 
+2019-06-21 14:18:13:315 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: releaseUsingPOST_1 
+2019-06-21 14:18:13:321 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: showUsingGET_1 
+2019-06-21 14:18:13:324 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: exportHistoryFppsRateDaysUsingGET_1 
+2019-06-21 14:18:13:326 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getMinerFeeRateListUsingGET_1 
+2019-06-21 14:18:13:328 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: updateMinerFeeRateUsingPUT_1 
+2019-06-21 14:18:13:332 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: updatePoolRateUsingGET_1 
+2019-06-21 14:18:13:338 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: creatRecommendUserUsingPOST_1 
+2019-06-21 14:18:13:342 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: deleteRecommendUserUsingDELETE_1 
+2019-06-21 14:18:13:346 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: exportHistoryApartCoinListUsingGET_1 
+2019-06-21 14:18:13:350 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: exportHistoryFppsRateAndUserTypeListUsingGET_1 
+2019-06-21 14:18:13:353 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getCurrentCoinUsingGET_1 
+2019-06-21 14:18:13:356 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getFppsRateAndUserTypeListUsingPOST_1 
+2019-06-21 14:18:13:369 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getHistoryApartCoinUsingGET_1 
+2019-06-21 14:18:13:370 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getHistoryApartCoinUsingHEAD_1 
+2019-06-21 14:18:13:373 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getHistoryApartCoinUsingPOST_1 
+2019-06-21 14:18:13:375 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getHistoryApartCoinUsingPUT_1 
+2019-06-21 14:18:13:379 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getHistoryApartCoinUsingPATCH_1 
+2019-06-21 14:18:13:381 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getHistoryApartCoinUsingDELETE_1 
+2019-06-21 14:18:13:383 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getHistoryApartCoinUsingOPTIONS_1 
+2019-06-21 14:18:13:385 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getHistoryApartCoinUsingTRACE_1 
+2019-06-21 14:18:13:392 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: addMenuUsingPOST_1 
+2019-06-21 14:18:13:394 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getListUsingGET_2 
+2019-06-21 14:18:13:398 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getListUsingGET_3 
+2019-06-21 14:18:13:402 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getMenusUsingGET_1 
+2019-06-21 14:18:13:406 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: updateMenuUsingPOST_1 
+2019-06-21 14:18:13:411 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: addRoleUsingPOST_1 
+2019-06-21 14:18:13:413 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: deleteRoleUsingDELETE_1 
+2019-06-21 14:18:13:415 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: listUsingGET_2 
+2019-06-21 14:18:13:416 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: listUsingGET_3 
+2019-06-21 14:18:13:420 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: roleSelectUsingGET_1 
+2019-06-21 14:18:13:422 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: updateRoleUsingPOST_1 
+2019-06-21 14:18:13:425 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: deleteRoleAllMenuUsingDELETE_1 
+2019-06-21 14:18:13:430 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: deleteRoleMenuUsingDELETE_1 
+2019-06-21 14:18:13:433 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getMenuByRoleUsingGET_1 
+2019-06-21 14:18:13:436 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: roleMenuUsingPOST_1 
+2019-06-21 14:18:13:446 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: addSysUserUsingPOST_1 
+2019-06-21 14:18:13:453 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: adminUpdateUserInfoUsingPOST_1 
+2019-06-21 14:18:13:459 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: changeUserRoleUsingPOST_1 
+2019-06-21 14:18:13:464 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: delSysUserInfoUsingGET_1 
+2019-06-21 14:18:13:471 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getSysUserInfoUsingGET_1 
+2019-06-21 14:18:13:475 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getSysUserInfoUsingGET_2 
+2019-06-21 14:18:13:477 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getSysUserInfoUsingGET_3 
+2019-06-21 14:18:13:481 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: listUsingGET_4 
+2019-06-21 14:18:13:483 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: listUsingGET_5 
+2019-06-21 14:18:13:488 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: updateAdminStatusUsingPOST_1 
+2019-06-21 14:18:13:495 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: updatePasswordUsingPOST_1 
+2019-06-21 14:18:13:502 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: updateUserInfoUsingPOST_1 
+2019-06-21 14:18:13:506 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getPoolPast30DayShareUsingGET_2 
+2019-06-21 14:18:13:508 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getUser24HWorkersInfoUsingGET_2 
+2019-06-21 14:18:13:510 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getUser30ShareInfoUsingGET_2 
+2019-06-21 14:18:13:514 [INFO] [main] [springfox.documentation.spring.web.readers.operation.CachingOperationNameGenerator:startingWith][40]: Generating unique operation named: getWorker24HInfoUsingGET_2 
+2019-06-21 14:18:13:548 [INFO] [main] [org.apache.coyote.http11.Http11NioProtocol:log][173]: Starting ProtocolHandler ["http-nio-8000"] 
+2019-06-21 14:18:13:560 [INFO] [main] [org.apache.tomcat.util.net.NioSelectorPool:log][173]: Using a shared selector for servlet write/read 
+2019-06-21 14:18:13:583 [INFO] [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer:start][204]: Tomcat started on port(s): 8000 (http) with context path '' 
+2019-06-21 14:18:13:586 [INFO] [main] [com.mpool.admin.MpoolAdminApplication:logStarted][59]: Started MpoolAdminApplication in 33.157 seconds (JVM running for 34.564) 
+2019-06-21 14:18:14:311 [INFO] [RMI TCP Connection(6)-127.0.0.1] [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]:log][173]: Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2019-06-21 14:18:14:312 [INFO] [RMI TCP Connection(6)-127.0.0.1] [org.springframework.web.servlet.DispatcherServlet:initServletBean][521]: Initializing Servlet 'dispatcherServlet' 
+2019-06-21 14:18:14:338 [INFO] [RMI TCP Connection(6)-127.0.0.1] [org.springframework.web.servlet.DispatcherServlet:initServletBean][543]: Completed initialization in 26 ms 
+2019-06-21 14:18:14:502 [INFO] [RMI TCP Connection(10)-127.0.0.1] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:18:14:502 [INFO] [RMI TCP Connection(10)-127.0.0.1] [Sharding-Sphere-SQL:log][71]: Logic SQL: /* ping */ SELECT 1 
+2019-06-21 14:18:14:502 [INFO] [RMI TCP Connection(10)-127.0.0.1] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[], parametersIndex=0)), containStar=false, selectListLastPosition=19, groupByLastPosition=0, items=[CommonSelectItem(expression=1, alias=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:18:14:503 [INFO] [RMI TCP Connection(10)-127.0.0.1] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds0 ::: /* ping */ SELECT 1 
+2019-06-21 14:18:14:834 [WARN] [registrationTask1] [de.codecentric.boot.admin.client.registration.ApplicationRegistrator:register][115]: Failed to register application as Application(name=mpool-admin, managementUrl=http://192.168.22.249:8001/actuator, healthUrl=http://192.168.22.249:8001/actuator/health, serviceUrl=http://192.168.22.249:8001/) at spring-boot-admin ([http://db-server:2000/instances]): I/O error on POST request for "http://db-server:2000/instances": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect. Further attempts are logged on DEBUG level 
+2019-06-21 14:18:15:078 [INFO] [RMI TCP Connection(10)-127.0.0.1] [io.lettuce.core.EpollProvider:info][101]: Starting without optional epoll library 
+2019-06-21 14:18:15:082 [INFO] [RMI TCP Connection(10)-127.0.0.1] [io.lettuce.core.KqueueProvider:info][101]: Starting without optional kqueue library 
+2019-06-21 14:19:38:490 [INFO] [http-nio-8000-exec-1] [org.apache.shiro.session.mgt.AbstractValidatingSessionManager:enableSessionValidation][233]: Enabling session validation scheduler... 
+2019-06-21 14:19:38:589 [DEBUG] [http-nio-8000-exec-1] [com.mpool.admin.module.system.mapper.SysUserMapper.findByUsername:debug][159]: ==>  Preparing: SELECT * FROM `admin_sys_user` where username = ?  
+2019-06-21 14:19:38:613 [DEBUG] [http-nio-8000-exec-1] [com.mpool.admin.module.system.mapper.SysUserMapper.findByUsername:debug][159]: ==> Parameters: sysAdmin(String) 
+2019-06-21 14:19:38:625 [INFO] [http-nio-8000-exec-1] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:38:626 [INFO] [http-nio-8000-exec-1] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT * FROM `admin_sys_user` where username = ? 
+2019-06-21 14:19:38:626 [INFO] [http-nio-8000-exec-1] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=admin_sys_user, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`admin_sys_user`)], parametersIndex=1)), containStar=true, selectListLastPosition=9, groupByLastPosition=0, items=[StarSelectItem(owner=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:38:627 [INFO] [http-nio-8000-exec-1] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds4 ::: SELECT * FROM `admin_sys_user` where username = ? ::: [[sysAdmin]] 
+2019-06-21 14:19:38:636 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-2 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@7f74e10b (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:38:638 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-2 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@1b87be17 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:38:640 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-2 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@43a368d5 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:38:642 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-2 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@23e962c5 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:38:645 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-2 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@55335c5 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:38:646 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-2 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2382547e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:38:649 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-2 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@7bbf751b (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:38:650 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-2 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@1328dfe3 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:38:652 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-2 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@fc92d5e (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:38:654 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-2 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3ed9b97d (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:121 [DEBUG] [http-nio-8000-exec-1] [com.mpool.admin.module.system.mapper.SysUserMapper.findByUsername:debug][159]: <==      Total: 1 
+2019-06-21 14:19:39:122 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@4264b2d7 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:124 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3f6032bd (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:126 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@ad6fbb4 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:128 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@6d431233 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:131 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3d913946 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:133 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@2ca105ab (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:135 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@70998dd1 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:137 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@63b22da7 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:139 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3ee152e9 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:141 [WARN] [http-nio-8000-exec-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-3 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@1ac984c3 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:535 [DEBUG] [http-nio-8000-exec-1] [com.mpool.admin.module.system.mapper.SysUserMapper.findByUsername:debug][159]: ==>  Preparing: SELECT * FROM `admin_sys_user` where username = ?  
+2019-06-21 14:19:39:538 [DEBUG] [http-nio-8000-exec-1] [com.mpool.admin.module.system.mapper.SysUserMapper.findByUsername:debug][159]: ==> Parameters: sysAdmin(String) 
+2019-06-21 14:19:39:539 [INFO] [http-nio-8000-exec-1] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:39:539 [INFO] [http-nio-8000-exec-1] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT * FROM `admin_sys_user` where username = ? 
+2019-06-21 14:19:39:540 [INFO] [http-nio-8000-exec-1] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=admin_sys_user, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`admin_sys_user`)], parametersIndex=1)), containStar=true, selectListLastPosition=9, groupByLastPosition=0, items=[StarSelectItem(owner=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:39:540 [INFO] [http-nio-8000-exec-1] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds4 ::: SELECT * FROM `admin_sys_user` where username = ? ::: [[sysAdmin]] 
+2019-06-21 14:19:39:588 [DEBUG] [http-nio-8000-exec-1] [com.mpool.admin.module.system.mapper.SysUserMapper.findByUsername:debug][159]: <==      Total: 1 
+2019-06-21 14:19:39:593 [DEBUG] [http-nio-8000-exec-1] [com.mpool.admin.config.shiro.PasswordCredentialsMatcher:doCredentialsMatch][38]: begin PasswordCredentialsMatcher doCredentialsMatch 
+2019-06-21 14:19:39:599 [DEBUG] [http-nio-8000-exec-1] [com.mpool.admin.config.shiro.PasswordCredentialsMatcher:doCredentialsMatch][54]: auth PasswordCredentialsMatcher ->sysAdmin ->Admin@123 ->f63e7ffee34f11e994ea492c036f025e 
+2019-06-21 14:19:39:600 [DEBUG] [http-nio-8000-exec-1] [com.mpool.admin.config.shiro.PasswordCredentialsMatcher:doCredentialsMatch][60]: end PasswordCredentialsMatcher doCredentialsMatch 
+2019-06-21 14:19:39:601 [DEBUG] [http-nio-8000-exec-1] [com.mpool.admin.module.system.mapper.SysUserMapper.findByUsername:debug][159]: ==>  Preparing: SELECT * FROM `admin_sys_user` where username = ?  
+2019-06-21 14:19:39:603 [DEBUG] [http-nio-8000-exec-1] [com.mpool.admin.module.system.mapper.SysUserMapper.findByUsername:debug][159]: ==> Parameters: sysAdmin(String) 
+2019-06-21 14:19:39:603 [INFO] [http-nio-8000-exec-1] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:39:604 [INFO] [http-nio-8000-exec-1] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT * FROM `admin_sys_user` where username = ? 
+2019-06-21 14:19:39:604 [INFO] [http-nio-8000-exec-1] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=admin_sys_user, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`admin_sys_user`)], parametersIndex=1)), containStar=true, selectListLastPosition=9, groupByLastPosition=0, items=[StarSelectItem(owner=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:39:605 [INFO] [http-nio-8000-exec-1] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds4 ::: SELECT * FROM `admin_sys_user` where username = ? ::: [[sysAdmin]] 
+2019-06-21 14:19:39:652 [DEBUG] [http-nio-8000-exec-1] [com.mpool.admin.module.system.mapper.SysUserMapper.findByUsername:debug][159]: <==      Total: 1 
+2019-06-21 14:19:39:655 [DEBUG] [http-nio-8000-exec-1] [com.mpool.admin.config.ShiroConfig:getHost][87]: request -> org.apache.shiro.web.servlet.ShiroHttpServletRequest@2cf44292 
+2019-06-21 14:19:39:689 [DEBUG] [http-nio-8000-exec-1] [com.mpool.common.cache.service.impl.PhoneCodeCahceServiceImpl:getCode][32]: PhoneCodeCacheService get -> SHARE_PHONE_login:sms:47a23af4-e590-4579-ac40-5941add1b3fa:sysAdmin:18680676759 ,value -> null 
+2019-06-21 14:19:39:689 [DEBUG] [http-nio-8000-exec-1] [com.mpool.admin.config.shiro.TelphoneCodeCredentialsMatcher:doCredentialsMatch][19]: begin TelphoneCodeCredentialsMatcher doCredentialsMatch 
+2019-06-21 14:19:39:690 [DEBUG] [http-nio-8000-exec-1] [com.mpool.admin.config.shiro.TelphoneCodeCredentialsMatcher:doCredentialsMatch][29]: end TelphoneCodeCredentialsMatcher doCredentialsMatch 
+2019-06-21 14:19:39:693 [WARN] [http-nio-8000-exec-1] [org.apache.shiro.authc.pam.ModularRealmAuthenticator:doMultiRealmAuthentication][224]: Realm [com.mpool.admin.config.shiro.realm.TelphoneRealm@36885319] threw an exception during a multi-realm authentication attempt: 
+org.apache.shiro.authc.IncorrectCredentialsException: Submitted credentials for token [com.mpool.admin.config.shiro.token.UsernamePasswordTelphoneToken - sysAdmin, rememberMe=false] did not match the expected credentials.
+	at org.apache.shiro.realm.AuthenticatingRealm.assertCredentialsMatch(AuthenticatingRealm.java:600)
+	at org.apache.shiro.realm.AuthenticatingRealm.getAuthenticationInfo(AuthenticatingRealm.java:578)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doMultiRealmAuthentication(ModularRealmAuthenticator.java:219)
+	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doAuthenticate(ModularRealmAuthenticator.java:269)
+	at org.apache.shiro.authc.AbstractAuthenticator.authenticate(AbstractAuthenticator.java:198)
+	at org.apache.shiro.mgt.AuthenticatingSecurityManager.authenticate(AuthenticatingSecurityManager.java:106)
+	at org.apache.shiro.mgt.DefaultSecurityManager.login(DefaultSecurityManager.java:270)
+	at org.apache.shiro.subject.support.DelegatingSubject.login(DelegatingSubject.java:256)
+	at com.mpool.admin.module.system.service.impl.AuthServiceImpl.login(AuthServiceImpl.java:17)
+	at com.mpool.admin.module.system.controller.AuthController.login(AuthController.java:55)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:142)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:998)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:901)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:665)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:875)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:750)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365)
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:383)
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:96)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:90)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:154)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:122)
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:107)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:770)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-06-21 14:19:39:717 [DEBUG] [pool-5-thread-1] [com.mpool.admin.module.system.mapper.SysUserMapper.findByUsername:debug][159]: ==>  Preparing: SELECT * FROM `admin_sys_user` where username = ?  
+2019-06-21 14:19:39:721 [DEBUG] [pool-5-thread-1] [com.mpool.admin.module.system.mapper.SysUserMapper.findByUsername:debug][159]: ==> Parameters: sysAdmin(String) 
+2019-06-21 14:19:39:721 [INFO] [pool-5-thread-1] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:39:721 [INFO] [pool-5-thread-1] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT * FROM `admin_sys_user` where username = ? 
+2019-06-21 14:19:39:721 [INFO] [pool-5-thread-1] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=admin_sys_user, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`admin_sys_user`)], parametersIndex=1)), containStar=true, selectListLastPosition=9, groupByLastPosition=0, items=[StarSelectItem(owner=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:39:722 [INFO] [pool-5-thread-1] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds4 ::: SELECT * FROM `admin_sys_user` where username = ? ::: [[sysAdmin]] 
+2019-06-21 14:19:39:770 [DEBUG] [pool-5-thread-1] [com.mpool.admin.module.system.mapper.SysUserMapper.findByUsername:debug][159]: <==      Total: 1 
+2019-06-21 14:19:39:794 [DEBUG] [pool-5-thread-1] [com.mpool.admin.module.log.mapper.LogAdminOperationMpper.insert:debug][159]: ==>  Preparing: INSERT INTO log_user_operation ( user_type, user_id, log_type, content, created_time, currency_name ) VALUES ( ?, ?, ?, ?, ?, ? )  
+2019-06-21 14:19:39:796 [DEBUG] [pool-5-thread-1] [com.mpool.admin.module.log.mapper.LogAdminOperationMpper.insert:debug][159]: ==> Parameters: admin(String), 1(Long), 3(Integer), 管理员[sysadmin]-登录成功(String), 2019-06-21 14:19:39.771(Timestamp), BTC(String) 
+2019-06-21 14:19:39:820 [INFO] [pool-5-thread-1] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:39:820 [INFO] [pool-5-thread-1] [Sharding-Sphere-SQL:log][71]: Logic SQL: INSERT INTO log_user_operation  ( user_type,
+user_id,
+log_type,
+content,
+created_time,
+currency_name )  VALUES  ( ?,
+?,
+?,
+?,
+?,
+? ) 
+2019-06-21 14:19:39:820 [INFO] [pool-5-thread-1] [Sharding-Sphere-SQL:log][71]: SQLStatement: InsertStatement(super=DMLStatement(super=AbstractSQLStatement(type=DML, tables=Tables(tables=[Table(name=log_user_operation, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[AndCondition(conditions=[])])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=log_user_operation), io.shardingsphere.core.parsing.parser.token.InsertValuesToken@fa6f032], parametersIndex=6)), columns=[Column(name=user_type, tableName=log_user_operation), Column(name=user_id, tableName=log_user_operation), Column(name=log_type, tableName=log_user_operation), Column(name=content, tableName=log_user_operation), Column(name=created_time, tableName=log_user_operation), Column(name=currency_name, tableName=log_user_operation)], generatedKeyConditions=[], insertValues=InsertValues(insertValues=[InsertValue(type=VALUES, expression=( ?,
+?,
+?,
+?,
+?,
+? ), parametersCount=6)]), columnsListLastPosition=101, generateKeyColumnIndex=-1, insertValuesListLastPosition=132) 
+2019-06-21 14:19:39:820 [INFO] [pool-5-thread-1] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: INSERT INTO log_user_operation  ( user_type,
+user_id,
+log_type,
+content,
+created_time,
+currency_name )  VALUES  ( ?,
+?,
+?,
+?,
+?,
+? ) ::: [[admin, 1, 3, 管理员[sysadmin]-登录成功, 2019-06-21 14:19:39.771, BTC]] 
+2019-06-21 14:19:39:821 [WARN] [pool-5-thread-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@41aac916 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:822 [WARN] [pool-5-thread-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@7fe7fa5b (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:823 [WARN] [pool-5-thread-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@4778b2f5 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:824 [WARN] [pool-5-thread-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@508d3175 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:825 [WARN] [pool-5-thread-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@469497d3 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:826 [WARN] [pool-5-thread-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@6e19878 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:827 [WARN] [pool-5-thread-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@40c7d4b (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:828 [WARN] [pool-5-thread-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@3db3f226 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:829 [WARN] [pool-5-thread-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@5ffbd04c (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:39:830 [WARN] [pool-5-thread-1] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-1 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@5553a193 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:40:321 [DEBUG] [pool-5-thread-1] [com.mpool.admin.module.log.mapper.LogAdminOperationMpper.insert:debug][159]: <==    Updates: 1 
+2019-06-21 14:19:41:979 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.recommend.mapper.RecommendApartCoinMapper.getCurrentCoin:debug][159]: ==>  Preparing: SELECT SUM(fee) FROM user_fee_record WHERE STR_TO_DATE(`create_time`, '%Y-%m-%d') = DATE_FORMAT(?,'%Y-%m-%d')  
+2019-06-21 14:19:41:982 [DEBUG] [http-nio-8000-exec-2] [com.mpool.admin.config.spring.SysUserMethodArgumentResolver:resolveArgument][37]: class type class com.mpool.common.model.admin.SysUser  
+2019-06-21 14:19:41:983 [DEBUG] [http-nio-8000-exec-2] [com.mpool.admin.config.spring.SysUserMethodArgumentResolver:resolveArgument][49]: current request username -> sysadmin user -> com.mpool.common.model.admin.SysUser@6136cf9b 
+2019-06-21 14:19:41:989 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.recommend.mapper.RecommendApartCoinMapper.getCurrentCoin:debug][159]: ==> Parameters: 2019-06-21 14:19:41.978(Timestamp) 
+2019-06-21 14:19:41:992 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:41:993 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+				SUM(fee)
+			FROM
+				user_fee_record
+			WHERE STR_TO_DATE(`create_time`, '%Y-%m-%d') = DATE_FORMAT(?,'%Y-%m-%d') 
+2019-06-21 14:19:41:992 [DEBUG] [http-nio-8000-exec-2] [com.mpool.admin.module.system.mapper.SysMenuMapper.findByUserId:debug][159]: ==>  Preparing: SELECT sm.menu_id, sm.create_by, sm.create_time, sm.lastupdate_by, sm.lastupdate_time, sm.heading, sm.icon, sm.order_num, sm.parent_id, sm.sref, sm.text, sm.translate, sm.type FROM admin_sys_user e LEFT JOIN admin_sys_user_sys_role eer ON eer.user_id = e.user_id LEFT JOIN admin_sys_role_sys_menu srm ON srm.role_id = eer.role_id LEFT JOIN admin_sys_menu sm ON sm.menu_id = srm.menu_id WHERE e.user_id = ?  
+2019-06-21 14:19:41:994 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=user_fee_record, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=user_fee_record)], parametersIndex=1)), containStar=false, selectListLastPosition=23, groupByLastPosition=0, items=[AggregationSelectItem(type=SUM, innerExpression=(fee), alias=Optional.absent(), derivedAggregationSelectItems=[], index=-1)], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:41:994 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: SELECT
+				SUM(fee)
+			FROM
+				user_fee_record
+			WHERE STR_TO_DATE(`create_time`, '%Y-%m-%d') = DATE_FORMAT(?,'%Y-%m-%d') ::: [[2019-06-21 14:19:41.978]] 
+2019-06-21 14:19:41:997 [DEBUG] [http-nio-8000-exec-2] [com.mpool.admin.module.system.mapper.SysMenuMapper.findByUserId:debug][159]: ==> Parameters: 1(Long) 
+2019-06-21 14:19:41:998 [DEBUG] [http-nio-8000-exec-3] [com.mpool.admin.module.dashboard.service.impl.DashboardServiceImpl:getHistoryApartCoin][100]: start Time =>null,end Time => null 
+2019-06-21 14:19:42:013 [INFO] [http-nio-8000-exec-2] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:42:013 [INFO] [http-nio-8000-exec-2] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			sm.menu_id,
+			sm.create_by,
+			sm.create_time,
+			sm.lastupdate_by,
+			sm.lastupdate_time,
+			sm.heading,
+			sm.icon,
+			sm.order_num,
+			sm.parent_id,
+			sm.sref,
+			sm.text,
+			sm.translate,
+			sm.type
+		FROM
+			admin_sys_user e
+		LEFT JOIN admin_sys_user_sys_role eer ON eer.user_id = e.user_id
+		LEFT JOIN admin_sys_role_sys_menu srm ON srm.role_id = eer.role_id
+		LEFT JOIN admin_sys_menu sm ON sm.menu_id = srm.menu_id
+		WHERE
+			e.user_id = ? 
+2019-06-21 14:19:42:014 [INFO] [http-nio-8000-exec-2] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=admin_sys_user, alias=Optional.of(e)), Table(name=admin_sys_user_sys_role, alias=Optional.of(eer)), Table(name=admin_sys_role_sys_menu, alias=Optional.of(srm)), Table(name=admin_sys_menu, alias=Optional.of(sm))]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=admin_sys_user), TableToken(skippedSchemaNameLength=0, originalLiterals=admin_sys_user_sys_role), TableToken(skippedSchemaNameLength=0, originalLiterals=admin_sys_role_sys_menu), TableToken(skippedSchemaNameLength=0, originalLiterals=admin_sys_menu)], parametersIndex=1)), containStar=false, selectListLastPosition=217, groupByLastPosition=0, items=[CommonSelectItem(expression=sm.parent_id, alias=Optional.absent()), CommonSelectItem(expression=sm.translate, alias=Optional.absent()), CommonSelectItem(expression=sm.create_time, alias=Optional.absent()), CommonSelectItem(expression=sm.order_num, alias=Optional.absent()), CommonSelectItem(expression=sm.sref, alias=Optional.absent()), CommonSelectItem(expression=sm.menu_id, alias=Optional.absent()), CommonSelectItem(expression=sm.heading, alias=Optional.absent()), CommonSelectItem(expression=sm.type, alias=Optional.absent()), CommonSelectItem(expression=sm.create_by, alias=Optional.absent()), CommonSelectItem(expression=sm.lastupdate_time, alias=Optional.absent()), CommonSelectItem(expression=sm.icon, alias=Optional.absent()), CommonSelectItem(expression=sm.lastupdate_by, alias=Optional.absent()), CommonSelectItem(expression=sm.text, alias=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:42:015 [INFO] [http-nio-8000-exec-2] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds4 ::: SELECT
+			sm.menu_id,
+			sm.create_by,
+			sm.create_time,
+			sm.lastupdate_by,
+			sm.lastupdate_time,
+			sm.heading,
+			sm.icon,
+			sm.order_num,
+			sm.parent_id,
+			sm.sref,
+			sm.text,
+			sm.translate,
+			sm.type
+		FROM
+			admin_sys_user e
+		LEFT JOIN admin_sys_user_sys_role eer ON eer.user_id = e.user_id
+		LEFT JOIN admin_sys_role_sys_menu srm ON srm.role_id = eer.role_id
+		LEFT JOIN admin_sys_menu sm ON sm.menu_id = srm.menu_id
+		WHERE
+			e.user_id = ? ::: [[1]] 
+2019-06-21 14:19:42:085 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.recommend.mapper.RecommendApartCoinMapper.getCurrentCoin:debug][159]: <==      Total: 1 
+2019-06-21 14:19:42:100 [DEBUG] [http-nio-8000-exec-3] [com.mpool.admin.module.recommend.mapper.RecommendApartCoinMapper.getHistoryApartCoin:debug][159]: ==>  Preparing: SELECT COUNT(1) FROM ( SELECT `create_time`, SUM(fee) AS feeSum FROM user_fee_record WHERE 1 = 1 GROUP BY `create_time` ORDER BY `create_time` DESC ) TOTAL  
+2019-06-21 14:19:42:100 [DEBUG] [http-nio-8000-exec-3] [com.mpool.admin.module.recommend.mapper.RecommendApartCoinMapper.getHistoryApartCoin:debug][159]: ==> Parameters:  
+2019-06-21 14:19:42:112 [DEBUG] [http-nio-8000-exec-8] [com.mpool.admin.module.pool.mapper.StatsWorkersDayMapper.getPoolPast30DayWorker:debug][159]: ==>  Preparing: SELECT `day`, COUNT(worker_id) AS count FROM stats_workers_day WHERE `day` in ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) AND share_accept > 0 AND worker_id != 0 GROUP BY `day`  
+2019-06-21 14:19:42:112 [DEBUG] [http-nio-8000-exec-7] [com.mpool.admin.module.pool.mapper.StatsPoolDayMapper.getPoolPast30DayShare:debug][159]: ==>  Preparing: SELECT * FROM stats_pool_day WHERE `day` IN ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? ) AND share_accept > 0  
+2019-06-21 14:19:42:113 [DEBUG] [http-nio-8000-exec-2] [com.mpool.admin.module.system.mapper.SysMenuMapper.findByUserId:debug][159]: <==      Total: 17 
+2019-06-21 14:19:42:120 [DEBUG] [http-nio-8000-exec-8] [com.mpool.admin.module.pool.mapper.StatsWorkersDayMapper.getPoolPast30DayWorker:debug][159]: ==> Parameters: 20190620(String), 20190619(String), 20190618(String), 20190617(String), 20190616(String), 20190615(String), 20190614(String), 20190613(String), 20190612(String), 20190611(String), 20190610(String), 20190609(String), 20190608(String), 20190607(String), 20190606(String), 20190605(String), 20190604(String), 20190603(String), 20190602(String), 20190601(String), 20190531(String), 20190530(String), 20190529(String), 20190528(String), 20190527(String), 20190526(String), 20190525(String), 20190524(String), 20190523(String), 20190522(String) 
+2019-06-21 14:19:42:120 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.pool.mapper.MiningWorkersMapper.getPoolWorkerActiveCount:debug][159]: ==>  Preparing: SELECT COUNT(1) FROM mining_workers WHERE worker_id != 0 AND accept_15m > 0  
+2019-06-21 14:19:42:121 [DEBUG] [http-nio-8000-exec-7] [com.mpool.admin.module.pool.mapper.StatsPoolDayMapper.getPoolPast30DayShare:debug][159]: ==> Parameters: 20190620(String), 20190619(String), 20190618(String), 20190617(String), 20190616(String), 20190615(String), 20190614(String), 20190613(String), 20190612(String), 20190611(String), 20190610(String), 20190609(String), 20190608(String), 20190607(String), 20190606(String), 20190605(String), 20190604(String), 20190603(String), 20190602(String), 20190601(String), 20190531(String), 20190530(String), 20190529(String), 20190528(String), 20190527(String), 20190526(String), 20190525(String), 20190524(String), 20190523(String), 20190522(String) 
+2019-06-21 14:19:42:121 [INFO] [http-nio-8000-exec-7] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:42:122 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.pool.mapper.MiningWorkersMapper.getPoolWorkerActiveCount:debug][159]: ==> Parameters:  
+2019-06-21 14:19:42:122 [INFO] [http-nio-8000-exec-7] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			*
+		FROM
+			stats_pool_day
+		WHERE
+			`day` IN  (  
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 ) 
+		AND share_accept > 0 
+2019-06-21 14:19:42:122 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:42:122 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			COUNT(1)
+		FROM
+			mining_workers
+		WHERE
+			worker_id != 0
+		AND accept_15m > 0 
+2019-06-21 14:19:42:122 [INFO] [http-nio-8000-exec-7] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=stats_pool_day, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=stats_pool_day)], parametersIndex=30)), containStar=true, selectListLastPosition=14, groupByLastPosition=0, items=[StarSelectItem(owner=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:42:123 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=mining_workers, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=mining_workers)], parametersIndex=0)), containStar=false, selectListLastPosition=21, groupByLastPosition=0, items=[AggregationSelectItem(type=COUNT, innerExpression=(1), alias=Optional.absent(), derivedAggregationSelectItems=[], index=-1)], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:42:123 [INFO] [http-nio-8000-exec-7] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds0 ::: SELECT
+			*
+		FROM
+			stats_pool_day
+		WHERE
+			`day` IN  (  
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 , 
+					?
+				 ) 
+		AND share_accept > 0 ::: [[20190620, 20190619, 20190618, 20190617, 20190616, 20190615, 20190614, 20190613, 20190612, 20190611, 20190610, 20190609, 20190608, 20190607, 20190606, 20190605, 20190604, 20190603, 20190602, 20190601, 20190531, 20190530, 20190529, 20190528, 20190527, 20190526, 20190525, 20190524, 20190523, 20190522]] 
+2019-06-21 14:19:42:123 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:42:123 [INFO] [http-nio-8000-exec-8] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:42:124 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds2 ::: SELECT
+			COUNT(1)
+		FROM
+			mining_workers
+		WHERE
+			worker_id != 0
+		AND accept_15m > 0 
+2019-06-21 14:19:42:124 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT COUNT(1) FROM ( SELECT `create_time`, SUM(fee) AS feeSum FROM user_fee_record WHERE 1 = 1 GROUP BY `create_time` ORDER BY `create_time` DESC ) TOTAL 
+2019-06-21 14:19:42:124 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=user_fee_record, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=user_fee_record)], parametersIndex=0)), containStar=false, selectListLastPosition=64, groupByLastPosition=120, items=[AggregationSelectItem(type=COUNT, innerExpression=(1), alias=Optional.absent(), derivedAggregationSelectItems=[], index=-1)], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:42:126 [WARN] [http-nio-8000-exec-6] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-4 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@4a89f7c1 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:42:124 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: SELECT COUNT(1) FROM ( SELECT `create_time`, SUM(fee) AS feeSum FROM user_fee_record WHERE 1 = 1 GROUP BY `create_time` ORDER BY `create_time` DESC ) TOTAL 
+2019-06-21 14:19:42:124 [INFO] [http-nio-8000-exec-8] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			`day`,
+			COUNT(worker_id) AS count
+		FROM
+			stats_workers_day
+		WHERE
+		 `day` in  (  
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  ) 
+		AND share_accept > 0
+		AND worker_id != 0
+		GROUP BY
+			`day` 
+2019-06-21 14:19:42:129 [WARN] [http-nio-8000-exec-6] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-4 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@53c379b3 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:42:127 [INFO] [http-nio-8000-exec-8] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=stats_workers_day, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=stats_workers_day), io.shardingsphere.core.parsing.parser.token.OrderByToken@1455665], parametersIndex=30)), containStar=false, selectListLastPosition=48, groupByLastPosition=552, items=[AggregationSelectItem(type=COUNT, innerExpression=(worker_id), alias=Optional.of(count), derivedAggregationSelectItems=[], index=-1), CommonSelectItem(expression=day, alias=Optional.absent())], groupByItems=[OrderItem(owner=Optional.absent(), name=Optional.of(day), orderDirection=ASC, nullOrderDirection=ASC, index=-1, alias=Optional.absent())], orderByItems=[OrderItem(owner=Optional.absent(), name=Optional.of(day), orderDirection=ASC, nullOrderDirection=ASC, index=-1, alias=Optional.absent())], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:42:129 [INFO] [http-nio-8000-exec-8] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds0 ::: SELECT
+			`day`,
+			COUNT(worker_id) AS count
+		FROM
+			stats_workers_day
+		WHERE
+		 `day` in  (  
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  , 
+		 	?
+		  ) 
+		AND share_accept > 0
+		AND worker_id != 0
+		GROUP BY
+			`day` ORDER BY day ASC  ::: [[20190620, 20190619, 20190618, 20190617, 20190616, 20190615, 20190614, 20190613, 20190612, 20190611, 20190610, 20190609, 20190608, 20190607, 20190606, 20190605, 20190604, 20190603, 20190602, 20190601, 20190531, 20190530, 20190529, 20190528, 20190527, 20190526, 20190525, 20190524, 20190523, 20190522]] 
+2019-06-21 14:19:42:131 [WARN] [http-nio-8000-exec-6] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-4 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@7ecf5945 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:42:132 [WARN] [http-nio-8000-exec-6] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-4 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@7bfd9ea2 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:42:133 [WARN] [http-nio-8000-exec-6] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-4 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@35d797bc (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:42:134 [WARN] [http-nio-8000-exec-6] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-4 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@7d916e54 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:42:135 [WARN] [http-nio-8000-exec-6] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-4 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@799005d2 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:42:136 [WARN] [http-nio-8000-exec-6] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-4 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@6e0f9ccc (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:42:136 [WARN] [http-nio-8000-exec-6] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-4 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@676c8cc6 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:42:137 [WARN] [http-nio-8000-exec-6] [com.zaxxer.hikari.pool.PoolBase:isConnectionAlive][176]: HikariPool-4 - Failed to validate connection com.mysql.cj.jdbc.ConnectionImpl@11f9adb1 (No operations allowed after connection closed.). Possibly consider using a shorter maxLifetime value. 
+2019-06-21 14:19:42:151 [DEBUG] [http-nio-8000-exec-9] [com.mpool.admin.module.pool.mapper.StatsPoolHourMapper.getStatsPoolHourByHours:debug][159]: ==>  Preparing: SELECT * FROM `stats_pool_hour` WHERE `hour` IN ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )  
+2019-06-21 14:19:42:153 [DEBUG] [http-nio-8000-exec-9] [com.mpool.admin.module.pool.mapper.StatsPoolHourMapper.getStatsPoolHourByHours:debug][159]: ==> Parameters: 2019062113(String), 2019062112(String), 2019062111(String), 2019062110(String), 2019062109(String), 2019062108(String), 2019062107(String), 2019062106(String), 2019062105(String), 2019062104(String), 2019062103(String), 2019062102(String), 2019062101(String), 2019062100(String), 2019062023(String), 2019062022(String), 2019062021(String), 2019062020(String), 2019062019(String), 2019062018(String), 2019062017(String), 2019062016(String), 2019062015(String), 2019062014(String) 
+2019-06-21 14:19:42:154 [INFO] [http-nio-8000-exec-9] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:42:154 [INFO] [http-nio-8000-exec-9] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT * FROM `stats_pool_hour` WHERE `hour` IN  (  
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 ) 
+2019-06-21 14:19:42:154 [INFO] [http-nio-8000-exec-9] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=stats_pool_hour, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`stats_pool_hour`)], parametersIndex=24)), containStar=true, selectListLastPosition=9, groupByLastPosition=0, items=[StarSelectItem(owner=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:42:154 [INFO] [http-nio-8000-exec-9] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds0 ::: SELECT * FROM `stats_pool_hour` WHERE `hour` IN  (  
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 ) ::: [[2019062113, 2019062112, 2019062111, 2019062110, 2019062109, 2019062108, 2019062107, 2019062106, 2019062105, 2019062104, 2019062103, 2019062102, 2019062101, 2019062100, 2019062023, 2019062022, 2019062021, 2019062020, 2019062019, 2019062018, 2019062017, 2019062016, 2019062015, 2019062014]] 
+2019-06-21 14:19:42:167 [DEBUG] [http-nio-8000-exec-2] [com.mpool.admin.module.system.service.impl.SysMenuServiceImpl:transformMenuModel][78]: menu run Time Millis [0] 
+2019-06-21 14:19:42:196 [DEBUG] [http-nio-8000-exec-10] [com.mpool.admin.module.system.mapper.CurrencyMapper.getAllCurrency:debug][159]: ==>  Preparing: select * from account_currency  
+2019-06-21 14:19:42:199 [DEBUG] [http-nio-8000-exec-10] [com.mpool.admin.module.system.mapper.CurrencyMapper.getAllCurrency:debug][159]: ==> Parameters:  
+2019-06-21 14:19:42:200 [INFO] [http-nio-8000-exec-10] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:42:200 [INFO] [http-nio-8000-exec-10] [Sharding-Sphere-SQL:log][71]: Logic SQL: select * from account_currency 
+2019-06-21 14:19:42:201 [INFO] [http-nio-8000-exec-10] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=account_currency, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=account_currency)], parametersIndex=0)), containStar=true, selectListLastPosition=9, groupByLastPosition=0, items=[StarSelectItem(owner=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:42:201 [INFO] [http-nio-8000-exec-10] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: select * from account_currency 
+2019-06-21 14:19:42:205 [DEBUG] [http-nio-8000-exec-9] [com.mpool.admin.module.pool.mapper.StatsPoolHourMapper.getStatsPoolHourByHours:debug][159]: <==      Total: 0 
+2019-06-21 14:19:42:268 [DEBUG] [http-nio-8000-exec-7] [com.mpool.admin.module.pool.mapper.StatsPoolDayMapper.getPoolPast30DayShare:debug][159]: <==      Total: 0 
+2019-06-21 14:19:42:268 [DEBUG] [http-nio-8000-exec-8] [com.mpool.admin.module.pool.mapper.StatsWorkersDayMapper.getPoolPast30DayWorker:debug][159]: <==      Total: 0 
+2019-06-21 14:19:42:269 [DEBUG] [http-nio-8000-exec-10] [com.mpool.admin.module.system.mapper.CurrencyMapper.getAllCurrency:debug][159]: <==      Total: 2 
+2019-06-21 14:19:42:281 [DEBUG] [http-nio-8000-exec-3] [com.mpool.admin.module.recommend.mapper.RecommendApartCoinMapper.getHistoryApartCoin:debug][159]: ==>  Preparing: SELECT `create_time`,SUM(fee) as feeSum FROM user_fee_record WHERE 1=1 GROUP BY `create_time` ORDER BY `create_time` DESC LIMIT 0,1  
+2019-06-21 14:19:42:283 [DEBUG] [http-nio-8000-exec-3] [com.mpool.admin.module.recommend.mapper.RecommendApartCoinMapper.getHistoryApartCoin:debug][159]: ==> Parameters:  
+2019-06-21 14:19:42:286 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:42:287 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+		`create_time`,SUM(fee) as feeSum
+	  	FROM
+		user_fee_record
+		WHERE
+		1=1
+		 
+		 
+		GROUP BY `create_time`
+		ORDER BY `create_time` DESC LIMIT 0,1 
+2019-06-21 14:19:42:288 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=user_fee_record, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=user_fee_record), io.shardingsphere.core.parsing.parser.token.OffsetToken@7aace8ec, io.shardingsphere.core.parsing.parser.token.RowCountToken@17b0ab57], parametersIndex=0)), containStar=false, selectListLastPosition=46, groupByLastPosition=118, items=[AggregationSelectItem(type=SUM, innerExpression=(fee), alias=Optional.of(feeSum), derivedAggregationSelectItems=[], index=-1), CommonSelectItem(expression=create_time, alias=Optional.absent())], groupByItems=[OrderItem(owner=Optional.absent(), name=Optional.of(create_time), orderDirection=ASC, nullOrderDirection=ASC, index=-1, alias=Optional.absent())], orderByItems=[OrderItem(owner=Optional.absent(), name=Optional.of(create_time), orderDirection=DESC, nullOrderDirection=ASC, index=-1, alias=Optional.absent())], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:42:288 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: SELECT
+		`create_time`,SUM(fee) as feeSum
+	  	FROM
+		user_fee_record
+		WHERE
+		1=1
+		 
+		 
+		GROUP BY `create_time`
+		ORDER BY `create_time` DESC LIMIT 0,1 
+2019-06-21 14:19:42:334 [DEBUG] [http-nio-8000-exec-3] [com.mpool.admin.module.recommend.mapper.RecommendApartCoinMapper.getHistoryApartCoin:debug][159]: <==      Total: 1 
+2019-06-21 14:19:42:336 [DEBUG] [http-nio-8000-exec-3] [com.mpool.admin.module.recommend.mapper.RecommendApartCoinMapper.sumApartCoin:debug][159]: ==>  Preparing: SELECT SUM(fee) FROM user_fee_record WHERE 1=1 AND fee_type = ?  
+2019-06-21 14:19:42:339 [DEBUG] [http-nio-8000-exec-3] [com.mpool.admin.module.recommend.mapper.RecommendApartCoinMapper.sumApartCoin:debug][159]: ==> Parameters: 2(Integer) 
+2019-06-21 14:19:42:339 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:42:339 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			SUM(fee)
+		FROM
+			user_fee_record
+		WHERE 1=1
+		 
+			AND fee_type = ? 
+2019-06-21 14:19:42:340 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=user_fee_record, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=user_fee_record)], parametersIndex=1)), containStar=false, selectListLastPosition=21, groupByLastPosition=0, items=[AggregationSelectItem(type=SUM, innerExpression=(fee), alias=Optional.absent(), derivedAggregationSelectItems=[], index=-1)], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:42:340 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: SELECT
+			SUM(fee)
+		FROM
+			user_fee_record
+		WHERE 1=1
+		 
+			AND fee_type = ? ::: [[2]] 
+2019-06-21 14:19:42:383 [DEBUG] [http-nio-8000-exec-3] [com.mpool.admin.module.recommend.mapper.RecommendApartCoinMapper.sumApartCoin:debug][159]: <==      Total: 1 
+2019-06-21 14:19:42:385 [DEBUG] [http-nio-8000-exec-3] [com.mpool.admin.module.recommend.mapper.RecommendApartCoinMapper.sumApartCoin:debug][159]: ==>  Preparing: SELECT SUM(fee) FROM user_fee_record WHERE 1=1  
+2019-06-21 14:19:42:387 [DEBUG] [http-nio-8000-exec-3] [com.mpool.admin.module.recommend.mapper.RecommendApartCoinMapper.sumApartCoin:debug][159]: ==> Parameters:  
+2019-06-21 14:19:42:388 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:42:388 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			SUM(fee)
+		FROM
+			user_fee_record
+		WHERE 1=1 
+2019-06-21 14:19:42:388 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=user_fee_record, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=user_fee_record)], parametersIndex=0)), containStar=false, selectListLastPosition=21, groupByLastPosition=0, items=[AggregationSelectItem(type=SUM, innerExpression=(fee), alias=Optional.absent(), derivedAggregationSelectItems=[], index=-1)], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:42:388 [INFO] [http-nio-8000-exec-3] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: SELECT
+			SUM(fee)
+		FROM
+			user_fee_record
+		WHERE 1=1 
+2019-06-21 14:19:42:434 [DEBUG] [http-nio-8000-exec-3] [com.mpool.admin.module.recommend.mapper.RecommendApartCoinMapper.sumApartCoin:debug][159]: <==      Total: 1 
+2019-06-21 14:19:42:672 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.pool.mapper.MiningWorkersMapper.getPoolWorkerActiveCount:debug][159]: <==      Total: 1 
+2019-06-21 14:19:42:674 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.pool.mapper.StatsPoolHourMapper.getStatsPoolHourByHours:debug][159]: ==>  Preparing: SELECT * FROM `stats_pool_hour` WHERE `hour` IN ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )  
+2019-06-21 14:19:42:678 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.pool.mapper.StatsPoolHourMapper.getStatsPoolHourByHours:debug][159]: ==> Parameters: 2019062113(String), 2019062112(String), 2019062111(String), 2019062110(String), 2019062109(String), 2019062108(String), 2019062107(String), 2019062106(String), 2019062105(String), 2019062104(String), 2019062103(String), 2019062102(String), 2019062101(String), 2019062100(String), 2019062023(String), 2019062022(String), 2019062021(String), 2019062020(String), 2019062019(String), 2019062018(String), 2019062017(String), 2019062016(String), 2019062015(String), 2019062014(String) 
+2019-06-21 14:19:42:679 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:42:679 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT * FROM `stats_pool_hour` WHERE `hour` IN  (  
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 ) 
+2019-06-21 14:19:42:679 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=stats_pool_hour, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`stats_pool_hour`)], parametersIndex=24)), containStar=true, selectListLastPosition=9, groupByLastPosition=0, items=[StarSelectItem(owner=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:42:680 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds0 ::: SELECT * FROM `stats_pool_hour` WHERE `hour` IN  (  
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 , 
+			?
+		 ) ::: [[2019062113, 2019062112, 2019062111, 2019062110, 2019062109, 2019062108, 2019062107, 2019062106, 2019062105, 2019062104, 2019062103, 2019062102, 2019062101, 2019062100, 2019062023, 2019062022, 2019062021, 2019062020, 2019062019, 2019062018, 2019062017, 2019062016, 2019062015, 2019062014]] 
+2019-06-21 14:19:42:730 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.pool.mapper.StatsPoolHourMapper.getStatsPoolHourByHours:debug][159]: <==      Total: 0 
+2019-06-21 14:19:42:739 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.account.mapper.FoundBlocksMapper.getBlock:debug][159]: ==>  Preparing: SELECT COUNT(1) FROM found_blocks WHERE is_orphaned=0  
+2019-06-21 14:19:42:743 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.account.mapper.FoundBlocksMapper.getBlock:debug][159]: ==> Parameters:  
+2019-06-21 14:19:42:744 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:42:745 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT COUNT(1) FROM found_blocks WHERE is_orphaned=0 
+2019-06-21 14:19:42:745 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=found_blocks, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=found_blocks)], parametersIndex=0)), containStar=false, selectListLastPosition=16, groupByLastPosition=0, items=[AggregationSelectItem(type=COUNT, innerExpression=(1), alias=Optional.absent(), derivedAggregationSelectItems=[], index=-1)], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:42:745 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: SELECT COUNT(1) FROM found_blocks WHERE is_orphaned=0 
+2019-06-21 14:19:42:832 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.account.mapper.FoundBlocksMapper.getBlock:debug][159]: <==      Total: 1 
+2019-06-21 14:19:42:834 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.account.mapper.FoundBlocksMapper.getRevenue:debug][159]: ==>  Preparing: SELECT sum(rewards) FROM found_blocks WHERE is_orphaned=0  
+2019-06-21 14:19:42:836 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.account.mapper.FoundBlocksMapper.getRevenue:debug][159]: ==> Parameters:  
+2019-06-21 14:19:42:836 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:42:837 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT sum(rewards) FROM found_blocks WHERE is_orphaned=0 
+2019-06-21 14:19:42:837 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=found_blocks, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=found_blocks)], parametersIndex=0)), containStar=false, selectListLastPosition=20, groupByLastPosition=0, items=[AggregationSelectItem(type=SUM, innerExpression=(rewards), alias=Optional.absent(), derivedAggregationSelectItems=[], index=-1)], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:42:837 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: SELECT sum(rewards) FROM found_blocks WHERE is_orphaned=0 
+2019-06-21 14:19:42:884 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.account.mapper.FoundBlocksMapper.getRevenue:debug][159]: <==      Total: 1 
+2019-06-21 14:19:42:887 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.account.mapper.FoundBlocksMapper.getNowBlock:debug][159]: ==>  Preparing: SELECT COUNT(1) FROM found_blocks WHERE is_orphaned=0 and to_days(DATE_ADD(created_at,INTERVAL 8 HOUR)) = to_days(DATE_ADD(?,INTERVAL 8 HOUR))  
+2019-06-21 14:19:42:896 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.account.mapper.FoundBlocksMapper.getNowBlock:debug][159]: ==> Parameters: 2019-06-21 14:19:42.014(Timestamp) 
+2019-06-21 14:19:42:899 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:42:900 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT COUNT(1) FROM found_blocks WHERE is_orphaned=0 and to_days(DATE_ADD(created_at,INTERVAL 8 HOUR)) = to_days(DATE_ADD(?,INTERVAL 8 HOUR)) 
+2019-06-21 14:19:42:900 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=found_blocks, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=found_blocks)], parametersIndex=1)), containStar=false, selectListLastPosition=16, groupByLastPosition=0, items=[AggregationSelectItem(type=COUNT, innerExpression=(1), alias=Optional.absent(), derivedAggregationSelectItems=[], index=-1)], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:42:901 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: SELECT COUNT(1) FROM found_blocks WHERE is_orphaned=0 and to_days(DATE_ADD(created_at,INTERVAL 8 HOUR)) = to_days(DATE_ADD(?,INTERVAL 8 HOUR)) ::: [[2019-06-21 14:19:42.014]] 
+2019-06-21 14:19:42:949 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.account.mapper.FoundBlocksMapper.getNowBlock:debug][159]: <==      Total: 1 
+2019-06-21 14:19:42:951 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.account.mapper.FoundBlocksMapper.getNowRevenue:debug][159]: ==>  Preparing: SELECT IFNULL(sum(rewards),0) FROM found_blocks WHERE is_orphaned=0 and to_days(DATE_ADD(created_at,INTERVAL 8 HOUR)) = to_days(DATE_ADD(?,INTERVAL 8 HOUR))  
+2019-06-21 14:19:42:954 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.account.mapper.FoundBlocksMapper.getNowRevenue:debug][159]: ==> Parameters: 2019-06-21 14:19:42.014(Timestamp) 
+2019-06-21 14:19:42:955 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:42:955 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT IFNULL(sum(rewards),0) FROM found_blocks WHERE is_orphaned=0 and to_days(DATE_ADD(created_at,INTERVAL 8 HOUR)) = to_days(DATE_ADD(?,INTERVAL 8 HOUR)) 
+2019-06-21 14:19:42:955 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=found_blocks, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=found_blocks)], parametersIndex=1)), containStar=false, selectListLastPosition=30, groupByLastPosition=0, items=[CommonSelectItem(expression=IFNULL(sum(rewards),0), alias=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:42:956 [INFO] [http-nio-8000-exec-6] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: SELECT IFNULL(sum(rewards),0) FROM found_blocks WHERE is_orphaned=0 and to_days(DATE_ADD(created_at,INTERVAL 8 HOUR)) = to_days(DATE_ADD(?,INTERVAL 8 HOUR)) ::: [[2019-06-21 14:19:42.014]] 
+2019-06-21 14:19:43:001 [DEBUG] [http-nio-8000-exec-6] [com.mpool.admin.module.account.mapper.FoundBlocksMapper.getNowRevenue:debug][159]: <==      Total: 1 
+2019-06-21 14:19:45:238 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.mapper.UserPayBillMapper.getBillInfo:debug][159]: ==>  Preparing: SELECT COUNT(1) FROM `user_pay_bill` b WHERE 1 = 1  
+2019-06-21 14:19:45:238 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.mapper.UserPayBillMapper.getBillInfo:debug][159]: ==> Parameters:  
+2019-06-21 14:19:45:239 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:45:239 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT COUNT(1) FROM `user_pay_bill` b WHERE 1 = 1 
+2019-06-21 14:19:45:240 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=user_pay_bill, alias=Optional.of(b))]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`user_pay_bill`)], parametersIndex=0)), containStar=false, selectListLastPosition=16, groupByLastPosition=0, items=[AggregationSelectItem(type=COUNT, innerExpression=(1), alias=Optional.absent(), derivedAggregationSelectItems=[], index=-1)], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:45:240 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: SELECT COUNT(1) FROM `user_pay_bill` b WHERE 1 = 1 
+2019-06-21 14:19:45:328 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.mapper.UserPayBillMapper.getBillInfo:debug][159]: ==>  Preparing: SELECT b.bill_number, b.txid, b.pay_all_btc, b.pay_at, b.cteate_at, b.create_by, b.`status`, b.pay_by FROM `user_pay_bill` b WHERE 1=1 order by cteate_at desc LIMIT 0,10  
+2019-06-21 14:19:45:332 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.mapper.UserPayBillMapper.getBillInfo:debug][159]: ==> Parameters:  
+2019-06-21 14:19:45:334 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:45:334 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			b.bill_number,
+			b.txid,
+			b.pay_all_btc,
+			b.pay_at,
+			b.cteate_at,
+			b.create_by,
+			b.`status`,
+			b.pay_by
+		FROM
+			`user_pay_bill` b
+		WHERE 1=1
+			 
+				 
+				 
+				 
+				 
+				 
+			 
+			order by cteate_at desc LIMIT 0,10 
+2019-06-21 14:19:45:335 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=user_pay_bill, alias=Optional.of(b))]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[ItemsToken(isFirstOfItemsSpecial=false, items=[cteate_at AS ORDER_BY_DERIVED_0 ]), TableToken(skippedSchemaNameLength=0, originalLiterals=`user_pay_bill`), io.shardingsphere.core.parsing.parser.token.OffsetToken@1394ada5, io.shardingsphere.core.parsing.parser.token.RowCountToken@4e7a9722], parametersIndex=0)), containStar=false, selectListLastPosition=128, groupByLastPosition=0, items=[CommonSelectItem(expression=b.txid, alias=Optional.absent()), CommonSelectItem(expression=b.create_by, alias=Optional.absent()), CommonSelectItem(expression=b.status, alias=Optional.absent()), CommonSelectItem(expression=b.bill_number, alias=Optional.absent()), CommonSelectItem(expression=b.pay_by, alias=Optional.absent()), CommonSelectItem(expression=b.pay_at, alias=Optional.absent()), CommonSelectItem(expression=b.cteate_at, alias=Optional.absent()), CommonSelectItem(expression=b.pay_all_btc, alias=Optional.absent())], groupByItems=[], orderByItems=[OrderItem(owner=Optional.absent(), name=Optional.of(cteate_at), orderDirection=DESC, nullOrderDirection=ASC, index=-1, alias=Optional.of(ORDER_BY_DERIVED_0))], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:45:335 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: SELECT
+			b.bill_number,
+			b.txid,
+			b.pay_all_btc,
+			b.pay_at,
+			b.cteate_at,
+			b.create_by,
+			b.`status`,
+			b.pay_by
+		, cteate_at AS ORDER_BY_DERIVED_0 FROM
+			`user_pay_bill` b
+		WHERE 1=1
+			 
+				 
+				 
+				 
+				 
+				 
+			 
+			order by cteate_at desc LIMIT 0,10 
+2019-06-21 14:19:45:389 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.mapper.UserPayBillMapper.getBillInfo:debug][159]: <==      Total: 10 
+2019-06-21 14:19:45:394 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.service.impl.UserPayBillServiceImpl:lambda$getBillInfo$1][108]: billInfo -> {create_by=1, ORDER_BY_DERIVED_0=2019-04-11 14:17:00.0, bill_number=190411141659742990000, cteate_at=2019-04-11 14:17:00.0, pay_all_btc=100000000, status=1} 
+2019-06-21 14:19:45:395 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.service.impl.UserPayBillServiceImpl:lambda$getBillInfo$1][108]: billInfo -> {create_by=1, ORDER_BY_DERIVED_0=2019-04-11 12:12:37.0, bill_number=190411041236857990000, cteate_at=2019-04-11 12:12:37.0, pay_all_btc=9918473, status=1} 
+2019-06-21 14:19:45:397 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: ==>  Preparing: SELECT username FROM `admin_sys_user` WHERE `user_id` = ?  
+2019-06-21 14:19:45:403 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: ==> Parameters: 1(String) 
+2019-06-21 14:19:45:405 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:45:406 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			username 
+		FROM
+			`admin_sys_user` 
+		WHERE
+			`user_id` = ? 
+2019-06-21 14:19:45:407 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=admin_sys_user, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`admin_sys_user`)], parametersIndex=1)), containStar=false, selectListLastPosition=22, groupByLastPosition=0, items=[CommonSelectItem(expression=username, alias=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:45:407 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds4 ::: SELECT
+			username 
+		FROM
+			`admin_sys_user` 
+		WHERE
+			`user_id` = ? ::: [[1]] 
+2019-06-21 14:19:45:501 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: <==      Total: 1 
+2019-06-21 14:19:45:503 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.service.impl.UserPayBillServiceImpl:lambda$getBillInfo$1][108]: billInfo -> {create_by=1, pay_by=1, ORDER_BY_DERIVED_0=2019-04-11 11:39:41.0, operat=sysadmin, bill_number=190411033941231990000, pay_at=2019-04-21 12:11:34.0, cteate_at=2019-04-11 11:39:41.0, txid=wewe, pay_all_btc=100000, status=0} 
+2019-06-21 14:19:45:503 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.service.impl.UserPayBillServiceImpl:lambda$getBillInfo$1][108]: billInfo -> {create_by=1, ORDER_BY_DERIVED_0=2019-04-03 11:25:33.0, bill_number=190403112532761990000, cteate_at=2019-04-03 11:25:33.0, pay_all_btc=400300000, status=1} 
+2019-06-21 14:19:45:503 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: ==>  Preparing: SELECT username FROM `admin_sys_user` WHERE `user_id` = ?  
+2019-06-21 14:19:45:505 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: ==> Parameters: 1(String) 
+2019-06-21 14:19:45:506 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:45:506 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			username 
+		FROM
+			`admin_sys_user` 
+		WHERE
+			`user_id` = ? 
+2019-06-21 14:19:45:506 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=admin_sys_user, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`admin_sys_user`)], parametersIndex=1)), containStar=false, selectListLastPosition=22, groupByLastPosition=0, items=[CommonSelectItem(expression=username, alias=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:45:507 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds4 ::: SELECT
+			username 
+		FROM
+			`admin_sys_user` 
+		WHERE
+			`user_id` = ? ::: [[1]] 
+2019-06-21 14:19:45:553 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: <==      Total: 1 
+2019-06-21 14:19:45:554 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.service.impl.UserPayBillServiceImpl:lambda$getBillInfo$1][108]: billInfo -> {create_by=1, pay_by=1, ORDER_BY_DERIVED_0=2019-04-02 23:02:04.0, operat=sysadmin, bill_number=190314103128909990002, pay_at=2019-04-02 23:01:57.0, cteate_at=2019-04-02 23:02:04.0, txid=2, pay_all_btc=333333, status=0} 
+2019-06-21 14:19:45:555 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: ==>  Preparing: SELECT username FROM `admin_sys_user` WHERE `user_id` = ?  
+2019-06-21 14:19:45:557 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: ==> Parameters: 1(String) 
+2019-06-21 14:19:45:558 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:45:558 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			username 
+		FROM
+			`admin_sys_user` 
+		WHERE
+			`user_id` = ? 
+2019-06-21 14:19:45:558 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=admin_sys_user, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`admin_sys_user`)], parametersIndex=1)), containStar=false, selectListLastPosition=22, groupByLastPosition=0, items=[CommonSelectItem(expression=username, alias=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:45:559 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds4 ::: SELECT
+			username 
+		FROM
+			`admin_sys_user` 
+		WHERE
+			`user_id` = ? ::: [[1]] 
+2019-06-21 14:19:45:605 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: <==      Total: 1 
+2019-06-21 14:19:45:606 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.service.impl.UserPayBillServiceImpl:lambda$getBillInfo$1][108]: billInfo -> {create_by=1, pay_by=1, ORDER_BY_DERIVED_0=2019-04-02 23:00:27.0, operat=sysadmin, bill_number=190314103128909990001, pay_at=2019-05-01 23:00:19.0, cteate_at=2019-04-02 23:00:27.0, txid=1, pay_all_btc=54521545, status=0} 
+2019-06-21 14:19:45:608 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: ==>  Preparing: SELECT username FROM `admin_sys_user` WHERE `user_id` = ?  
+2019-06-21 14:19:45:611 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: ==> Parameters: 1(String) 
+2019-06-21 14:19:45:612 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:45:612 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			username 
+		FROM
+			`admin_sys_user` 
+		WHERE
+			`user_id` = ? 
+2019-06-21 14:19:45:612 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=admin_sys_user, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`admin_sys_user`)], parametersIndex=1)), containStar=false, selectListLastPosition=22, groupByLastPosition=0, items=[CommonSelectItem(expression=username, alias=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:45:612 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds4 ::: SELECT
+			username 
+		FROM
+			`admin_sys_user` 
+		WHERE
+			`user_id` = ? ::: [[1]] 
+2019-06-21 14:19:45:660 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: <==      Total: 1 
+2019-06-21 14:19:45:661 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.service.impl.UserPayBillServiceImpl:lambda$getBillInfo$1][108]: billInfo -> {create_by=1, pay_by=1, ORDER_BY_DERIVED_0=2019-04-02 16:48:47.0, operat=sysadmin, bill_number=190402164847341990000, pay_at=2019-04-15 11:27:30.0, cteate_at=2019-04-02 16:48:47.0, txid=txt, pay_all_btc=1691066, status=0} 
+2019-06-21 14:19:45:662 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: ==>  Preparing: SELECT username FROM `admin_sys_user` WHERE `user_id` = ?  
+2019-06-21 14:19:45:665 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: ==> Parameters: 1(String) 
+2019-06-21 14:19:45:665 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:45:665 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			username 
+		FROM
+			`admin_sys_user` 
+		WHERE
+			`user_id` = ? 
+2019-06-21 14:19:45:666 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=admin_sys_user, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`admin_sys_user`)], parametersIndex=1)), containStar=false, selectListLastPosition=22, groupByLastPosition=0, items=[CommonSelectItem(expression=username, alias=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:45:666 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds4 ::: SELECT
+			username 
+		FROM
+			`admin_sys_user` 
+		WHERE
+			`user_id` = ? ::: [[1]] 
+2019-06-21 14:19:45:711 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: <==      Total: 1 
+2019-06-21 14:19:45:712 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.service.impl.UserPayBillServiceImpl:lambda$getBillInfo$1][108]: billInfo -> {create_by=1, pay_by=1, ORDER_BY_DERIVED_0=2019-03-14 18:19:50.0, operat=sysadmin, bill_number=190314101950393990000, pay_at=2019-04-15 10:56:59.0, cteate_at=2019-03-14 18:19:50.0, txid=test, pay_all_btc=167975747, status=0} 
+2019-06-21 14:19:45:713 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: ==>  Preparing: SELECT username FROM `admin_sys_user` WHERE `user_id` = ?  
+2019-06-21 14:19:45:718 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: ==> Parameters: 1(String) 
+2019-06-21 14:19:45:719 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:45:719 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			username 
+		FROM
+			`admin_sys_user` 
+		WHERE
+			`user_id` = ? 
+2019-06-21 14:19:45:720 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=admin_sys_user, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`admin_sys_user`)], parametersIndex=1)), containStar=false, selectListLastPosition=22, groupByLastPosition=0, items=[CommonSelectItem(expression=username, alias=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:45:720 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds4 ::: SELECT
+			username 
+		FROM
+			`admin_sys_user` 
+		WHERE
+			`user_id` = ? ::: [[1]] 
+2019-06-21 14:19:45:767 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.system.mapper.SysUserMapper.getUsernameByUserId:debug][159]: <==      Total: 1 
+2019-06-21 14:19:45:768 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.service.impl.UserPayBillServiceImpl:lambda$getBillInfo$1][108]: billInfo -> {create_by=1, pay_by=1, ORDER_BY_DERIVED_0=2019-03-14 18:10:26.0, operat=sysadmin, bill_number=190314101025831990000, pay_at=2019-04-15 10:55:42.0, cteate_at=2019-03-14 18:10:26.0, txid=test, pay_all_btc=247397699, status=0} 
+2019-06-21 14:19:45:768 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.service.impl.UserPayBillServiceImpl:lambda$getBillInfo$1][108]: billInfo -> {create_by=1, ORDER_BY_DERIVED_0=2019-03-14 13:16:02.0, bill_number=190314131601839990000, cteate_at=2019-03-14 13:16:02.0, status=1} 
+2019-06-21 14:19:45:769 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.mapper.UserPayBillMapper.getBillInfoSum:debug][159]: ==>  Preparing: SELECT sum(b.pay_all_btc) FROM `user_pay_bill` b WHERE 1=1  
+2019-06-21 14:19:45:771 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.mapper.UserPayBillMapper.getBillInfoSum:debug][159]: ==> Parameters:  
+2019-06-21 14:19:45:771 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:45:772 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			sum(b.pay_all_btc)
+		FROM
+			`user_pay_bill` b
+		WHERE 1=1 
+2019-06-21 14:19:45:772 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=user_pay_bill, alias=Optional.of(b))]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`user_pay_bill`)], parametersIndex=0)), containStar=false, selectListLastPosition=31, groupByLastPosition=0, items=[AggregationSelectItem(type=SUM, innerExpression=(b.pay_all_btc), alias=Optional.absent(), derivedAggregationSelectItems=[], index=-1)], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:45:772 [INFO] [http-nio-8000-exec-5] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: SELECT
+			sum(b.pay_all_btc)
+		FROM
+			`user_pay_bill` b
+		WHERE 1=1 
+2019-06-21 14:19:45:816 [DEBUG] [http-nio-8000-exec-5] [com.mpool.admin.module.bill.mapper.UserPayBillMapper.getBillInfoSum:debug][159]: <==      Total: 1 
+2019-06-21 14:19:57:864 [DEBUG] [http-nio-8000-exec-2] [com.mpool.admin.module.bill.mapper.UserPayBillItemMapper.getBillItemCSVByBillNumber:debug][159]: ==>  Preparing: SELECT b.id, u.username, b.bill_number, b.`day`, b.wallet_address, b.cteate_at, b.pay_btc, m.username AS mUsername FROM user_pay_bill_item b LEFT JOIN account_user u ON u.user_id = b.puid LEFT JOIN account_user m ON u.master_user_id = m.user_id WHERE b.bill_number = ?  
+2019-06-21 14:19:57:867 [DEBUG] [http-nio-8000-exec-2] [com.mpool.admin.module.bill.mapper.UserPayBillItemMapper.getBillItemCSVByBillNumber:debug][159]: ==> Parameters: 190314101950393990000(String) 
+2019-06-21 14:19:57:868 [INFO] [http-nio-8000-exec-2] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:19:57:868 [INFO] [http-nio-8000-exec-2] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			b.id,
+			u.username,
+			b.bill_number,
+			b.`day`,
+			b.wallet_address,
+			b.cteate_at,
+			b.pay_btc,
+			m.username AS mUsername
+		FROM
+			user_pay_bill_item b
+		LEFT JOIN account_user u ON u.user_id = b.puid
+		LEFT JOIN account_user m ON u.master_user_id = m.user_id
+		WHERE
+			b.bill_number = ? 
+2019-06-21 14:19:57:868 [INFO] [http-nio-8000-exec-2] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=user_pay_bill_item, alias=Optional.of(b)), Table(name=account_user, alias=Optional.of(u)), Table(name=account_user, alias=Optional.of(m))]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=user_pay_bill_item), TableToken(skippedSchemaNameLength=0, originalLiterals=account_user), TableToken(skippedSchemaNameLength=0, originalLiterals=account_user)], parametersIndex=1)), containStar=false, selectListLastPosition=141, groupByLastPosition=0, items=[CommonSelectItem(expression=u.username, alias=Optional.absent()), CommonSelectItem(expression=b.pay_btc, alias=Optional.absent()), CommonSelectItem(expression=b.wallet_address, alias=Optional.absent()), CommonSelectItem(expression=b.bill_number, alias=Optional.absent()), CommonSelectItem(expression=b.day, alias=Optional.absent()), CommonSelectItem(expression=m.username, alias=Optional.of(mUsername)), CommonSelectItem(expression=b.cteate_at, alias=Optional.absent()), CommonSelectItem(expression=b.id, alias=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:19:57:869 [INFO] [http-nio-8000-exec-2] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: SELECT
+			b.id,
+			u.username,
+			b.bill_number,
+			b.`day`,
+			b.wallet_address,
+			b.cteate_at,
+			b.pay_btc,
+			m.username AS mUsername
+		FROM
+			user_pay_bill_item b
+		LEFT JOIN account_user u ON u.user_id = b.puid
+		LEFT JOIN account_user m ON u.master_user_id = m.user_id
+		WHERE
+			b.bill_number = ? ::: [[190314101950393990000]] 
+2019-06-21 14:19:57:958 [DEBUG] [http-nio-8000-exec-2] [com.mpool.admin.module.bill.mapper.UserPayBillItemMapper.getBillItemCSVByBillNumber:debug][159]: <==      Total: 1 
+2019-06-21 14:20:00:003 [DEBUG] [scheduling-1] [com.mpool.admin.module.task.NotifyTask:alarmNotify][48]: runing alarmNotify lock => true 
+2019-06-21 14:20:00:007 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.mapper.SysAlarmSettingMapper.getAlarmSettingNotify:debug][159]: ==>  Preparing: SELECT aas.id, aas.share_rate, aas.worker_number, aas.phone, aas.email, aas.pay, aas.create_time, aas.update_time, aas.cycle, aas.block, aas.template_name, aua.user_id FROM admin_alarm_setting aas LEFT JOIN admin_user_alarm aua ON aua.alarm_id = aas.id where aas.currency_id=?  
+2019-06-21 14:20:00:012 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.mapper.SysAlarmSettingMapper.getAlarmSettingNotify:debug][159]: ==> Parameters: 1(Integer) 
+2019-06-21 14:20:00:015 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:20:00:015 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			aas.id,
+			aas.share_rate,
+			aas.worker_number,
+			aas.phone,
+			aas.email,
+			aas.pay,
+			aas.create_time,
+			aas.update_time,
+			aas.cycle,
+			aas.block,
+			aas.template_name,
+			aua.user_id
+		FROM
+			admin_alarm_setting aas
+		LEFT JOIN admin_user_alarm aua ON aua.alarm_id = aas.id
+		where aas.currency_id=? 
+2019-06-21 14:20:00:015 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=admin_alarm_setting, alias=Optional.of(aas)), Table(name=admin_user_alarm, alias=Optional.of(aua))]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=admin_alarm_setting), TableToken(skippedSchemaNameLength=0, originalLiterals=admin_user_alarm)], parametersIndex=1)), containStar=false, selectListLastPosition=206, groupByLastPosition=0, items=[CommonSelectItem(expression=aas.pay, alias=Optional.absent()), CommonSelectItem(expression=aas.share_rate, alias=Optional.absent()), CommonSelectItem(expression=aas.email, alias=Optional.absent()), CommonSelectItem(expression=aas.create_time, alias=Optional.absent()), CommonSelectItem(expression=aas.id, alias=Optional.absent()), CommonSelectItem(expression=aas.update_time, alias=Optional.absent()), CommonSelectItem(expression=aas.phone, alias=Optional.absent()), CommonSelectItem(expression=aas.cycle, alias=Optional.absent()), CommonSelectItem(expression=aua.user_id, alias=Optional.absent()), CommonSelectItem(expression=aas.worker_number, alias=Optional.absent()), CommonSelectItem(expression=aas.block, alias=Optional.absent()), CommonSelectItem(expression=aas.template_name, alias=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:20:00:016 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds4 ::: SELECT
+			aas.id,
+			aas.share_rate,
+			aas.worker_number,
+			aas.phone,
+			aas.email,
+			aas.pay,
+			aas.create_time,
+			aas.update_time,
+			aas.cycle,
+			aas.block,
+			aas.template_name,
+			aua.user_id
+		FROM
+			admin_alarm_setting aas
+		LEFT JOIN admin_user_alarm aua ON aua.alarm_id = aas.id
+		where aas.currency_id=? ::: [[1]] 
+2019-06-21 14:20:00:110 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.mapper.SysAlarmSettingMapper.getAlarmSettingNotify:debug][159]: <==      Total: 4 
+2019-06-21 14:20:00:556 [DEBUG] [scheduling-1] [com.mpool.admin.module.pool.mapper.StatsPoolHourMapper.getStatsPoolHourByHour:debug][159]: ==>  Preparing: SELECT * FROM `stats_pool_hour` WHERE `hour` = ? LIMIT 1  
+2019-06-21 14:20:00:557 [DEBUG] [scheduling-1] [com.mpool.admin.module.pool.mapper.StatsPoolHourMapper.getStatsPoolHourByHour:debug][159]: ==> Parameters: 2019062113(String) 
+2019-06-21 14:20:00:558 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:20:00:558 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT * FROM `stats_pool_hour` WHERE `hour` = ? LIMIT 1 
+2019-06-21 14:20:00:558 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=stats_pool_hour, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`stats_pool_hour`), io.shardingsphere.core.parsing.parser.token.RowCountToken@641fbd50], parametersIndex=1)), containStar=true, selectListLastPosition=9, groupByLastPosition=0, items=[StarSelectItem(owner=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:20:00:558 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds0 ::: SELECT * FROM `stats_pool_hour` WHERE `hour` = ? LIMIT 1 ::: [[2019062113]] 
+2019-06-21 14:20:00:604 [DEBUG] [scheduling-1] [com.mpool.admin.module.pool.mapper.StatsPoolHourMapper.getStatsPoolHourByHour:debug][159]: <==      Total: 0 
+2019-06-21 14:20:00:605 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.service.impl.NotifyServicePoolShare:notifyUser][59]: Past 1 hours pool share null 
+2019-06-21 14:20:00:605 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.service.impl.NotifyServicePoolShare:notifyUser][64]: No need for early warning>>>>>>>>>>>>>>>> currentShare = 207486.657 , last1HShare = 0.0 
+2019-06-21 14:20:00:605 [DEBUG] [scheduling-1] [com.mpool.admin.module.pool.mapper.MiningWorkersMapper.getPoolWorkerActiveCount:debug][159]: ==>  Preparing: SELECT COUNT(1) FROM mining_workers WHERE worker_id != 0 AND accept_15m > 0  
+2019-06-21 14:20:00:607 [DEBUG] [scheduling-1] [com.mpool.admin.module.pool.mapper.MiningWorkersMapper.getPoolWorkerActiveCount:debug][159]: ==> Parameters:  
+2019-06-21 14:20:00:607 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:20:00:607 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			COUNT(1)
+		FROM
+			mining_workers
+		WHERE
+			worker_id != 0
+		AND accept_15m > 0 
+2019-06-21 14:20:00:607 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=mining_workers, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=mining_workers)], parametersIndex=0)), containStar=false, selectListLastPosition=21, groupByLastPosition=0, items=[AggregationSelectItem(type=COUNT, innerExpression=(1), alias=Optional.absent(), derivedAggregationSelectItems=[], index=-1)], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:20:00:608 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds2 ::: SELECT
+			COUNT(1)
+		FROM
+			mining_workers
+		WHERE
+			worker_id != 0
+		AND accept_15m > 0 
+2019-06-21 14:20:00:714 [DEBUG] [scheduling-1] [com.mpool.admin.module.pool.mapper.MiningWorkersMapper.getPoolWorkerActiveCount:debug][159]: <==      Total: 1 
+2019-06-21 14:20:00:715 [DEBUG] [scheduling-1] [com.mpool.admin.module.account.mapper.FoundBlocksMapper.getBlock:debug][159]: ==>  Preparing: SELECT COUNT(1) FROM found_blocks WHERE is_orphaned=0  
+2019-06-21 14:20:00:717 [DEBUG] [scheduling-1] [com.mpool.admin.module.account.mapper.FoundBlocksMapper.getBlock:debug][159]: ==> Parameters:  
+2019-06-21 14:20:00:717 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:20:00:718 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT COUNT(1) FROM found_blocks WHERE is_orphaned=0 
+2019-06-21 14:20:00:718 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=found_blocks, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=found_blocks)], parametersIndex=0)), containStar=false, selectListLastPosition=16, groupByLastPosition=0, items=[AggregationSelectItem(type=COUNT, innerExpression=(1), alias=Optional.absent(), derivedAggregationSelectItems=[], index=-1)], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:20:00:718 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds1 ::: SELECT COUNT(1) FROM found_blocks WHERE is_orphaned=0 
+2019-06-21 14:20:00:805 [DEBUG] [scheduling-1] [com.mpool.admin.module.account.mapper.FoundBlocksMapper.getBlock:debug][159]: <==      Total: 1 
+2019-06-21 14:20:00:807 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.mapper.SysAlarmSettingMapper.getAlarmSettingNotify:debug][159]: ==>  Preparing: SELECT aas.id, aas.share_rate, aas.worker_number, aas.phone, aas.email, aas.pay, aas.create_time, aas.update_time, aas.cycle, aas.block, aas.template_name, aua.user_id FROM admin_alarm_setting aas LEFT JOIN admin_user_alarm aua ON aua.alarm_id = aas.id where aas.currency_id=?  
+2019-06-21 14:20:00:809 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.mapper.SysAlarmSettingMapper.getAlarmSettingNotify:debug][159]: ==> Parameters: 2(Integer) 
+2019-06-21 14:20:00:810 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:20:00:810 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			aas.id,
+			aas.share_rate,
+			aas.worker_number,
+			aas.phone,
+			aas.email,
+			aas.pay,
+			aas.create_time,
+			aas.update_time,
+			aas.cycle,
+			aas.block,
+			aas.template_name,
+			aua.user_id
+		FROM
+			admin_alarm_setting aas
+		LEFT JOIN admin_user_alarm aua ON aua.alarm_id = aas.id
+		where aas.currency_id=? 
+2019-06-21 14:20:00:810 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=admin_alarm_setting, alias=Optional.of(aas)), Table(name=admin_user_alarm, alias=Optional.of(aua))]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=admin_alarm_setting), TableToken(skippedSchemaNameLength=0, originalLiterals=admin_user_alarm)], parametersIndex=1)), containStar=false, selectListLastPosition=206, groupByLastPosition=0, items=[CommonSelectItem(expression=aas.pay, alias=Optional.absent()), CommonSelectItem(expression=aas.share_rate, alias=Optional.absent()), CommonSelectItem(expression=aas.email, alias=Optional.absent()), CommonSelectItem(expression=aas.create_time, alias=Optional.absent()), CommonSelectItem(expression=aas.id, alias=Optional.absent()), CommonSelectItem(expression=aas.update_time, alias=Optional.absent()), CommonSelectItem(expression=aas.phone, alias=Optional.absent()), CommonSelectItem(expression=aas.cycle, alias=Optional.absent()), CommonSelectItem(expression=aua.user_id, alias=Optional.absent()), CommonSelectItem(expression=aas.worker_number, alias=Optional.absent()), CommonSelectItem(expression=aas.block, alias=Optional.absent()), CommonSelectItem(expression=aas.template_name, alias=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:20:00:810 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds4 ::: SELECT
+			aas.id,
+			aas.share_rate,
+			aas.worker_number,
+			aas.phone,
+			aas.email,
+			aas.pay,
+			aas.create_time,
+			aas.update_time,
+			aas.cycle,
+			aas.block,
+			aas.template_name,
+			aua.user_id
+		FROM
+			admin_alarm_setting aas
+		LEFT JOIN admin_user_alarm aua ON aua.alarm_id = aas.id
+		where aas.currency_id=? ::: [[2]] 
+2019-06-21 14:20:00:903 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.mapper.SysAlarmSettingMapper.getAlarmSettingNotify:debug][159]: <==      Total: 3 
+2019-06-21 14:20:00:944 [DEBUG] [scheduling-1] [com.mpool.admin.module_zec.pool.mapper.StatsPoolHourZecMapper.getStatsPoolHourByHour:debug][159]: ==>  Preparing: SELECT * FROM `zec_stats_pool_hour` WHERE `hour` = ? LIMIT 1  
+2019-06-21 14:20:00:947 [DEBUG] [scheduling-1] [com.mpool.admin.module_zec.pool.mapper.StatsPoolHourZecMapper.getStatsPoolHourByHour:debug][159]: ==> Parameters: 2019062113(String) 
+2019-06-21 14:20:00:947 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:20:00:947 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT * FROM `zec_stats_pool_hour` WHERE `hour` = ? LIMIT 1 
+2019-06-21 14:20:00:947 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=zec_stats_pool_hour, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=`zec_stats_pool_hour`), io.shardingsphere.core.parsing.parser.token.RowCountToken@29e84dac], parametersIndex=1)), containStar=true, selectListLastPosition=9, groupByLastPosition=0, items=[StarSelectItem(owner=Optional.absent())], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:20:00:947 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds6 ::: SELECT * FROM `stats_pool_hour` WHERE `hour` = ? LIMIT 1 ::: [[2019062113]] 
+2019-06-21 14:20:01:055 [DEBUG] [scheduling-1] [com.mpool.admin.module_zec.pool.mapper.StatsPoolHourZecMapper.getStatsPoolHourByHour:debug][159]: <==      Total: 0 
+2019-06-21 14:20:01:056 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.service.impl.NotifyServicePoolShare:notifyUser][59]: Past 1 hours pool share null 
+2019-06-21 14:20:01:056 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.service.impl.NotifyServicePoolShare:notifyUser][64]: No need for early warning>>>>>>>>>>>>>>>> currentShare = 207547.683 , last1HShare = 0.0 
+2019-06-21 14:20:01:057 [DEBUG] [scheduling-1] [com.mpool.admin.module_zec.pool.mapper.MiningWorkersZecMapper.getPoolWorkerActiveCount:debug][159]: ==>  Preparing: SELECT COUNT(1) FROM zec_mining_workers WHERE worker_id != 0 AND accept_15m > 0  
+2019-06-21 14:20:01:059 [DEBUG] [scheduling-1] [com.mpool.admin.module_zec.pool.mapper.MiningWorkersZecMapper.getPoolWorkerActiveCount:debug][159]: ==> Parameters:  
+2019-06-21 14:20:01:059 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:20:01:059 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT
+			COUNT(1)
+		FROM
+			zec_mining_workers
+		WHERE
+			worker_id != 0
+		AND accept_15m > 0 
+2019-06-21 14:20:01:059 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=zec_mining_workers, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=zec_mining_workers)], parametersIndex=0)), containStar=false, selectListLastPosition=21, groupByLastPosition=0, items=[AggregationSelectItem(type=COUNT, innerExpression=(1), alias=Optional.absent(), derivedAggregationSelectItems=[], index=-1)], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:20:01:059 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds7 ::: SELECT
+			COUNT(1)
+		FROM
+			mining_workers
+		WHERE
+			worker_id != 0
+		AND accept_15m > 0 
+2019-06-21 14:20:01:148 [DEBUG] [scheduling-1] [com.mpool.admin.module_zec.pool.mapper.MiningWorkersZecMapper.getPoolWorkerActiveCount:debug][159]: <==      Total: 1 
+2019-06-21 14:20:01:159 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.service.NotifyServiceAbstract:checkSendCount][94]: entries is empty hashCode =113379372 , key =2:worker:checkSendCount 
+2019-06-21 14:20:01:159 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.service.NotifyServiceAbstract:checkSendCount][98]: entries values in {113379372=4} 
+2019-06-21 14:20:01:161 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.service.NotifyServiceAbstract:checkSendCount][94]: entries is empty hashCode =113379372 , key =3:worker:checkSendCount 
+2019-06-21 14:20:01:161 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.service.NotifyServiceAbstract:checkSendCount][98]: entries values in {113379372=4} 
+2019-06-21 14:20:01:163 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.service.NotifyServiceAbstract:checkSendCount][94]: entries is empty hashCode =113379372 , key =5:worker:checkSendCount 
+2019-06-21 14:20:01:163 [DEBUG] [scheduling-1] [com.mpool.admin.module.alarm.service.NotifyServiceAbstract:checkSendCount][98]: entries values in {113379372=4} 
+2019-06-21 14:20:01:164 [DEBUG] [scheduling-1] [com.mpool.admin.module_zec.account.mapper.FoundBlocksZecMapper.getBlock:debug][159]: ==>  Preparing: SELECT COUNT(1) FROM zec_found_blocks WHERE is_orphaned=0  
+2019-06-21 14:20:01:166 [DEBUG] [scheduling-1] [com.mpool.admin.module_zec.account.mapper.FoundBlocksZecMapper.getBlock:debug][159]: ==> Parameters:  
+2019-06-21 14:20:01:166 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Rule Type: sharding 
+2019-06-21 14:20:01:166 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Logic SQL: SELECT COUNT(1) FROM zec_found_blocks WHERE is_orphaned=0 
+2019-06-21 14:20:01:166 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: SQLStatement: SelectStatement(super=DQLStatement(super=AbstractSQLStatement(type=DQL, tables=Tables(tables=[Table(name=zec_found_blocks, alias=Optional.absent())]), conditions=Conditions(orCondition=OrCondition(andConditions=[])), sqlTokens=[TableToken(skippedSchemaNameLength=0, originalLiterals=zec_found_blocks)], parametersIndex=0)), containStar=false, selectListLastPosition=16, groupByLastPosition=0, items=[AggregationSelectItem(type=COUNT, innerExpression=(1), alias=Optional.absent(), derivedAggregationSelectItems=[], index=-1)], groupByItems=[], orderByItems=[], limit=null, subQueryStatement=null) 
+2019-06-21 14:20:01:167 [INFO] [scheduling-1] [Sharding-Sphere-SQL:log][71]: Actual SQL: ds6 ::: SELECT COUNT(1) FROM found_blocks WHERE is_orphaned=0 
+2019-06-21 14:20:01:221 [DEBUG] [scheduling-1] [com.mpool.admin.module_zec.account.mapper.FoundBlocksZecMapper.getBlock:debug][159]: <==      Total: 1 
+2019-06-21 14:20:01:222 [DEBUG] [scheduling-1] [com.mpool.admin.module.task.NotifyTask:alarmNotify][65]: end alarmNotify lock => true 

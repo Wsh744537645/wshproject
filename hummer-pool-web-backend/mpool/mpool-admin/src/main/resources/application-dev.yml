@@ -1,0 +1,99 @@
+server:
+  port: 8000
+logging:
+  level:
+    com:
+      mpool: debug
+spring:
+  redis:
+    #39.104.152.238
+    host: redis-server
+    port: 6379
+    database: 0
+  mvc:
+    static-path-pattern: /**
+  resources:
+    static-locations:
+    - file:mpool-admin-ui/
+    - file:../../mpool-admin-ui/
+    - classpath:/META-INF/resources/
+    - classpath:/resources/
+    - classpath:/static/
+    - classpath:/public/
+  mail:
+    host: smtp.qq.com
+    port: 465
+    username: 744537645@qq.com
+    password: xtusefvtgokfbcjc
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+        debug: true
+  boot:
+    admin:
+      client:
+        url:
+        - http://db-server:2000
+        instance:
+          service-base-url: http://192.168.22.249:8001
+        password: Admin@123
+        username: admin
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - '*'
+aliyun:
+  sms:
+    access-key-id: LTAITHtOEev5EtC0
+    access-key-secret: CcFTGjbDyIft0HgcaHbyAT7Lj9KIiN
+    sign-name: 蜂鸟
+sharding:
+  jdbc:
+    datasource:
+      accountdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://39.104.152.238:3306/h_pool_account?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: wg666666
+      admindb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://39.104.152.238:3306/h_pool_admin?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: wg666666
+      statsdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://39.104.152.238:3306/m_pool?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: wg666666
+      workersdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://39.104.152.238:3306/m_pool?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: wg666666
+      zcashdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://39.104.152.238:3306/h_pool_zcrash?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+        username: root
+        password: wg666666
+      zcashstatsdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://39.104.5.209:3306/bpool_local_db_zcash?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+        username: zhangshu1
+        password: zhangshu123!@#
+      zcashworkersdb:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbcUrl: jdbc:mysql://39.104.5.209:3306/bpool_local_db_zcash?characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull
+        username: zhangshu1
+        password: zhangshu123!@#

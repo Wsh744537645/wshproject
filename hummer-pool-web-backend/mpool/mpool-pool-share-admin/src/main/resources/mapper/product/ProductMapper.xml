@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.admin.module.product.mapper.ProductMapper">
+
+	<select id="findOneByLock" resultType="com.mpool.common.model.share.ProductModel">
+		SELECT
+			*
+		FROM
+			product
+		WHERE
+			product_id = #{productId}
+		FOR UPDATE
+	</select>
+
+	<select id="getProductList" resultType="map">
+		SELECT
+			product_id AS productId,
+			product_name AS productName,
+			period,
+			UNIX_TIMESTAMP(create_time) AS createTime,
+			stock,
+			accept_fee AS acceptFee,
+			power_fee AS powerFee,
+			currency_name AS currencyName,
+			power_price AS powerPrice,
+			UNIX_TIMESTAMP(shelf_time) AS shelfTime,
+			UNIX_TIMESTAMP(Obtained_time) AS obtainedTime
+		FROM
+			product
+		WHERE
+			1=1
+			<if test="productName != null">
+				AND
+					product_name=#{productName}
+			</if>
+			<if test="begTime != null and endTime != null">
+				AND
+					<![CDATA[ DATE_FORMAT(#{begTime},'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(create_time,'%Y-%m-%d %H:%i:%s')]]>
+				AND
+					<![CDATA[ AND DATE_FORMAT(#{endTime},'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(create_time,'%Y-%m-%d %H:%i:%s')]]>
+			</if>
+	</select>
+
+	<select id="getProductLogList" resultType="map">
+		SELECT
+			p2.product_name AS productName,
+			p2.create_time AS createTime,
+			p1.create_time AS updateTime
+		FROM
+			log_product p1 LEFT JOIN product p2 ON p1.product_id = p2.product_id
+		ORDER BY p2.create_time DESC
+	</select>
+</mapper>

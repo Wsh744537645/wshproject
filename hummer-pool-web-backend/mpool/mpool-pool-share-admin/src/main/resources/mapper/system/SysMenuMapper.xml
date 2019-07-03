@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.admin.module.system.mapper.SysMenuMapper">
+
+	<select id="findByUserId"
+		resultType="com.mpool.common.model.admin.SysMenu">
+		SELECT
+			sm.menu_id,
+			sm.create_by,
+			sm.create_time,
+			sm.lastupdate_by,
+			sm.lastupdate_time,
+			sm.heading,
+			sm.icon,
+			sm.order_num,
+			sm.parent_id,
+			sm.sref,
+			sm.text,
+			sm.translate,
+			sm.type
+		FROM
+			admin_sys_user e
+		LEFT JOIN admin_sys_user_sys_role eer ON eer.user_id = e.user_id
+		LEFT JOIN admin_sys_role_sys_menu srm ON srm.role_id = eer.role_id
+		LEFT JOIN admin_sys_menu sm ON sm.menu_id = srm.menu_id
+		WHERE
+			e.user_id = #{userId}
+	</select>
+
+	<select id="getSysMenu" resultType="com.mpool.common.model.admin.SysMenu">
+		SELECT *
+		FROM admin_sys_menu
+	WHERE type =1 or ISNULL(type)
+	</select>
+	
+</mapper>

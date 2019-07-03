@@ -1,0 +1,146 @@
+.p-title{
+	height: 42px !important;
+	font-size: 20px !important;
+	padding: 0 0 10px 0 !important;
+	border-bottom: 2px solid #e6e9ed !important;
+}
+.p-title a:hover{
+	background-color: #f5f7fa !important;
+}
+.problem{
+	position: relative !important;
+	padding-top: 0px !important;
+	padding-left: 4px !important;
+	cursor:pointer !important;
+	color: #909fa7 !important;
+	font-size: 14px !important;
+	float: right !important;
+	/* margin: 7px 0 0 2px !important; */
+	/* width: 21px !important; */
+	height: 21px !important;
+}
+.doubt{
+	padding-left: 1px;
+}
+.whole{
+	height: 35px;
+}
+.whole a{
+	color: #888 !important;
+}
+.whole a:hover{
+	color:#000000 !important;
+}
+.tree{
+	padding-left: 5px;
+	height: 35px;
+	font-size: 12px;
+}
+.tree a{
+	/*display:-webkit-inline-box !important;*/
+	padding-left: 0px !important;
+	margin-left: 10px !important;
+	line-height: 36px;
+	color: #888;
+	width: 120px;
+}
+
+.tree a:hover{
+	color: #5d9cec;
+	text-decoration:none;
+}
+.tree a:visited{
+    text-decoration:none;
+}
+.delete{
+	color:#f05050;
+	margin: 0 5px 0 10px;
+	cursor:pointer;
+}
+.edit{
+	cursor:pointer;
+	color: #ff902b;
+}
+
+.leftchart{
+	padding:0 5px 0 0;
+}
+.rightchart{
+	padding:0 0 0 5px;
+}
+.chart{
+	width: 100%; 
+	height: 203px;
+}
+
+
+.deleteBut{
+	float: right !important;
+}
+.seleteBut{
+	float: right;
+	/*margin-right: 10px;*/
+	margin-left: 10px;
+}
+.ngdialog-close{
+	margin-top: 7px !important;
+}
+.ons {
+	color: #0052CE !important; 
+	font-weight: 600;
+}
+.groupListTop{
+	height:56px;
+	line-height: 56px
+}
+.groupListTop button{
+	border: none;
+	background: #fff
+}
+.movedisabled{
+	color: #000000;
+	opacity: 0.24 !important;
+}
+.moveabled{
+	color: #000;
+	opacity: 0.86 !important;
+}
+.tabnoselect{
+	opacity: 0.5;
+	border-bottom: none
+}
+.selectOne{
+	font-weight: bold;
+	opacity: 1;
+	border-bottom: 2px solid #0052CE !important;
+}
+.tishi{
+	color: #4b91ea;
+}
+.deleteStyle{
+	color: #f05050 !important;
+	margin: 0 10px !important;
+}
+.deleteBtn{
+	color:#ee3d3d !important;
+	cursor:pointer !important;
+}
+.deleteModal{
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

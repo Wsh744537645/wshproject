@@ -1,0 +1,274 @@
+<!--我的矿机样式-->
+<link rel="stylesheet" href="/app/homepage/css/footstyle.css" />
+<link rel="stylesheet" href="app/css/workers/worker.css">
+<span data-ng-bind="::pageTitle()" style="display: none;"></span>
+<h3>
+	<small>
+		<span ng-click="homepage()" style="color:#3c78c2;">{{ 'nav.homepage' | translate }}</span>
+		<span style="color: #ccc;">/</span>
+		{{ 'dashboard.minermanagement' | translate:{ appName: app.name } }}
+	</small>
+</h3>
+<div class="row" id='row' style="border: 1px solid #D9DCE0; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);border-radius: 4px; margin-bottom: 390px" >
+	<div class="col-sm-3 col-md-3 col-xs-12" style="padding: 0;background-color: #F6F8FE;" id="test">
+		<div class="mb-boxes" style="padding:19px; color: #000; font-size: 16px !important;margin-bottom: 56px;  height: 100%;">
+			<ul class="nav nav-pills nav-stacked userul">
+				<li class="p" style="border: none;width: 100%; margin: 0 !important">
+					<img src="/img/banner/userlist.png" alt="list">
+					<small style="font-size: 16px;">&nbsp;{{ 'worker.groups' | translate }}</small>
+					<a class="problem" style="height: 56px;line-height: 56px;vertical-align: middle" title="添加分组" ng-click="postCreateWorkerGroup(1, '')">
+						<img src="/img/banner/add.png" alt="add">
+					</a>
+				</li>
+				<div>
+					<li class="tree" style="border:none">
+						<a href="#" ng-click="parameterQuery('-1', -1, '全部')"  ng-class='{ons: selected == -1}' title="'查询全部矿机'">{{ 'worker.All' | translate }}</a>
+					</li>
+					<li class="tree">
+						<a href="#" ng-click="parameterQuery('0', -2, '未分组')" ng-class='{ons: selected == -2 }' title="'查询未分组矿机'">{{ 'worker.No Group' | translate }}</a>
+					</li>
+					<li ng-repeat="items in itemsData2" class="tree">
+						<a href="#" ng-click="parameterQuery(items.groupId, $index, items.groupName)" ng-class='{ons: $index == selected}' title="查询矿机">
+							<span>{{items.groupName}}</span>
+						</a>
+						<img src="/img/banner/abandon.png" ng-click="deleteWorkerGroup(1,this)" id="items.groupId"  alt="list" style="display:float;float:right; margin-top: 20px">
+						<img src="/img/banner/editname.png" ng-click="postCreateWorkerGroup(2, this)" id="items.groupId" alt="list" style="display:float;float:right;margin: 20px 31px 0 0">
+					</li>	
+				</div>
+			</ul>
+			</div>	
+			<a ng-href="apis/worker/workerList/export" target="_blank" class="hidden-xs"  style="position: absolute; bottom: 0;font-size:18px;color: #000000;opacity: 0.86;  
+			width:100%;display:block;text-align:center;line-height: 56px;background: #F6F7FE;box-shadow: 0px -1px 0px rgba(0, 0, 0, 0.06);height: 56px;
+			text-decoration: none;font-weight: bold">
+				<img src="/img/banner/sendout.png" alt="out" style="margin-right: 5px;">
+				{{ 'worker.Export' | translate }}
+			</a>
+	</div>
+
+	<div class="panel col-sm-9 col-md-9 col-xs-12" style="margin-bottom:0; padding: 0; border:none">
+		<div class= "row table-top" style="margin:0; padding: 0">
+			<div class="col-xs-12 col-sm-12 col-md-12" style="height:56px;line-height: 56px;">
+				<div class="hidden-xs" style="display:inline-block; width: 480px">
+					<img src="/img/banner/search.png" alt="search" ng-click="getWorkerList(1, 10)" style="display:inline-block;margin:0 3px 0 21px">
+					<input id="search-data-input" type="text" ng-model="workerName" class="form-control" placeholder="{{'worker.Enter miner name' |translate}}" style="display:inline-block;width:87%;height:30px;border: none;" />
+				</div>
+				<span ng-click="getWorkerDeleteBatch()" style="float: right; font-size: 16px" ng-class="{true : 'moveabled',false : 'movedisabled' }[selectedState == 3 && !!stepCheckedValues.length]">
+					<img src="/img/banner/moveout.png" alt="moveout" style="display:inline-block;">
+					{{ 'worker.Remove' | translate }}
+				</span>
+				<span ng-click="postGroup()" style="margin:0 16px 0 36px; float: right; font-size: 16px" ng-class="{true : 'moveabled',false : 'movedisabled' }[!!stepCheckedValues.length]">
+					<img src="/img/banner/move.png" alt="move" style="display:inline-block">
+					{{ 'worker.Move to' | translate }}
+				</span>
+			</div>
+		</div>
+		
+		<ul class="fwmc_xxk tabChange">
+			<li ng-click="getState(items.id, items.value)" ng-repeat="items in statusData" ng-class="{true : 'selectOne',false : 'tabnoselect'}[items.id == selectedState]">
+				{{items.name}}
+			</li>
+		</ul>
+		<!--搜索-->
+		<table class="table table-hover tableSize">
+			<thead class="tableBC">
+				<tr>
+					<th class="{{column.class}}">
+						<label for="all"></label><input id="all" type="checkbox" ng-model="allchecked" ng-checked="allchecked" ng-click="selectAll(allchecked)" style="
+						vertical-align: middle"
+							title="全选" />
+					</th>
+					<th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)" ng-class="{sortable: column.sortable !== false}"
+						class="{{column.class}}">
+						{{column.label}}
+						<i ng-show="vm.sort.direction === 1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-down"></i>
+						<i ng-show="vm.sort.direction === -1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-up"></i>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-show="show_items" ng-repeat="items in itemsData|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1" style="height:40px;">
+					<td>
+						<input type="checkbox" ng-checked="items.$checked" ng-click="checkedPlat(items,itemsData)" title="选择未分组和分组才能操作" />
+					</td>
+					<td>{{items.workerName}}</td>
+					<!-- <td>{{items.hashAccept5mT}}T</td> -->
+					<td>{{items.hashAccept15mT}}T</td>
+					<td>{{items.accept15mRe | number:3}}</td>
+					<td class="hidden-xs">{{items.hashAccept1hT}}T</td>
+					<td class="hidden-xs">{{items.accept1hRe | number:3}}</td>
+					<td class="hidden-xs">
+						<div ng-if="items.lastShareTime == null" style="float:left;">
+							{{items.lastShareTime}}
+						</div>
+						<div ng-if="items.lastShareTime != null" style="float:left;">
+							{{items.lastShareTime | date:'yyyy-MM-dd HH:mm:ss'}}
+						</div>
+						<!-- <span ng-if="items.offline == 'offline'" style="float:right;">
+							<span class="deleteBtn" ng-click="deleteWorkerGroup(2,this)">移除</span>
+						</span> -->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="wait" ng-show="!show_items">
+			<div class="loader1">
+				<div class="ball-clip-rotate hint">
+					<div></div>
+					<span class="hint2">{{'common.loding' |translate}}...</span>
+				</div>
+			</div>
+		</div>
+		<div ng-show="items_num==0 && show_items" class="wait text-center">
+			<span>{{'common.empty' |translate}}</span>
+		</div>
+		<ul class="pagination" style="margin:10px 0 0 20px">
+			<li ng-class="{true:'disabled'}[p_current==1]">
+				<a href="javascript:void(0);" ng-click="p_index()" class="pIndex">{{'dashboard.homepage' | translate}}</a>
+			</li>
+			<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+				<a href="javascript:void(0);" ng-click="load_page(page,currentSelect.value)" class="pIndex">{{ page }}</a>
+			</li>
+			<li ng-class="{true:'disabled'}[p_current==p_all_page]">
+				<a href="javascript:void(0);" ng-click="p_last()" class="pIndex">{{'dashboard.lastpage' | translate}}</a>
+			</li>
+		</ul>
+		<div style="display:float; float:right;"  class="hidden-xs">
+			<select ng-model="currentSelect.value" ng-change="getWorkerList(1, currentSelect.value)" class="displayValue hidden-xs"
+				style="padding-left: 2px;height: 32px;border: 1px solid #E6E6E6;border-radius: 4px; color: #121212;opacity: 0.56; background: #fff">
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="30">50</option>
+				<option value="100">100</option>
+			</select>
+			<span class="display-value">{{'dashboard.perpage'| translate}}{{'dashboard.totalp'| translate}}{{count}}
+						{{'dashboard.tiao'| translate}}{{totalPage}}
+						{{'dashboard.ye'| translate}}{{'dashboard.goto' | translate}}&nbsp;</span>
+			<input ng-model="page" type="number" class="display-value" style="width: 40px; text-align: center; height: 32px;border: 1px solid #E6E6E6;border-radius: 4px; color: #121212;opacity: 0.56;">
+			<span class="display-value">&nbsp;{{'dashboard.ye1'| translate}}&nbsp;
+			
+				<div class="btn btn-primary" ng-click="load_page(page,currentSelect.value)" style="margin-top:-3px;height:32px; line-height: 16px; background: #1466BF;border-radius: 4px; box-shadow: none">
+					{{'common.ok' |translate}}</div>
+		</div>
+	</div>
+
+</div>
+
+<!-- <footer ng-include="'views/partials/footer.html'" class="loginFooter"></footer> -->
+
+
+<div class="col-lg-12" style="position: absolute;bottom: 0;left: 0;right: 0">
+	<div class="background-parallax" data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
+	<div class="container padding-bottom-big">
+			<div class="row justify-content-between">
+			<div class="col-lg-5 col-md-12 foot-logo hidden-xs" style="margin-top: 20px">
+				<img src="app/homepage/img/qrImg.jpg" class="qrImg">
+				<div style="display: inline-block; align-items: center; vertical-align: middle; margin-left:30px;padding-right: 60px;border-right:1px solid #FFFFFF" >
+					<img src="/app/homepage/img/logo/Logo.png" class="logoImg" alt="logo">
+					<text class="email">{{'foot.email'|translate}}：support@hummerpool.com</text>
+				</div>
+			</div>
+			<div class="col-lg-7 col-md-12" style="margin-top: 20px;color:#fff;opacity: 1; text-align: center">
+				<ul class="footer-list footlist">
+					<li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Product'|translate}}</label>
+						<a href="http://www.cynosure-chain.com">{{'foot.Hummerpool'|translate}}</a>
+						<a href="https://www.hummerminer.com">{{'foot.Hummerminer'|translate}}</a>
+					</li>
+					<li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Service'|translate}}</label>
+						<a href="/announcement">{{'foot.Announcements'|translate}}</a>
+						<a href="" style="visibility:hidden">{{'foot.Mining Tutorial'|translate}}</a>
+					</li>
+					<!-- <li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Helps'|translate}}</label>
+						<a href="">{{'foot.Help Center'|translate}}</a>
+						<a href="">{{'foot.Contact Us'|translate}}</a>
+					</li> -->
+					<li class="ft-item" style="width: 160px !important">
+						<label style="margin-bottom:20px">{{'foot.After-sale'|translate}}</label>
+						<a href="">{{'foot.QQ Group'|translate}}1:783079293</a>
+						<a href="">{{'foot.QQ Group'|translate}}2:791421817</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--新增分组      模态框-->
+<script type="text/ng-template" id="modalDialogId">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">{{'worker.Add Group'|translate}}</h5>
+		<div class="content">
+			<div class="form-group has-feedback">
+	       		<input type="text" ng-model="groupName" ng-change="changeGroupName(groupName)" placeholder="组名" class="form-control"/>
+	    		<span class="text-danger">{{nameCheck}}</span>
+			</div>
+	    	<div class="form-group has-feedback">
+	        	<input type="text" ng-model="groupSeq" ng-change="changeGroupSeq(groupSeq)" onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')" placeholder="{{'worker.order' |translate}}" class="form-control"/>
+	    		<span class="text-danger">{{groupSeqCheck}}</span>
+	    	</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm(this)" ng-disabled="!name || !seq" class="btn btn-primary mr">{{"common.ok" |translate }}</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">{{"common.cancel" |translate }}</button>
+		</div>
+	</div>
+</script>
+
+<!--删除矿工组      模态框-->
+<script type="text/ng-template" id="deleteGroup">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">{{title}}</h5>
+		<div class="content">
+			<div class="form-group has-feedback deleteModal">
+				<label ng-show="Tips">
+					{{'worker.Remove The Group' |translate}}<span class="deleteStyle">{{groupName}}</span>？
+				</label>
+				<label ng-show="!Tips">
+					{{'worker.Sure to delete miner' |translate}}<span class="deleteStyle">{{groupName}}</span>{{'worker.lixian' |translate}}？
+				</label>
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm()" class="btn btn-primary mr">{{"common.ok" |translate }}</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">{{"common.cancel" |translate }}</button>
+		</div>
+	</div>
+</script>
+
+
+<!--删除矿工组      模态框-->
+<script type="text/ng-template" id="deleteWorker">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">{{'worker.Remove Group' |translate}}</h5>
+		<div class="content">
+			<div class="form-group has-feedback deleteModal">
+				{{'worker.Sure to remove the selected miner' |translate}}？
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm()" class="btn btn-primary mr">{{"common.ok" |translate }}</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">{{"common.cancel" |translate }}</button>
+		</div>
+	</div>
+</script>
+
+<!--组操作      模态框-->
+<script type="text/ng-template" id="modalGroup">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">{{'worker.Move Group' |translate}}</h5>
+		<div class="content">
+			<div class="form-group has-feedback">
+				<label style="color: #000;">{{'worker.jiang' |translate}} {{sizeValue}} {{'worker.Move Miner to' |translate}}</label>
+	       		<select ng-model="groupName.value" class="form-control ng-pristine ng-valid ng-touched">
+	       			<option value="{{items.groupId}}" ng-repeat="items in itemsModal">{{items.groupName}}</option>
+	       		</select>
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm(groupName.value)" class="btn btn-primary mr">{{"common.ok" |translate }}</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">{{"common.cancel" |translate }}</button>
+		</div>
+	</div>
+</script>

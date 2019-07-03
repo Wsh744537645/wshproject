@@ -1,0 +1,142 @@
+
+
+<link rel="stylesheet" href="/app/homepage/css/footstyle.css" />
+<span data-ng-bind="::pageTitle()" style="display: none;"></span>
+	<!--头部导航栏-->
+<nav role="navigation" class="navbar topnavbar">
+		<div class="container" style="margin: 0 auto; padding:0">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">					
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+			<a class="navbar-brand" style="height:90px; padding: 0;margin: 0;line-height: 90px;">
+				<div class="brand-logo">
+					<img src="/img/banner/logo_1.png" ng-click="homepage()" alt="蜂鸟矿池" class="img-responsives" style="width:200px;"/>
+				</div>
+			</a>
+			
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="height:90px !important;font-weight: bold;font-family: Microsoft YaHei;">		
+				<ul class="nav navbar-nav" style="margin-top:17px">
+					<li>
+						<a ng-click="homepage()" >{{'nav.homepage' |translate}}</a>
+					</li>
+					<li>
+						<a href="/statistics">{{'nav.Statistics'| translate}}</a>
+					</li>
+					<li ng-show="control">
+						<a ng-click="userpanel()">{{'nav.dashboard' |translate}}</a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right" ng-show="!control" style="margin-top:17px">
+					<li>
+						<a ng-href="/login">{{'nav.login'| translate}}</a>
+					</li>
+					<li>
+						<a ng-href="/register">{{'nav.regis'| translate}}</a>
+					</li>
+					<span ng-controller="TranslateController" class="dropdown" style="color: #4A4A4A;">
+						<button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" 
+						style="width: 50px;background: #FFFFFF;border-radius: 18px;border: none;margin-top: 16px"> 
+							{{langKeyCur}}<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="min-width: 80px;padding: 10px">
+							<li ng-click="changeLanguage('es_AR')" style="cursor: pointer;">中 文</li>
+							<li ng-click="changeLanguage('en')" style="cursor: pointer;">ENGLISH</li>
+						</ul>
+					</span>
+				</ul>
+				<ul class="nav navbar-nav navbar-right" ng-show="control"  style="margin-top:17px">
+					<li dropdown="" class="dropdown dropdown-list">
+						<a dropdown-toggle="" style="cursor: pointer;">
+							<em class="icon-user"></em>&nbsp;
+							<span>{{username}}</span>
+							<span class="fa fa-angle-down"></span>
+						</a>
+						<ul class="dropdown-menu animated flipInX">
+							<li>
+								<div class="list-group">
+									<a class="list-group-item" style="padding:0px;">
+										<div class="media-box">
+											<div class="media-box-body clearfix">		
+												<p ng-click="logout()">{{'nav.signOut'| translate}}</p>
+											</div>
+										</div>
+									</a>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<span ng-controller="TranslateController" class="dropdown" style="color: #4A4A4A;">
+						<button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" 
+						style="width: 50px;background: #FFFFFF;border-radius: 18px;border: none;margin-top: 16px"> 
+							{{langKeyCur}}<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="min-width: 80px;padding: 10px">
+							<li ng-click="changeLanguage('es_AR')" style="cursor: pointer;">中 文</li>
+							<li ng-click="changeLanguage('en')" style="cursor: pointer;">ENGLISH</li>
+						</ul>
+					</span>
+				</ul>
+			</div>
+		</div>
+	</nav>
+ 
+	<div class="container" style="margin-bottom: 350px;">
+		<div class="panel" style="padding: 40px 40px 0 40px;border: 1px solid #D9DCE0; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
+		 padding-bottom: 30px;border-radius: 4px; margin-top: 20px;">
+			<div style="border-bottom:1px solid #DEE2ED;margin-bottom:40px;text-align: center; padding: 40px 0">
+				<p style="font-size: 24px;color: #000000; opacity: 0.86;">{{title}}</p>
+				<text style="font-size: 12px;color: #000000;opacity: 0.56;">{{date}}&nbsp; {{time}}</text>
+			</div>
+			<p id="notice_text"></p>
+			<!-- <p style="line-height: 36px;color: #000000;font-size:14px;opacity: 0.86;">
+				2010年3月17日，世界上第一家比特币交易所Bitcoin Market开业，此后日本的MtGox一度占据了全球比特币交易量的80%，2014年85万个比特币不翼而飞，MtGox宣告破产，币价下跌40%。2011年温州人杨林科创立比特币中国（BTCC），此前从事过汽车配件，当兵，汗蒸酒店生意，BTCC一度占据国内比特币交易量的80%。除BTCC外，还有齐名的OKCoin、火币、CHBTC等。、2014年随着MtGox破产，币圈进入漫长的萧条期。
+			2017年以数亿美元估值100%股权转让香港一家投资基金，清仓退出。
+
+			</p> -->
+		</div>
+	</div>	
+
+
+<!-- <footer ng-include="'views/partials/footer.html'" class="loginFooter" style="width:100%"></footer> -->
+
+<div class="col-lg-12" style="position: absolute;bottom: 0;left: 0;right: 0">
+	<div class="background-parallax" data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
+	<div class="container padding-bottom-big">
+			<div class="row justify-content-between">
+			<div class="col-lg-5 col-md-12 foot-logo hidden-xs" style="margin-top: 20px">
+				<img src="app/homepage/img/qrImg.jpg" class="qrImg">
+				<div style="display: inline-block; align-items: center; vertical-align: middle; margin-left:30px;padding-right: 60px;border-right:1px solid #FFFFFF" >
+					<img src="/app/homepage/img/logo/Logo.png" class="logoImg" alt="logo">
+					<text class="email">{{'foot.email'|translate}}：support@hummerpool.com</text>
+				</div>
+			</div>
+			<div class="col-lg-7 col-md-12" style="margin-top: 20px;color:#fff;opacity: 1; text-align: center">
+				<ul class="footer-list footlist">
+					<li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Product'|translate}}</label>
+						<a href="http://www.cynosure-chain.com">{{'foot.Hummerpool'|translate}}</a>
+						<a href="https://www.hummerminer.com">{{'foot.Hummerminer'|translate}}</a>
+					</li>
+					<li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Service'|translate}}</label>
+						<a href="/announcement">{{'foot.Announcements'|translate}}</a>
+						<a href="" style="visibility:hidden">{{'foot.Mining Tutorial'|translate}}</a>
+					</li>
+					<!-- <li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Helps'|translate}}</label>
+						<a href="">{{'foot.Help Center'|translate}}</a>
+						<a href="">{{'foot.Contact Us'|translate}}</a>
+					</li> -->
+					<li class="ft-item" style="width: 160px !important">
+						<label style="margin-bottom:20px">{{'foot.After-sale'|translate}}</label>
+						<a href="">{{'foot.QQ Group'|translate}}1:783079293</a>
+						<a href="">{{'foot.QQ Group'|translate}}2:791421817</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

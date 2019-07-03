@@ -1,0 +1,67 @@
+.section{
+  width: 646rpx;
+  height: 44rpx;
+  padding: 28rpx 0 26rpx 0;
+  border-bottom: 1px solid #EEEEEE;
+  overflow: hidden;
+}
+.usr{
+  display: block;
+  float: left;
+  font-size: 34rpx;
+  font-family: PingFangSC-Regular;
+  line-height: 44rpx;
+  color: black;
+  margin-right: 28rpx;
+}
+input{
+  display: block;
+  float: left;
+  width: 400rpx;  
+  height: 44rpx;
+  /* margin-top: -4rpx; */
+  font-family: PingFangSC-Regular;
+  font-size: 14px;
+  color: #2F2F2F;
+  line-height: 22px;
+}
+.input{
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  color: #979797;
+}
+checkbox{
+  display: block;
+  width: 100%;
+  margin: 30rpx 0 0 60px;
+  color: #6E6E6E;
+  font-size: 25rpx;
+}
+checkbox .wx-checkbox-input{
+  width: 22rpx;
+  height: 22rpx;
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+  background: #366caf
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+  width: 22rpx;
+  height: 22rpx;
+  line-height: 22rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff
+}
+.submit{
+  display: block;
+  width: 562rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  text-align: center;
+  border-radius: 20px;
+  color: #fff;
+  background: #1466bf;
+  margin: 96rpx auto 0 auto;
+}
+

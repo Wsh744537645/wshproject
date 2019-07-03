@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.mapper.UserBillMapper">
+
+	<insert id="insertBills">
+		INSERT INTO `user_bill`(
+			`id`,
+			`puid`,
+			`day`,
+			`order_id`,
+			`earn`,
+			`accept_day`,
+			`power_day`,
+			`bill_type`,
+			`enabled`,
+			`discrible`,
+			`create_time`
+		) VALUES
+		<foreach collection="userBills" separator="," item="tiem">
+			(#{tiem.id},
+			#{tiem.puid},
+			#{tiem.day},
+			#{tiem.orderId},
+			#{tiem.earn},
+			#{tiem.acceptDay},
+			#{tiem.powerDay},
+			#{tiem.billType},
+			#{tiem.enabled},
+			#{tiem.discrible},
+			#{tiem.createTime})
+		</foreach>
+	</insert>
+
+	<select id="getAllActivityBills" resultType="com.mpool.common.model.share.UserBill">
+		SELECT
+			id,
+			puid,
+			day,
+			earn,
+			enabled,
+			bill_type
+		FROM
+			user_bill
+		WHERE
+			enabled = 0
+	</select>
+	
+	<update id="setBillEnabledState">
+		UPDATE
+			user_bill
+		SET
+			enabled = 1
+		WHERE
+			id IN <foreach collection="userBills" close=")" open="(" item="item" separator=",">#{item.id}</foreach>
+	</update>
+
+	<select id="getBillByOrderId" resultType="com.mpool.common.model.share.UserBill">
+		SELECT
+			earn,
+			accept_day,
+			power_day
+		FROM
+			user_bill
+		WHERE
+			order_id = #{orderId}
+		AND
+			bill_type = 1
+		ORDER BY `day` DESC
+	</select>
+
+	<insert id="updateBillStateAndBalance">
+		INSERT INTO `user_bill`(
+		`id`,
+		`puid`,
+		`day`,
+		`earn`,
+		`bill_type`,
+		`enabled`,
+		`balance`
+		) VALUES
+		<foreach collection="userBills" separator="," item="tiem">
+			(#{tiem.id},
+			#{tiem.puid},
+			#{tiem.day},
+			#{tiem.earn},
+			#{tiem.billType},
+			#{tiem.enabled},
+			#{tiem.balance})
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		enabled = VALUES(enabled),
+		balance = VALUES(balance)
+	</insert>
+
+	<select id="getDailyAcceptOrderList" resultType="map">
+		SELECT
+			ub.day AS day,
+			SUM(ub.earn) AS earnSum
+		FROM
+			user_bill ub
+		WHERE
+			ub.puid = #{userId}
+		AND
+			ub.day BETWEEN #{begTime} AND #{endTime}
+		AND
+			ub.enabled != 4
+		GROUP BY
+			ub.day
+	</select>
+
+    <select id="getDailyBalance" resultType="map">
+		SELECT
+		    ub.day AS day,
+			MAX(product.currency_name) AS currencyName,
+			MAX(ub.balance) AS balance
+		FROM
+			user_bill ub LEFT JOIN product_order_accept poa ON ub.order_id = poa.accept_id
+			JOIN product ON product.product_id = poa.product_id
+		WHERE
+			ub.puid = #{userId}
+		AND
+			ub.day BETWEEN #{begTime} AND #{endTime}
+		AND
+			ub.enabled != 4
+		GROUP BY
+            ub.day
+	</select>
+
+	<select id="getBillListByOrderid" resultType="map">
+		SELECT
+			ub.order_id AS orderId,
+			SUM(ub.earn) AS earnSum,
+			MIN(ub.accept_day) AS acceptDay,
+			MIN(ub.power_day) AS powerDay,
+			MIN(poa.accept) AS accept
+		FROM
+			user_bill ub LEFT JOIN product_order_accept poa ON ub.order_id = poa.accept_id
+			JOIN product_order po ON po.order_id = poa.order_id
+		WHERE
+			ub.puid = #{userId}
+		AND
+			ub.bill_type = 1
+		<if test="orderId != null">
+		AND
+			ub.order_id = #{orderId}
+			<if test="state == 0 || state == 3">
+				AND
+				po.state = #{state}
+			</if>
+		</if>
+		<if test="orderId == null">
+			<if test="state == 0 || state == 3">
+				AND
+				po.state = #{state}
+			</if>
+		</if>
+		GROUP BY
+			ub.order_id
+	</select>
+
+</mapper>

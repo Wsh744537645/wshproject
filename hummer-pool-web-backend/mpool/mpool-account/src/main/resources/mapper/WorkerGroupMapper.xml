@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.account.mapper.WorkerGroupMapper">
+	<select id="findByWorkerGroupName" resultType="com.mpool.common.model.account.WorkerGroup">
+		SELECT
+			*
+		FROM
+			account_worker_group wg
+		WHERE
+			wg.group_name = #{groupName}
+		AND wg.user_id = #{userId}
+	</select>
+	<select id="selectListOrderByGroupSeq" resultType="com.mpool.common.model.account.WorkerGroup">
+		SELECT
+			*
+		FROM
+			account_worker_group
+		WHERE
+			user_id = #{workerGroup.userId}
+		ORDER BY
+			group_seq
+	</select>
+</mapper>

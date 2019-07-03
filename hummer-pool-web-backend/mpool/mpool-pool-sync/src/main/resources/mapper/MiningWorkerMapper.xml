@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.pool.mapper.MiningWorkerMapper">
+
+	<delete id="delete" parameterType="map">
+		DELETE FROM `account_mining_workers` WHERE (`worker_id`=#{worker_id}) AND (`puid`=#{puid})
+	</delete>
+	<insert id="insert" parameterType="map">
+		<if test="created_at == ''">
+			<bind name="created_at" value="null" />
+		</if>
+		<if test="last_share_time == ''">
+			<bind name="last_share_time" value="null" />
+		</if>
+		<if test="updated_at == ''">
+			<bind name="updated_at" value="null" />
+		</if>
+
+		INSERT INTO `account_mining_workers`
+		(
+		`worker_id`,
+		`puid`,
+		`group_id`,
+		`worker_name`,
+		`accept_1m`,
+		`accept_5m`,
+		`accept_15m`,
+		`reject_15m`,
+		`accept_1h`,
+		`reject_1h`,
+		`accept_count`,
+		`last_share_ip`,
+		`last_share_time`,
+		`miner_agent`,
+		`created_at`,
+		`updated_at`
+		)
+		VALUES (
+		#{worker_id},
+		#{puid},
+		#{group_id},
+		#{worker_name},
+		#{accept_1m},
+		#{accept_5m},
+		#{accept_15m},
+		#{reject_15m},
+		#{accept_1h},
+		#{reject_1h},
+		#{accept_count},
+		#{last_share_ip},
+		#{last_share_time},
+		#{miner_agent},
+		#{created_at},
+		#{updated_at}
+		)
+	</insert>
+	<update id="update" parameterType="map">
+		<if test="created_at == ''">
+			<bind name="created_at" value="null" />
+		</if>
+		<if test="last_share_time == ''">
+			<bind name="last_share_time" value="null" />
+		</if>
+		<if test="updated_at == ''">
+			<bind name="updated_at" value="null" />
+		</if>
+		UPDATE
+		`account_mining_workers` SET
+		`worker_id`=#{worker_id},
+		`puid`=#{puid},
+		`group_id`=#{group_id},
+		`worker_name`=#{worker_name},
+		`accept_1m`=#{accept_1m},
+		`accept_5m`=#{accept_5m},
+		`accept_15m`=#{accept_15m},
+		`reject_15m`=#{reject_15m},
+		`accept_1h`=#{accept_1h},
+		`reject_1h`=#{reject_1h},
+		`accept_count`=#{accept_count},
+		`last_share_ip`=#{last_share_ip},
+		`last_share_time`=#{last_share_time},
+		`miner_agent`=#{miner_agent},
+		`created_at`=#{created_at},
+		`updated_at`=#{updated_at}
+		WHERE
+		(`worker_id`=#{worker_id}) AND
+		(`puid`=#{puid})
+	</update>
+	<select id="checkRow" parameterType="map" resultType="Integer">
+		SELECT COUNT(1) FROM account_mining_workers WHERE worker_id = #{worker_id} AND puid = #{puid}
+	</select>
+</mapper>

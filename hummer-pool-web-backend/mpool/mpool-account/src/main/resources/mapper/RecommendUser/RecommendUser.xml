@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.account.mapper.RecommendUserMapper">
+	<select id="getRecommendUserList" resultType="com.mpool.common.model.account.RecommendUser">
+		SELECT ru.recommend_user_id as recommendId,
+		ru.recommend_name as recommendName,
+		ru.user_id as userId,
+		ru.master_user_id as masterId,
+		ru.create_time as createdTime,
+		ru.fee_rate as feeRate
+				FROM account_recommend as ru
+				where ru.currency_id = #{currencyId}
+	</select>
+	<!--WHERE recommend_user_id IN <foreach collection="list" close=")" open="(" separator="," item="item">-->
+	<!--#{item}-->
+	<!--</foreach>-->
+</mapper>

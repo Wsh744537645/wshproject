@@ -1,0 +1,44 @@
+[
+  {
+    "text": "我的首页",
+    "sref": "api.dashboard",
+    "icon": "icon-speedometer",
+    "translate": "dashboard.dashboard"
+  },
+  {
+    "text": "我的矿机",
+    "sref": "api.worker",
+    "icon": "fa fa-bitcoin",
+    "translate": "dashboard.myminer"
+  },
+  {
+    "text": "支付记录",
+    "sref": "api.payrecord",
+    "icon": "icon-note",
+    "translate": "dashboard.PAYRECORDS"
+  },
+  {
+    "text": "账户管理",
+    "sref": "api.account",
+    "icon": "icon-credit-card",
+    "translate": "dashboard.SONSUBACCOUNTS"
+  },
+  {
+    "text": "子账户管理",
+    "sref": "api.subaccount",
+    "icon": "icon-users",
+    "translate": "dashboard.SUBACCOUNTS"
+  },
+  {
+    "text": "告警设置",
+    "sref": "api.setting",
+    "icon": "icon-bell",
+    "translate": "dashboard.alertsettings"
+  },
+  {
+    "text": "常见问题",
+    "sref": "api.dashboard_v4",
+    "icon": "fa fa-question",
+    "translate": "dashboard.COMMONPROBLEM"
+  }
+]

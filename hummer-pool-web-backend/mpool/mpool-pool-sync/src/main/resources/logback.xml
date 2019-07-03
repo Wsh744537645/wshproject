@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration debug="false" scan="true" scanPeriod="30 seconds">
+	<property name="LOG_HOME" value="logs/" />
+	<!-- 日志格式 -->
+	<property name="RUN_TIME_PATTERN_LAYOUT"
+		value="%d{yyyy-MM-dd HH:mm:ss:SSS} [%level] [%thread] [%logger:%method][%L]: %msg %n" />
+		
+	<!-- 控制台输出 -->
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder charset="UTF-8">
+			<pattern>${RUN_TIME_PATTERN_LAYOUT}</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- 固定窗口滚动输出日志 -->
+	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${LOG_HOME}/mpool-sync.log</File> 
+		 <!-- 定义窗口滚动策略 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+		    <!-- 每触发一次，自动压缩日志文件 -->
+			<!-- <FileNamePattern>${LOG_HOME}/fcbss_%i_%d{yyyy-MM-dd}.log.zip</FileNamePattern> -->
+			<FileNamePattern>${LOG_HOME}/mpool-sync_%i.zip</FileNamePattern>
+			<MinIndex>0</MinIndex> <!-- %i的最小值为0-->
+			<MaxIndex>9</MaxIndex> <!-- %i的最大值为9-->
+		</rollingPolicy>
+		
+		<!-- 触发策略，通常rollingPolicy与triggeringPolicy联合使用 -->
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+		    <MaxFileSize>20MB</MaxFileSize>
+		</triggeringPolicy>
+		<encoder charset="UTF-8">
+			<pattern>${RUN_TIME_PATTERN_LAYOUT}</pattern>
+		</encoder>
+	</appender>
+	
+	<logger name="com.mpool" level="INFO" additivity="false">
+    	<appender-ref ref="stdout" />	
+		<appender-ref ref="file" />	
+  	</logger>
+  	
+	<!-- TRACE < DEBUG < INFO < WARN < ERROR -->
+	<root level="INFO">
+		<appender-ref ref="stdout" />	
+		<appender-ref ref="file" />	
+	</root>
+</configuration>

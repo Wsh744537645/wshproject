@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module.bill.mapper.UserPayMapper">
+	
+	<update id="additionTotalPaid">
+		UPDATE `user_pay` SET `total_paid`=total_paid + #{totalPaid}  WHERE (`id`=#{id})
+	</update>
+	
+	<select id="getUserFppsList" resultType="map">
+		SELECT
+		au.user_id,
+		au.username,
+		mas.username AS mUsername,
+		au.user_group AS userGroup,
+		up.fpps_rate / 1000 AS fpps_rate,
+		au.user_group as fpps_group,
+		up.pay_model,
+		pm.type,
+		ar.recommend_name AS recommend_username,
+		ar.fee_rate
+		FROM
+		account_user au
+		LEFT JOIN user_pay up ON up.puid = au.user_id
+		LEFT JOIN account_user_wallet_pay_type pm ON pm.id = up.pay_model
+		LEFT JOIN account_recommend ar ON ar.user_id = au.user_id
+		LEFT JOIN account_user mas ON mas.user_id = au.master_user_id
+		WHERE
+		1 = 1
+		AND up.currency_id=#{currencyId}
+		<if test="username != null">
+			AND (
+			<bind name="usernameLike" value="'%' + username + '%'" />
+			au.username LIKE #{usernameLike}
+			OR mas.username LIKE #{usernameLike}
+			OR ar.recommend_name LIKE #{usernameLike}
+			)
+		</if>
+		<if test="group != null">
+			AND au.user_group =#{group}
+		</if>
+		<if test="recommendName != null">
+			<bind name="recommendNameLike" value="'%' + recommendName + '%'"/>
+			AND ar.recommend_name LIKE #{recommendNameLike}
+		</if>
+		ORDER BY au.username
+	</select>
+
+	<select id="getUserPayInfo" resultType="com.mpool.common.model.account.bill.UserPay">
+		SELECT *
+		FROM user_pay
+		WHERE puid=#{puid}
+		AND currency_id=#{currencyId}
+	</select>
+</mapper>

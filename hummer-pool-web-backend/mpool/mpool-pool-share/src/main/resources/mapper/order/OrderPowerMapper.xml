@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.share.mapper.order.OrderPowerMapper">
+
+	<select id="getAcceptOrderPowerDay" resultType="com.mpool.common.model.product.OrderPowerModel">
+		SELECT
+			*
+		FROM
+			product_order_power
+		WHERE
+			accept_id IN <foreach collection="acceptIds" close=")" open="(" item="item" separator=",">#{item}</foreach>
+	</select>
+
+	<select id="getPowerOrderListByState" resultType="com.mpool.share.resultVo.OrderListVO">
+		SELECT
+		poa.power_id AS orderId,
+		poa.order_id AS id,
+		poa.create_time AS createTime,
+		po.pay_coin AS payCoin,
+		po.had_pay AS hadPay,
+		poa.duration AS period,
+		po.state AS state
+		FROM
+		product_order_power poa LEFT JOIN product_order po on poa.order_id = po.order_id
+		WHERE
+			po.puid = #{userId}
+		<if test="state != null">
+			AND
+			<if test="state == 1 || state == 2">
+				po.state = 1 OR po.state = 2
+			</if>
+			<if test="state == 0 || state == 3 || state == 4">
+				po.state = #{state}
+			</if>
+		</if>
+	</select>
+</mapper>

@@ -1,0 +1,126 @@
+<h3>
+   <small>
+   	<a href="#" class="icon-action-undo" ng-click="back()" title="返回"></a>&nbsp;
+   	{{ 'dashboard.SETTINGS' | translate:{ appName: app.name } }} 
+   </small>
+</h3>
+<div class="row">
+   	<div class="col-lg-12">
+      	<div class="panel">
+         	<div class="panel-body panlbody">
+            	<p style="font-size: 18px;border-bottom: 2px solid #e6e9ed;padding-bottom: 5px;color: #73879c;">告警设置</p>
+         	</div>
+            <form class="form-horizontal" role="form" name="setingsFrom" novalidate>
+                <div STYLE="position: relative;padding: 15px 0 0 50px;">
+                	<div class="form-group">
+                        <div class="col-xs-12">
+                           	<label for="alarm_hash"></label>
+                        </div>
+                        <div class="col-md-3 col-xs-5">模板名</div>
+                        <div class="col-xs-5" style="position: relative;top: -7px;">
+                           	<input type="text" ng-model="itemsData.templateName" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                           	<label for="alarm_hash">算力报警</label>
+                        </div>
+                        <div class="col-md-3 col-xs-5">算力低于设置阈值报警</div>
+                        <div class="col-xs-5" style="position: relative;top: -7px;">
+                           	<input type="number" ng-model="itemsData.shareRate"  min="0" step="1" max="100" class="form-control">
+                        </div>
+                        <div class="col-xs-2">%</div>
+                    </div>
+
+                    <div class="form-group">
+                    	<div class="col-xs-12">
+                           	<label for="alarm_worker">活跃旷工报警</label>
+                        </div>
+                        <div class="col-md-3 col-xs-5">活跃旷工数低于设置阈值报警</div>
+                        <div class="col-xs-5" style="position: relative;top: -7px;">
+                        	<input ng-model="itemsData.workerNumber"  class="form-control" type="number" min="0" step="1"  required>
+                        </div>
+                        <div class="col-xs-2">台</div>
+                    </div>
+                    
+                    <div class="form-group">
+                    	<div class="col-xs-12">
+                           	<label for="alarm_worker">转账预警</label>
+                        </div>
+                        <div class="col-md-3 col-xs-5">转账高于设置阈值报警</div>
+                        <div class="col-xs-5" style="position: relative;top: -7px;">
+                        	<input ng-model="itemsData.pay"  class="form-control" type="text" required>
+                        </div>
+                        <div class="col-xs-2">{{currencyName}}</div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                        	<label>报警间隔</label>
+                        </div>
+                        <div class="col-md-3 col-xs-5">按照报警间隔持续报警3次</div>
+                        <div class="col-xs-5" style="position: relative;top: -7px;">
+                           	<select id="alarm_interval" ng-model="itemsData.cycle" class="form-control">
+                              	<option value="{{items.value}}" ng-repeat="items in time">{{items.name}}</option>
+                           	</select>
+                        </div>
+                    </div>
+                    
+					<div class="form-group">
+                    	<div class="col-md-3 col-xs-5" style="position: relative;top: 7px;">
+                           <label>
+                              	<input type="checkbox" ng-model="itemsData.block">&nbsp;
+                           	</label>
+                           	<label style="position: absolute;top: 7px;">爆块预警</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-md-3 col-xs-5" style="position: relative;top: 7px;">
+                           	<label>
+                              	<input type="checkbox" ng-model="itemsData.email">&nbsp;
+                           	</label>
+                           	<label style="position: absolute;top: 7px;">邮箱</label>
+                        </div>
+                        <div class="col-xs-3" style="font-size:12px;color:#F15532;line-height:34px;">{{emilCheck}}</div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3 col-xs-5" style="position: relative;top: 7px;">
+                           	<label>
+                              	<input type="checkbox" ng-model="itemsData.phone">&nbsp;
+                           	</label>
+                           	<label style="position: absolute;top: 7px;">手机</label>
+                        </div>
+                        <div class="col-xs-3" style="font-size:12px;color:#F15532;line-height:34px;">{{phoneCheck}}</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3 col-xs-5" style="position: relative;top: 7px;">
+                           	<label>
+                              	<input type="checkbox" ng-model="itemsData.createBill">&nbsp;
+                           	</label>
+                           	<label style="position: absolute;top: 7px;">生成支付单</label>
+                        </div>
+                        <div class="col-xs-3" style="font-size:12px;color:#F15532;line-height:34px;">{{phoneCheck}}</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3 col-xs-5" style="position: relative;top: 7px;">
+                           	<label>
+                              	<input type="checkbox" ng-model="itemsData.modifyPassd">&nbsp;
+                           	</label>
+                           	<label style="position: absolute;top: 7px;">修改密码</label>
+                        </div>
+                        <div class="col-xs-3" style="font-size:12px;color:#F15532;line-height:34px;">{{phoneCheck}}</div>
+                    </div>
+                </div>
+                <div style="padding: 15px;text-align: left;border-top: 1px solid #e5e5e5;">
+                    <div class="form-group">
+                        <div class="col-sm-offset-7 col-md-offset-7 col-xs-offset-6 col-sm-7 col-md-7 col-xs-7">
+                        	<button type="button" ng-click="getSettings2()" class="btn btn-primary mt-lg subcreSubAcc" style="width: 100px;">设 置</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+      	</div>
+    </div>
+</div>

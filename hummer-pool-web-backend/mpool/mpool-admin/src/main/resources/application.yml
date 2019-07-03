@@ -1,0 +1,245 @@
+spring:
+  profiles:
+    active: '@profileActive@'
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: mpool-admin
+mybatis-plus:
+  mapper-locations:
+  - classpath:/mapper/**/*.xml
+  - classpath:/mapper/*.xml
+  - classpath:/mapper_zec/**/*.xml
+  - classpath:/mapper_zec/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not-empty
+      table-underline: true
+sharding:
+  jdbc:
+    datasource:
+      names: accountdb,admindb,statsdb,workersdb,zcashdb,zcashworkersdb,zcashstatsdb
+    config:
+      sharding:
+        tables:
+          mining_workers:
+            actual-data-nodes: ds2.mining_workers
+            database-strategy:
+              standard:
+                precise-algorithm-class-name: com.mpool.common.model.pool.sharding.MiningWorkersAlgorithm
+                sharding-column: puid
+          stats_pool_day:
+            actual-data-nodes: ds0.stats_pool_day
+            database-strategy:
+              standard:
+                precise-algorithm-class-name: com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm
+                sharding-column: puid
+          stats_pool_hour:
+            actual-data-nodes: ds0.stats_pool_hour
+            database-strategy:
+              standard:
+                precise-algorithm-class-name: com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm
+                sharding-column: puider_fpps_record
+          stats_users_day:
+            actual-data-nodes: ds0.stats_users_day
+            database-strategy:
+              standard:
+                precise-algorithm-class-name: com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm
+                sharding-column: puid
+          stats_users_hour:
+            actual-data-nodes: ds0.stats_users_hour
+            database-strategy:
+              standard:
+                precise-algorithm-class-name: com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm
+                sharding-column: puid
+          stats_workers_day:
+            actual-data-nodes: ds0.stats_workers_day
+            database-strategy:
+              standard:
+                precise-algorithm-class-name: com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm
+                sharding-column: puid
+          stats_workers_hour:
+            actual-data-nodes: ds0.stats_workers_hour
+            database-strategy:
+              standard:
+                precise-algorithm-class-name: com.mpool.common.model.pool.sharding.PuidPreciseShardingAlgorithm
+                sharding-column: puid
+          account_blockchain:
+            actual-data-nodes: ds1.account_blockchain
+          account_currency_mini_pay:
+            actual-data-nodes: ds1.account_currency_mini_pay
+          account_menu:
+            actual-data-nodes: ds1.account_menu
+          account_region:
+            actual-data-nodes: ds1.account_region
+          account_resource:
+            actual-data-nodes: ds1.account_resource
+          account_role:
+            actual-data-nodes: ds1.account_role
+          account_role_menu:
+            actual-data-nodes: ds1.account_role_menu
+          account_user:
+            actual-data-nodes: ds1.account_user
+          account_user_region:
+            actual-data-nodes: ds1.account_user_region
+          account_user_wallet:
+            actual-data-nodes: ds1.account_user_wallet
+          account_user_wallet_pay_type:
+            actual-data-nodes: ds1.account_user_wallet_pay_type
+          account_wallet:
+            actual-data-nodes: ds1.account_wallet
+          account_worker:
+            actual-data-nodes: ds1.account_worker
+          account_worker_group:
+            actual-data-nodes: ds1.account_worker_group
+          account_pay_history:
+            actual-data-nodes: ds1.account_pay_history
+          account_user_open_resource:
+            actual-data-nodes: ds1.account_user_open_resource
+          account_language:
+            actual-data-nodes: ds1.account_language
+          account_currency:
+            actual-data-nodes: ds1.account_currency
+          account_user_role:
+            actual-data-nodes: ds1.account_user_role
+          account_user_login_log:
+            actual-data-nodes: ds1.account_user_login_log
+          account_alarm_setting:
+            actual-data-nodes: ds1.account_alarm_setting
+          account_message:
+            actual-data-nodes: ds1.account_message
+          user_pay:
+            actual-data-nodes: ds1.user_pay
+          user_pay_bill:
+            actual-data-nodes: ds1.user_pay_bill
+          user_pay_bill_item:
+            actual-data-nodes: ds1.user_pay_bill_item
+          pool_fpps_record:
+            actual-data-nodes: ds1.pool_fpps_record
+          pool_ppsplus_record:
+            actual-data-nodes: ds1.pool_ppsplus_record
+          pool_rate:
+            actual-data-nodes: ds1.pool_rate
+          user_fpps_record:
+            actual-data-nodes: ds1.user_fpps_record
+          user_ppsplus_record:
+            actual-data-nodes: ds1.user_ppsplus_record
+          found_blocks:
+            actual-data-nodes: ds1.found_blocks
+          block_reward:
+            actual-data-nodes: ds1.block_reward
+          fpps_ratio_day:
+            actual-data-nodes: ds1.fpps_ratio_day
+          user_rate_day:
+            actual-data-nodes: ds1.user_rate_day
+          log_user_login:
+            actual-data-nodes: ds1.log_user_login
+          log_wallet:
+            actual-data-nodes: ds1.log_wallet
+          log_email:
+            actual-data-nodes: ds1.log_email
+          log_user_reg:
+            actual-data-nodes: ds1.log_user_reg
+          log_fpps_rate:
+            actual-data-nodes: ds1.log_fpps_rate
+          log_sms:
+            actual-data-nodes: ds1.log_sms
+          v_log_user_reg:
+            actual-data-nodes: ds1.v_log_user_reg
+          v_log_bill_pay:
+            actual-data-nodes: ds1.v_log_bill_pay
+          account_blockchain_all:
+            actual-data-nodes: ds1.account_blockchain_all
+          account_recommend:
+            actual-data-nodes: ds1.account_recommend
+          user_fee_record:
+            actual-data-nodes: ds1.user_fee_record
+          log_user_operation:
+            actual-data-nodes: ds1.log_user_operation
+          admin_sys_menu:
+            actual-data-nodes: ds4.admin_sys_menu
+          admin_sys_role:
+            actual-data-nodes: ds4.admin_sys_role
+          admin_sys_role_sys_menu:
+            actual-data-nodes: ds4.admin_sys_role_sys_menu
+          admin_sys_user:
+            actual-data-nodes: ds4.admin_sys_user
+          admin_sys_user_sys_role:
+            actual-data-nodes: ds4.admin_sys_user_sys_role
+          admin_alarm_setting:
+            actual-data-nodes: ds4.admin_alarm_setting
+          admin_user_alarm:
+            actual-data-nodes: ds4.admin_user_alarm
+          zec_account_blockchain:
+            actual-data-nodes: ds5.account_blockchain
+          zec_block_reward:
+            actual-data-nodes: ds5.block_reward
+          zec_fpps_ratio_day:
+            actual-data-nodes: ds5.fpps_ratio_day
+          zec_user_rate_day:
+            actual-data-nodes: ds5.user_rate_day
+          zec_user_fpps_record:
+            actual-data-nodes: ds5.user_fpps_record
+          zec_user_fee_record:
+            actual-data-nodes: ds5.user_fee_record
+          zec_user_pay_bill_item:
+            actual-data-nodes: ds5.user_pay_bill_item
+          zec_user_pay_bill:
+            actual-data-nodes: ds5.user_pay_bill
+          zec_account_blockchain_all:
+            actual-data-nodes: ds5.account_blockchain_all
+          zec_account_worker:
+            actual-data-nodes: ds5.account_worker
+          zec_account_worker_group:
+            actual-data-nodes: ds5.account_worker_group
+          zec_account_worker_worker_group:
+            actual-data-nodes: ds5.account_worker_worker_group
+          zec_account_user:
+            actual-data-nodes: ds5.zec_account_user
+          zec_admin_user:
+            actual-data-nodes: ds5.zec_admin_user
+          zec_v_log_bill_pay:
+            actual-data-nodes: ds5.zec_v_log_bill_pay
+          zec_mining_workers:
+            actual-data-nodes: ds7.mining_workers
+          zec_found_blocks:
+            actual-data-nodes: ds6.found_blocks
+          zec_stats_pool_day:
+            actual-data-nodes: ds6.stats_pool_day
+          zec_stats_pool_hour:
+            actual-data-nodes: ds6.stats_pool_hour
+          zec_stats_users_day:
+            actual-data-nodes: ds6.stats_users_day
+          zec_stats_users_hour:
+            actual-data-nodes: ds6.stats_users_hour
+          zec_stats_workers_day:
+            actual-data-nodes: ds6.stats_workers_day
+          zec_stats_workers_hour:
+            actual-data-nodes: ds6.stats_workers_hour
+        master-slave-rules:
+        #accountdb,admindb,statsdb,workersdb
+          ds0:
+            master-data-source-name: statsdb
+            slave-data-source-names: statsdb, statsdb
+          ds1:
+            master-data-source-name: accountdb
+            slave-data-source-names: accountdb, accountdb
+          ds2:
+            master-data-source-name: workersdb
+            slave-data-source-names: workersdb, workersdb
+          ds4:
+            master-data-source-name: admindb
+            slave-data-source-names: admindb, admindb
+          ds5:
+            master-data-source-name: zcashdb
+            slave-data-source-names: zcashdb, zcashdb
+          ds6:
+            master-data-source-name: zcashstatsdb
+            slave-data-source-names: zcashstatsdb, zcashstatsdb
+          ds7:
+            master-data-source-name: zcashworkersdb
+            slave-data-source-names: zcashworkersdb, zcashworkersdb
+        props:
+          sql:
+            show: true

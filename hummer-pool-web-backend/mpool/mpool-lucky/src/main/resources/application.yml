@@ -1,0 +1,50 @@
+server:
+  port: 8050
+spring:
+  profiles:
+    active:
+    - '@profileActive@'
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: mpool-lucky
+  mail:
+    host: smtp.exmail.qq.com
+    port: 465
+    username: noreply@hummerpool.com
+    password: Hummer123
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+        debug: true
+mybatis-plus:
+  mapper-locations:
+  - classpath:/mapper/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not-empty
+      table-underline: true
+sharding:
+  jdbc:
+    datasource:
+      names: blockdb
+    config:
+      sharding:
+        tables:
+          btc_pool_lucky_all:
+            actual-data-nodes: ds1.btc_pool_lucky_all
+          btc_pool_lucky_month:
+            actual-data-nodes: ds1.btc_pool_lucky_month
+          btc_pool_lucky_week:
+            actual-data-nodes: ds1.btc_pool_lucky_week
+        master-slave-rules:
+          ds1:
+            master-data-source-name: blockdb
+            slave-data-source-names: blockdb, blockdb
+        props:
+          sql:
+            show: true

@@ -1,0 +1,199 @@
+<!--子账户管理-->
+<h3 class="h3mar">
+	<small>{{ 'dashboard.POOLLOG' | translate:{ appName: app.name } }} </small>
+</h3>
+
+<div class="alert ng-binding tabStyle">
+	<ul class="fwmc">
+		<li ng-class='{on:fold.id==selected}' ng-click="tab(fold.id)" ng-repeat="fold in folders">
+			{{fold.name}}
+		</li>
+	</ul>
+</div>
+<!--注册日志-->
+<div class="table-grid table-grid-desktop" ng-show="selected == 1">
+	<div class="panel col-lg-12">
+		<div class="panel-body tableBot">
+			<p></p>
+			<table class="table table-hover tableSize">
+				<thead class="tableBC">
+					<th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)" ng-class="{sortable: column.sortable !== false}">
+						{{column.label}}
+						<i ng-show="vm.sort.direction === 1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-down"></i>
+						<i ng-show="vm.sort.direction === -1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-up"></i>
+					</th>
+				</thead>
+				<tbody>
+					<tr ng-show="show_items" ng-repeat="items in itemsData|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1">
+						<td>{{items.username}}</td>
+						<td>{{items.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="wait" ng-show="!show_items">
+				<div class="loader1">
+					<div class="ball-clip-rotate hint">
+						<div></div>
+						<span class="hint2">加载中...</span>
+					</div>
+				</div>
+			</div>
+			<div ng-show="items_num==0 && show_items" class="wait text-center">
+				<span>列表为空</span>
+			</div>
+			<select ng-model="currentSelect.value" ng-change="getpoolLogList(1,currentSelect.value)" class="displayValue">
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="30">50</option>
+				<option value="100">100</option>
+			</select>
+			<span class="display-value">条每页，共：{{count}} 条，{{totalPage}}页</span>
+			<ul class="pagination btnPag">
+				<li ng-class="{true:'disabled'}[p_current==1]">
+					<a href="javascript:void(0);" ng-click="p_index()" class="pIndex">首页</a>
+				</li>
+				<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+					<a href="javascript:void(0);" ng-click="load_page(page,currentSelect.value)" class="pIndex">{{ page }}</a>
+				</li>
+				<li ng-class="{true:'disabled'}[p_current==p_all_page]">
+					<a href="javascript:void(0);" ng-click="p_last()" class="pIndex">尾页</a>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+</div>
+
+<!--费率修改日志-->
+<div class="table-grid table-grid-desktop" ng-show="selected == 2">
+	<div class="panel col-lg-12">
+
+		<div class="panel-body tableBot">
+			<p></p>
+			<table class="table table-hover tableSize">
+				<thead class="tableBC">
+					<th ng-repeat="column in vm2.columns" ng-if="!column.hidden" ng-click="vm2.sort.toggle(column)" ng-class="{sortable: column.sortable !== false}">
+						{{column.label}}
+						<i ng-show="vm2.sort.direction === 1" ng-if="column.name === vm2.sort.column && vm2.sort.direction" class="fa fa-long-arrow-down"></i>
+						<i ng-show="vm2.sort.direction === -1" ng-if="column.name === vm2.sort.column && vm2.sort.direction" class="fa fa-long-arrow-up"></i>
+					</th>
+				</thead>
+				<tbody>
+					<tr ng-show="show_items2" ng-repeat="items in itemsData2|filter:vm2.filter|orderBy:vm2.sort.column:vm2.sort.direction===-1">
+						<td>{{items.username}}</td>
+						<td>{{items.updateUserName}}</td>
+						<td>{{items.oldFppsRate/1000}}</td>
+						<td>{{items.newFppsRate/1000}}</td>
+						<td>{{items.updateTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="wait" ng-show="!show_items2">
+				<div class="loader1">
+					<div class="ball-clip-rotate hint">
+						<div></div>
+						<span class="hint2">加载中...</span>
+					</div>
+				</div>
+			</div>
+			<div ng-show="items_num2==0 && show_items2" class="wait text-center">
+				<span>列表为空</span>
+			</div>
+			<select ng-model="currentSelect2.value" ng-change="getFppsRateLogList(1,currentSelect2.value)" class="displayValue">
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="30">50</option>
+				<option value="100">100</option>
+			</select>
+			<span class="display-value">条每页，共：{{count2}} 条，{{totalPage2}}页</span>
+			<ul class="pagination btnPag">
+				<li ng-class="{true:'disabled'}[p_current2==1]">
+					<a href="javascript:void(0);" ng-click="p_index2()" class="pIndex">首页</a>
+				</li>
+				<li ng-repeat="page in pages2" ng-class="{true:'active'}[p_current2==page]">
+					<a href="javascript:void(0);" ng-click="load_page2(page,currentSelect2.value)" class="pIndex">{{ page }}</a>
+				</li>
+				<li ng-class="{true:'disabled'}[p_current2==p_all_page2]">
+					<a href="javascript:void(0);" ng-click="p_last2()" class="pIndex">尾页</a>
+				</li>
+			</ul>
+
+		</div>
+
+	</div>
+</div>
+
+<!--打款日志-->
+<div class="table-grid table-grid-desktop" ng-show="selected == 3">
+	<div class="panel col-lg-12">
+
+		<div class="panel-body tableBot">
+			<p></p>
+			<table class="table table-hover tableSize">
+				<thead class="tableBC">
+					<th ng-repeat="column in vm3.columns" ng-if="!column.hidden" ng-click="vm3.sort.toggle(column)" ng-class="{sortable: column.sortable !== false}">
+						{{column.label}}
+						<i ng-show="vm3.sort.direction === 1" ng-if="column.name === vm3.sort.column && vm3.sort.direction" class="fa fa-long-arrow-down"></i>
+						<i ng-show="vm3.sort.direction === -1" ng-if="column.name === vm3.sort.column && vm3.sort.direction" class="fa fa-long-arrow-up"></i>
+					</th>
+				</thead>
+				<tbody>
+					<tr ng-show="show_items3" ng-repeat="items in itemsData3|filter:vm3.filter|orderBy:vm3.sort.column:vm3.sort.direction===-1">
+						<td>{{items.bill_number}}</td>
+						<td>{{items.username}}</td>
+						<td>{{items.txid}}</td>
+						<td>{{items.pay_at | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+						
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="wait" ng-show="!show_items3">
+				<div class="loader1">
+					<div class="ball-clip-rotate hint">
+						<div></div>
+						<span class="hint2">加载中...</span>
+					</div>
+				</div>
+			</div>
+			<div ng-show="items_num3==0 && show_items3" class="wait text-center">
+				<span>列表为空</span>
+			</div>
+			<select ng-model="currentSelect3.value" ng-change="getFppsRateLogList(1,currentSelect3.value)" class="displayValue">
+				<option value="10">10</option>
+				<option value="20">20</option>
+				<option value="30">50</option>
+				<option value="100">100</option>
+			</select>
+			<span class="display-value">条每页，共：{{count3}} 条，{{totalPage3}}页</span>
+			<ul class="pagination btnPag">
+				<li ng-class="{true:'disabled'}[p_current3==1]">
+					<a href="javascript:void(0);" ng-click="p_index3()" class="pIndex">首页</a>
+				</li>
+				<li ng-repeat="page in pages3" ng-class="{true:'active'}[p_current3==page]">
+					<a href="javascript:void(0);" ng-click="load_page3(page,currentSelect3.value)" class="pIndex">{{ page }}</a>
+				</li>
+				<li ng-class="{true:'disabled'}[p_current3==p_all_page3]">
+					<a href="javascript:void(0);" ng-click="p_last3()" class="pIndex">尾页</a>
+				</li>
+			</ul>
+
+		</div>
+
+	</div>
+</div>
+
+<!--打款日志-->
+<div class="table-grid table-grid-desktop" ng-show="selected == 4">
+	<div class="panel col-lg-12">
+
+		<div class="panel-body tableBot">
+			<p></p>
+			暂无数据...
+			
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,33 @@
+.text{
+  margin-top: 10px;
+  font-size: 12px;
+  width: 98%;
+  text-align: left;
+  padding-left: 10px;
+  color: #cfcfcf;
+}
+.section{
+  width: 100%;
+  margin-top: 10px;
+  border-top: 1px #ccc solid;
+  border-bottom: 1px #ccc solid;
+  background: #fff;
+}
+.flex-item{
+  margin: 0 auto;
+  width: 95%;
+  height: 45px;
+  line-height: 50px;
+  border-bottom: 1px #ccc solid;
+  clear: both
+}
+.flex-item text{
+  display: block;
+  float: left;
+  color:rgb(115, 135, 156);
+}
+.flex-item span{
+  display: online-block;
+  float: right;
+  color:rgb(115, 135, 156);
+}

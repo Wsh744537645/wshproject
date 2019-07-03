@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.admin.module.trade.mapper.TradeMapper">
+
+	<select id="getToBePayList"
+		resultType="map">
+		SELECT
+			create_time AS `day`,
+			au.username,
+			0 AS `share`,
+			0 AS reward,
+			0 AS total,
+			w.wallet_addr
+		FROM
+			account_user au
+		LEFT JOIN account_user_wallet auw ON auw.user_id = au.user_id
+		LEFT JOIN account_wallet w ON w.wallet_id = auw.wallet_id
+ 	</select>
+</mapper>

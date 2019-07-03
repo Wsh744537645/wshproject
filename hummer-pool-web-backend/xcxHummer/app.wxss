@@ -1,0 +1,11 @@
+page {
+  background-color: #efefef;
+  /* height: 100%; */
+  font-size: 32rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}

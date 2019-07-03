@@ -1,0 +1,508 @@
+<!--子账户管理-->
+<span data-ng-bind="::pageTitle()" style="display: none;"></span>
+<link rel="stylesheet" href="/app/homepage/css/footstyle.css" />
+<link rel="stylesheet" href="app/css/subaccounts/subaccounts.css">
+<h3>
+   <small>
+   	<span ng-click="homepage()" style="color:#3c78c2;">{{ 'nav.homepage' | translate }}</span> 
+   	<span style="color: #ccc;">/</span> 
+   	{{ 'dashboard.SUBACCOUNTS' | translate:{ appName: app.name } }}
+   </small>
+</h3>
+
+				
+<div class="table-grid table-grid-desktop" style="margin-bottom:350px;">
+   	<div class="panel col-lg-12">
+      	<div class="panel-body tableBot">
+			<div>
+				<li dropdown="" class="dropdown dropdown-list" style="list-style: none; display: inline-block;">
+					<div dropdown-toggle="" style="cursor: pointer;">
+						<div class="coinbtn">
+							<img src="{{currencyCoin}}" alt="" style="margin: -2px 4px 0 8px">
+							<span>{{currencyName}}</span>
+							<span class="fa fa-angle-down" style="margin-left: 15px"></span>
+						</div>
+					</div>
+					<ul class="dropdown-menu animated flipInX" style="left:0;min-width: 102px">
+						<li ng-repeat="item in currencyData">
+							<div class="list-group">
+								<a class="list-group-item" style="padding:0px;">
+									<div class="media-box">
+										<div class="media-box-body clearfix" style="height:30px;text-align: left" ng-click="changeCoin(item.type)">	
+											<img src="{{item.coinIcon}}" alt="" style="margin: -2px 4px 0 8px">										
+											<text>{{item.type}}</text>
+										</div>
+									</div>
+								</a>
+							</div>
+						</li>
+					</ul>	
+				</li>
+				<div ng-click="addback()" class="seleteBut" style="font-size: 14px;color: #1466BF;font-weight:bold;margin: 10px 0 30px 0">+ {{'dashboard.ADDSUBACCOUNTS' |translate}}</div>
+			</div>
+         	<table class="table table-hover tableSize" style="border: 1px solid #E6E6E6;">
+            	<thead class="tableBC tableBC2">
+					<th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)" style="background: #FAFBFF;"
+            			ng-class="{sortable: column.sortable !== false}" class="{{column.class}}">
+		                {{column.label}}
+		                <i ng-show="vm.sort.direction === 1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-down"></i>
+		                <i ng-show="vm.sort.direction === -1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-up"></i>
+		            </th>
+            	</thead>
+           		<tbody>
+		            <tr ng-show="show_items" ng-repeat="items in itemsData|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1" style="line-height: 45px;height: 45px;">   
+						<td style="text-align: center;">{{items.username}}</td>
+						<td style="text-align: center;" class="hidden-xs"><img src="{{items.coinIcon}}">&nbsp;&nbsp;{{items.walletType}}</td>
+		               	<td style="text-align: center;" class="hidden-xs">{{items.currentShareT}}</td>
+		               	<td style="text-align: center;" class="hidden-xs">{{items.workerTotal}} / {{items.workerActive}}</td>
+		               	<td style="text-align: center;" class="hidden-xs">{{items.walletAddr}}</td>
+		               	<td style="text-align: center;" class="hidden-xs">{{(items.miniPay?items.miniPay:0)/100000000}}</td>		               	
+		               	<td style="text-align: center;" class="hidden-xs">{{items.payType}}</td>
+		               	<td style="text-align: center; color: #1466BF" class="deleteBtn" >
+		               		<a ng-click="getsWitchSubAccount(items.userId,items.username,items.walletType)">{{'dashboard.enter' |translate}}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+								<div dropdown="dropdown" class="btn-group mb-sm">
+									<a ng-disabled="disabled" dropdown-toggle="" style="cursor:pointer;">{{'common.set' |translate}}
+										<span class="caret"></span>
+									</a>
+									<ul role="menu" class="dropdown-menu" style="text-align: left;">
+										<li><a ng-click="getWalletManger(items.walletAddr, items.userId,items)">{{'subActsMng.withdraw address' |translate}}</a></li>
+										<li><a ng-click="getSum(items.userId, (items.miniPay?items.miniPay:0)/100000,items.walletType)">{{'subActsMng.Min Pay Settings' |translate}}</a></li>
+										<li><a ng-click="postCreateWorkerGroup(items.userId,items.walletType)">{{'subActsMng.Share' |translate}}</a></li>
+										<li><a ng-click="getSettings(items.userId, items.hashAccept5mT, items.workerActive,items.walletType)">{{'subActsMng.Alert Settings' |translate}}</a></li>
+										<li><a ng-click="getChangePassword(items.userId)">{{'subActsMng.psw set' |translate}}</a></li>
+									</ul>
+								</div>
+							</a>&nbsp;&nbsp;&nbsp;&nbsp;
+							<a ng-click="newcoin(items.username,items.walletType,items.otherCurrency)" ng-show="items.addCoin">{{'dashboard.newcoin' |translate}}</a>
+		               	</td>
+		            </tr>
+            	</tbody>
+         	</table>
+
+			<div class="wait" ng-show="!show_items">
+		    	<div class="loader1">
+	            	<div class="ball-clip-rotate hint">
+	               		<div></div>
+	               		<span class="hint2">{{'common.loding' |translate}}...</span>
+	            	</div>
+			    </div>
+		    </div>
+          	<div ng-show="items_num==0 && show_items" class="wait text-center">
+		    	<span>{{'common.empty' |translate}}</span>
+			</div>
+			<div style="margin: 85px 0 35px 0 ">
+				<ul class="pagination" style="margin:0">
+					<li ng-class="{true:'disabled'}[p_current==1]">
+						<a href="javascript:void(0);" ng-click="p_index()" class="pIndex">{{'dashboard.homepage' | translate}}</a>
+					</li>
+					<li ng-repeat="page in pages" ng-class="{true:'active'}[p_current==page]">
+						<a href="javascript:void(0);" ng-click="load_page(page,currentSelect.value)" class="pIndex">{{ page }}</a>
+					</li>
+					<li ng-class="{true:'disabled'}[p_current==p_all_page]">
+						<a href="javascript:void(0);" ng-click="p_last()" class="pIndex">{{'dashboard.lastpage' | translate}}</a>
+					</li>
+				</ul>
+				<div style="display:float; float:right;"  class="hidden-xs">
+					<select ng-model="currentSelect.value" ng-change="getSubaccountList(1, currentSelect.value)"
+						style="padding-left: 2px;height: 32px;border: 1px solid #E6E6E6;border-radius: 4px; color: #121212;opacity: 0.56;">
+						<option value="10">10</option>
+						<option value="20">20</option>
+						<option value="30">50</option>
+						<option value="100">100</option>
+					</select>
+					<span>{{'dashboard.perpage'| translate}}{{'dashboard.totalp'| translate}}{{count}}
+						{{'dashboard.tiao'| translate}}{{totalPage}}
+						{{'dashboard.ye'| translate}}{{'dashboard.goto' | translate}}&nbsp;</span>
+					<input ng-model="page" type="number" style="width: 40px; text-align: center; height: 32px;border: 1px solid #E6E6E6;border-radius: 4px; color: #121212;opacity: 0.56;">
+					<span>&nbsp;{{'dashboard.ye1'| translate}}&nbsp;
+					<div class="btn btn-primary" ng-click="load_page(page,currentSelect.value)" style="margin-top:-3px;height:32px; line-height: 16px; background: #1466BF;border-radius: 4px; box-shadow: none">
+						{{'common.ok' |translate}}</div>
+				</div>
+			</div>
+      	</div>
+   </div>
+   
+</div>
+
+<!--切换子账号     模态框-->
+<script type="text/ng-template" id="modelGroup">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">{{'modal.SwitchSub'|translate}}</h5>
+		<div class="content">
+			<div class="form-group has-feedback qiehuanModal">
+				<label>
+					{{'modal.Switchto' |translate}}<span class="deleteStyle"> {{name}}</span>{{'modal.sub-account' |translate}}？
+				</label>
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm()" class="btn btn-primary mr">{{"common.ok" |translate }}</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">{{"common.cancel" |translate }}</button>
+		</div> 
+	</div>
+</script>
+<!-----------------------------分享--------------------------->
+<!--分享      模态框-->
+<script type="text/ng-template" id="modalSharesub123">
+	<!-- <div class="ngdialog-message" ng-show="modalshare">
+		<h5 class="h5Title">分享</h5>
+		<div class="content" style="overflow: hidden">
+			<div class="form-group has-feedback">
+				<label class="text-muted">有效期</label>
+			</div>
+			<div class="form-group has-feedback" style="width:80%;height: 55px;margin-bottom: 0px;display:float; float: left">
+				<input type="text" ng-model="data" ng-change="checkData()" onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')" placeholder="请输入有效期" class="form-control"/>
+				<span class="text-danger">{{numberCheck}}</span>
+			</div>
+			<select ng-model="groupName.value" class="form-control ng-pristine ng-valid ng-touched" style="width:19%;padding:0; padding-left:5px;display:float;float:right">
+				<option value="{{items.value}}" ng-repeat="items in itemsModal">{{items.name}}</option>
+			</select>
+		</div>
+		<div class="btnStyle" style="margin-top: 10px;">
+			<button ng-click="getShare()" class="btn btn-primary mr">{{"common.ok" |translate }}</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">{{"common.cancel" |translate }}</button>
+		</div> 
+	</div> -->
+	
+	<!--分享第二步-->
+	<div class="ngdialog-message" ng-show="modalshare">
+		<h5 class="h5Title">{{"subActsMng.Share" |translate }}</h5>
+		<div class="content">
+			<div class="form-group has-feedback deleteModal">
+				<input type="text" value="{{num}}" id="copy" style="padding: 6px;margin-left: -25px;" class="form-control">
+				<button type="button" ng-click="clickCopy()" style="position: absolute;top: 0px;right: -50px;" class="mb-sm btn btn-warning">
+					{{butCopy}}
+				</button>
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm()" class="btn btn-primary mr">{{"common.ok" |translate }}</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">{{"common.cancel" |translate }}</button>
+		</div> 
+	</div>
+	
+</script>
+
+
+<!---------------------------钱包地址----------------------------->
+<!--钱包地址      模态框-->
+<script type="text/ng-template" id="modalWalletManger">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">{{'subActsMng.withdraw address' |translate}}</h5>
+		<div style="width:85%;margin:30px 0 0 31px;">
+			<div class="form-group has-feedback">
+				<label style="font-weight:100;">{{'subActsMng.Present Address' |translate}}</label><br />
+	       		<label style="font-weight:100;color:#888;">{{address}}</label>
+			</div>
+			<div class="form-group has-feedback" style="height: 80px;margin-bottom: 0px;">
+				<label style="font-weight:100;">{{'subActsMng.new Address' |translate}}</label>
+		       	<input type="text" ng-model="addressData" ng-change="check(addressData)" placeholder="{{'subActsMng.enter newAddress' |translate}}" class="form-control"/>
+	    		<span class="text-danger">{{walletCheck}}</span>
+			</div>
+		</div>
+		<div class="btnStyle" style="margin-top: 10px;">
+			<button ng-click="confirm(this)" ng-disabled="sub" class="btn btn-primary mr" style="width: 150px;">{{'subActsMng.next' |translate}}</button>
+		</div> 
+	</div>
+</script>
+<!--钱包地址    下一步获取验证码-->
+<script type="text/ng-template" id="modalNextStep">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">{{'subActsMng.RVPM' |translate}}</h5>
+		<div style="width:85%;margin:30px 0 0 31px;">
+			<div class="form-group has-feedback">
+				<label style="font-weight:100;color:#000;">{{'subActsMng.newAd' |translate}}</label><br />
+				<span style="color:red;">{{addressData}}</span>
+			</div>
+			<div class="form-group has-feedback">
+				<label style="font-weight:100;">{{'subActsMng.RVPV' |translate}}</label><br />
+	       		<div class="radio c-radio c-radio-nofont" ng-show="modephone">
+                     <label ng-click="getRadio1(0)">
+                        <input type="radio" name="a" value="option1" checked=""/>
+                        <span></span>{{modephone}}</label>
+                  </div>
+                  <div class="radio c-radio c-radio-nofont" ng-show="modeEmail">
+                     <label ng-click="getRadio2(1)">
+                        <input type="radio" name="a" value="option2"/>
+                        <span></span>{{modeEmail}}
+                     </label>
+                  </div>
+			</div>
+			<div class="form-group has-feedback" style="height: 80px;margin-bottom: 0px;">
+				<label style="font-weight:100;">{{'subActsMng.Verification password' |translate}}</label>
+		       	<div class="input-group" style="width: 330px;">
+	             	<input type="text" ng-model="workerName" ng-disabled="worINP" ng-change="checkCode(workerName)" class="form-control"/>
+	             	<span class="input-group-btn">
+	                	<button type="button" ng-click="getWalletCode()" class="btn btn-default" style="height: 35px;">{{time}}</button>
+	             	</span>
+	          	</div>
+	    		<span class="text-danger">{{wallCode}}</span>
+			</div>
+			
+		</div>
+		<div class="btnStyle" style="margin-top: 10px;">
+			<button ng-click="confirm(this)" ng-disabled="sub" name="{{subURL}}" class="btn btn-primary mr">{{"common.submit" |translate }}</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">{{"common.cancel" |translate }}</button>
+		</div> 
+	</div>
+</script>
+
+
+<!--起付金额设置-->
+<script type="text/ng-template" id="modalsum123">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">{{'subActsMng.Min Pay Settings' |translate}}</h5>
+		<div style="width:85%;margin:30px 0 0 31px;">
+			<div class="form-group has-feedback">
+				<label style="font-weight:100;color:#000;margin-right: 30px;">{{'subActsMng.Min Pay Settings' |translate}}:</label>
+				<span>{{objMiniPay/1000}}</span>
+			</div>
+			<div class="form-group has-feedback">
+				<label style="font-weight:100;">{{'subActsMng.Modify' |translate}}</label>
+	       		<div class="radio c-radio c-radio-nofont" style="position:relative;top:-39px;left:119px;">
+                    <ul class="fwmc_xxk">
+					    <li ng-click="getState(items.id, items.name)" ng-repeat="items in statusData" ng-class='{on:$index==selectedState}'>
+					    	{{items.name}}
+					    </li>
+					</ul>
+                </div>
+			</div>	
+		</div>
+		<div style="position: relative;top: -17px;left: 7px; text-align: center;">
+			<button ng-click="confirm(this)" name="{{statusValue}}" class="btn btn-primary mr">{{"common.ok" |translate }}</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">{{"common.cancel" |translate }}</button>
+		</div> 
+	</div>
+</script>
+
+
+
+<!-----------------------------报警设置--------------------------->
+<script type="text/ng-template" id="modalSettings123">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">{{'subActsMng.Alert Settings' |translate}}</h5>
+		<div  class="content">
+			<form method="get" class="form-horizontal">
+				<div class="form-group has-feedback">
+					<label style="font-weight:100;color:#000;">{{'subActsMng.Present Hashrate' |translate}}</label><br />
+		       		<label class="switch" style="color:#f39800;font-weight:100;position: absolute;top: -1px;left: 164px;width: 320px;text-align: -webkit-right;">
+	                    {{share15m}} {{unit}}
+		       		</label>
+				</div>
+				<div class="form-group has-feedback">
+					<label style="font-weight:100;color:#000;">{{'subActsMng.Hashrate Alert' |translate}}</label><br />
+		       		<label class="switch" style="font-weight:100;position: absolute;top: -1px;left: 440px;">
+	                    <input type="checkbox" ng-model="war" ng-click="warning(war)" oninput="value=value.replace(/[^\d]/g,'')"/>
+	                    <span></span>
+		       		</label>
+				</div>
+				<div class="form-group has-feedback">
+					<label style="font-weight:100;color: #888;">{{'subActsMng.Hashrate alert line' |translate}}</label><br />
+		       		<label style="width:144px;position: absolute;top: -9px;left: 340px;">
+						<div class="input-group">
+                     		<input type="text" ng-model="cordon" value="{{cordon}}" onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')" ng-change="getCordon(cordon)" ng-disabled="disCordon" class="form-control" style="font-weight:100;padding:0;text-align:center;"/>
+                     		<span class="input-group-addon">{{unit}}</span>
+                  		</div>
+		       		</label>
+		       		<span style="color:red;font-size:12px;float:right;">{{cordonTitle}}</span>
+				</div>
+				
+				<div class="form-group has-feedback">
+					<label style="font-weight:100;color:#000;">{{'subActsMng.Present Active Miner' |translate}}</label><br />
+		       		<label class="switch" style="color:#f39800;font-weight:100;position: absolute;top: -1px;left: 364px;width: 120px;text-align: -webkit-right;">
+	                    {{workers}} {{'common.tai' |translate}}
+		       		</label>
+				</div>
+				<div class="form-group has-feedback">
+					<label style="font-weight:100;color:#000;">{{'subActsMng.Miner Quantity Warning' |translate}}</label><br />
+		       		<label class="switch" style="font-weight:100;position: absolute;top: -1px;left: 440px;">
+	                     <input type="checkbox" ng-model="machineNumber" ng-change="machine(machineNumber)" ng-click="machine(machineNumber)"/>
+	                     <span></span>
+		       		</label>
+				</div>
+				<div class="form-group has-feedback">
+					<label style="font-weight:100;color: #888;">{{'subActsMng.Active Miner alert line' |translate}}</label><br />
+		       		<span style="width:144px;position: absolute;top: -9px;left: 340px;">
+						<div class="input-group">
+	                     	<span class="input-group-btn" style="width: 40px;">
+	                        	<button type="button" ng-click="reduce(1)" ng-disabled="disCordon2" class="btn btn-default" style="height:35px;">-</button>
+	                     	</span>
+	                     	<input type="text" ng-model="cordonNumber" value="{{cordonNumber}}" ng-change="getcordonNumber(cordonNumber)" onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')" ng-disabled="disCordon2" class="form-control" style="width:62px;padding:0;text-align:center;"/>
+	                     	<span class="input-group-btn" style="width: 40px;">
+                        		<button type="button" ng-click="plus(1)" ng-disabled="disCordon2" class="btn btn-default" style="height:35px;">+</button>
+                     		</span>
+	                  	</div>
+		       		</span>
+		       		<span style="color:red;font-size:12px;float:right;">{{cordonNumberTitle}}</span>
+				</div>
+			</form>	
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm(this)" ng-disabled="!(cordonTitle == '' && cordonNumberTitle=='')" style="width: 150px;" class="btn btn-primary mr">{{'subActsMng.next' |translate}}</button>
+		</div> 
+	</div>
+</script>
+<!--报警设置下一步-->
+<script type="text/ng-template" id="modalSettingsNextstep123">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">{{'subActsMng.Alert Settings' |translate}} </h5>
+		<div ng-click="getPlus(true)" style="text-align: -webkit-right;cursor: pointer;color:#4b91ea;font-size: 12px;">
+			<em class="fa fa-plus"></em>{{'subActsMng.New Contact' |translate}}
+		</div>
+		<div class="content" style="width: 75%;margin-left: 50px;">
+			<form method="get" class="form-horizontal">
+				<!--<div class="form-group has-feedback">
+					<label style="font-weight:100;color:#000;">手机号：</label>
+					<span>{{itemsData.phone}}</span>&nbsp;
+					<span ng-click="modifyPhone()" ng-show="itemsData.phone" style="cursor:pointer;color:#4b91ea;">修改</span>
+					<span ng-click="modifyPhone()" ng-show="!itemsData.phone" style="cursor:pointer;color:#4b91ea;">添加</span>
+				</div>
+				<div class="form-group has-feedback">
+					<label style="font-weight:100;color:#000;margin-right: 12px;">邮&nbsp;箱：</label>
+					<span>{{itemsData.email}}</span>&nbsp;
+					<span ng-click="modifyMail()" ng-show="itemsData.email" style="cursor:pointer;color:#4b91ea;">修改</span>
+					<span ng-click="modifyMail()" ng-show="!itemsData.email" style="cursor:pointer;color:#4b91ea;">添加</span>
+				</div>-->
+				<!--联系人手机号-->
+				<div ng-repeat="items in notifyUser" class="form-group has-feedback" style="padding-left:5px;border:1px dashed #dddddd;background:#fafafa;">
+					<label style="font-weight:100;color:#000;width:130px;">
+						<em class="icon-user"></em>&nbsp;{{items.nickName}}
+					</label>&nbsp;&nbsp;&nbsp;
+					<label style="font-weight:100;color:#000;">
+						<em class="fa fa-mobile-phone" style="font-size:19px;"></em>&nbsp;{{items.phone?items.phone:'暂无数据'}}
+					</label>&nbsp;&nbsp;&nbsp;<br />
+					<label style="font-weight:100;color:#000;">
+						<em class="fa icon-envelope"></em>&nbsp;{{items.email?items.email:'暂无数据'}}
+					</label>&nbsp;
+					<span ng-click="deleteObj($index,items)" style="cursor:pointer;color:#4b91ea;float:right;position:relative;top:-28px;right: 3px;">
+						<em class="fa fa-times"></em>
+					</span>
+				</div>
+				<!--联系人手机号end-->
+				
+				<!--<div class="form-group has-feedback" ng-show="phoneShow">
+					<label style="font-weight:100;color:#000;">新手机号</label><br />
+		       		<div class="input-group" style="width: 330px;">
+		             	<input type="text" ng-model="updatePhone" ng-change="changePhone()" onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')" style="padding: 6px;" placeholder="请输入新手机号" class="form-control">
+		             	<span class="input-group-btn">
+		                	<button type="button" ng-click="getUpdatePhone()" ng-disabled="queding1" class="btn btn-primary" style="line-height:19px;">{{"common.ok" |translate }}</button>
+		             	</span>
+		             	<span class="input-group-btn">
+		                	<button type="button" ng-click="shut()" class="btn btn-default" style="line-height:19px;margin-left: 2px;border: 1px solid #fff;">
+		                		<em class="fa fa-minus"></em>
+		                	</button>
+		             	</span>
+		          	</div>
+		          	<span style="color:red;font-size:12px;">{{phoneCheck}}</span>
+				</div>
+				<div class="form-group has-feedback" ng-show="mailShow">
+					<label style="font-weight:100;color:#000;">新邮箱</label><br />
+					<div class="input-group" style="width: 330px;">
+			       		<input type="text" ng-model="updateEmail" ng-change="changeEmail()" style="padding: 6px;" placeholder="请输入新邮箱" class="form-control">
+						<span class="input-group-btn">
+		                	<button type="button" ng-click="getUpdateEmail()" ng-disabled="queding2" class="btn btn-primary" style="line-height:19px;">{{"common.ok" |translate }}</button>
+		             	</span>
+		             	<span class="input-group-btn">
+		                	<button type="button" ng-click="shut()" class="btn btn-default" style="line-height:19px;margin-left: 2px;border: 1px solid #fff;">
+		                		<em class="fa fa-minus"></em>
+		                	</button>
+		             	</span>
+		            </div>
+		            <span style="color:red;font-size:12px;">{{emailCheck}}</span>
+				</div>-->
+				
+				<div class="box-placeholder" style="padding: 10px;margin-bottom: 35px;" ng-show="phoneShow">
+					<div style="color:red;font-size:12px;text-align:center;margin-bottom:3px;">{{titleCheck}}</div>
+		            <div class="form-group has-feedback" style="margin-left: 4px;">
+						<label style="font-weight:100;color:#000;float:left;line-height:30px;margin-right:5px;">{{'subActsMng.Contacts' |translate}}</label>
+						<div class="input-group" style="width: 220px;">
+				       		<input type="text" ng-model="contacts1" ng-change="changeContacts1()" style="padding:6px;" placeholder="{{'subActsMng.Enter Contacts' |translate}}" class="form-control">
+			            </div>
+			            <span style="color:red;font-size:12px;">{{contacts1Check}}</span>
+					</div>
+					<div class="form-group has-feedback" style="margin-left: 4px;">
+						<label style="font-weight:100;color:#000;float:left;line-height:30px;margin-right:5px;">{{'subActsMng.phoneNum' |translate}}</label>
+						<div class="input-group" style="width: 220px;">
+				       		<input type="text" ng-model="updatePhone" ng-change="changePhone()"onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')" style="padding:6px;" placeholder="{{'subActsMng.Enter phoneNum' |translate}}" class="form-control">
+			            </div>
+			            <span style="color:red;font-size:12px;">{{phoneCheck}}</span>
+					</div>
+					<div class="form-group has-feedback" style="margin-left: 4px;">
+						<label style="font-weight:100;color:#000;float:left;line-height:30px;margin-right:5px;">{{'subActsMng.email' |translate}}</label>
+						<div class="input-group" style="width: 220px;">
+				       		<input type="text" ng-model="updateEmail" ng-change="changeEmail()" style="padding:6px;" placeholder="{{'subActsMng.Enter Email' |translate}}" class="form-control">
+			            </div>
+			            <span style="color:red;font-size:12px;">{{emailCheck}}</span>
+					</div>
+					<div class="btnStyle">
+						<button ng-click="butAddPhone()" ng-disabled="!(phoneCheck == '' && emailCheck=='')" class="btn btn-primary mr">{{'common.add' |translate}}</button>
+						<button ng-click="getPlus(false)" class="btn btn-default mr">{{'common.close' |translate}}</button>
+					</div>
+		      	</div>
+			</form>	
+		</div>
+		<div class="btnStyle" ng-show="!phoneShow">
+			<button ng-click="confirm(this)" value="{{dataValue}}" class="btn btn-primary mr">{{"common.submit" |translate }}</button>
+		</div> 
+	</div>
+</script>
+
+
+<!---------------------------修改密码----------------------------->
+<!--修改密码      模态框-->
+<script type="text/ng-template" id="modalChangePassword">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">{{'subActsMng.psw set' |translate}}</h5>
+		<div style="width:85%;margin:30px 0 0 31px;">
+			<div class="form-group has-feedback">
+				<label style="font-weight:100;">{{'subActsMng.newPsw' |translate}}</label>
+		       	<input type="password" ng-model="newPassword" ng-change="checkPassword()" ng-pattern='/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$/' placeholder="{{'subActsMng.enter newPsw' |translate}}" class="form-control"/>
+	    		<span class="text-danger">{{passwordCheck}}</span>
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm(this)" ng-disabled="sub" class="btn btn-primary mr">{{"common.ok" |translate }}</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">{{"common.cancel" |translate }}</button>
+		</div> 
+	</div>
+</script>
+
+
+<div class="col-lg-12" style="position: absolute;bottom: 0;left: 0;right: 0">
+		<div class="background-parallax" data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
+		<div class="container padding-bottom-big">
+			<div class="row justify-content-between">
+			<div class="col-lg-5 col-md-12 foot-logo hidden-xs" style="margin-top: 20px">
+				<img src="app/homepage/img/qrImg.jpg" class="qrImg">
+				<div style="display: inline-block; align-items: center; vertical-align: middle; margin-left:30px;padding-right: 60px;border-right:1px solid #FFFFFF" >
+					<img src="/app/homepage/img/logo/Logo.png" class="logoImg" alt="logo">
+					<text class="email">{{'foot.email'|translate}}：support@hummerpool.com</text>
+				</div>
+			</div>
+			<div class="col-lg-7 col-md-12" style="margin-top: 20px;color:#fff;opacity: 1; text-align: center">
+				<ul class="footer-list footlist">
+					<li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Product'|translate}}</label>
+						<a href="http://www.cynosure-chain.com">{{'foot.Hummerpool'|translate}}</a>
+						<a href="https://www.hummerminer.com">{{'foot.Hummerminer'|translate}}</a>
+					</li>
+					<li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Service'|translate}}</label>
+						<a href="/announcement">{{'foot.Announcements'|translate}}</a>
+						<a href="" style="visibility:hidden">{{'foot.Mining Tutorial'|translate}}</a>
+					</li>
+					<!-- <li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Helps'|translate}}</label>
+						<a href="">{{'foot.Help Center'|translate}}</a>
+						<a href="">{{'foot.Contact Us'|translate}}</a>
+					</li> -->
+					<li class="ft-item" style="width: 160px !important">
+						<label style="margin-bottom:20px">{{'foot.After-sale'|translate}}</label>
+						<a href="">{{'foot.QQ Group'|translate}}1:783079293</a>
+						<a href="">{{'foot.QQ Group'|translate}}2:791421817</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</div>

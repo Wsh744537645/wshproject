@@ -1,0 +1,149 @@
+<!--权限设置-->
+<h3>
+	<small>{{ 'dashboard.SYSPERMS' | translate:{ appName: app.name } }} </small>
+</h3>
+<div class="table-grid table-grid-desktop">
+	<div class="col col-md" style="width:300px !important">
+		<div class="pr">
+			<div class="mb-boxes">
+				<div class="panel">
+					<div class="panel-body">
+						<ul class="nav nav-pills nav-stacked">
+							<li class="p p-title">
+								<small>用户角色</small>
+								<a class="problem" title="新建" ng-click="getRoleAdd()">
+                        			<em class="fa fa-plus"></em>
+                        		</a>
+							</li>
+							<div class="gundong gundongtiao">
+								<li ng-repeat="items in itemsData2" class="tree">
+									
+									<a href="#" ng-click="parameterQuery(items.roleId, $index, items.roleName)" ng-class='{ons:$index==selected}'
+									 title="角色查询">
+										<span>{{items.roleName}}</span>
+									</a>
+									<em ng-click="getRoleUpdate(items.roleId, items.roleName)" class="icon-note edit" title="编辑"></em>
+									<em ng-click="deleteMenuDel(items.roleId, items.roleName)" class="fa fa-trash-o delete" title="删除"></em>
+								</li>
+							</div>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel col-lg-12">
+		<div class="panel-body tableBot">
+			<p class="table-top">
+				权限设置 / <span class="tishi">{{minerName}}</span>
+				<div ng-show="permsID != 1"><button ng-click="updatePerms()" class="btn btn-primary seleteBut">添加权限</button></div>	
+			</p>
+			<table class="table table-hover tableSize">
+				<thead class="tableBC">
+					<tr>
+						<th ng-repeat="column in vm.columns" ng-if="!column.hidden" ng-click="vm.sort.toggle(column)" ng-class="{sortable: column.sortable !== false}">
+							{{column.label}}
+							<i ng-show="vm.sort.direction === 1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-down"></i>
+							<i ng-show="vm.sort.direction === -1" ng-if="column.name === vm.sort.column && vm.sort.direction" class="fa fa-long-arrow-up"></i>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-show="show_items" ng-repeat="items in itemsData|filter:vm.filter|orderBy:vm.sort.column:vm.sort.direction===-1">
+						<td>{{items.text}}</td>
+						<td>
+							<div ng-show="permsID != 1"><a href="javascript:void(0);" ng-click="deleteMenu(items.id)" class="pIndex">删除</a></div>
+							<div ng-show="permsID == 1">无法操作</div>
+							
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="wait" ng-show="!show_items">
+				<div class="loader1">
+					<div class="ball-clip-rotate hint">
+						<div></div>
+						<span class="hint2">加载中...</span>
+					</div>
+				</div>
+			</div>
+			<div ng-show="items_num==0 && show_items" class="wait text-center">
+				<span>列表为空</span>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+<!--添加权限      模态框-->
+<script type="text/ng-template" id="modalGroup">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">添加权限</h5>
+		<div class="content">
+			<div class="form-group has-feedback">
+				<label class="text-muted">授权</label>
+	       		<select ng-model="groupName.value" class="form-control ng-pristine ng-valid ng-touched">
+	       			<option value="{{items.menuId}}" ng-repeat="items in itemsModal">{{items.text}}</option>
+	       		</select>
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm(groupName.value)" class="btn btn-primary mr">确定</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">取消</button>
+		</div>
+	</div>
+</script>
+
+<!--新建      模态框-->
+<script type="text/ng-template" id="roleAddModal">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">新建角色</h5>
+		<div class="content">
+			<div class="form-group has-feedback">
+				<label class="text-muted">输入角色</label>
+	       		<input ng-model="sysRole" placeholder="请输入角色" class="form-control">
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm(sysRole)" class="btn btn-primary mr">确定</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">取消</button>
+		</div>
+	</div>
+</script>
+
+<!--删除列表数据      模态框-->
+<script type="text/ng-template" id="deleteDel">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">删除角色</h5>
+		<div class="content">
+			<div class="form-group has-feedback deleteModal">
+				<label>
+					确定要删除<span class="deleteStyle">{{objName}}</span>警告？
+				</label>
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm()" class="btn btn-primary mr">确定</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">取消</button>
+		</div>
+	</div>
+</script>
+
+<!--编辑      模态框-->
+<script type="text/ng-template" id="RoleUpdateModal">
+	<div class="ngdialog-message">
+		<h5 class="h5Title">新建角色</h5>
+		<div class="content">
+			<div class="form-group has-feedback">
+				<label class="text-muted">编辑角色</label>
+	       		<input ng-model="roleName" placeholder="编辑角色" class="form-control">
+			</div>
+		</div>
+		<div class="btnStyle">
+			<button ng-click="confirm(roleName)" class="btn btn-primary mr">确定</button>
+			<button ng-click="closeThisDialog()" class="btn btn-default">取消</button>
+		</div>
+	</div>
+</script>

@@ -1,0 +1,23 @@
+{
+  "dashboard": {
+    "WELCOME": "21313123"
+  },
+  "topNavigationBar": {
+  	"WRITTENOFF": "1"
+  },
+  "sidebar": {
+    "nav": {
+      "DOCUMENTATION1": "1",
+      "DOCUMENTATION2": "2",
+      "DOCUMENTATION3": "3",
+      "DOCUMENTATION4": "4",
+      "DOCUMENTATION5": "5",
+      "DOCUMENTATION6": "6",
+      "DOCUMENTATION7": "7",
+      "user": {
+        "PAGES": "1",
+        "LOGIN": "1"
+      }
+    }
+  }
+}

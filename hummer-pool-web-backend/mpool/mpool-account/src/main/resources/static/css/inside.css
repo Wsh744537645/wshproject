@@ -1,0 +1,36 @@
+body{background-color:#f2f2f2}
+.empty-placeholder{height:120px}
+#brand_affect,#hall_show,#alpha_price,#checkCar,#rideCar,#quality_promise,#stockFinance,#ourInfo,#sellFlow{background-color:#fff;margin-bottom:20px;border:1px solid #d9d9d9}
+
+#subNav{width:100%;height:55px;background-color:#000;margin-bottom:20px}
+#subNav li{float:left;position:relative}
+#subNav .wrap{width:1140px;}
+#subNav a{display:block;padding: 0px 15px;line-height: 23px;height:38px;text-align:center;color:#fff;padding-top:17px;font-size: 14px;}
+#subNav a:hover{text-decoration:none}
+#subNav a span{position:absolute;width:20px;height:20px}
+#subNav a:hover,#subNav .adv_active a{background-color:rgb(68, 68, 68);color:#23b7e5 !important}
+#subNav .adv_source ins{background-position:-49px -334px}
+#subNav .adv_price ins{background-position:-101px -334px}
+#subNav .adv_transfer ins{background-position:-155px -334px}
+#subNav .adv_payment ins{background-position:-202px -334px}
+#subNav .adv_promise ins{background-position:-251px -334px}
+#subNav .adv_ride ins{background-position:-301px -334px}
+#subNav .adv_finance ins{background-position:-349px -334px}
+#subNav .adv_source:hover ins,#subNav .adv_active .adv_source ins{background-position:-49px -191px}
+#subNav .adv_price:hover ins,#subNav .adv_active .adv_price ins{background-position:-101px -191px}
+#subNav .adv_transfer:hover ins,#subNav .adv_active .adv_transfer ins{background-position:-155px -191px}
+#subNav .adv_payment:hover ins,#subNav .adv_active .adv_payment ins{background-position:-202px -191px}
+#subNav .adv_promise:hover ins,#subNav .adv_active .adv_promise ins{background-position:-251px -191px}
+#subNav .adv_ride:hover ins,#subNav .adv_active .adv_ride ins{background-position:-301px -191px}
+#subNav .adv_finance:hover ins,#subNav .adv_active .adv_finance ins{background-position:-349px -191px}
+.fixedSubNav{position:fixed;top:0;left:0;z-index:1000}
+.show_title{color:#fff;font-family:"\5FAE\8F6F\96C5\9ED1",Tahoma,Verdana}
+#alpha_price{padding-bottom:30px}
+
+.checkCar_show{margin-top:10px;height: 200px;}
+.checkCar_show ul li{float:left;width: 25%;text-align: center;padding-top: 53px;}
+
+.check_decorate{color:#333;font-size:14px;font-family:"\5FAE\8F6F\96C5\9ED1",Tahoma,Verdana;margin:30px 0;text-align: center;}
+.check_decorate ins{color:#ff4301;font-size:14px;padding-right:10px;padding-left:10px}
+
+#footer{position:relative;zoom:1;}

@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="app/css/accounts/step.css">
+<span data-ng-bind="::pageTitle()" style="display: none;"></span>
+<h3>
+   <small>
+   	<span ng-click="homepage()" style="color:#3c78c2;">{{ 'nav.homepage' | translate }}</span> 
+   	<span style="color: #ccc;">/</span> 
+   	{{ 'dashboard.usercenter' | translate:{ appName: app.name } }}
+   </small>
+</h3>
+
+<div class="table-grid table-grid-desktop">
+    <div class="panel col-lg-12">
+		<div class="panel-body tableBot">
+			<p class="table-top" style="color: #000;">
+				<a class="icon-action-undo" ng-click="Return()" title="返回"></a>&nbsp;&nbsp;{{'notice.bpsc' |translate}}
+			</p>
+			<div class="steps"></div>
+			<!--第1步操作-->
+			<div ng-show="show1">
+				<div class="form-group" style="height:19px;">
+	                <label class="col-md-4 col-sm-4 col-xs-12 control-label"></label>
+	                <div class="col-sm-5 col-md-5 col-xs-12 title1">
+	                    <span style="line-height:33px;color: red;font-size:12px;">{{emailTitle}}</span>
+	                </div>
+	            </div>
+				<div class="form-group" style="height:19px;">
+	                <label class="col-md-4 col-sm-4 col-xs-12 control-label" style="text-align:-webkit-right;">{{'notice.emailbox' |translate}}</label>
+	                <div class="col-sm-5 col-md-5 col-xs-12" style="color: #000;">{{emailParameter}}</div>
+	            </div>
+	            <br />
+	            <div class="form-group has-feedback" style="height:40px;">
+	                <label class="col-md-4 col-sm-4 col-xs-12 control-label" style="text-align:-webkit-right;line-height:33px;">{{'subActsMng.Verification password' |translate}}</label>
+	                <div class="col-sm-5 col-md-5 col-xs-12">
+	                	<span class="input-group-btn" style="width: 50%;">
+	                		<input type="text" ng-model="codeEmail" ng-change="changeEmail()" placeholder="{{'login.enterEvc' |translate}}" class="form-control"/>
+	                	</span>	
+		             	<span class="input-group-btn">
+		                	<button type="button" ng-click="getCheckEmail()" ng-disabled="!checkEmailCode" class="btn btn-default" style="height: 35px;background: #f3faff;">{{time}}</button>
+		             	</span>
+		          	</div>
+		          	<span style="line-height:33px;color:red;font-size:12px;">{{emailCheck}}</span>
+	            </div>
+	            <div class="form-group" style="height:100px;">
+	             	<div class="col-sm-offset-4 col-md-offset-4 col-xs-offset-6 col-sm-7 col-md-7 col-xs-7">
+	                	<button type="button" ng-click="getCodeEmail()" ng-disabled="!sub0" class="btn btn-primary mt-lg subcreSubAcc">{{'subActsMng.next' |translate}}</button>
+	             	</div>
+	          	</div>
+          	</div>
+          	<!--第2步操作-->
+          	<div ng-show="show2">
+          		<div class="form-group" style="height:19px;">
+	                <label class="col-md-4 col-sm-4 col-xs-12 control-label"></label>
+	                <div class="col-sm-5 col-md-5 col-xs-12 title2">
+	                    <span style="line-height:33px;color: red;font-size:12px;">{{titleData1}}</span>
+	                </div>
+	            </div>
+				<div class="form-group" style="height:19px;">
+	                <label class="col-md-4 col-sm-4 col-xs-12 control-label" style="text-align:-webkit-right;line-height:33px;">{{'notice.bpsc' | translate}}</label>
+	                <div class="col-sm-5 col-md-5 col-xs-12">
+	                    <input type="text" ng-model="phone" ng-change="changePhone()" onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')" placeholder="{{'subActsMng.Enter phoneNum' |translate}}" class="form-control"/>
+	                </div>
+	                <span style="line-height:33px;color: red;font-size:12px;">{{phoneCheck}}</span>
+	            </div>
+	            <br />
+	            <div class="form-group has-feedback" style="height:40px;">
+	                <label class="col-md-4 col-sm-4 col-xs-12 control-label" style="text-align:-webkit-right;line-height:33px;">{{'subActsMng.Verification password' |translate}}</label>
+	                <div class="col-sm-5 col-md-5 col-xs-12">
+	                	<span class="input-group-btn" style="width: 90%;">
+	                		<input type="text" ng-model="codePhone" ng-change="changePhoneCode()" placeholder="{{'login.enterEvc' |translate}}" class="form-control"/>
+	                	</span>	
+		             	<span class="input-group-btn">
+		                	<button type="button" ng-click="getCheckPhone()" ng-disabled="!disCode2" class="btn btn-default" style="height: 35px;background: #f3faff;">{{time2}}</button>
+		             	</span>
+		          	</div>
+		          	<span style="line-height:33px;color: red;font-size:12px;">{{phoneCodeCheck}}</span>
+	            </div>
+	            <div class="form-group" style="height:100px;">
+	             	<div class="col-sm-offset-4 col-md-offset-4 col-xs-offset-6 col-sm-7 col-md-7 col-xs-7">
+	                	<button type="button" ng-click="postPhone()" ng-disabled="!sub1" class="btn btn-primary mt-lg subcreSubAcc">{{'subActsMng.next' |translate}}</button>
+	             	</div>
+	          	</div>
+          	</div>
+          	
+          	<!--第3步操作-->
+          	<div ng-show="show3">
+				<div class="form-group" style="height: 118px;">
+	                <div class="col-sm-12 col-md-12 col-xs-12" style="text-align: center;">
+	                	<div style="width: 80px;height:80px;margin-bottom: 10px;background-color: #66B1FF;display:-webkit-inline-box;border-radius: 45px;">
+	                		<i class="fa fa-check" style="font-size: 40px;color: #fff;padding: 19px 0 0 19px;"></i>
+	                	</div>
+	                	<br />
+	                    <span style="font-size: 21px;color: #000;">{{'notice.opcscc' |translate}}</span>
+	                </div>
+	            </div>
+	            <div class="form-group" style="height:19px;">
+	                <label class="col-md-4 col-sm-4 col-xs-12 control-label"></label>
+	                <div class="col-sm-5 col-md-5 col-xs-12 title3">
+	                    <span style="line-height:33px;color: red;font-size:12px;">{{titleData2}}</span>
+	                </div>
+	            </div>
+	            <div class="form-group" style="height: 135px;">
+	                <div class="col-sm-12 col-md-12 col-xs-12" style="text-align: center;height: 260px;">
+	                	<ul style="width: 400px;height: 190px;background-color: #f8fafb;display: inline-block;padding: 33px;">
+	                		<li style="width:130px;height:30px;float:left;">当前邮箱：</li>
+	                		<li style="width:367px;height:30px;margin-bottom:15px;text-align:-webkit-auto;">{{emailParameter}}</li>
+	                		<li style="width:130px;height:30px;float:left;">{{'notice.bpsc' |translate}}：</li>
+	                		<li style="width:367px;height:30px;margin-bottom:15px;color:#000;text-align:-webkit-auto;">{{phoneNum}}</li>
+	                		<button type="button" ng-click="complete()" class="btn btn-primary mt-lg subcreSubAcc">{{"common.ok" |translate }}</button>
+	                	</ul>
+	                </div>
+	            </div>
+	            
+          	</div>
+          	
+	   	</div>
+	</div>
+
+</div>
+

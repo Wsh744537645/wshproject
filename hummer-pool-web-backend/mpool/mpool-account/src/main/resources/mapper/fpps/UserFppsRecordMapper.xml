@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mpool.account.mapper.fpps.UserFppsRecordMapper">
+	<insert id="inserts">
+		INSERT INTO `user_fpps_record` 
+			(`puid`, `day`, `fpps_before_fee`, `fpps_after_fee`, `fpps_rate`, `creat_at`, `share`) 
+		VALUES 
+			<foreach collection="list" item="item" separator=",">
+				(#{item.puid}, #{item.day}, #{item.fppsBeforeFee}, #{item.fppsAfterFee}, #{item.fppsRate}, #{item.creatAt}, #{item.share})
+			</foreach>
+	</insert>
+	
+	<select id="pastDayRecord" resultType="com.mpool.common.model.account.fpps.UserFppsRecord">
+		SELECT
+			*
+		FROM
+			user_fpps_record
+		WHERE
+			`day` = #{day}
+		AND puid IN <foreach collection="list" close=")" open="(" separator="," item="item">
+			#{item}
+		</foreach>
+	</select>
+	
+	
+	<select id="getUserFppsRecordByPuid" resultType="com.mpool.common.model.account.fpps.UserFppsRecord">
+		SELECT
+			`day`,
+			fpps_after_fee,
+			`share`
+		FROM
+			`user_fpps_record`
+		WHERE
+			puid = #{puid}
+		ORDER BY
+			`day` DESC
+	</select>
+</mapper>

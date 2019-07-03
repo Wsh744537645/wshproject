@@ -1,0 +1,232 @@
+<link rel="stylesheet" href="/app/homepage/css/footstyle.css" />
+<span data-ng-bind="::pageTitle()" style="display: none;"></span>
+<nav role="navigation" class="navbar topnavbar">
+	<div class="container" style=" padding: 0;">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">					
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+			<a class="navbar-brand" style="height:90px; padding: 0;margin-top: -10px;line-height: 90px;">
+				<div class="brand-logo">
+					<img src="/img/banner/logo_1.png" ng-click="homepage()" class="img-responsives" style="width:200px;"/>
+				</div>
+			</a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="height:90px !important;font-weight: bold;
+		font-family: Microsoft YaHei;">				
+			<ul class="nav navbar-nav" style="margin-top:17px">
+				<li>
+					<a ng-click="href('')">{{ 'nav.dashboard' | translate}}</a>
+				</li>
+				<li>
+					<a ng-click="href('worker')">{{ 'nav.miner' | translate}}</a>
+				</li>
+				<li>
+					<a ng-click="href('payrecords')">{{ 'nav.PAYRECORDS' | translate}}</a>
+				</li>
+				<li>
+					<a ng-click="href('Statistics')">{{ 'nav.Statistics' | translate}}</a>
+				</li>
+				<li>
+					<a ng-click="href('commonproblem')">{{ 'nav.COMMONPROBLEM' | translate}}</a>
+				</li>
+			</ul>
+			
+			<ul class="nav navbar-nav navbar-right" style="margin-top:17px" >		
+				<li dropdown="" class="dropdown dropdown-list">
+					<text style="color:#fff;">{{userStatus.username}}-{{cointype}}</text>
+					<img src="/img/banner/tip.png" style="margin: -4px 10px 0 0" data-toggle="popover" title="当前为账户分享状态，不支持修改编辑">
+					<span ng-controller="TranslateController" class="dropdown" style="display: inline;color: #4A4A4A;">
+						<button type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" 
+						style="width: 50px;background: #FFFFFF;border-radius: 18px;border: none;margin-top: 16px"> 
+							{{langKeyCur}}<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="min-width: 80px;padding: 10px;left: 0;">
+							<li ng-click="changeLanguage('es_AR')" style="cursor: pointer;">中 文</li>
+							<li ng-click="changeLanguage('en')" style="cursor: pointer;">ENGLISH</li>
+						</ul>
+					</span>	
+				</li>
+			</ul>			
+		</div>
+	</div>
+</nav>
+<div class="container" style="padding-top: 23px;">
+	<div class="row">
+		<div class="col-lg-12" style="padding-left: 0px;padding-right: 0px;">
+		<div class="panel" style="padding: 40px;border: 1px solid #D9DCE0; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);border-radius: 4px;">
+			<div class="panel-body">
+				<div class="table-responsive">
+				<table class="table table-bordered table-hover" style="border-top: 1px solid #eeeeee;">
+					<thead>
+						<tr style="background-color: #f8fafb; font-size: 16px;">
+							<th style="text-align: center;">
+								<div style="height: 40px;line-height: 42px;color: #121212;opacity: 0.56;">{{'dashboard.Hashrate'|translate}}({{unit}})</div>
+							</th>
+							<th style="text-align: center;">
+								<div style="height: 40px;line-height: 42px;color: #121212;opacity: 0.56;">{{'dashboard.Minerstatus'|translate}}</div>
+							</th>
+							<th style="text-align: center;" class="hidden-xs">
+								<div style="height: 40px;line-height: 42px;color: #121212;opacity: 0.56;">{{'dashboard.Revenue'|translate}}</div>
+							</th>
+						</tr>
+						<tr style="background-color: #fff;">
+							<th style="text-align: center;border-bottom:1px solid #fff;">
+								<div style="color:#333;font-size:14px;width:50%;float:left;">15{{'dashboard.min'|translate}}</div>
+								<div style="color:#333;font-size:14px;width:50%;float:left;">24{{'dashboard.hour'|translate}}</div>
+							</th>
+							<th style="text-align: center;border-bottom:1px solid #fff;">
+								<span style="color:#333;font-size:14px;width:33%;float:left;">{{'dashboard.active'|translate}}</span>                        
+								<span style="color:#333;font-size:14px;width:33%;float:left;">{{'dashboard.Inactive'|translate}}</span>
+								<span style="color:#333;font-size:14px;width:33%;float:left;">{{'dashboard.Offline'|translate}}</span>
+							</th>
+							<th style="text-align: center;border-bottom:1px solid #fff;" class="hidden-xs">
+								<span style="color:#333;font-size:14px;width:23%;float:left;">{{'sharepage.total' |translate}}</span>
+								<span style="color:#333;font-size:14px;width:22%;float:left;">{{'dashboard.YesterdayArrival'|translate}}</span>
+								<span style="color:#333;font-size:14px;width:22%;float:left;">{{'dashboard.Paid'|translate}}</span>
+								<span style="color:#333;font-size:14px;width:22%;float:left;">{{'dashboard.Balance'|translate}}</span>
+							</th>
+						</tr>
+						<tr style="background-color: #fff;">
+							<th style="text-align: center;">
+								<div style="color:#31b2f9;font-size:14px;width:50%;float:left;">{{userStatus.share15m | number:3}}</div>
+								<div style="color:#31b2f9;font-size:14px;width:50%;float:left;">{{userStatus.share24h | number:3}}</div>
+							</th>
+							<th style="text-align: center;">
+								<span style="color:#31b2f9;font-size:14px;width:33%;float:left;">{{userStatus.workerActive}}</span>                        	
+								<span style="color:#31b2f9;font-size:14px;width:33%;float:left;">{{userStatus.workerInactive}}</span>
+								<span style="color:#31b2f9;font-size:14px;width:33%;float:left;">{{userStatus.offLine}}</span>
+							</th>
+							<th style="text-align: center;" class="hidden-xs">
+								<span style="color:#31b2f9;font-size:14px;width:23%;float:left;">{{userStatus.totalRevenue*1/100000000 | number:8}}</span>
+								<span style="color:#31b2f9;font-size:14px;width:22%;float:left;">{{userStatus.yesterday/ 100000000 | number:8}}</span>
+								<span style="color:#31b2f9;font-size:14px;width:22%;float:left;">{{userStatus.totalPaid*1/100000000 | number:8}}</span>
+								<span style="color:#31b2f9;font-size:14px;width:22%;float:left;">{{userStatus.totalDue*1/100000000 | number:8}}</span>
+							</th>
+						</tr>
+					</thead>
+				</table>
+				</div>
+		</div>
+	</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12" style="padding: 0">
+		<div class="panel" style="padding: 40px;border: 1px solid #D9DCE0; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);border-radius: 4px;">
+			<div class="panel-body">
+				<p style="font-size: 18px;padding-bottom: 5px;color: #73879c;">24{{'dashboard.hour'|translate}}{{'common.space'|translate}}{{'dashboard.Hashrate'|translate}}</p>
+				<div id="linChart" style="width: 100%; height: 400px;"></div>
+			</div>
+		</div>
+	</div>
+    <div class="col-lg-12" style="padding: 0">
+        <div class="panel" style="padding: 40px;border: 1px solid #D9DCE0; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);border-radius: 4px;">
+            <div class="panel-body">
+                <p style="font-size: 18px;padding-bottom: 5px;color: #73879c;">24{{'dashboard.hour'|translate}}{{'common.space'|translate}}{{'dashboard.onlineminers'|translate}}</p>
+                <div id="chart_worker_24h" style="width: 100%; height: 400px;"></div>
+            </div>
+        </div>
+    </div>
+	<div class="col-lg-12" style="padding: 0">
+		<div class="panel" style="padding: 40px;border: 1px solid #D9DCE0; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);border-radius: 4px;">
+			<div class="panel-body">
+				<p style="font-size: 18px;padding-bottom: 5px;color: #73879c;">30{{'dashboard.day'|translate}}{{'common.space'|translate}}{{'dashboard.Hashrate'|translate}}</p>
+				<div id="chart_power_30d" style="width: 100%; height: 400px;"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row" style="margin-bottom:350px;">
+	<div class="col-lg-12 col-md-12 col-sx-12"  style="padding: 0">
+		<div class="panel" style="border: 1px solid #D9DCE0; box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);border-radius: 4px;">
+				<div class="panel-heading" style="text-align: center;background: #FAFBFF;font-size:18px;font-weight:bold;color: #121212;opacity: 0.86;height: 50px; padding-top: 15px ">
+						<div class="col-md-6">
+							{{'notice.bj'|translate}}
+						</div>
+						<div class="col-md-6">
+							{{'notice.gz'|translate}}
+						</div>
+				</div>
+				<div class="panel-body" style="padding: 0 80px;text-align: center">
+					
+					<div class="row">
+							<div class="col-md-6">
+								<form class="form-horizontal" style="text-align: center" >
+									<div class="form-group" style="margin-top: 10px" ng-repeat="north in northNode">
+										<div class="col-lg-12 col-md-12" style="color: #000;opacity: 0.86;">{{'foot.poolorder'|translate}}{{north.order}}{{'foot.poolorder1'|translate}}: {{north.adr}}</div>
+									</div>
+								</form>
+							</div>
+							<div class="col-md-6">
+								<form class="form-horizontal" style="text-align: center">
+									<div class="form-group" style="margin-top: 10px" ng-repeat="south in northNode">
+										<div class="col-lg-12 col-md-12" style="color: #000;opacity: 0.86;">{{'foot.poolorder'|translate}}{{south.order}}{{'foot.poolorder1'|translate}}: {{south.adr}}</div>
+									</div>
+								</form>
+							</div>
+						<div class="form-group col-md-12" style="border-top:1px solid #DEE2ED;padding: 40px 0;margin: 0">
+							<div class="col-lg-12" style="color: #000000;opacity: 0.56;">{{'foot.MinerParameter Setting'|translate}}: {{discr}}</div>
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="col-lg-12" style="position: absolute;bottom: 0;left: 0;right: 0">
+	<div class="background-parallax" data-enllax-ratio=".5" data-enllax-type="background" data-enllax-direction="vertical"></div>
+	<div class="container padding-bottom-big">
+			<div class="row justify-content-between">
+			<div class="col-lg-5 col-md-12 foot-logo hidden-xs" style="margin-top: 20px">
+				<img src="app/homepage/img/qrImg.jpg" class="qrImg">
+				<div style="display: inline-block; align-items: center; vertical-align: middle; margin-left:30px;padding-right: 60px;border-right:1px solid #FFFFFF" >
+					<img src="/app/homepage/img/logo/Logo.png" class="logoImg" alt="logo">
+					<text class="email">{{'foot.email'|translate}}：support@hummerpool.com</text>
+				</div>
+			</div>
+			<div class="col-lg-7 col-md-12" style="margin-top: 20px;color:#fff;opacity: 1; text-align: center">
+				<ul class="footer-list footlist">
+					<li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Product'|translate}}</label>
+						<a href="http://www.cynosure-chain.com">{{'foot.Hummerpool'|translate}}</a>
+						<a href="https://www.hummerminer.com">{{'foot.Hummerminer'|translate}}</a>
+					</li>
+					<li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Service'|translate}}</label>
+						<a href="/announcement">{{'foot.Announcements'|translate}}</a>
+						<a href="" style="visibility:hidden">{{'foot.Mining Tutorial'|translate}}</a>
+					</li>
+					<!-- <li class="ft-item">
+						<label style="margin-bottom:20px">{{'foot.Helps'|translate}}</label>
+						<a href="">{{'foot.Help Center'|translate}}</a>
+						<a href="">{{'foot.Contact Us'|translate}}</a>
+					</li>  -->
+					<li class="ft-item" style="width: 160px !important">
+						<label style="margin-bottom:20px">{{'foot.After-sale'|translate}}</label>
+						<a href="">{{'foot.QQ Group'|translate}}1:783079293</a>
+						<a href="">{{'foot.QQ Group'|translate}}2:791421817</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

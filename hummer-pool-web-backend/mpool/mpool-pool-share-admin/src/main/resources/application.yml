@@ -1,0 +1,118 @@
+spring:
+  profiles:
+    active: '@profileActive@'
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: mpool-pool-share-admin
+server:
+  port: 8885
+mybatis-plus:
+  mapper-locations:
+  - classpath:/mapper/**/*.xml
+  - classpath:/mapper/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not-empty
+      table-underline: true
+sharding:
+  jdbc:
+    datasource:
+      names: accountdb,admindb
+    config:
+      sharding:
+        tables:
+          account_user:
+            actual-data-nodes: ds1.account_user
+          log_sms:
+            actual-data-nodes: ds1.log_sms
+          log_user_operation:
+            actual-data-nodes: ds1.log_user_operation
+          log_user_reg:
+            actual-data-nodes: ds1.log_user_reg
+          log_email:
+            actual-data-nodes: ds1.log_email
+          account_ip_region:
+            actual-data-nodes: ds1.account_ip_region
+          log_user_login:
+            actual-data-nodes: ds1.log_user_login
+          account_region:
+            actual-data-nodes: ds1.account_region
+          account_role:
+            actual-data-nodes: ds1.account_role
+          account_user_role:
+            actual-data-nodes: ds1.account_user_role
+          account_user_region:
+            actual-data-nodes: ds1.account_user_region
+          account_currency:
+            actual-data-nodes: ds1.account_currency
+          mining:
+            actual-data-nodes: ds1.mining
+          mining_currency:
+            actual-data-nodes: ds1.mining_currency
+          pay_type:
+            actual-data-nodes: ds1.pay_type
+          product:
+            actual-data-nodes: ds1.product
+          product_order:
+            actual-data-nodes: ds1.product_order
+          product_order_accept:
+            actual-data-nodes: ds1.product_order_accept
+          product_order_power:
+            actual-data-nodes: ds1.product_order_power
+          wallet_address:
+            actual-data-nodes: ds1.wallet_address
+          user_bill:
+            actual-data-nodes: ds1.user_bill
+          user_pay:
+            actual-data-nodes: ds1.user_pay
+          log_order:
+            actual-data-nodes: ds1.log_order
+          user_notify:
+            actual-data-nodes: ds1.user_notify
+          user_recommend:
+            actual-data-nodes: ds1.user_recommend
+          user_invite:
+            actual-data-nodes: ds1.user_invite
+          recommend_bill_item:
+            actual-data-nodes: ds1.recommend_bill_item
+          user_power_spend:
+            actual-data-nodes: ds1.user_power_spend
+          user_bill_tobe_pay:
+            actual-data-nodes: ds1.user_bill_tobe_pay
+          account_message:
+            actual-data-nodes: ds1.account_message
+          log_product:
+            actual-data-nodes: ds1.log_product
+          product_state:
+            actual-data-nodes: ds1.product_state
+          admin_sys_menu:
+            actual-data-nodes: ds2.admin_sys_menu
+          admin_sys_role:
+            actual-data-nodes: ds2.admin_sys_role
+          admin_sys_role_sys_menu:
+            actual-data-nodes: ds2.admin_sys_role_sys_menu
+          admin_sys_user:
+            actual-data-nodes: ds2.admin_sys_user
+          admin_sys_user_sys_role:
+            actual-data-nodes: ds2.admin_sys_user_sys_role
+          admin_alarm_setting:
+            actual-data-nodes: ds2.admin_alarm_setting
+          admin_user_alarm:
+            actual-data-nodes: ds2.admin_user_alarm
+        master-slave-rules:
+          ds1:
+            master-data-source-name: accountdb
+            slave-data-source-names: accountdb, accountdb
+          ds2:
+            master-data-source-name: admindb
+            slave-data-source-names: admindb, admindb
+        props:
+          sql:
+            show: true
+#zuul:
+  #routes:
+    #user-service:
+      #path: /u/**
+      #url: http://localhost:8888/

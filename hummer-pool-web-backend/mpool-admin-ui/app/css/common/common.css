@@ -1,0 +1,111 @@
+.deleteBtn{
+	color:#ee3d3d !important;
+	cursor:pointer !important;
+}
+
+.accountsStyle{
+	border: 1px solid #ff934c;
+    background: #fefcee;
+    padding: 5px 8px;
+    width: 522px;
+    margin-top: 20px;
+    margin-left: 13px;
+}
+.accountsStyle span{
+	color: #ff934c;
+}
+.title2{
+	display: none;
+}
+.regtitle12 {
+    position: absolute;
+    margin-top: 1px;
+    font-size: 12px;
+    color: #f15533;
+    width: 350px;
+    height: 33px;
+    line-height: 30px;
+}
+.modularStyle{
+	padding-bottom: 50px;
+}
+
+.p-title{
+	height: 42px !important;
+	font-size: 20px !important;
+	padding: 0 0 10px 0 !important;
+	border-bottom: 2px solid #e6e9ed !important;
+}
+.p-title a:hover{
+	background-color: #f5f7fa !important;
+}
+.p-title1{
+	height: 42px !important;
+	border-top: 2px solid #e6e9ed !important;
+}
+.tree{
+	padding-left: 10px;
+	height: 35px;
+	font-size: 12px;
+	line-height: 47px;
+}
+.tree a{
+	display:-webkit-inline-box !important;
+	padding-left: 0px !important;
+	margin-left: 10px !important;
+	line-height: 36px;
+	color: #888;
+	width: 195px;
+}
+
+.tree a:hover{
+	color: #5d9cec;
+	text-decoration:none;
+}
+.tree a:visited{
+    text-decoration:none;
+}
+.seleteBut{
+	float: right;
+	margin-right: 10px;
+}
+
+.ons {
+	color: #4b91ea !important; 
+	font-weight: 600;
+}
+.tishi{
+	color: #4b91ea;
+}
+.edit{
+	cursor:pointer;
+	color: #ff902b;
+}
+.delete {
+    color: #f05050;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.problem{
+	position: relative !important;
+	padding-top: 0px !important;
+	padding-left: 4px !important;
+	cursor:pointer !important;
+	color: #909fa7 !important;
+	font-size: 14px !important;
+	float: right !important;
+	margin: 7px 7px 0 2px !important;
+	width: 21px !important;
+	height: 21px !important;
+}
+.deleteBtn{
+	color:#ee3d3d !important;
+	cursor:pointer !important;
+}
+.deleteStyle{
+	color: #f05050 !important;
+	margin: 0 10px !important;
+}
+.deleteModal{
+	text-align: center;
+}
