@@ -1,0 +1,14 @@
+
+server:
+  port: 8801
+spring:
+  kafka:
+    #指定kafka 代理地址，可以多个
+    bootstrap-servers: 192.168.0.196:9092
+    producer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      retries: 0
+      #每次批量发送消息的数量
+      batch-size: 16384
+      buffer-memory: 33554432

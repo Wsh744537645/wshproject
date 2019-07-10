@@ -1,0 +1,14 @@
+
+server:
+  port: 8800
+
+spring:
+  kafka:
+    #指定kafka 代理地址，可以多个
+    bootstrap-servers: 192.168.0.196:9092
+    consumer:
+      group-id: test
+      enable-auto-commit: true
+      auto-commit-interval: 1000ms
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
