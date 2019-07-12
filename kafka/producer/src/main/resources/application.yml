@@ -4,7 +4,7 @@ server:
 spring:
   kafka:
     #指定kafka 代理地址，可以多个
-    bootstrap-servers: 192.168.0.196:9092
+    bootstrap-servers: 192.168.0.203:9092
     producer:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
