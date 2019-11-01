@@ -4,8 +4,7 @@ server:
 
 spring:
   kafka:
-    #指定kafka 代理地址，可以多个
-    bootstrap-servers: 192.168.0.203:9092
+    bootstrap-servers: 192.168.0.6:9093
     consumer:
       group-id: test
       enable-auto-commit: true
