@@ -1,0 +1,11 @@
+
+server:
+  port: 9293
+spring:
+  application:
+    name: rabbit-consumer
+  rabbitmq:
+    host: 192.168.146.129
+    port: 5672
+    username: wsh
+    password: wsh

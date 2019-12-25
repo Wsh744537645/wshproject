@@ -1,0 +1,15 @@
+
+server:
+  port: 9292
+spring:
+  application:
+    name: rabbit-product
+  rabbitmq:
+    host: 192.168.146.129
+    port: 5672
+    username: wsh
+    password: wsh
+    #确认消息已发送到交换机(Exchange)
+    publisher-confirms: true
+    #确认消息已发送到队列(Queue)
+    publisher-returns: true
