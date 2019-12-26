@@ -42,6 +42,58 @@ public class QuartzJobService {
     }
 
     /**
+     * 暂停Job
+     * {@link org.quartz.Scheduler#pauseJob(JobKey)}
+     */
+    public void pauseJob(JobKey jobKey) throws SchedulerException {
+        scheduler.pauseJob(jobKey);
+    }
+
+    /**
+     * 恢复Job
+     * {@link org.quartz.Scheduler#resumeJob(JobKey)}
+     */
+    public void resumeJob(JobKey jobKey) throws SchedulerException {
+        scheduler.resumeJob(jobKey);
+    }
+
+    /**
+     * 删除Job
+     * {@link org.quartz.Scheduler#deleteJob(JobKey)}
+     */
+    public void deleteJob(JobKey jobKey) throws SchedulerException {
+        scheduler.deleteJob(jobKey);
+    }
+
+    /**
+     * 修改Job 的cron表达式
+     */
+    public boolean modifyJobCron(TaskEntity define) {
+        String cronExpression = define.getCronExpression();
+        //1.如果cron表达式的格式不正确,则返回修改失败
+        if (!CronExpression.isValidExpression(cronExpression)) return false;
+        JobKey jobKey = define.getJobKey();
+        TriggerKey triggerKey = new TriggerKey(jobKey.getName(), jobKey.getGroup());
+        try {
+            CronTrigger cronTrigger = (CronTrigger) scheduler.getTrigger(triggerKey);
+            JobDataMap jobDataMap = getJobDataMap(define.getJobDataMap());
+            //2.如果cron发生变化了,则按新cron触发 进行重新启动定时任务
+            if (!cronTrigger.getCronExpression().equalsIgnoreCase(cronExpression)) {
+                CronTrigger trigger = TriggerBuilder.newTrigger()
+                        .withIdentity(triggerKey)
+                        .withSchedule(CronScheduleBuilder.cronSchedule(cronExpression))
+                        .usingJobData(jobDataMap)
+                        .build();
+                scheduler.rescheduleJob(triggerKey, trigger);
+            }
+        } catch (SchedulerException e) {
+            log.error("printStackTrace", e);
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * 获取定时任务的定义
      * JobDetail是任务的定义,Job是任务的执行逻辑
      *
