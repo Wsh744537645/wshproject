@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id = "stu" class="src.bean.Student">
+        <property name="age" value="11"></property>
+        <property name="name" value="xiaoming"></property>
+    </bean>
+
+    <!-- 配置静态工厂创建 car 对象 -->
+    <bean id="car1" class="src.factory.StaticCarFactory" factory-method="getCar">
+        <constructor-arg value="1"></constructor-arg>
+    </bean>
+
+    <bean id="carFactory" class="src.factory.InstanceCarFactory"></bean>
+    <bean id="car2" factory-bean="carFactory" factory-method="getCar">
+        <constructor-arg value="2"></constructor-arg>
+    </bean>
+
+    <context:component-scan base-package="src.southwind"></context:component-scan>
+</beans>
