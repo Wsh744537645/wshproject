@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <bean id="address" class="Iocdemo.bean.Address">
+        <property name="id" value="1"></property>
+        <property name="name" value="科技路"></property>
+    </bean>
+</beans>
