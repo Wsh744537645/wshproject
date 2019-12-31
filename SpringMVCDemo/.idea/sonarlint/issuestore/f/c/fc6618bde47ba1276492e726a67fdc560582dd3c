@@ -1,0 +1,12 @@
+
+usquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(øÁÕµ8¼ß˜µõ-
+Fsquid:S1989"%Add a "try/catch" block for "doPost".(Í†»Öúÿÿÿÿ8ØŞµõ-
+fsquid:UselessImportCheck"8Remove this unused import 'org.dom4j.DocumentException'.(ÖÌê øÿÿÿÿ8¼ß˜µõ-
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8Êâéµõ-
+Usquid:S2864"4Iterate over the "entrySet" instead of the "keySet".(ˆò×÷øÿÿÿÿ8ŒÉÒµõ-
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¼ß˜µõ-
+ssquid:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(ÕÿóQ8¼ß˜µõ-
+ysquid:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(Çòˆÿÿÿÿÿ8¼ß˜µõ-
+Dsquid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8·“®µõ-
+Fsquid:S1989"%Add a "try/catch" block for "doPost".(Í†»Öúÿÿÿÿ8ØŞµõ-
+tsquid:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(ë­‰‹8¼ß˜µõ-
