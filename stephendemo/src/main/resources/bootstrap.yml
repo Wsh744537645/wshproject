@@ -1,17 +1,7 @@
-#nacos 服务器位置以及nacos配置
-#zlt:
-#  nacos:
-#    server-addr: localhost:8848
-#spring:
-#  application:
-#    name: stephendemo
-#  main:
-#    allow-bean-definition-overriding: true
-#  cloud:
-#    nacos:
-#      config:
-#        server-addr: ${zlt.nacos.server-addr}
-#        file-extension: yml
-#        shared-dataids: common.yml
-#        refreshable-dataids: common.yml
-#        name: stephendemo
+spring:
+  application:
+    name: wsh-nacos-test
+
+nacos:
+  config:
+    server-addr: 127.0.0.1:8848

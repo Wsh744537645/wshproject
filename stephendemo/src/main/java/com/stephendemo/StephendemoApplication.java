@@ -1,5 +1,6 @@
 package com.stephendemo;
 
+import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import com.stephendemo.beandefinition.BeanDef;
 import com.stephendemo.fruit.Apple;
 import lombok.extern.slf4j.Slf4j;
