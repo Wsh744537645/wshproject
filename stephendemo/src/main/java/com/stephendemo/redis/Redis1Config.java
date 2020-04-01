@@ -35,9 +35,9 @@ import java.util.Map;
  * date 2019-11-01
  */
 
-@Component
-@Configuration
-@EnableCaching
+//@Component
+//@Configuration
+//@EnableCaching
 public class Redis1Config{
     //最大活跃数
     @Value("${spring.redis.jedis.pool.max-active:8}")
