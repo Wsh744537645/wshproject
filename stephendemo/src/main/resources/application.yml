@@ -3,6 +3,9 @@
 server:
   port: 9898
 
+service:
+    name: 6
+
 spring:
   redis:
     database: 0

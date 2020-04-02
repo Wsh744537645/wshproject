@@ -1,7 +1,8 @@
 package com.stephendemo.nacos;
 
-import com.alibaba.nacos.api.config.annotation.NacosValue;
-import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,15 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @author jmfen
  * date 2020-04-01
  */
-@NacosPropertySource(dataId = "wsh.test", autoRefreshed = true)
 @RestController
 public class NacosController {
 
-    @NacosValue(value = "${service.name:1}", autoRefreshed = true)
-    private String serverName;
+    @Autowired
+    private NacosService nacosService;
 
     @GetMapping("/nacos/serverName")
     public String getServerName(){
-        return serverName;
+        return nacosService.getServerName();
     }
 }

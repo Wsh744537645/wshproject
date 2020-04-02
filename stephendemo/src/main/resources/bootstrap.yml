@@ -1,7 +1,13 @@
 spring:
   application:
     name: wsh-nacos-test
-
-nacos:
-  config:
-    server-addr: 127.0.0.1:8848
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        shared-dataids: wsh-nacos-test.yml
+        refreshable-dataids: wsh-nacos-test.yml
+        name: wsh-nacos-test
+      discovery:
+        server-addr: 127.0.0.1:8848
