@@ -6,6 +6,15 @@ server:
 service:
     name: 6
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
 spring:
   redis:
     database: 0
