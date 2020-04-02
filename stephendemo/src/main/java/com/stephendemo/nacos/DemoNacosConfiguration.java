@@ -1,5 +1,6 @@
 package com.stephendemo.nacos;
 
+import com.alibaba.nacos.api.config.listener.AbstractListener;
 import com.alibaba.nacos.api.exception.NacosException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.alibaba.nacos.NacosConfigProperties;
@@ -23,6 +24,12 @@ public class DemoNacosConfiguration {
         String group = "DEFAULT_GROUP";
         try {
             String str = nacosConfigProperties.configServiceInstance().getConfig(data_id, group, 10 * 1000);
+            nacosConfigProperties.configServiceInstance().addListener(data_id, group, new AbstractListener() {
+                @Override
+                public void receiveConfigInfo(String configInfo) {
+                    System.out.println("nacos update demo_json: " + configInfo);
+                }
+            });
             return str;
         } catch (NacosException e) {
             e.printStackTrace();
