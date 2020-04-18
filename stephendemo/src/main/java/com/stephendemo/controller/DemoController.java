@@ -1,10 +1,13 @@
 package com.stephendemo.controller;
 
 import com.stephendemo.RedisOperateService;
+import com.stephendemo.data.User;
+import com.stephendemo.mongo.MongoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,6 +34,9 @@ public class DemoController {
 
     @Autowired
     private RedisOperateService redisOperateService;
+
+    @Autowired
+    private MongoService mongoService;
 
     public DemoController(){
         System.out.println("demo controller");
@@ -99,5 +105,25 @@ public class DemoController {
             }
         }
         return "hehe";
+    }
+
+    @GetMapping("/test/mongo/add")
+    public Object mongo(@RequestBody User user){
+        return mongoService.add(user);
+    }
+
+    @GetMapping("/test/mongo/find")
+    public Object mongoFind(String name){
+        return mongoService.findOne(name);
+    }
+
+    @GetMapping("/test/mongo/update")
+    public Object mongoUpdate(@RequestBody User user){
+        return mongoService.updateOne(user);
+    }
+
+    @GetMapping("/test/mongo/remove")
+    public Object mongoRemove(String name){
+        return mongoService.removeOne(name);
     }
 }

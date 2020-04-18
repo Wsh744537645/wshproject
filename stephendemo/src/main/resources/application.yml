@@ -23,10 +23,13 @@ spring:
     password: 123456
     lettuce:
       pool:
-        max-active: 1
-        max-idle: 1
-        min-idle: 0
+        max-active: 5
+        max-idle: 2
+        min-idle: 2
         max-wait: 10ms
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/test
 #  redis2:
 #    database: 0
 #    host: 192.168.146.130

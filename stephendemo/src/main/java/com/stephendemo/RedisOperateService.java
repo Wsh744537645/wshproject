@@ -12,6 +12,7 @@ import org.springframework.data.redis.core.types.Expiration;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -52,6 +53,24 @@ public class RedisOperateService {
         //range.gt("apple1");
         range.lt("c");
         log.info("rangbylex -- {}", redisTemplate.opsForZSet().rangeByLex(key, range));
+    }
+
+    /**
+     * 1.这里的connect是redis原生链接，所以connection的返回结果是基本上是byte数组，如果需要存储的数据，需要对byte[]数组反序列化。
+     * 2.在doInRedis中返回值必须返回为null，为什么返回为空？可以定位到内部代码去查看详情。
+     * 3.connection.openPipeline()可以调用，也可以不调用，但是connection.closePipeline()不能调用，调用了拿不到返回值。因为调用的时候会直接将结果返回，同时也不会对代码进行反序列化。
+     * 4.反序列化需要传入反序列化对象，这些对象都可以进行相应的实例化
+     * @return
+     */
+    public List<Long> pipeline(){
+        return redisTemplate.executePipelined((RedisCallback<Long>)connection -> {
+            connection.openPipeline();
+            for (int i = 0; i < 1000000; i++) {
+                String key = "123" + i;
+                connection.zCount(key.getBytes(), 0,Integer.MAX_VALUE);
+            }
+            return null;
+        });
     }
 
     public boolean getLock(String lockKey, long lockExpireSec){
