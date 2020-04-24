@@ -30,6 +30,16 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/test
+    #使用版本elasticsearch-6.5.4， kibana-6.5.4-windows-x86_64
+    elasticsearch:
+      # elasticsearch集群名称，默认的是elasticsearch
+      cluster-name: stephendemo
+      #节点的地址 注意api模式下端口号是9300，千万不要写成9200
+      cluster-nodes: 127.0.0.1:9300
+      #是否开启本地存储
+#      repositories:
+#        enabled: true
+
 #  redis2:
 #    database: 0
 #    host: 192.168.146.130
