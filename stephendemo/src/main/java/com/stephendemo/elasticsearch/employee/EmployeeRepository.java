@@ -1,4 +1,4 @@
-package com.stephendemo.elasticsearch;
+package com.stephendemo.elasticsearch.employee;
 
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.stephendemo.elasticsearch;
+package com.stephendemo.elasticsearch.employee;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -11,7 +11,7 @@ import org.springframework.data.elasticsearch.annotations.Field;
  */
 
 @Data
-@Document(indexName = "company", type = "employee", shards = 1, replicas = 0, refreshInterval = "-1")
+@Document(indexName = "stephendemo-company", type = "employee", shards = 1, replicas = 0, refreshInterval = "-1")
 public class Employee {
     @Id
     private String id;
