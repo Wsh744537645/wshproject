@@ -1,0 +1,38 @@
+
+server:
+  port: 9999
+spring:
+  application:
+    name: zuulServer
+  redis:
+    port: 6379
+    host: 127.0.0.1
+    password: 123456
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10000/eureka,http://127.0.0.1:10001/eureka,http://127.0.0.1:10002/eureka
+#  instance:
+#    #该实例，相较于hostname是否优先使用IP
+#    prefer-ip-address: true
+
+
+zuul:
+  routes:
+    #服务名： 代理的路径
+    productserver: /product/**
+  #规定原来的路径无法访问，必须通过zuul的路由才能访问
+  ignored-services: "*"
+  ratelimit:
+    enabled: true
+    repository: redis
+    behind-proxy: true
+    default-policy-list:  #所有服务都有效
+      - limit: 10    #限制次数，每刷新一次次数+1
+        quota: 1000  #窗口对应的请求时间限制
+        refresh-interval: 60 #多少秒后刷新计数
+        type: #optional #限制类型
+          - origin  #url  包括ip+接口
+
+

@@ -1,0 +1,28 @@
+
+spring:
+  application:
+    name: eurekaServer
+
+eureka:
+  server:
+    #自我保护模式，默认是true
+    enable-self-preservation: true
+    #当eureka server启动的时候，不能从对等节点获取instance注册信息的情况，应等待多长时间。
+    wait-time-in-ms-when-sync-empty: 10
+  client:
+    #是否注册到注册中心（单点设置为false，eureka的话需要设置为true）
+    register-with-eureka: false
+    #是否需要从注册中心拉取服务列表（单点设置为false，eureka的话需要设置为true）
+    fetch-registry: false
+    service-url:
+      defaultZone: http://127.0.0.1:10000/eureka,http://127.0.0.1:10001/eureka,http://127.0.0.1:10002/eureka
+  instance:
+    #该实例给注册中心发送心跳的间隔时间，用于表明该实例可用（单点情况可以不设置）
+    lease-renewal-interval-in-seconds: 30
+    #服务中心删除此服务实例的等待时间（秒），时间间隔为最后一次服务中心接收到的心跳时间
+    lease-expiration-duration-in-seconds: 90
+    #该实例，相较于hostname是否优先使用IP
+    prefer-ip-address: true
+
+server:
+  port: 10002
