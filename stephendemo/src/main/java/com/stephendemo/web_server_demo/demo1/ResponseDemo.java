@@ -1,4 +1,4 @@
-package com.stephendemo.web_server_demo;
+package com.stephendemo.web_server_demo.demo1;
 
 import java.io.File;
 import java.io.FileInputStream;

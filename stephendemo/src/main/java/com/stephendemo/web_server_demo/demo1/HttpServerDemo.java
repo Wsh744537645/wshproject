@@ -1,4 +1,4 @@
-package com.stephendemo.web_server_demo;
+package com.stephendemo.web_server_demo.demo1;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +9,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
+ * How Tomcat works 第一章例子
+ * 实现简易的web server，实现返回静态文件
  * @author jmfen
  * date 2020-05-22
  */
