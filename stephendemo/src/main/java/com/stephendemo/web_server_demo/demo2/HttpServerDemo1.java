@@ -8,7 +8,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * 第二章
+ * How Tomcat works 第二章例子
+ *  实现简易的web server，增加servlet，实现请求动态处理
  * @author jmfen
  * date 2020-05-22
  */
